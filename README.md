@@ -1,2 +1,2 @@
-# chronam-jupyter
-Jupyter Notebook for playing with ChronAm
+# data-exploration
+Jupyter Notebooks for playing with LC APIs and data.
