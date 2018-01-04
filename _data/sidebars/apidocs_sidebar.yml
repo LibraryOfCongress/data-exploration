@@ -1,0 +1,44 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: 
+  version: 
+  folders:
+
+  - title: About the API 
+    output: web, pdf
+    folderitems: 
+    
+    - title: Introduction and Basics
+      url: /index.html
+      output: web,pdf
+
+  - title: Reference
+    output: web, pdf
+    folderitems:
+
+    - title: Requests
+      url: /requests.html
+      output: web, pdf
+
+    - title: Responses
+      url: /responses.html
+      output: web, pdf
+
+    - title: Pagination
+      url: /pagination.html
+      output: web, pdf
+
+    - title: Sitemaps
+      url: /sitemaps.html
+      output: web, pdf
+ 
+#  - title: Tips and advice 
+#    output: web, pdf
+#    folderitems:
+#
+#    - title: Tips and advice
+#      url: /tips.html
+#      output: web, pdf
+
