@@ -53,6 +53,7 @@ Searches for items which have a specified original format. Possible values inclu
 
 **Example:** ```https://www.loc.gov/maps/?q=civil war&fo=json```
 
+
 ## Common parameters
 
 Always include ```fo=json``` in your URL so that you get JSON, not HTML.
@@ -109,6 +110,13 @@ default is 25</td>
     <td>page in results (results are returned in pages of 25 items unless specified using the c parameter)
       The first page is sp=1.</td>
     <td>sp=2</td>
+  </tr>
+  <tr>
+    <td>at</td>
+    <td>attributes to return in the results
+      <p>This is helpful for removing extraneous information from the results, such as more_like_this and related_items. You can specify 
+        elements to exclude using at!=</p></td>
+    <td>at=item<br />at=item,resources,reproductions<br />at!=more_like_this</td>
   </tr>
   <tr>
     <td>sb</td>
