@@ -4,7 +4,7 @@ keywords: api documentation homepage
 tags:
 sidebar: apidocs_sidebar
 permalink: index.html
-summary: 
+summary: The loc.gov API is a work in progress and subject to change. Once the API leaves Beta, we anticipate release of an official version of this documentation at loc.gov.
 ---
 
 ## Introduction
