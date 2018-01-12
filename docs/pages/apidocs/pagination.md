@@ -75,4 +75,48 @@ The ```pagination``` section of the response has the information you’ll need t
 
 **Example:**
 
-```https://www.loc.gov/collections/national-child-labor-committee/?sp=2&c=100&fo=json```
+``https://www.loc.gov/collections/national-child-labor-committee/?sp=2&c=100&fo=json``
+
+Pagination section of JSON in a search result response:
+
+```
+{
+  "pagination": {
+    "from": 1,
+    "results": "1 - 25",
+    "last": "https://www.loc.gov/collections/civil-war-maps/?sp=4&fo=json",
+    "total": 94,
+    "previous": null,
+    "perpage": 25,
+    "perpage_options": [
+      25,
+      50,
+      100,
+      150
+    ],
+    "of": 2335,
+    "next": "https://www.loc.gov/collections/civil-war-maps/?sp=2&fo=json",
+    "current": 1,
+    "to": 25,
+    "page_list": [
+      {
+        "url": null,
+        "number": 1
+      },
+      {
+        "url": "https://www.loc.gov/collections/civil-war-maps/?sp=2&fo=json",
+        "number": 2
+      },
+      {
+        "url": "https://www.loc.gov/collections/civil-war-maps/?sp=3&fo=json",
+        "number": 3
+      },
+      {
+        "url": "https://www.loc.gov/collections/civil-war-maps/?sp=4&fo=json",
+        "number": "..."
+      }
+    ],
+    "first": null
+  }
+}
+```

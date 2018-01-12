@@ -176,205 +176,193 @@ A typical response is very long, with many elements that are intended for the we
 
 ```
 "item": {
-"library_of_congress_control_number": "98688726",
-"source_collection": [],
-"display_offsite": true,
-"contributors": [
-{
-"g.w. & c. colton & co.": "https://www.loc.gov/search/?fa=contributor%3Ag.w.+%26+c.+colton+%26+co.&fo=json"
-},
-{
-"new orleans, mobile, and chattanooga railroad": "https://www.loc.gov/search/?fa=contributor%3Anew+orleans%2C+mobile%2C+and+chattanooga+railroad&fo=json"
-}
-],
-"creator": "G.W. & C.B. Colton & Co.",
-"access_restricted": false,
-"site": [
-"ammem",
-"catalog"
-],
-"original_format": [
-"map"
-],
-"genre": [],
-"subject_headings": [
-"New Orleans, Mobile, and Chattanooga Railroad",
-"Railroads--United States--Maps",
-"United States"
-],
-"created_published": [
-"New York, 1865."
-],
-"extract_urls": [
-"http://www.loc.gov/item/98688726#gmd.mar",
-"http://lccn.loc.gov/98688726#catalog"
-],
-"id": "http://www.loc.gov/item/98688726/",
-"contents": [],
-"subject": [
-"new orleans, mobile, and chattanooga railroad",
-"railroads",
-"united states",
-"maps"
-],
-"index": 1,
-"digital_id": [
-"http://hdl.loc.gov/loc.gmd/g3701p.rr004750"
-],
-"call_number": [
-"G3701.P3 1865 .G15"
-],
-"group": [
-"gmd.mar",
-"catalog",
-"general-maps"
-],
-"score": 11.276397,
-"location_country": [
-"united states"
-],
-"title": "Map showing the New Orleans, Mobile & Chattanooga Railroad and its connections.",
-"description": [
-"Map of the eastern half of the United States showing drainage, cities and towns, counties, and the railroad network."
-],
-"related_items": [],
-"online_format": [
-"image"
-],
-"subjects": [
-{
-"maps": "https://www.loc.gov/search/?fa=subject%3Amaps&fo=json"
-},
-{
-"new orleans, mobile, and chattanooga railroad": "https://www.loc.gov/search/?fa=subject%3Anew+orleans%2C+mobile%2C+and+chattanooga+railroad&fo=json"
-},
-{
-"railroads": "https://www.loc.gov/search/?fa=subject%3Arailroads&fo=json"
-},
-{
-"united states": "https://www.loc.gov/search/?fa=subject%3Aunited+states&fo=json"
-}
-],
-"location": [
-{
-"united states": "https://www.loc.gov/search/?fa=location%3Aunited+states&fo=json"
-}
-],
-"_version_": 1584611057109827600,
-"type": [
-"map"
-],
-"mime_type": [
-"image/gif",
-"image/tiff",
-"image/jpeg",
-"image/jp2"
-],
-"digitized": true,
-"rights_advisory": [],
-"medium": [
-"map 53 x 83 cm."
-],
-"reproduction_number": [],
-"repository": [
-"Library of Congress Geography and Map Division Washington, D.C. 20540-4650 USA dcu"
-],
-"format": [
-{
-"map": "https://www.loc.gov/search/?fa=original_format%3Amap&fo=json"
-}
-],
-"partof": [
-{
-"count": 635,
-"url": "https://www.loc.gov/collections/railroad-maps-1828-to-1900/?fo=json",
-"title": "railroad maps, 1828-1900"
-},
-{
-"count": 900,
-"url": "https://www.loc.gov/collections/transportation-and-communication/?fo=json",
-"title": "transportation and communication"
-},
-{
-"count": 16205,
-"url": "https://www.loc.gov/search/?fa=partof%3Ageography+and+map+division&fo=json",
-"title": "geography and map division"
-},
-{
-"count": 639861,
-"url": "https://www.loc.gov/search/?fa=partof%3Aamerican+memory&fo=json",
-"title": "american memory"
-},
-{
-"count": 815225,
-"url": "https://www.loc.gov/search/?fa=partof%3Acatalog&fo=json",
-"title": "catalog"
-}
-],
-"timestamp": "2017-11-20T18:34:26.584000Z",
-"campaigns": [],
-"extract_timestamp": "2017-11-20T18:24:49.580000Z",
-"date": "1865",
-"shelf_id": "G3701.P3 1865 .G15",
-"other_title": [],
-"dates": [
-{
-"1865": "https://www.loc.gov/search/?dates=1865%2F1865&fo=json"
-}
-],
-"language": [
-{
-"english": "https://www.loc.gov/search/?fa=language%3Aenglish&fo=json"
-}
-],
-"rights": [
-"<h2>\r\nRights and Access\r\n</h2>\r\n<p>The maps in the Map Collections materials were either  published prior to 1922, produced by the United States government, or both  (see catalogue records that accompany each map for information regarding  date of publication and source).  The Library of Congress is providing  access to these materials for educational and research purposes and is not  aware of any U.S. copyright protection (see Title 17 of the United States  Code) or any other restrictions in the Map Collection materials. </p>\r\n<p>Note that the written permission of the copyright owners and/or  other rights holders (such as publicity and/or privacy rights) is required  for distribution, reproduction, or other use of protected items beyond that  allowed by fair use or other statutory exemptions.  Responsibility for  making an independent legal assessment of an item and securing any necessary  permissions ultimately rests with persons desiring to use the item.</p>\r\n<p> More about <a href=\"//memory.loc.gov/ammem/copyrit2.html\"> American Memory, Copyright and other Restrictions</a></p>\r\n<p> Credit Line: Library of Congress, Geography and Map Division. </p>\r\n<p> For guidance about compiling full citations consult <a href=\"//memory.loc.gov/ammem/ndlpedu/start/cite/index.html\">Citing Electronic Sources</a> on the Learning Page. </p>\r\n"
-],
-"url": "https://www.loc.gov/item/98688726/",
-"notes": [
-"Scale 1:3,168,000.",
-"LC Railroad maps, 475",
-"Description derived from published bibliography.",
-"Inset: Map showing the relation of Mobile & N.O. to the ports of Mexico, Central America , and the W.I. 21 x 21 cm.",
-"Available also through the Library of Congress Web site as a raster image."
-],
-"control_number": "",
-"summary": [
-"Map of the eastern half of the United States showing drainage, cities and towns, counties, and the railroad network."
-],
-"hassegments": false,
-"image_url": [
-"//cdn.loc.gov/service/gmd/gmd370/g3701/g3701p/rr004750.gif",
-"//cdn.loc.gov/service/gmd/gmd370/g3701/g3701p/rr004750.gif#h=150&w=231",
-"//tile.loc.gov/image-services/iiif/service:gmd:gmd370:g3701:g3701p:rr004750/full/pct:3.125/0/default.jpg#h=207&w=320",
-"//tile.loc.gov/image-services/iiif/service:gmd:gmd370:g3701:g3701p:rr004750/full/pct:6.25/0/default.jpg#h=415&w=640",
-"//tile.loc.gov/image-services/iiif/service:gmd:gmd370:g3701:g3701p:rr004750/full/pct:12.5/0/default.jpg#h=830&w=1280",
-"//tile.loc.gov/image-services/iiif/service:gmd:gmd370:g3701:g3701p:rr004750/full/pct:25/0/default.jpg#h=1660&w=2560"
-],
-"other_formats": [
-{
-"link": "https://lccn.loc.gov/98688726/marcxml",
-"label": "MARCXML Record"
-},
-{
-"link": "https://lccn.loc.gov/98688726/mods",
-"label": "MODS Record"
-},
-{
-"link": "https://lccn.loc.gov/98688726/dc",
-"label": "Dublin Core Record"
-}
-],
-"aka": [
-"http://www.loc.gov/resource/g3701p.rr004750/",
-"http://www.loc.gov/item/98688726/",
-"http://hdl.loc.gov/loc.gmd/g3701p.rr004750",
-"http://lccn.loc.gov/98688726"
-],
-"contributor_names": [
-"G.W. & C.B. Colton & Co.",
-"New Orleans, Mobile, and Chattanooga Railroad."
-],
-"access_advisory": []
+    "library_of_congress_control_number": "98688726",
+    "source_collection": [],
+    "display_offsite": true,
+    "contributors": [{
+            "g.w. & c. colton & co.": "https://www.loc.gov/search/?fa=contributor%3Ag.w.+%26+c.+colton+%26+co.&fo=json"
+        },
+        {
+            "new orleans, mobile, and chattanooga railroad": "https://www.loc.gov/search/?fa=contributor%3Anew+orleans%2C+mobile%2C+and+chattanooga+railroad&fo=json"
+        }
+    ],
+    "creator": "G.W. & C.B. Colton & Co.",
+    "access_restricted": false,
+    "site": [
+        "ammem",
+        "catalog"
+    ],
+    "original_format": [
+        "map"
+    ],
+    "genre": [],
+    "subject_headings": [
+        "New Orleans, Mobile, and Chattanooga Railroad",
+        "Railroads--United States--Maps",
+        "United States"
+    ],
+    "created_published": [
+        "New York, 1865."
+    ],
+    "extract_urls": [
+        "http://www.loc.gov/item/98688726#gmd.mar",
+        "http://lccn.loc.gov/98688726#catalog"
+    ],
+    "id": "http://www.loc.gov/item/98688726/",
+    "contents": [],
+    "subject": [
+        "new orleans, mobile, and chattanooga railroad",
+        "railroads",
+        "united states",
+        "maps"
+    ],
+    "index": 1,
+    "digital_id": [
+        "http://hdl.loc.gov/loc.gmd/g3701p.rr004750"
+    ],
+    "call_number": [
+        "G3701.P3 1865 .G15"
+    ],
+    "group": [
+        "gmd.mar",
+        "catalog",
+        "general-maps"
+    ],
+    "score": 11.276397,
+    "location_country": [
+        "united states"
+    ],
+    "title": "Map showing the New Orleans, Mobile & Chattanooga Railroad and its connections.",
+    "description": [
+        "Map of the eastern half of the United States showing drainage, cities and towns, counties, and the railroad network."
+    ],
+    "related_items": [],
+    "online_format": [
+        "image"
+    ],
+    "subjects": [{
+            "maps": "https://www.loc.gov/search/?fa=subject%3Amaps&fo=json"
+        },
+        {
+            "new orleans, mobile, and chattanooga railroad": "https://www.loc.gov/search/?fa=subject%3Anew+orleans%2C+mobile%2C+and+chattanooga+railroad&fo=json"
+        },
+        {
+            "railroads": "https://www.loc.gov/search/?fa=subject%3Arailroads&fo=json"
+        },
+        {
+            "united states": "https://www.loc.gov/search/?fa=subject%3Aunited+states&fo=json"
+        }
+    ],
+    "location": [{
+        "united states": "https://www.loc.gov/search/?fa=location%3Aunited+states&fo=json"
+    }],
+    "_version_": 1584611057109827600,
+    "type": [
+        "map"
+    ],
+    "mime_type": [
+        "image/gif",
+        "image/tiff",
+        "image/jpeg",
+        "image/jp2"
+    ],
+    "digitized": true,
+    "rights_advisory": [],
+    "medium": [
+        "map 53 x 83 cm."
+    ],
+    "reproduction_number": [],
+    "repository": [
+        "Library of Congress Geography and Map Division Washington, D.C. 20540-4650 USA dcu"
+    ],
+    "format": [{
+        "map": "https://www.loc.gov/search/?fa=original_format%3Amap&fo=json"
+    }],
+    "partof": [{
+            "count": 635,
+            "url": "https://www.loc.gov/collections/railroad-maps-1828-to-1900/?fo=json",
+            "title": "railroad maps, 1828-1900"
+        },
+        {
+            "count": 900,
+            "url": "https://www.loc.gov/collections/transportation-and-communication/?fo=json",
+            "title": "transportation and communication"
+        },
+        {
+            "count": 16205,
+            "url": "https://www.loc.gov/search/?fa=partof%3Ageography+and+map+division&fo=json",
+            "title": "geography and map division"
+        },
+        {
+            "count": 639861,
+            "url": "https://www.loc.gov/search/?fa=partof%3Aamerican+memory&fo=json",
+            "title": "american memory"
+        },
+        {
+            "count": 815225,
+            "url": "https://www.loc.gov/search/?fa=partof%3Acatalog&fo=json",
+            "title": "catalog"
+        }
+    ],
+    "timestamp": "2017-11-20T18:34:26.584000Z",
+    "campaigns": [],
+    "extract_timestamp": "2017-11-20T18:24:49.580000Z",
+    "date": "1865",
+    "shelf_id": "G3701.P3 1865 .G15",
+    "other_title": [],
+    "dates": [{
+        "1865": "https://www.loc.gov/search/?dates=1865%2F1865&fo=json"
+    }],
+    "language": [{
+        "english": "https://www.loc.gov/search/?fa=language%3Aenglish&fo=json"
+    }],
+    "rights": [
+        "<h2>\r\nRights and Access\r\n</h2>\r\n<p>The maps in the Map Collections materials were either  published prior to 1922, produced by the United States government, or both  (see catalogue records that accompany each map for information regarding  date of publication and source).  The Library of Congress is providing  access to these materials for educational and research purposes and is not  aware of any U.S. copyright protection (see Title 17 of the United States  Code) or any other restrictions in the Map Collection materials. </p>\r\n<p>Note that the written permission of the copyright owners and/or  other rights holders (such as publicity and/or privacy rights) is required  for distribution, reproduction, or other use of protected items beyond that  allowed by fair use or other statutory exemptions.  Responsibility for  making an independent legal assessment of an item and securing any necessary  permissions ultimately rests with persons desiring to use the item.</p>\r\n<p> More about <a href=\"//memory.loc.gov/ammem/copyrit2.html\"> American Memory, Copyright and other Restrictions</a></p>\r\n<p> Credit Line: Library of Congress, Geography and Map Division. </p>\r\n<p> For guidance about compiling full citations consult <a href=\"//memory.loc.gov/ammem/ndlpedu/start/cite/index.html\">Citing Electronic Sources</a> on the Learning Page. </p>\r\n"
+    ],
+    "url": "https://www.loc.gov/item/98688726/",
+    "notes": [
+        "Scale 1:3,168,000.",
+        "LC Railroad maps, 475",
+        "Description derived from published bibliography.",
+        "Inset: Map showing the relation of Mobile & N.O. to the ports of Mexico, Central America , and the W.I. 21 x 21 cm.",
+        "Available also through the Library of Congress Web site as a raster image."
+    ],
+    "control_number": "",
+    "summary": [
+        "Map of the eastern half of the United States showing drainage, cities and towns, counties, and the railroad network."
+    ],
+    "hassegments": false,
+    "image_url": [
+        "//cdn.loc.gov/service/gmd/gmd370/g3701/g3701p/rr004750.gif",
+        "//cdn.loc.gov/service/gmd/gmd370/g3701/g3701p/rr004750.gif#h=150&w=231",
+        "//tile.loc.gov/image-services/iiif/service:gmd:gmd370:g3701:g3701p:rr004750/full/pct:3.125/0/default.jpg#h=207&w=320",
+        "//tile.loc.gov/image-services/iiif/service:gmd:gmd370:g3701:g3701p:rr004750/full/pct:6.25/0/default.jpg#h=415&w=640",
+        "//tile.loc.gov/image-services/iiif/service:gmd:gmd370:g3701:g3701p:rr004750/full/pct:12.5/0/default.jpg#h=830&w=1280",
+        "//tile.loc.gov/image-services/iiif/service:gmd:gmd370:g3701:g3701p:rr004750/full/pct:25/0/default.jpg#h=1660&w=2560"
+    ],
+    "other_formats": [{
+            "link": "https://lccn.loc.gov/98688726/marcxml",
+            "label": "MARCXML Record"
+        },
+        {
+            "link": "https://lccn.loc.gov/98688726/mods",
+            "label": "MODS Record"
+        },
+        {
+            "link": "https://lccn.loc.gov/98688726/dc",
+            "label": "Dublin Core Record"
+        }
+    ],
+    "aka": [
+        "http://www.loc.gov/resource/g3701p.rr004750/",
+        "http://www.loc.gov/item/98688726/",
+        "http://hdl.loc.gov/loc.gmd/g3701p.rr004750",
+        "http://lccn.loc.gov/98688726"
+    ],
+    "contributor_names": [
+        "G.W. & C.B. Colton & Co.",
+        "New Orleans, Mobile, and Chattanooga Railroad."
+    ],
+    "access_advisory": []
 },
 ```
