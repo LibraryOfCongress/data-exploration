@@ -22,7 +22,7 @@ The loc.gov JSON API provides information about things you can find on the Libra
 * images (thumbnails and higher resolution formats)
 
 
-There are other [specialized APIs and bulk downloads](www.loc.gov/labs/lc-for-robots) you may want to check out, too. 
+There are other [specialized APIs and bulk downloads](https://labs.loc.gov/lc-for-robots) you may want to check out, too. 
 
 The API does not include records from the library catalog (although items that have been digitized are retrievable). See the [MARC Open Access dataset](https://www.loc.gov/cds/products/marcDist.php) for bulk access to the catalog records up through 2014. 
 
