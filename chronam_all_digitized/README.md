@@ -32,3 +32,5 @@ If you use this script, please let us know at <a href="https://twitter.com/LC_La
 
 For additional information about accessing the Library of Congress’ collections programmatically please visit <a href="https://labs.loc.gov/lc-for-robots/">LC for Robots</a>.
 
+<h1>Rights Statement</h1>
+Script is free to use and reuse without restriction.
