@@ -65,6 +65,11 @@ Always include ```fo=json``` in your URL so that you get JSON, not HTML.
     <td><strong>Examples</strong></td>
   </tr>
   <tr>
+    <td>all</td>
+    <td>By default the APIs only return items available online. To return records for all items, add this parameter</td>
+    <td>all=true</td>
+  </tr>
+  <tr>
     <td>q</td>
     <td>query parameter<br />Does a keyword search in the metadata and any available full text including video transcripts</td>
     <td>q=kittens</td>
