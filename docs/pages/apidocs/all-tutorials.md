@@ -15,7 +15,7 @@ If this is your first time using Jupyter notebooks, there are [several](https://
 
 [JSON API Overview](https://github.com/LibraryOfCongress/data-exploration/blob/master/LOC.gov%20JSON%20API.ipynb)
 
-Provides an overview of how to retrieve information in a JSON format from the Library of Congress API.
+Provides an overview of how to retrieve information in a JSON format from the Library of Congress API. This tutorial sets a baseline for doing powerful data retrieval and visualization projects.
 
 Background knowledge:
 * Understand URLs for loc.gov API [requests](requests.html) and how to modify them
@@ -27,7 +27,21 @@ Use Cases:
 
 [OpenSearch](https://github.com/LibraryOfCongress/data-exploration/blob/master/OpenSearch.ipynb)
 
+Brief guide to searching loc.gov directly from a web browser.
+
+Background knowledge: None
+
+Use cases: Searching the website
+
 [Sitemaps](https://github.com/LibraryOfCongress/data-exploration/blob/master/Sitemap.ipynb)
+
+Describes Sitemaps and how to get information about the frequency of updates.
+
+Background knowledge: None, but understanding [Sitemaps](https://www.sitemaps.org/) and [how the protocol works](https://www.sitemaps.org/protocol.html) is recommended
+
+Use cases:
+* Determining how often collections or parts of the website are updated
+* Finding the number of items in a collection or sub-items on a page of the site
 
 ### Images
 
