@@ -4,41 +4,51 @@ keywords: tutorial, how-to, api, Jupyter, json
 tags:
 sidebar: apidocs_sidebar
 permalink: all-tutorials.html
-summary: The data-exploration GitHub includes several Jupyter notebooks and other files that contain tutorials on how to use the API, with example script.
+summary: The [data-exploration GitHub](https://github.com/LibraryOfCongress/data-exploration) includes several Jupyter notebooks and other files that contain tutorials on how to use the API, with example script.
 ---
 
 description here about the page
 
-### [Accessing Images for Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Accessing%20images%20for%20analysis.ipynb)
+### Overview
 
-### [Chronicling America](https://github.com/LibraryOfCongress/data-exploration/blob/master/ChronAm%20API%20Samples.ipynb)
+[JSON API Overview](https://github.com/LibraryOfCongress/data-exploration/blob/master/LOC.gov%20JSON%20API.ipynb)
 
-### [Image Color Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Dominant%20colors.ipynb)
+[OpenSearch](https://github.com/LibraryOfCongress/data-exploration/blob/master/OpenSearch.ipynb)
 
-### [Geographic Data](https://github.com/LibraryOfCongress/data-exploration/blob/master/Extracting%20location%20data%20for%20geovisualization.ipynb)
+[Sitemaps](https://github.com/LibraryOfCongress/data-exploration/blob/master/Sitemap.ipynb)
 
-### [IIIF](https://github.com/LibraryOfCongress/data-exploration/blob/master/IIIF.ipynb)
+### Images
 
-### [JSON API Overview](https://github.com/LibraryOfCongress/data-exploration/blob/master/LOC.gov%20JSON%20API.ipynb)
+[Accessing Images for Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Accessing%20images%20for%20analysis.ipynb)
 
-### [OpenSearch](https://github.com/LibraryOfCongress/data-exploration/blob/master/OpenSearch.ipynb)
+[Image Color Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Dominant%20colors.ipynb)
 
-### [Sitemaps](https://github.com/LibraryOfCongress/data-exploration/blob/master/Sitemap.ipynb)
+[IIIF](https://github.com/LibraryOfCongress/data-exploration/blob/master/IIIF.ipynb)
 
-### [GIPHY.com Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/getting_started_with_giphy.ipynb)
+[Downloading Monographs as Images](https://github.com/LibraryOfCongress/data-exploration/blob/master/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.ipynb) looks like this one has an error and might be pretty similar to the images one anyway
 
-### [Memegenerator Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/getting_started_with_memegenerator.ipynb)
+### Geographic Data
 
-### [Accessing and Remixing Sound](https://github.com/LibraryOfCongress/data-exploration/blob/master/loc_goes_lofi.ipynb)
+[Geographic Data](https://github.com/LibraryOfCongress/data-exploration/blob/master/Extracting%20location%20data%20for%20geovisualization.ipynb)
 
-### [Downloading Monographs as Images](https://github.com/LibraryOfCongress/data-exploration/blob/master/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.ipynb) looks like this one has an error and might be pretty similar to the images one anyway
+[Maps Downloading and Querying](https://github.com/LibraryOfCongress/data-exploration/blob/master/maps/maps-downloading-querying.ipynb)
 
-### [American Folklife Center Scripts](https://github.com/LibraryOfCongress/data-exploration/tree/master/americanfolklifecenter) will need to look more into this - looks like they're shell/bash scripts
+[Maps Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/maps/maps-analyzing-metadata.ipynb)
 
-### [Chronicling America CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_all_digitized)
+### Chronicling America
 
-### [Chronicling America Issue Counts](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_issue_counts) gets number of issues from that year and state
+[Chronicling America](https://github.com/LibraryOfCongress/data-exploration/blob/master/ChronAm%20API%20Samples.ipynb)
 
-### [Maps Downloading and Querying](https://github.com/LibraryOfCongress/data-exploration/blob/master/maps/maps-downloading-querying.ipynb)
+[Chronicling America CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_all_digitized)
 
-### [Maps Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/maps/maps-analyzing-metadata.ipynb)
+[Chronicling America Issue Counts](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_issue_counts) gets number of issues from that year and state
+
+### Other
+
+[GIPHY.com Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/getting_started_with_giphy.ipynb)
+
+[Memegenerator Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/getting_started_with_memegenerator.ipynb)
+
+[Accessing and Remixing Sound](https://github.com/LibraryOfCongress/data-exploration/blob/master/loc_goes_lofi.ipynb)
+
+[American Folklife Center Scripts](https://github.com/LibraryOfCongress/data-exploration/tree/master/americanfolklifecenter) will need to look more into this - looks like they're shell/bash scripts
