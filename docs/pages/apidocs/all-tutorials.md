@@ -37,7 +37,7 @@ Use cases: Searching the website
 
 Describes Sitemaps and how to get information about the frequency of updates.
 
-Background knowledge: None, but understanding [Sitemaps](https://www.sitemaps.org/) and [how the protocol works](https://www.sitemaps.org/protocol.html) is recommended
+Background knowledge: None, but understanding the basics of [Sitemaps](https://www.sitemaps.org/) and [how the protocol works](https://www.sitemaps.org/protocol.html) is recommended
 
 Use cases:
 * Determining how often collections or parts of the website are updated
@@ -47,9 +47,33 @@ Use cases:
 
 [Accessing Images for Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Accessing%20images%20for%20analysis.ipynb)
 
-[Image Color Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Dominant%20colors.ipynb)
+How to access, display, and download images in bulk. Also provides information about what metadata is available and how to get particular details.
+
+This tutorial is for accessing images via the API, which are generally smaller and low resolution. For accessing larger images that can be manipulated (size, rotation, crop, etc.), see the next tutorial, on IIIF.
+
+Background knowledge:
+* Understand URLs for loc.gov API [requests](requests.html) and how to modify them
+
+Use cases:
+* Find URLs for the images
+* Download images in bulk
+* Get information about the images, such as copyright and usage details
 
 [IIIF](https://github.com/LibraryOfCongress/data-exploration/blob/master/IIIF.ipynb)
+
+How to scale, rotate, reflect, crop, and otherwise manipulate images using the IIIF API.
+
+IIIF stands for the International Image Interoperability Framework. It is a standardized way to get images that is used by various libraries, museums, digital archives, etc.
+
+Background knowledge:
+* Where to find the IIIF URLs (can be found in image metadata accessed via the JSON API)
+* (optional) Details of [IIIF URL structure](https://iiif.io/api/image/2.1/#table-of-contents)
+
+Use cases:
+* Get higher resolution images and manipulate them
+* Can also be done in bulk
+
+[Image Color Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Dominant%20colors.ipynb)
 
 [Downloading Monographs as Images](https://github.com/LibraryOfCongress/data-exploration/blob/master/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.ipynb) looks like this one has an error and might be pretty similar to the images one anyway
 
