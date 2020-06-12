@@ -4,14 +4,26 @@ keywords: tutorial, how-to, api, Jupyter, json
 tags:
 sidebar: apidocs_sidebar
 permalink: all-tutorials.html
-summary: The [data-exploration GitHub](https://github.com/LibraryOfCongress/data-exploration) includes several Jupyter notebooks and other files that contain tutorials on how to use the API, with example script.
+summary: The [data-exploration GitHub](https://github.com/LibraryOfCongress/data-exploration) includes several Jupyter notebooks and other files that contain tutorials on how to use the API, with example scripts. The tutorials are loosely categorized by topic. Under each heading, you can find details on what the tutorial documents contain, the complexity and assumed background knowledge, and possible alternate use cases and adaptations of the code provided.
 ---
 
-description here about the page
+The majority of these documents are Jupyter notebooks, which is a programming environment that runs in a web browser. A notebook can contain both text in a markdown format and Python code that can be run directly as part of the workflow.
 
-### Overview
+If this is your first time using Jupyter notebooks, there are [several](https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/setup/) great [tutorials](https://programminghistorian.org/en/lessons/jupyter-notebooks) online to help you install and set up the software.
+
+### General Search and Query
 
 [JSON API Overview](https://github.com/LibraryOfCongress/data-exploration/blob/master/LOC.gov%20JSON%20API.ipynb)
+
+tutorial on x
+
+Background knowledge:
+* something
+* something else
+
+Alternate Use Cases:
+* something
+* something else
 
 [OpenSearch](https://github.com/LibraryOfCongress/data-exploration/blob/master/OpenSearch.ipynb)
 
