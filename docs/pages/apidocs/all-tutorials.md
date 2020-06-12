@@ -4,7 +4,7 @@ keywords: tutorial, how-to, api, Jupyter, json
 tags:
 sidebar: apidocs_sidebar
 permalink: all-tutorials.html
-summary: The [data-exploration GitHub](https://github.com/LibraryOfCongress/data-exploration) includes several Jupyter notebooks and other files that contain tutorials on how to use the API, with example scripts. The tutorials are loosely categorized by topic. Under each heading, you can find details on what the tutorial documents contain, the complexity and assumed background knowledge, and possible alternate use cases and adaptations of the code provided.
+summary: The [data-exploration GitHub](https://github.com/LibraryOfCongress/data-exploration) includes several Jupyter notebooks and other files that contain tutorials on how to use the API, with example scripts. The tutorials are loosely categorized by topic. Under each heading, you can find details on what the tutorial documents contain, the complexity and assumed background knowledge, and possible use cases and adaptations of the code provided.
 ---
 
 The majority of these documents are Jupyter notebooks, which is a programming environment that runs in a web browser. A notebook can contain both text in a markdown format and Python code that can be run directly as part of the workflow.
@@ -15,15 +15,15 @@ If this is your first time using Jupyter notebooks, there are [several](https://
 
 [JSON API Overview](https://github.com/LibraryOfCongress/data-exploration/blob/master/LOC.gov%20JSON%20API.ipynb)
 
-tutorial on x
+Provides an overview of how to retrieve information in a JSON format from the Library of Congress API.
 
 Background knowledge:
-* something
-* something else
+* Understand URLs for loc.gov API [requests](requests.html) and how to modify them
 
-Alternate Use Cases:
-* something
-* something else
+Use Cases:
+* Get and visualize data
+* Show images from collections
+* Make cool projects like [this](https://library-of-time.glitch.me/) and [this](https://jeffreyshen19.github.io/political-cartoon-visualizer/) and [this](https://loc-photo-roulette.glitch.me/) - for more inspiration, see the [experiments](https://labs.loc.gov/work/experiments/?st=gallery) that LC Labs has been working on!
 
 [OpenSearch](https://github.com/LibraryOfCongress/data-exploration/blob/master/OpenSearch.ipynb)
 
