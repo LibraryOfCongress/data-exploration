@@ -95,13 +95,46 @@ Similar to the Accessing Images for Data Analysis notebook — provides code fo
 
 See background knowledge and use cases for the accessing images notebook.
 
-## Geographic Data
+## Location Data and Maps
 
-[Geographic Data](https://github.com/LibraryOfCongress/data-exploration/blob/master/Extracting%20location%20data%20for%20geovisualization.ipynb)
+[Extracting Location Data](https://github.com/LibraryOfCongress/data-exploration/blob/master/Extracting%20location%20data%20for%20geovisualization.ipynb)
+
+Demonstrates how to retrieve geographic data (latitude and longitude) and plot it onto a map. This tutorial focuses on items in the Historic American Engineering Record (HAER). The way that geographic data is stored across collections does vary, so some collections may require more data manipulation before doing geographic visualizations.
+
+Background knowledge:
+* Understand URLs for loc.gov API [requests](requests.html) and how to modify them
+* (optional) Python [folium mapping documentation](https://python-visualization.github.io/folium/modules.html#module-folium.map)
+* (optional) Python [pandas dataframe documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
+
+Use cases:
+* Map item locations
+* Analyze geographic data and connect it to other information, such as date
+* Compare geographies across collections
 
 [Maps Downloading and Querying](https://github.com/LibraryOfCongress/data-exploration/blob/master/maps/maps-downloading-querying.ipynb)
 
+How to query and download cartographic material. Includes:
+* performing bulk downloads of cartographic materials using the loc.gov API and Python
+* crafting advanced API queries for map content
+* performing post-query filtering
+
+Background knowledge: None, though it may be useful to have some familiarity with Python
+
+Use cases:
+* Download and display images from the collections
+* Create sets of images that can be used in a number of other applications
+
 [Maps Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/maps/maps-analyzing-metadata.ipynb)
+
+How to find, analyze, and visualize cartographic metadata. This tutorial focuses on metadata associated with the files in the Maps Downloading and Querying tutorial as well as items in the Sanborn Maps collection.
+
+Background knowledge:
+* How to [install a python package using pip](https://www.w3schools.com/python/python_pip.asp) - or some other package manager
+
+Use cases:
+* Search for items within a collection/dataset that have particular locations, dates, etc.
+* Analyze the different parts of the metadata (longest/shortest/average item length, most common dates or locations)
+* Create charts with the data that compare all of the items
 
 ## Chronicling America
 
