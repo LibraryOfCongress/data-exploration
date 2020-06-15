@@ -91,6 +91,10 @@ Use cases:
 
 [Downloading Monographs as Images](https://github.com/LibraryOfCongress/data-exploration/blob/master/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.ipynb)
 
+Similar to the Accessing Images for Data Analysis notebook — provides code for accessing and downloading images specifically from the [Lessing J. Rosenwald Collection](https://www.loc.gov/rr/rarebook/rosenwald.html).
+
+See background knowledge and use cases for the accessing images notebook.
+
 ## Geographic Data
 
 [Geographic Data](https://github.com/LibraryOfCongress/data-exploration/blob/master/Extracting%20location%20data%20for%20geovisualization.ipynb)
