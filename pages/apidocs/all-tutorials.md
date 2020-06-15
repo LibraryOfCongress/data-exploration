@@ -4,18 +4,20 @@ keywords: tutorial, how-to, api, Jupyter, json
 tags:
 sidebar: apidocs_sidebar
 permalink: all-tutorials.html
-summary: The [data-exploration GitHub](https://github.com/LibraryOfCongress/data-exploration) includes several Jupyter notebooks and other files that contain tutorials on how to use the API, with example scripts. The tutorials are loosely categorized by topic. Under each heading, you can find details on what the tutorial documents contain, the complexity and assumed background knowledge, and possible use cases and adaptations of the code provided.
+summary: The data-exploration GitHub includes several Jupyter notebooks and other files that contain tutorials on how to use the API, with example scripts. The tutorials are loosely categorized by topic. Under each heading, you can find details on what the tutorial documents contain, the complexity and assumed background knowledge, and possible use cases and adaptations of the code provided.
 ---
 
-The majority of these documents are Jupyter notebooks, which is a programming environment that runs in a web browser. A notebook can contain both text in a markdown format and Python code that can be run directly as part of the workflow.
+Almost all of these documents are Jupyter notebooks, which is a programming environment that runs in a web browser. A notebook can contain both text in a markdown format and Python code that can be run directly as part of the workflow.
 
 If this is your first time using Jupyter notebooks, there are [several](https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/setup/) great [tutorials](https://programminghistorian.org/en/lessons/jupyter-notebooks) online to help you install and set up the software.
 
-### General Search and Query
+Also, remember that the use cases listed are only a few examples intended as a starting point! The possibilities are far wider. We're excited to see what you do with the collections. If you have ideas about how to make the API more useful or more topics that you want us to cover in the documentation, please let us know!
+
+## General Search and Query
 
 [JSON API Overview](https://github.com/LibraryOfCongress/data-exploration/blob/master/LOC.gov%20JSON%20API.ipynb)
 
-Provides an overview of how to retrieve information in a JSON format from the Library of Congress API. This tutorial sets a baseline for doing powerful data retrieval and visualization projects.
+An overview of how to retrieve information in a JSON format from the Library of Congress API. This tutorial sets a baseline for doing powerful data retrieval and visualization projects.
 
 Background knowledge:
 * Understand URLs for loc.gov API [requests](requests.html) and how to modify them
@@ -43,7 +45,7 @@ Use cases:
 * Determining how often collections or parts of the website are updated
 * Finding the number of items in a collection or sub-items on a page of the site
 
-### Images
+## Images
 
 [Accessing Images for Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Accessing%20images%20for%20analysis.ipynb)
 
@@ -71,13 +73,25 @@ Background knowledge:
 
 Use cases:
 * Get higher resolution images and manipulate them
+* Display images, individually or in galleries
 * Can also be done in bulk
 
 [Image Color Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Dominant%20colors.ipynb)
 
-[Downloading Monographs as Images](https://github.com/LibraryOfCongress/data-exploration/blob/master/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.ipynb) looks like this one has an error and might be pretty similar to the images one anyway
+How to find and analyze the colors in an image. This tutorial uses [k-means clustering](https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html) to analyze and group the pixel values into 6 colors per image, but you can adjust that as needed.
 
-### Geographic Data
+Background knowledge:
+* Using [links in HTML](https://www.w3schools.com/tags/att_a_href.asp)
+* How to create an [SVG rectangle in HTML](https://www.w3schools.com/graphics/svg_rect.asp)
+* (recommended) Color codes for web - [RGB vs. Hex](https://goedemorgenwp.com/make-site-colorful-color-use-hex-vs-rgb/)
+
+Use cases:
+* Visualize [colors in Library of Congress collections images](https://loc-colors.glitch.me/)
+* Categorize or search images by color
+
+[Downloading Monographs as Images](https://github.com/LibraryOfCongress/data-exploration/blob/master/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.ipynb)
+
+## Geographic Data
 
 [Geographic Data](https://github.com/LibraryOfCongress/data-exploration/blob/master/Extracting%20location%20data%20for%20geovisualization.ipynb)
 
@@ -85,7 +99,7 @@ Use cases:
 
 [Maps Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/maps/maps-analyzing-metadata.ipynb)
 
-### Chronicling America
+## Chronicling America
 
 [Chronicling America](https://github.com/LibraryOfCongress/data-exploration/blob/master/ChronAm%20API%20Samples.ipynb)
 
@@ -93,7 +107,7 @@ Use cases:
 
 [Chronicling America Issue Counts](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_issue_counts) gets number of issues from that year and state
 
-### Other
+## Other
 
 [GIPHY.com Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/getting_started_with_giphy.ipynb)
 
