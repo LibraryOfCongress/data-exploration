@@ -140,9 +140,34 @@ Use cases:
 
 [Chronicling America](https://github.com/LibraryOfCongress/data-exploration/blob/master/ChronAm%20API%20Samples.ipynb)
 
+The Chronicling America database also has an API that functions similarly to the wider loc.gov API. Its URLs start with https://www.chroniclingamerica.loc.gov/ instead of https://www.loc.gov/ but the endings for querying are the same.
+
+This tutorial provides an introduction to what information is available via the API — one notable difference is that since this collection consists of newspaper pages, you can retrieve the text from the page (collected using OCR) via the API. The tutorial also covers searching for keywords and analyzing data from bulk records.
+
+Background knowledge:
+* Understand URLs for loc.gov API [requests](requests.html) and how to modify them
+
+Use cases:
+* Visualize search results on a map
+* Find certain quotes through time
+* Do historical research
+* See [these projects](https://blogs.loc.gov/thesignal/2016/08/the-neh-chronicling-america-challenge-using-big-data-to-ask-big-questions/) for more!
+
 [Chronicling America CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_all_digitized)
 
-[Chronicling America Issue Counts](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_issue_counts) gets number of issues from that year and state
+The Python script here creates a csv file of all of the digitized titles in Chronicling America, with their associated metadata.
+
+Background knowledge:
+* [Command line basics](https://www.codecademy.com/articles/command-line-commands#:~:text=The%20command%20line%20is%20a,or%20Finder%20on%20Mac%20OS.)
+* Need Python 3 installed - basic understanding of how Python and the API work will allow for modification
+
+Use cases: The produced csv can be used for a number of different data analysis and [visualization](https://www.loc.gov/ndnp/data-visualizations/) applications.
+
+[Chronicling America Issue Counts CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_issue_counts)
+
+These scripts create csv files containing the state name, year, and the number of newspaper issues in the Chronicling America database available in the state and year. Each script runs this functionality for one state.
+
+See above (Chronicling America CSV) for background knowledge and use cases.
 
 ## Other
 
