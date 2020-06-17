@@ -218,4 +218,22 @@ Applications:
 * Manipulate existing audio files
 * Build interactive audio sampling tools, like [this](https://citizen-dj.labs.loc.gov/)
 
-[American Folklife Center Scripts](https://github.com/LibraryOfCongress/data-exploration/tree/master/americanfolklifecenter) will need to look more into this - looks like they're shell/bash scripts
+[American Folklife Center Scripts](https://github.com/LibraryOfCongress/data-exploration/tree/master/americanfolklifecenter)
+
+Includes 2 bash scripts, [reportmd.sh](https://github.com/LibraryOfCongress/data-exploration/blob/master/americanfolklifecenter/reportmd.sh) and [processfiles.sh](https://github.com/LibraryOfCongress/data-exploration/blob/master/americanfolklifecenter/processfiles.sh). These scripts intend to make processing and data analysis easier by automating some of the initial steps. They can be run on any command line interface (i.e. Terminal for macOS), and the script will prompt user inputs.
+
+Reportmd - Reports collection records out into CSV, GZ, and XML files.
+
+Processfiles - Does processing to clean up files, including batch file renaming, deleting files, and flattening directories.
+
+**Note:** These scripts are complex and require background knowledge to fully understand. However, they can be run and used without that background.
+
+Background knowledge:
+* Bash scripts:
+  * [one tutorial](https://www.taniarascia.com/how-to-create-and-use-bash-scripts/)
+  * [another tutorial](https://ryanstutorials.net/bash-scripting-tutorial/bash-script.php)
+
+Applications:
+* Get data into a different file format
+* Automate some data cleaning/processing
+* Can be modified to work for other datasets and collections outside of the American Folklife Center
