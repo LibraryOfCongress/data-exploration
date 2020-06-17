@@ -204,4 +204,18 @@ Applications:
 
 [Accessing and Remixing Sound](https://github.com/LibraryOfCongress/data-exploration/blob/master/loc_goes_lofi.ipynb)
 
+Provides code for selecting random audio segments and combining them together. Assumes that users have already downloaded the [audio files](https://s3.us-east-2.amazonaws.com/lclabspublicdata/lcwa_gov_audio_data.zip) into the same folder as this notebook. The dataset includes 1000 randomly selected audio clips. For more information on how this dataset was generated, see the [README](https://s3.us-east-2.amazonaws.com/lclabspublicdata/lcwa_gov_audio_README.txt).
+
+Background knowledge:
+* Python:
+  * [Importing packages](https://docs.python.org/3/reference/import.html)
+  * [Defining functions](https://www.w3schools.com/python/python_functions.asp)
+  * Using the [pydub package](https://github.com/jiaaro/pydub)
+  * (optional) Using the [glob](https://docs.python.org/3/library/glob.html), [re](https://docs.python.org/3/howto/regex.html), and [random](https://docs.python.org/3/library/random.html) packages
+
+Applications:
+* Create remixed audio
+* Manipulate existing audio files
+* Build interactive audio sampling tools, like [this](https://citizen-dj.labs.loc.gov/)
+
 [American Folklife Center Scripts](https://github.com/LibraryOfCongress/data-exploration/tree/master/americanfolklifecenter) will need to look more into this - looks like they're shell/bash scripts
