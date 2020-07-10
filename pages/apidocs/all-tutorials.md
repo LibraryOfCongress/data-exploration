@@ -37,9 +37,9 @@ Brief guide to searching loc.gov directly from a web browser.
 
 >**[Sitemaps](https://github.com/LibraryOfCongress/data-exploration/blob/master/Sitemap.ipynb)**
 
-Describes Sitemaps and how to get information about the frequency of updates.
+Describes Sitemaps and how to get information about the frequency of page updates.
 
-**Background knowledge:** None, but understanding the basics of [Sitemaps](https://www.sitemaps.org/) and [how the protocol works](https://www.sitemaps.org/protocol.html) is recommended
+**Background knowledge:** None, but understanding the basics of [Sitemaps](https://www.sitemaps.org/) and [how the formatting works](https://www.sitemaps.org/protocol.html) is recommended
 
 **Applications:**
 * Determining how often collections or parts of the website are updated
@@ -51,15 +51,15 @@ Describes Sitemaps and how to get information about the frequency of updates.
 
 How to access, display, and download images in bulk. Also provides information about what metadata is available and how to get particular details.
 
-This tutorial is for accessing images via the API, which are generally smaller and low resolution. For accessing larger images that can be manipulated (size, rotation, crop, etc.), see the next tutorial, on IIIF.
+This tutorial is for accessing images directly via the the API, so the images are generally smaller (150 px on one side) and low resolution. For accessing larger images that can be manipulated (size, rotation, crop, etc.), see the next tutorial, on IIIF.
 
 **Background knowledge:**
 * Understand URLs for loc.gov API [requests](requests.html) and how to modify them
 
 **Applications:**
-* Find URLs for the images
+* Find URLs for images
 * Download images in bulk
-* Get information about the images, such as copyright and usage details
+* Get information about the images, such as copyright and usage details, dates, locations, etc.
 
 >**[IIIF](https://github.com/LibraryOfCongress/data-exploration/blob/master/IIIF.ipynb)**
 
@@ -73,7 +73,7 @@ IIIF stands for the International Image Interoperability Framework. It is a stan
 
 **Applications:**
 * Get higher resolution images and manipulate them
-* Display images, individually or in galleries
+* Display images - individually or in galleries
 * Can also be done in bulk
 
 >**[Image Color Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Dominant%20colors.ipynb)**
@@ -83,7 +83,7 @@ How to find and analyze the colors in an image. This tutorial uses [k-means clus
 **Background knowledge:**
 * Using [links in HTML](https://www.w3schools.com/tags/att_a_href.asp)
 * How to create an [SVG rectangle in HTML](https://www.w3schools.com/graphics/svg_rect.asp)
-* (recommended) Color codes for web - [RGB vs. Hex](https://goedemorgenwp.com/make-site-colorful-color-use-hex-vs-rgb/)
+* (optional - recommended) Color codes for web - [RGB vs. Hex](https://goedemorgenwp.com/make-site-colorful-color-use-hex-vs-rgb/)
 
 **Applications:**
 * Visualize [colors in Library of Congress collections images](https://loc-colors.glitch.me/)
@@ -99,12 +99,12 @@ See background knowledge and applications for the accessing images notebook.
 
 >**[Extracting Location Data](https://github.com/LibraryOfCongress/data-exploration/blob/master/Extracting%20location%20data%20for%20geovisualization.ipynb)**
 
-Demonstrates how to retrieve geographic data (latitude and longitude) and plot it onto a map. This tutorial focuses on items in the Historic American Engineering Record (HAER). The way that geographic data is stored across collections does vary, so some collections may require more data manipulation before doing geographic visualizations.
+Demonstrates how to retrieve geographic data (latitude and longitude) and plot it onto a map. This tutorial focuses on items in the Historic American Engineering Record (HAER). The way that geographic data is stored across collections does vary, so some collections may require more data cleaning and manipulation before doing geographic visualizations.
 
 **Background knowledge:**
 * Understand URLs for loc.gov API [requests](requests.html) and how to modify them
-* (optional) Python [folium mapping documentation](https://python-visualization.github.io/folium/modules.html#module-folium.map)
-* (optional) Python [pandas dataframe documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
+* (optional) Python [folium mapping](https://python-visualization.github.io/folium/modules.html#module-folium.map)
+* (optional) Python [pandas dataframe](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
 
 **Applications:**
 * Map item locations
@@ -142,7 +142,7 @@ How to find, analyze, and visualize cartographic metadata. This tutorial focuses
 
 The Chronicling America database also has an API that functions similarly to the wider loc.gov API. Its URLs start with https://www.chroniclingamerica.loc.gov/ instead of https://www.loc.gov/ but the endings for querying are the same.
 
-This tutorial provides an introduction to what information is available via the API — one notable difference is that since this collection consists of newspaper pages, you can retrieve the text from the page (collected using OCR) via the API. The tutorial also covers searching for keywords and analyzing data from bulk records.
+This tutorial provides an introduction to what information is available via the API — one notable difference is that since this collection consists of newspaper pages, you can retrieve the text from the page (collected using [OCR](https://en.wikipedia.org/wiki/Optical_character_recognition)) via the API. It also covers searching for keywords and analyzing data from bulk records.
 
 **Background knowledge:**
 * Understand URLs for loc.gov API [requests](requests.html) and how to modify them
@@ -159,15 +159,15 @@ The Python script here creates a csv file of all of the digitized titles in Chro
 
 **Background knowledge:**
 * [Command line basics](https://www.codecademy.com/articles/command-line-commands#:~:text=The%20command%20line%20is%20a,or%20Finder%20on%20Mac%20OS.)
-* Need Python 3 installed - basic understanding of how Python and the API work will allow for modification
+* Need Python 3 installed - basic understanding of how Python and the API work needed for modification
 
 **Applications:** The produced csv can be used for a number of different data analysis and [visualization](https://www.loc.gov/ndnp/data-visualizations/) applications. See the Memegenerator and GIPHY tutorials for more on how to use Python code to analyze data in csv file formats.
 
 >**[Chronicling America Issue Counts CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_issue_counts)**
 
-These scripts create csv files containing the state name, year, and the number of newspaper issues in the Chronicling America database available in the state and year. Each script runs this functionality for one state.
+These scripts create csv files where each row contains the state name, year, and the number of newspaper issues in the Chronicling America database available in that state and year. Each script does this for one state.
 
-See above (Chronicling America CSV) for background knowledge and applications.
+See above (Chronicling America CSV) for background knowledge needed and potential applications.
 
 ## Other
 
@@ -220,7 +220,7 @@ Provides code for selecting random audio segments and combining them together. A
 
 >**[American Folklife Center Scripts](https://github.com/LibraryOfCongress/data-exploration/tree/master/americanfolklifecenter)**
 
-Includes 2 bash scripts, [reportmd.sh](https://github.com/LibraryOfCongress/data-exploration/blob/master/americanfolklifecenter/reportmd.sh) and [processfiles.sh](https://github.com/LibraryOfCongress/data-exploration/blob/master/americanfolklifecenter/processfiles.sh). These scripts intend to make processing and data analysis easier by automating some of the initial steps. They can be run on any command line interface (i.e. Terminal for macOS), and the script will prompt user inputs.
+Includes 2 bash scripts, [reportmd.sh](https://github.com/LibraryOfCongress/data-exploration/blob/master/americanfolklifecenter/reportmd.sh) and [processfiles.sh](https://github.com/LibraryOfCongress/data-exploration/blob/master/americanfolklifecenter/processfiles.sh). These scripts intend to make processing and data analysis easier by automating some of the initial steps. They can be run on any command line interface (i.e. Terminal for macOS, PowerShell or Command prompt for Windows), and the script will prompt user inputs.
 
 Reportmd - Reports collection records out into CSV, GZ, and XML files.
 
