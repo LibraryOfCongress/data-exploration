@@ -2,14 +2,14 @@
 
 entries:
 - title: sidebar
-  product: 
-  version: 
+  product:
+  version:
   folders:
 
-  - title: About the API 
+  - title: About the API
     output: web, pdf
-    folderitems: 
-    
+    folderitems:
+
     - title: Introduction and Basics
       url: /index.html
       output: web,pdf
@@ -33,12 +33,15 @@ entries:
     - title: Sitemaps
       url: /sitemaps.html
       output: web, pdf
- 
-#  - title: Tips and advice 
+
+    - title: All Tutorials
+      url: /all-tutorials.html
+      output: web, pdf
+
+#  - title: Tips and advice
 #    output: web, pdf
 #    folderitems:
 #
 #    - title: Tips and advice
 #      url: /tips.html
 #      output: web, pdf
-
