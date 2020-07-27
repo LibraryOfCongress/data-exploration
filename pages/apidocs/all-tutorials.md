@@ -98,7 +98,7 @@ Similar to the Accessing Images for Data Analysis notebook — provides code fo
 
 See background knowledge and applications for the accessing images notebook.
 
-## Location Data and Maps
+## Geographic Data and Maps
 
 ### [Extracting Location Data](https://github.com/LibraryOfCongress/data-exploration/blob/master/Extracting%20location%20data%20for%20geovisualization.ipynb)
 
