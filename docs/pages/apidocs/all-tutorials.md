@@ -9,13 +9,16 @@ summary: The data-exploration GitHub includes several Jupyter notebooks and othe
 
 Almost all of these documents are Jupyter notebooks, which is a programming environment that runs in a web browser. A notebook can contain both text in a markdown format and Python code that can be run directly as part of the workflow.
 
-If this is your first time using Jupyter notebooks, there are [several](https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/setup/) great [tutorials](https://programminghistorian.org/en/lessons/jupyter-notebooks) online to help you install and set up the software.
+If this is your first time using Jupyter notebooks, here are a couple great tutorials online to help you install and set up the software:
+
+* https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/setup/
+* https://programminghistorian.org/en/lessons/jupyter-notebooks
 
 Also, remember that the applications listed are only a few examples intended as a starting point! The possibilities are far wider. We're excited to see what you do with the collections. If you have ideas about how to make the API more useful or more topics that you want us to cover in the documentation, please let us know!
 
 ## General Search and Query
 
->**[JSON API Overview](https://github.com/LibraryOfCongress/data-exploration/blob/master/LOC.gov%20JSON%20API.ipynb)**
+### [JSON API Overview](https://github.com/LibraryOfCongress/data-exploration/blob/master/LOC.gov%20JSON%20API.ipynb)
 
 An overview of how to retrieve information in a JSON format from the Library of Congress API. This tutorial sets a baseline for doing powerful data retrieval and visualization projects.
 
@@ -25,9 +28,9 @@ An overview of how to retrieve information in a JSON format from the Library of 
 **Applications:**
 * Get and visualize data
 * Show images from collections
-* Make cool projects like [this](https://library-of-time.glitch.me/) and [this](https://jeffreyshen19.github.io/political-cartoon-visualizer/) and [this](https://loc-photo-roulette.glitch.me/) - for more inspiration, see the [experiments](https://labs.loc.gov/work/experiments/?st=gallery) that LC Labs has been working on!
+* Make cool projects like [this clock using collection item names](https://library-of-time.glitch.me/) and [this political cartoon visualizer](https://jeffreyshen19.github.io/political-cartoon-visualizer/) - for more inspiration, see the [experiments](https://labs.loc.gov/work/experiments/?st=gallery) that LC Labs has been working on!
 
->**[OpenSearch](https://github.com/LibraryOfCongress/data-exploration/blob/master/OpenSearch.ipynb)**
+### [OpenSearch](https://github.com/LibraryOfCongress/data-exploration/blob/master/OpenSearch.ipynb)
 
 Brief guide to searching loc.gov directly from a web browser.
 
@@ -35,7 +38,7 @@ Brief guide to searching loc.gov directly from a web browser.
 
 **Applications:** Searching the website
 
->**[Sitemaps](https://github.com/LibraryOfCongress/data-exploration/blob/master/Sitemap.ipynb)**
+### [Sitemaps](https://github.com/LibraryOfCongress/data-exploration/blob/master/Sitemap.ipynb)
 
 Describes Sitemaps and how to get information about the frequency of page updates.
 
@@ -47,7 +50,7 @@ Describes Sitemaps and how to get information about the frequency of page update
 
 ## Images
 
->**[Accessing Images for Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Accessing%20images%20for%20analysis.ipynb)**
+### [Accessing Images for Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Accessing%20images%20for%20analysis.ipynb)
 
 How to access, display, and download images in bulk. Also provides information about what metadata is available and how to get particular details.
 
@@ -61,7 +64,7 @@ This tutorial is for accessing images directly via the the API, so the images ar
 * Download images in bulk
 * Get information about the images, such as copyright and usage details, dates, locations, etc.
 
->**[IIIF](https://github.com/LibraryOfCongress/data-exploration/blob/master/IIIF.ipynb)**
+### [IIIF](https://github.com/LibraryOfCongress/data-exploration/blob/master/IIIF.ipynb)
 
 How to scale, rotate, reflect, crop, and otherwise manipulate images using the IIIF API.
 
@@ -76,7 +79,7 @@ IIIF stands for the International Image Interoperability Framework. It is a stan
 * Display images - individually or in galleries
 * Can also be done in bulk
 
->**[Image Color Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Dominant%20colors.ipynb)**
+### [Image Color Analysis](https://github.com/LibraryOfCongress/data-exploration/blob/master/Dominant%20colors.ipynb)
 
 How to find and analyze the colors in an image. This tutorial uses [k-means clustering](https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html) to analyze and group the pixel values into 6 colors per image, but you can adjust that as needed.
 
@@ -97,7 +100,7 @@ See background knowledge and applications for the accessing images notebook.
 
 ## Location Data and Maps
 
->**[Extracting Location Data](https://github.com/LibraryOfCongress/data-exploration/blob/master/Extracting%20location%20data%20for%20geovisualization.ipynb)**
+### [Extracting Location Data](https://github.com/LibraryOfCongress/data-exploration/blob/master/Extracting%20location%20data%20for%20geovisualization.ipynb)
 
 Demonstrates how to retrieve geographic data (latitude and longitude) and plot it onto a map. This tutorial focuses on items in the Historic American Engineering Record (HAER). The way that geographic data is stored across collections does vary, so some collections may require more data cleaning and manipulation before doing geographic visualizations.
 
@@ -111,7 +114,7 @@ Demonstrates how to retrieve geographic data (latitude and longitude) and plot i
 * Analyze geographic data and connect it to other information, such as date
 * Compare geographies across collections
 
->**[Maps Downloading and Querying](https://github.com/LibraryOfCongress/data-exploration/blob/master/maps/maps-downloading-querying.ipynb)**
+### [Maps Downloading and Querying](https://github.com/LibraryOfCongress/data-exploration/blob/master/maps/maps-downloading-querying.ipynb)
 
 How to query and download cartographic material. Includes:
 * performing bulk downloads of cartographic materials using the loc.gov API and Python
@@ -124,7 +127,7 @@ How to query and download cartographic material. Includes:
 * Download and display images from the collections
 * Create sets of images that can be used in a number of other applications
 
->**[Maps Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/maps/maps-analyzing-metadata.ipynb)**
+### [Maps Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/maps/maps-analyzing-metadata.ipynb)
 
 How to find, analyze, and visualize cartographic metadata. This tutorial focuses on metadata associated with the files in the Maps Downloading and Querying tutorial as well as items in the Sanborn Maps collection.
 
@@ -136,9 +139,9 @@ How to find, analyze, and visualize cartographic metadata. This tutorial focuses
 * Analyze the different parts of the metadata (longest/shortest/average item length, most common dates or locations)
 * Create charts with the data that compare all of the items
 
-## Chronicling America
+## Historic Newspapers
 
->**[Chronicling America](https://github.com/LibraryOfCongress/data-exploration/blob/master/ChronAm%20API%20Samples.ipynb)**
+### [Chronicling America](https://github.com/LibraryOfCongress/data-exploration/blob/master/ChronAm%20API%20Samples.ipynb)
 
 The Chronicling America database also has an API that functions similarly to the wider loc.gov API. Its URLs start with https://www.chroniclingamerica.loc.gov/ instead of https://www.loc.gov/ but the endings for querying are the same.
 
@@ -153,7 +156,7 @@ This tutorial provides an introduction to what information is available via the 
 * Do historical research
 * See [these projects](https://blogs.loc.gov/thesignal/2016/08/the-neh-chronicling-america-challenge-using-big-data-to-ask-big-questions/) for more!
 
->**[Chronicling America CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_all_digitized)**
+### [Chronicling America CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_all_digitized)
 
 The Python script here creates a csv file of all of the digitized titles in Chronicling America, with their associated metadata.
 
@@ -163,7 +166,7 @@ The Python script here creates a csv file of all of the digitized titles in Chro
 
 **Applications:** The produced csv can be used for a number of different data analysis and [visualization](https://www.loc.gov/ndnp/data-visualizations/) applications. See the Memegenerator and GIPHY tutorials for more on how to use Python code to analyze data in csv file formats.
 
->**[Chronicling America Issue Counts CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_issue_counts)**
+### [Chronicling America Issue Counts CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_issue_counts)
 
 These scripts create csv files where each row contains the state name, year, and the number of newspaper issues in the Chronicling America database available in that state and year. Each script does this for one state.
 
@@ -171,7 +174,7 @@ See above (Chronicling America CSV) for background knowledge needed and potentia
 
 ## Other
 
->**[Memegenerator Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/getting_started_with_memegenerator.ipynb)**
+### [Memegenerator Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/getting_started_with_memegenerator.ipynb)
 
 Introduction to csv data analysis in Python using the Memgenerator dataset from [this page](https://labs.loc.gov/work/experiments/webarchive-datasets/). Shows how to:
 * find column headers to see what data is available
@@ -186,9 +189,9 @@ Introduction to csv data analysis in Python using the Memgenerator dataset from 
 * Finding [top 10s and other statistics](https://blogs.loc.gov/thesignal/2018/10/data-mining-memes-in-the-digital-culture-web-archive/) in a dataset
 * Data analysis and visualization for any dataset
 
->**[GIPHY.com Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/getting_started_with_giphy.ipynb)**
+### [GIPHY.com Metadata](https://github.com/LibraryOfCongress/data-exploration/blob/master/getting_started_with_giphy.ipynb)
 
-Slightly more advanced csv data analysis in Python using the GIPHY.com dataset from [this page](https://labs.loc.gov/work/experiments/webarchive-datasets/). Shows how to:
+Slightly more advanced csv data analysis in Python using the [GIPHY.com dataset taken from this page](https://labs.loc.gov/work/experiments/webarchive-datasets/). Shows how to:
 * Get dates for the GIFs
 * Group and visualize the dates
 * Find the GIF file sizes
@@ -202,7 +205,7 @@ Slightly more advanced csv data analysis in Python using the GIPHY.com dataset f
 * Searching through datasets
 * Data analysis and visualization for any dataset
 
->**[Accessing and Remixing Sound](https://github.com/LibraryOfCongress/data-exploration/blob/master/loc_goes_lofi.ipynb)**
+### [Accessing and Remixing Sound](https://github.com/LibraryOfCongress/data-exploration/blob/master/loc_goes_lofi.ipynb)
 
 Provides code for selecting random audio segments and combining them together. Assumes that users have already downloaded the [audio files](https://s3.us-east-2.amazonaws.com/lclabspublicdata/lcwa_gov_audio_data.zip) into the same folder as this notebook. The dataset includes 1000 randomly selected audio clips. For more information on how this dataset was generated, see the [README](https://s3.us-east-2.amazonaws.com/lclabspublicdata/lcwa_gov_audio_README.txt).
 
@@ -218,7 +221,7 @@ Provides code for selecting random audio segments and combining them together. A
 * Manipulate existing audio files
 * Build interactive audio sampling tools, like [this](https://citizen-dj.labs.loc.gov/)
 
->**[American Folklife Center Scripts](https://github.com/LibraryOfCongress/data-exploration/tree/master/americanfolklifecenter)**
+### [American Folklife Center Scripts](https://github.com/LibraryOfCongress/data-exploration/tree/master/americanfolklifecenter)
 
 Includes 2 bash scripts, [reportmd.sh](https://github.com/LibraryOfCongress/data-exploration/blob/master/americanfolklifecenter/reportmd.sh) and [processfiles.sh](https://github.com/LibraryOfCongress/data-exploration/blob/master/americanfolklifecenter/processfiles.sh). These scripts intend to make processing and data analysis easier by automating some of the initial steps. They can be run on any command line interface (i.e. Terminal for macOS, PowerShell or Command prompt for Windows), and the script will prompt user inputs.
 
