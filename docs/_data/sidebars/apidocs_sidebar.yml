@@ -34,10 +34,13 @@ entries:
       url: /sitemaps.html
       output: web, pdf
 
-  - title: All Tutorials
-    url: /all-tutorials.html
+  - title: Tutorials
     output: web, pdf
     folderitems:
+
+    - title: All
+      url: /all-tutorials.html
+      output: web, pdf
 
     - title: General Query
       url: /all-tutorials.html#general-search-and-query
