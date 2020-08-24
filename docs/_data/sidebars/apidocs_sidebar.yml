@@ -2,14 +2,14 @@
 
 entries:
 - title: sidebar
-  product: 
-  version: 
+  product:
+  version:
   folders:
 
-  - title: About the API 
+  - title: About the API
     output: web, pdf
-    folderitems: 
-    
+    folderitems:
+
     - title: Introduction and Basics
       url: /index.html
       output: web,pdf
@@ -33,12 +33,39 @@ entries:
     - title: Sitemaps
       url: /sitemaps.html
       output: web, pdf
- 
-#  - title: Tips and advice 
+
+  - title: Tutorials
+    output: web, pdf
+    folderitems:
+
+    - title: All
+      url: /all-tutorials.html
+      output: web, pdf
+
+    - title: General Query
+      url: /all-tutorials.html#general-search-and-query
+      output: web, pdf
+
+    - title: Images
+      url: /all-tutorials.html#images
+      output: web, pdf
+
+    - title: Geographic Data
+      url: /all-tutorials.html#geographic-data-and-maps
+      output: web, pdf
+
+    - title: Historic Newspapers
+      url: /all-tutorials.html#historic-newspapers
+      output: web, pdf
+
+    - title: Other
+      url: /all-tutorials.html#other
+      output: web, pdf
+
+#  - title: Tips and advice
 #    output: web, pdf
 #    folderitems:
 #
 #    - title: Tips and advice
 #      url: /tips.html
 #      output: web, pdf
-
