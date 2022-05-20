@@ -1,0 +1,346 @@
+{
+    "ISO_3166-2:US": [
+        {
+            "code": "US-AL",
+            "short_code": "AL",
+            "subdivision_name": "Alabama",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-AK",
+            "short_code": "AK",
+            "subdivision_name": "Alaska",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-AZ",
+            "short_code": "AZ",
+            "subdivision_name": "Arizona",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-AR",
+            "short_code": "AR",
+            "subdivision_name": "Arkansas",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-CA",
+            "short_code": "CA",
+            "subdivision_name": "California",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-CO",
+            "short_code": "CO",
+            "subdivision_name": "Colorado",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-CT",
+            "short_code": "CT",
+            "subdivision_name": "Connecticut",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-DE",
+            "short_code": "DE",
+            "subdivision_name": "Delaware",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-FL",
+            "short_code": "FL",
+            "subdivision_name": "Florida",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-GA",
+            "short_code": "GA",
+            "subdivision_name": "Georgia",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-HI",
+            "short_code": "HI",
+            "subdivision_name": "Hawaii",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-ID",
+            "short_code": "ID",
+            "subdivision_name": "Idaho",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-IL",
+            "short_code": "IL",
+            "subdivision_name": "Illinois",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-IN",
+            "short_code": "IN",
+            "subdivision_name": "Indiana",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-IA",
+            "short_code": "IA",
+            "subdivision_name": "Iowa",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-KS",
+            "short_code": "KS",
+            "subdivision_name": "Kansas",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-KY",
+            "short_code": "KY",
+            "subdivision_name": "Kentucky",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-LA",
+            "short_code": "LA",
+            "subdivision_name": "Louisiana",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-ME",
+            "short_code": "ME",
+            "subdivision_name": "Maine",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-MD",
+            "short_code": "MD",
+            "subdivision_name": "Maryland",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-MA",
+            "short_code": "MA",
+            "subdivision_name": "Massachusetts",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-MI",
+            "short_code": "MI",
+            "subdivision_name": "Michigan",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-MN",
+            "short_code": "MN",
+            "subdivision_name": "Minnesota",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-MS",
+            "short_code": "MS",
+            "subdivision_name": "Mississippi",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-MO",
+            "short_code": "MO",
+            "subdivision_name": "Missouri",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-MT",
+            "short_code": "MT",
+            "subdivision_name": "Montana",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-NE",
+            "short_code": "NE",
+            "subdivision_name": "Nebraska",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-NV",
+            "short_code": "NV",
+            "subdivision_name": "Nevada",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-NH",
+            "short_code": "NH",
+            "subdivision_name": "New Hampshire",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-NJ",
+            "short_code": "NJ",
+            "subdivision_name": "New Jersey",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-NM",
+            "short_code": "NM",
+            "subdivision_name": "New Mexico",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-NY",
+            "short_code": "NY",
+            "subdivision_name": "New York",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-NC",
+            "short_code": "NC",
+            "subdivision_name": "North Carolina",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-ND",
+            "short_code": "ND",
+            "subdivision_name": "North Dakota",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-OH",
+            "short_code": "OH",
+            "subdivision_name": "Ohio",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-OK",
+            "short_code": "OK",
+            "subdivision_name": "Oklahoma",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-OR",
+            "short_code": "OR",
+            "subdivision_name": "Oregon",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-PA",
+            "short_code": "PA",
+            "subdivision_name": "Pennsylvania",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-RI",
+            "short_code": "RI",
+            "subdivision_name": "Rhode Island",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-SC",
+            "short_code": "SC",
+            "subdivision_name": "South Carolina",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-SD",
+            "short_code": "SD",
+            "subdivision_name": "South Dakota",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-TN",
+            "short_code": "TN",
+            "subdivision_name": "Tennessee",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-TX",
+            "short_code": "TX",
+            "subdivision_name": "Texas",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-UT",
+            "short_code": "UT",
+            "subdivision_name": "Utah",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-VT",
+            "short_code": "VT",
+            "subdivision_name": "Vermont",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-VA",
+            "short_code": "VA",
+            "subdivision_name": "Virginia",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-WA",
+            "short_code": "WA",
+            "subdivision_name": "Washington",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-WV",
+            "short_code": "WV",
+            "subdivision_name": "West Virginia",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-WI",
+            "short_code": "WI",
+            "subdivision_name": "Wisconsin",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-WY",
+            "short_code": "WY",
+            "subdivision_name": "Wyoming",
+            "subdivision_category": "state"
+        },
+        {
+            "code": "US-DC",
+            "short_code": "DC",
+            "subdivision_name": "District of Columbia",
+            "subdivision_category": "district"
+        },
+        {
+            "code": "US-AS",
+            "short_code": "AS",
+            "subdivision_name": "American Samoa",
+            "subdivision_category": "outlying area"
+        },
+        {
+            "code": "US-GU",
+            "short_code": "GU",
+            "subdivision_name": "Guam",
+            "subdivision_category": "outlying area"
+        },
+        {
+            "code": "US-MP",
+            "short_code": "MP",
+            "subdivision_name": "Northern Mariana Islands",
+            "subdivision_category": "outlying area"
+        },
+        {
+            "code": "US-PR",
+            "short_code": "PR",
+            "subdivision_name": "Puerto Rico",
+            "subdivision_category": "outlying area"
+        },
+        {
+            "code": "US-UM",
+            "short_code": "UM",
+            "subdivision_name": "United States Minor Outlying Islands",
+            "subdivision_category": "outlying area"
+        },
+        {
+            "code": "US-VI",
+            "short_code": "VI",
+            "subdivision_name": "Virgin Islands, U.S.",
+            "subdivision_category": "outlying area"
+        }
+    ]
+}
