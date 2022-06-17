@@ -1,5 +1,14 @@
-# ignore built site
+# List of folders, files, and file types to exclude from repository tracking.
+
+# ignore Macintosh resource forks
 .DS_Store
+
+# ignore built site
 /docs/_site/*
+
+# ignore all Jupyter notebook checkpoints
+**/*.ipynb_checkpoints
+
+# ignore outputs and checkpoints for Rosenwald Script
 loc.gov JSON API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/images
 loc.gov JSON API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/.ipynb_checkpoints
