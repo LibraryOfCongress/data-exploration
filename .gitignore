@@ -1,4 +1,5 @@
 # ignore built site
+.DS_Store
 /docs/_site/*
-Downloading_Monographs_as_Images_in_Rosenwald_Collection/images
-Downloading_Monographs_as_Images_in_Rosenwald_Collection/.ipynb_checkpoints
+loc.gov JSON API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/images
+loc.gov JSON API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/.ipynb_checkpoints
