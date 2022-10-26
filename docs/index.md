@@ -44,12 +44,12 @@ See [Responses](responses.html) for info about fields in search results and exam
 
 ## Tutorials
 
-* [Getting started with the loc.gov API](https://github.com/LibraryOfCongress/data-exploration/blob/master/LOC.gov%20JSON%20API.ipynb) using Python.
+* [Getting started with the loc.gov API](https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/LOC.gov%20JSON%20API.ipynb) using Python.
 * [All tutorials](all-tutorials.html)
 
 ## How-to
 
-* [How to work with sitemaps](https://github.com/LibraryOfCongress/data-exploration/blob/master/Sitemap.ipynb)
+* [How to work with sitemaps](https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20Sitemaps%20API/Sitemap.ipynb)
 
 
 {% include note.html content="This documentation is a resource to help people understand the API and make use of it. It’s intended to inspire creative uses of the Library of Congress collection. So, it's not comprehensive, but highlights the most relevant aspects. If you have ideas about what else this documentation should cover or anything else to make the API even more useful, let us know!" %}
