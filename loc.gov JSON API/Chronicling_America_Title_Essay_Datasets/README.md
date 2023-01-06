@@ -1,4 +1,4 @@
-# chronamdatasets
+# Chronicling America Title Essay Datasets
 This repository contains two [Jupyter Notebooks](https://jupyter.org/) of Python code:
 
 - **download.ipynb** - downloads Chronicling America's Title Essay content from the Library of Congress API and saves it as a dataset. It describes through the code necessary to perform these operations and gives the reader pointers to customize their own datasets.
