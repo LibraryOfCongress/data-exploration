@@ -23,7 +23,7 @@ Also, remember that the applications listed are only a few examples intended as 
 An overview of how to retrieve information in a JSON format from the Library of Congress API. This tutorial sets a baseline for doing powerful data retrieval and visualization projects.
 
 **Background knowledge:**
-* Understand URLs for loc.gov API [requests](requests.html) and how to modify them
+* Understand URLs for loc.gov API [requests](https://www.loc.gov/apis/json-and-yaml/requests/) and how to modify them
 
 **Applications:**
 * Get and visualize data
