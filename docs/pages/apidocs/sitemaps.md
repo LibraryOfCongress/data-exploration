@@ -3,7 +3,7 @@ title: Sitemaps
 keywords: sitemaps, items, query, results, api 
 last_updated: Dec 19, 2017
 tags: 
-summary: "Sitemaps provide links to pages in a collection or items in a collection. Sitemaps are in XML."
+summary: "Sitemaps provide links to pages in a collection or items in a collection. Sitemaps are in XML. This page has been superceded by [https://www.loc.gov/apis/sitemaps/](https://www.loc.gov/apis/sitemaps/)."
 sidebar: apidocs_sidebar
 permalink: sitemaps.html
 folder: apidocs
