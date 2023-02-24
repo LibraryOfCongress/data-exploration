@@ -3,7 +3,7 @@ title: Responses
 keywords: responses, data, json, api 
 last_updated: Dec 19, 2017
 tags: 
-summary: "A response is the JSON you get back from your request to the loc.gov API. Because the API also provides data for the loc.gov website, there is a lot of data (e.g. breadcrumbs, facets) that are specifically for that purpose. This page focuses on the sections of the JSON response that are most useful for wokring with collections and items."
+summary: "A response is the JSON you get back from your request to the loc.gov API. Because the API also provides data for the loc.gov website, there is a lot of data (e.g. breadcrumbs, facets) that are specifically for that purpose. This page focuses on the sections of the JSON response that are most useful for wokring with collections and items. This page has since been superceded by [https://www.loc.gov/apis/json-and-yaml/responses/](https://www.loc.gov/apis/json-and-yaml/responses/)."
 sidebar: apidocs_sidebar
 permalink: responses.html
 folder: apidocs
