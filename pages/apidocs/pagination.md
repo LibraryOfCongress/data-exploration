@@ -3,7 +3,7 @@ title: Pagination
 keywords: pagination, pages, query, results, api 
 last_updated: Dec 19, 2017
 tags: 
-summary: "The API returns items in pages or results, rather than all of the results at once. "
+summary: "The API returns items in pages or results, rather than all of the results at once. This page has since been superceded by [https://www.loc.gov/apis/json-and-yaml/working-within-limits/](https://www.loc.gov/apis/json-and-yaml/working-within-limits/#deep-paging)."
 sidebar: apidocs_sidebar
 permalink: pagination.html
 folder: apidocs
