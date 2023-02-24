@@ -3,7 +3,7 @@ title: Requests
 keywords: requests, query, api 
 last_updated: Dec 19, 2017
 tags: 
-summary: "A request is a URL with query parameters."
+summary: "A request is a URL with query parameters. This page has since been superceded by [https://www.loc.gov/apis/json-and-yaml/requests/](https://www.loc.gov/apis/json-and-yaml/requests/)."
 sidebar: apidocs_sidebar
 permalink: requests.html
 folder: apidocs
