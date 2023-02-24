@@ -4,7 +4,7 @@ keywords: api documentation homepage
 tags:
 sidebar: apidocs_sidebar
 permalink: index.html
-summary: The loc.gov API is a work in progress and subject to change. Software developer and librarian, Laura Wrubel, created this site in 2018 while in residence with the LC Labs team as the Beta version of documentation for the Library of Congress JSON/YAML application programming interface. It has since been superceded by an official version of this documentation, which can be found at: [loc.gov/apis](https://www.loc.gov/apis/). However, interested users are still encouraged to make use of the [tutorials](all-tutorials.html) for working with the API. 
+summary: The loc.gov API is a work in progress and subject to change. Software developer and librarian, Laura Wrubel, created this site in 2018 while in residence with the LC Labs team as the Beta version of documentation for the Library of Congress JSON/YAML application programming interface. It has since been superceded by an official version of this documentation, which can be found at:[loc.gov/apis](https://www.loc.gov/apis/). Interested users are still encouraged to make use of the [tutorials](all-tutorials.html) for working with the API. 
 ---
 
 ## Introduction
