@@ -10,7 +10,7 @@ summary: Technical documentation of the loc.gov APIs can be found at [loc.gov/ap
 
 ## Introduction
 
-The Library of Congress [data-exploration GitHub](https://github.com/LibraryOfCongress/data-exploration) includes several Jupyter notebooks and other files that contain tutorials on how to use the API, with example scripts. The tutorials are loosely categorized by topic. Under each heading, you can find details on what the tutorial documents contain, the assumed background knowledge, and possible applications of the code provided.
+The Library of Congress [data-exploration GitHub](https://github.com/LibraryOfCongress/data-exploration) includes several Jupyter notebooks and other tutorials on how to use the API, with example scripts. The tutorials are loosely categorized by topic. Under each heading, you can find details on what the tutorial documents contain, the assumed background knowledge, and possible applications of the code provided.
 
 {% include tip.html content="The API is a work in progress and things may change at any time. Fields may be added, deleted, or used in different ways, so make any code you write flexible and able to adjust to changes. Not every item is available via the API yet; some collections are still in process of being made available." %}
 
