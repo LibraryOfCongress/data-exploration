@@ -4,7 +4,7 @@ keywords: api tutorials homepage
 tags:
 sidebar: apidocs_sidebar
 permalink: index.html
-summary: Technical documentation of the loc.gov APIs can be found at [loc.gov/apis](https://www.loc.gov/apis/). This site supplements the documentation by providing tutorials and in-depth examples of working with various Library of Congress APIs. If you have ideas about what else the documentation or tutorials should cover, please email LC-Labs@loc.gov. 
+summary: Technical documentation of the loc.gov APIs can be found at [loc.gov/apis](https://www.loc.gov/apis/) . This site supplements the documentation by providing tutorials and in-depth examples of working with various Library of Congress APIs. If you have ideas about what else the documentation or tutorials should cover, please email LC-Labs@loc.gov. 
 
 ---
 
@@ -18,8 +18,8 @@ Almost all of these documents are Jupyter notebooks, which is a programming envi
 
 If this is your first time using Jupyter notebooks, here are a couple great tutorials online to help you install and set up the software:
 
-* https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/setup/
-* https://programminghistorian.org/en/lessons/jupyter-notebooks
+* [https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/setup/](https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/setup/)
+* [https://programminghistorian.org/en/lessons/jupyter-notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks)
 
 Also, remember that the applications listed are only a few examples intended as a starting point! The possibilities are far wider. We're excited to see what you do with the collections. 
 
