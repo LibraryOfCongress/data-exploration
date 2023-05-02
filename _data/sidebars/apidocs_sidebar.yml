@@ -14,26 +14,6 @@ entries:
       url: /index.html
       output: web,pdf
 
-  - title: Reference
-    output: web, pdf
-    folderitems:
-
-    - title: Requests
-      url: /requests.html
-      output: web, pdf
-
-    - title: Responses
-      url: /responses.html
-      output: web, pdf
-
-    - title: Pagination
-      url: /pagination.html
-      output: web, pdf
-
-    - title: Sitemaps
-      url: /sitemaps.html
-      output: web, pdf
-
   - title: Tutorials
     output: web, pdf
     folderitems:
