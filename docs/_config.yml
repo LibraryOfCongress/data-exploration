@@ -3,10 +3,10 @@ repository: LibraryOfCongress/data-exploration
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: loc.gov JSON API
+topnav_title: loc.gov tutorials
 # this appears on the top navigation bar next to the home button
 
-site_title: loc.gov JSON API documentation
+site_title: loc.gov data tutorials 
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
 company_name: Library of Congress
