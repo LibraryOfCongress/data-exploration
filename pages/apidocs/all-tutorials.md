@@ -25,7 +25,7 @@ Also, remember that the applications listed are only a few examples intended as 
 An overview of how to retrieve information in a JSON format from the Library of Congress API. This tutorial sets a baseline for doing powerful data retrieval and visualization projects.
 
 **Background knowledge:**
-* Understand URLs for loc.gov API [requests](requests.html) and how to modify them
+* Understand URLs for loc.gov API [requests](https://www.loc.gov/apis/json-and-yaml/requests/) and how to modify them
 
 **Applications:**
 * Get and visualize data
@@ -59,7 +59,7 @@ How to access, display, and download images in bulk. Also provides information a
 This tutorial is for accessing images directly via the the API, so the images are generally smaller (150 px on one side) and low resolution. For accessing larger images that can be manipulated (size, rotation, crop, etc.), see the next tutorial, on IIIF.
 
 **Background knowledge:**
-* Understand URLs for loc.gov API [requests](requests.html) and how to modify them
+* Understand URLs for loc.gov API [requests](https://www.loc.gov/apis/json-and-yaml/requests/) and how to modify them
 
 **Applications:**
 * Find URLs for images
@@ -107,7 +107,7 @@ See background knowledge and applications for the accessing images notebook.
 Demonstrates how to retrieve geographic data (latitude and longitude) and plot it onto a map. This tutorial focuses on items in the Historic American Engineering Record (HAER). The way that geographic data is stored across collections does vary, so some collections may require more data cleaning and manipulation before doing geographic visualizations.
 
 **Background knowledge:**
-* Understand URLs for loc.gov API [requests](requests.html) and how to modify them
+* Understand URLs for loc.gov API [requests](https://www.loc.gov/apis/json-and-yaml/requests/) and how to modify them
 * (optional) Python [folium mapping](https://python-visualization.github.io/folium/modules.html#module-folium.map)
 * (optional) Python [pandas dataframe](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html)
 
@@ -150,7 +150,7 @@ The Chronicling America database also has an API that functions similarly to the
 This tutorial provides an introduction to what information is available via the API — one notable difference is that since this collection consists of newspaper pages, you can retrieve the text from the page (collected using [OCR](https://en.wikipedia.org/wiki/Optical_character_recognition)) via the API. It also covers searching for keywords and analyzing data from bulk records.
 
 **Background knowledge:**
-* Understand URLs for loc.gov API [requests](requests.html) and how to modify them
+* Understand URLs for loc.gov API [requests](https://www.loc.gov/apis/json-and-yaml/requests/) and how to modify them
 
 **Applications:**
 * Visualize search results on a map
