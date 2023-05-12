@@ -11,10 +11,12 @@ Almost all of these documents are Jupyter notebooks, which is a programming envi
 
 If this is your first time using Jupyter notebooks, here are a couple great tutorials online to help you install and set up the software:
 
-* https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/setup/
-* https://programminghistorian.org/en/lessons/jupyter-notebooks
+* [https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/setup/](https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/setup/)
+* [https://programminghistorian.org/en/lessons/jupyter-notebooks](https://programminghistorian.org/en/lessons/jupyter-notebooks)
 
-Also, remember that the applications listed are only a few examples intended as a starting point! The possibilities are far wider. We're excited to see what you do with the collections. If you have ideas about how to make the API more useful or more topics that you want us to cover in the documentation, please let us know!
+Also, remember that the applications listed are only a few examples intended as a starting point! The possibilities are far wider. We're excited to see what you do with the collections. 
+
+{% include note.html content="These tutorials are designed to help people understand the API and make use of it. The repository is intended to inspire creative uses of the Library of Congress collections. So, it's not comprehensive, but highlights the most relevant aspects. If you have ideas about what other topics should be covered or anything else to make the API even more useful, let us know by emailing LC-Labs@loc.gov!" %}
 
 ## General Search and Query
 
