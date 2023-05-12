@@ -6,11 +6,11 @@ entries:
   version:
   folders:
 
-  - title: About the API
+  - title: About
     output: web, pdf
     folderitems:
 
-    - title: Introduction and Basics
+    - title: Tutorials for working with Library of Congress collections data 
       url: /index.html
       output: web,pdf
 
