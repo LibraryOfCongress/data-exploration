@@ -3,10 +3,10 @@ repository: LibraryOfCongress/data-exploration
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: loc.gov JSON API
+topnav_title: loc.gov data tutorials
 # this appears on the top navigation bar next to the home button
 
-site_title: loc.gov JSON API documentation
+site_title: loc.gov data tutorials 
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
 company_name: Library of Congress
@@ -35,9 +35,9 @@ exclude:
   - .gitignore
 # these are the files and directories that jekyll will exclude from the build
 
-feedback_subject_line: loc.gov JSON API documentation
+feedback_subject_line: loc.gov data tutorials
 
-feedback_email: ndi@loc.gov
+feedback_email: LC-Labs@loc.gov
 # used as a contact email for the Feedback link in the top navigation bar
 
 # feedback_disable: true
