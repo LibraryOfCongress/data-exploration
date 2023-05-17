@@ -88,7 +88,6 @@ How to find and analyze the colors in an image. This tutorial uses [k-means clus
 **Background knowledge:**
 * Using [links in HTML](https://www.w3schools.com/tags/att_a_href.asp)
 * How to create an [SVG rectangle in HTML](https://www.w3schools.com/graphics/svg_rect.asp)
-* (optional - recommended) Color codes for web - [RGB vs. Hex](https://goedemorgenwp.com/make-site-colorful-color-use-hex-vs-rgb/)
 
 **Applications:**
 * Visualize [colors in Library of Congress collections images](https://loc-colors.glitch.me/)
@@ -116,7 +115,7 @@ Demonstrates how to retrieve geographic data (latitude and longitude) and plot i
 * Analyze geographic data and connect it to other information, such as date
 * Compare geographies across collections
 
-### [Maps Downloading and Querying](https://github.com/LibraryOfCongress/data-exploration/blob/master/maps/maps-downloading-querying.ipynb)
+### [Maps Downloading and Querying](https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/maps/maps-downloading-querying.ipynb)
 
 How to query and download cartographic material. Includes:
 * performing bulk downloads of cartographic materials using the loc.gov API and Python
@@ -158,8 +157,7 @@ This tutorial provides an introduction to what information is available via the 
 * Do historical research
 * See [these projects](https://blogs.loc.gov/thesignal/2016/08/the-neh-chronicling-america-challenge-using-big-data-to-ask-big-questions/) for more!
 
-### [Chronicling America CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_all_digitized)
-
+### [Chronicling America CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/Chronicling%20America%20API/chronam_all_digitized)
 The Python script here creates a csv file of all of the digitized titles in Chronicling America, with their associated metadata.
 
 **Background knowledge:**
@@ -168,7 +166,7 @@ The Python script here creates a csv file of all of the digitized titles in Chro
 
 **Applications:** The produced csv can be used for a number of different data analysis and [visualization](https://www.loc.gov/ndnp/data-visualizations/) applications. See the Memegenerator and GIPHY tutorials for more on how to use Python code to analyze data in csv file formats.
 
-### [Chronicling America Issue Counts CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/chronam_issue_counts)
+### [Chronicling America Issue Counts CSV](https://github.com/LibraryOfCongress/data-exploration/tree/master/Chronicling%20America%20API/chronam_issue_counts)
 
 These scripts create csv files where each row contains the state name, year, and the number of newspaper issues in the Chronicling America database available in that state and year. Each script does this for one state.
 
@@ -223,7 +221,7 @@ Provides code for selecting random audio segments and combining them together. A
 * Manipulate existing audio files
 * Build interactive audio sampling tools, like [this](https://citizen-dj.labs.loc.gov/)
 
-### [American Folklife Center Scripts](https://github.com/LibraryOfCongress/data-exploration/tree/master/americanfolklifecenter)
+### [American Folklife Center Scripts](https://github.com/LibraryOfCongress/data-exploration/tree/master/Processing%20Scripts/americanfolklifecenter)
 
 Includes 2 bash scripts, [reportmd.sh](https://github.com/LibraryOfCongress/data-exploration/blob/master/Processing%20Scripts/americanfolklifecenter/reportmd.sh) and [processfiles.sh](https://github.com/LibraryOfCongress/data-exploration/blob/master/Processing%20Scripts/americanfolklifecenter/processfiles.sh). These scripts intend to make processing and data analysis easier by automating some of the initial steps. They can be run on any command line interface (i.e. Terminal for macOS, PowerShell or Command prompt for Windows), and the script will prompt user inputs.
 
