@@ -1,0 +1,24 @@
+#
+####### requirements.txt #######
+#
+# Run: pip install -r requirements.txt
+
+# For building Jupyter notebooks
+jupyter
+jupyter-book
+
+# For printing charts and graphs
+matplotlib
+numpy
+
+# For printing data tables
+pandas
+
+# For reading and manipulating images
+Pillow
+
+# For interacting with AWS
+boto3
+
+# For downloading assets from remote URLs
+requests
