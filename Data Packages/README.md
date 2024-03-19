@@ -5,6 +5,6 @@ This is a growing collection of resources (Jupyter Notebooks, scripts, workflows
 To run the Jupyter Notebooks you will need to change into this directory and install the required Python libraries:
 
 ```
-cd "Data Sets"
+cd "Data Packages"
 pip install -r requirements.txt
 ```
