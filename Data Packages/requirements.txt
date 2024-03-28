@@ -10,6 +10,7 @@ jupyter-book
 # For printing charts and graphs
 matplotlib
 numpy
+scipy
 
 # For printing data tables
 pandas
@@ -22,3 +23,6 @@ boto3
 
 # For downloading assets from remote URLs
 requests
+
+# For reading and manipulating audio files
+pydub
