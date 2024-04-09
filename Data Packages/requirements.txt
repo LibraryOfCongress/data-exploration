@@ -10,6 +10,7 @@ jupyter-book
 # For printing charts and graphs
 matplotlib
 numpy
+plotly
 scipy
 
 # For printing data tables
@@ -26,3 +27,6 @@ requests
 
 # For reading and manipulating audio files
 pydub
+
+# For generating wordclouds
+wordcloud
