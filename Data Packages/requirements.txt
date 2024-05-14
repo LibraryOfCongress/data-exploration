@@ -25,5 +25,8 @@ requests
 # For reading and manipulating audio files
 pydub
 
+# For printing progress
+tqdm
+
 # For generating wordclouds
 wordcloud
