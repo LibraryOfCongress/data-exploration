@@ -19,9 +19,6 @@ pandas
 # For reading and manipulating images
 Pillow
 
-# For interacting with AWS
-boto3
-
 # For downloading assets from remote URLs
 requests
 
