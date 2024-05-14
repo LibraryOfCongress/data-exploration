@@ -1,0 +1,29 @@
+#
+####### requirements.txt #######
+#
+# Run: pip install -r requirements.txt
+
+# For building Jupyter notebooks
+jupyter
+jupyter-book
+
+# For printing charts and graphs
+matplotlib
+numpy
+plotly
+scipy
+
+# For printing data tables
+pandas
+
+# For reading and manipulating images
+Pillow
+
+# For downloading assets from remote URLs
+requests
+
+# For reading and manipulating audio files
+pydub
+
+# For generating wordclouds
+wordcloud
