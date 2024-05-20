@@ -1,0 +1,1111 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Exploring the United States Election Datasets &#8212; Tutorials for Data Exploration</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/loc.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/loc.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Data Sets/Web Archives/LOC_Election_Dataset_Walkthrough';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tutorials for Data Exploration</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Tutorials for Data Exploration
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Loc.gov JSON API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/LOC.gov%20JSON%20API.html">LOC.gov JSON API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.html">Accessing images from the loc.gov JSON API for image analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Dominant%20colors.html">Color clusters in images in Library of Congress collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Connecting the image file to the metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Extracting%20location%20data%20for%20geovisualization.html">Extracting location data from the loc.gov API for geovisualization</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/maps/maps-analyzing-metadata.html">Analyzing and visualizing cartographic metadata from loc.gov</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chronicling America notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Chronicling%20America%20API/ChronAm%20API%20Samples.html">ChronAm API Guide</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Web Archives notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_memegenerator.html">Exploring the Memegenerator Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_giphy.html">Exploring the GIPHY.com Metadata</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/digitized-books.html">LoC Data Package Tutorial: Selected Digitized Books Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/directories.html">LoC Data Package Tutorial: City and Telephone Directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/telephone.html">LoC Data Package Tutorial: Digitized Telephone Directories Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/stereographs.html">LoC Data Package Tutorial: Stereograph Card Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/austro-hungarian-maps.html">LoC Data Package Tutorial: Austro-Hungarian maps set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/gen-coll-assessment.html">LoC Data Package Tutorial: General Collections Assessment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Library API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20IIIF%20API/IIIF.html">IIIF API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20Sitemaps%20API/Sitemap.html">What are Sitemaps?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20web%20interface/OpenSearch.html">OpenSearch Guide</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Data Sets/Web Archives/LOC_Election_Dataset_Walkthrough.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exploring the United States Election Datasets</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exploring the United States Election Datasets</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-global-variables">Defining Global Variables</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gathering-the-list-of-cdx-files">Gathering the list of CDX Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cdx-file">CDX File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cdx-as-a-dataframe">CDX as a DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#election-2000-dataframe">Election 2000 DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mimetypes">Mimetypes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropping-and-graphing">Dropping and Graphing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetching-the-text">Fetching the Text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-25-words">Top 25 Words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exploring-the-united-states-election-datasets">
+<h1>Exploring the United States Election Datasets<a class="headerlink" href="#exploring-the-united-states-election-datasets" title="Permalink to this heading">#</a></h1>
+<p>This notebook demonstrates an intermediate approach to exploring and accessing the United States Election Datasets produced by the Library of Congress.</p>
+<p>As an intermediate approach, this notebook uses functions as reusable blocks of code. These functions could potentially be used outside of this notebook to assist in further exploration.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="imports">
+<h1>Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h1>
+<p>Below are the Python packages used in this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="c1"># Used to make HTTP requests; this is how we will scrape the Wayback</span>
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> <span class="c1"># Used to process the scraped content </span>
+<span class="kn">import</span> <span class="nn">gzip</span> <span class="c1"># Used to decompress the gzipped CDX files</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># Used to transform the data into dataframes for computation</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span> <span class="c1"># Used to create a matrix out of a bag of words</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span> <span class="c1"># Used to provide a slight pause between Wayback requests</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="defining-global-variables">
+<h1>Defining Global Variables<a class="headerlink" href="#defining-global-variables" title="Permalink to this heading">#</a></h1>
+<p>Here we’re defining two global variables that will be used in the functions to gather and scrape the content.
+The represent the base of the URL structure for two of the important web applications we will use: Cloudfront, which is the front end to where the dataset files are location and Wayback, where the actual web resources are accessed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CLOUDFRONT_BASE_URL</span> <span class="o">=</span> <span class="s1">&#39;https://d2rxokvmqqcpq7.cloudfront.net/&#39;</span>
+<span class="n">WAYBACK_BASE_URL</span> <span class="o">=</span> <span class="s1">&#39;https://webarchive.loc.gov/all/&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="functions">
+<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h1>
+<p>Here we will define the functions in the order that they are used in this notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">gather_files_from_manifest</span><span class="p">(</span><span class="n">year</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that takes a year (YYYY) as an argument.</span>
+<span class="sd">    The function collects the locations of the CDX files </span>
+<span class="sd">    listed by the provided year&#39;s manifest.</span>
+<span class="sd">    </span>
+<span class="sd">    Args:</span>
+<span class="sd">        year (str): String of a year YYYY.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :obj:`list` of :obj:`str` of individual CDX file URLs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">election_years</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;2000&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2002&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2004&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2006&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2008&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2010&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2012&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2014&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2016&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;2018&quot;</span>
+    <span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">year</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">election_years</span><span class="p">:</span>
+        <span class="k">return</span> <span class="p">[]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">manifest_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">CLOUDFRONT_BASE_URL</span><span class="si">}</span><span class="s2">cdx11-indexes/</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">/el</span><span class="si">{</span><span class="n">year</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span><span class="si">}</span><span class="s2">-manifest.html&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">manifest_url</span><span class="p">)</span>
+        <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+        <span class="n">cdx_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">link</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)]</span>
+
+        <span class="k">return</span> <span class="n">cdx_files</span>
+
+<span class="k">def</span> <span class="nf">fetch_file</span><span class="p">(</span><span class="n">cdx_url</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that takes a `String` as an argument.</span>
+<span class="sd">    The `cdx_url` is a singular item from the result</span>
+<span class="sd">    of the `gather_files_from_manifest` function.</span>
+<span class="sd">    The function fetches the gzipped CDX file, decompresses it,</span>
+<span class="sd">    splits it on the newlines, and removes the header. </span>
+<span class="sd">    Args:</span>
+<span class="sd">        cdx_url (str): Individual item from the result of</span>
+<span class="sd">        the `gather_files_from_manifest` function.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        :obj:`list` of :obj:`str` of individual CDX lines, each representing</span>
+<span class="sd">        a web object.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">cdx_url</span><span class="p">)</span>
+    
+    <span class="c1"># Here we decompress the gzipped CDX, decode it, split it on the newline, and remove the header</span>
+    <span class="n">cdx_content</span> <span class="o">=</span> <span class="n">gzip</span><span class="o">.</span><span class="n">decompress</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+        
+    <span class="k">return</span> <span class="n">cdx_content</span>
+
+<span class="k">def</span> <span class="nf">create_dataframe</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that takes a :obj:`list` of :obj:`str` as an argument.</span>
+<span class="sd">    `data` is the contents of the CDX file split on newlines. </span>
+<span class="sd">    This function takes `data`, applies a schema to it, and transforms it</span>
+<span class="sd">    into a `pandas.DataFrame`.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        data (list): :obj:`list` of :obj:`str`. Each item is a line from</span>
+<span class="sd">        a CDX file or group of files.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        A `pandas.DataFrame` of a CDX file or group of files.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">schema</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s1">&#39;urlkey&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;timestamp&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;original&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;mimetype&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;statuscode&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;digest&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;redirect&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;metatags&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;file_size&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;offset&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;warc_filename&#39;</span>
+    <span class="p">]</span>
+    <span class="n">_data</span> <span class="o">=</span> <span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">split</span><span class="p">()</span> <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">]</span>
+    
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">_data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">def</span> <span class="nf">create_dataframe_from_manifest</span><span class="p">(</span><span class="n">manifest</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that takes a :obj:`list` of :obj:`str` as an argument.</span>
+<span class="sd">    The `manifest` is a list of all the individual CDX files found</span>
+<span class="sd">    from an Election year&#39;s or group of Election years&#39; HTML manifest.</span>
+<span class="sd">    This function loops through each file, transforms it into a `pandas.DataFrame`</span>
+<span class="sd">    by calling the `create_dataframe` function, concats the DataFrames together,</span>
+<span class="sd">    and then returns the Dataframe representing the entire manifest.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        manifest (list): :obj:`list` of :obj:`str` of all the individual CDX files found</span>
+<span class="sd">    from an Election year&#39;s or group of Election years&#39; HTML manifest.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        `pandas.DataFrame` representing every file present in the `manifest`.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span> 
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">line</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">manifest</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]):</span>
+        <span class="n">cdx</span> <span class="o">=</span> <span class="n">fetch_file</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">index</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">create_dataframe</span><span class="p">(</span><span class="n">cdx</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">create_dataframe</span><span class="p">(</span><span class="n">cdx</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="k">def</span> <span class="nf">fetch_text</span><span class="p">(</span><span class="n">row</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that takes a `pandas.Series`, which is a single row </span>
+<span class="sd">    from a `pandas.DataFrame`, as an argument.</span>
+<span class="sd">    The functions uses the timestamp and original fields from the `row`</span>
+<span class="sd">    to request the specific resource. Once the resource is fetched,</span>
+<span class="sd">    the Wayback banner div elements are removed so as to not detract from </span>
+<span class="sd">    the words in the resource itself. </span>
+<span class="sd">    Args:</span>
+<span class="sd">        row (pandas.Series): `pandas.Series`, which is a single row </span>
+<span class="sd">    from a `pandas.DataFrame`.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        `String` of the resource&#39;s text.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">WAYBACK_BASE_URL</span><span class="si">}{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;original&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;wm-maximized&#39;</span><span class="p">})]</span>
+    <span class="p">[</span><span class="n">el</span><span class="o">.</span><span class="n">extract</span><span class="p">()</span> <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;div&#39;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="s1">&#39;wm-minimized&#39;</span><span class="p">})]</span>
+    <span class="k">return</span> <span class="n">soup</span><span class="o">.</span><span class="n">text</span>
+
+<span class="k">def</span> <span class="nf">fetch_all_text</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function that takes a `pandas.Dataframe` as an argument.</span>
+<span class="sd">    This is the most complicated function here. The function first cleans the</span>
+<span class="sd">    `df` that was passed in by dropping all the rows that do not have a value in the</span>
+<span class="sd">    mimetype field. Then, it drops all the duplicate digests, which removes resources</span>
+<span class="sd">    that are exactly the same. Finally, it only returns rows that have &#39;text&#39; in the mimetype</span>
+<span class="sd">    and have a &#39;200&#39; HTTP status response, meaning the resource was sucessfully capture.</span>
+<span class="sd">    Once the `df` is cleaned, each resource&#39;s text is fetched from the Wayback,</span>
+<span class="sd">    transformed into a matrix using `sklearn.CountVectorizer`, and then returns a `pandas.DataFrame`</span>
+<span class="sd">    with words and their occurance per resource. A politeness of 15 seconds is added between Wayback requests.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        row (pandas.DataFrame): `pandas.Dataframe` representing web resources as CDX lines.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        `pandas.Dataframe` of the resource&#39;s words tabulated per web resource.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">countvec</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span><span class="n">ngram_range</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">stop_words</span><span class="o">=</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+    <span class="n">unprocessed_bag_of_words</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">text_df</span> <span class="o">=</span> <span class="n">df</span>\
+        <span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mimetype&#39;</span><span class="p">])</span>\
+        <span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;digest&#39;</span><span class="p">])</span>\
+        <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;mimetype.str.contains(&quot;text&quot;) and statuscode.str.match(&quot;200&quot;)&#39;</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">text_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+        <span class="n">unprocessed_bag_of_words</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fetch_text</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+        <span class="n">sleep</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+    
+    <span class="n">processed_bag_of_words</span> <span class="o">=</span> <span class="n">countvec</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">unprocessed_bag_of_words</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">processed_bag_of_words</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span><span class="n">columns</span><span class="o">=</span><span class="n">countvec</span><span class="o">.</span><span class="n">get_feature_names</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="gathering-the-list-of-cdx-files">
+<h2>Gathering the list of CDX Files<a class="headerlink" href="#gathering-the-list-of-cdx-files" title="Permalink to this heading">#</a></h2>
+<p>The first step is gathering the list of CDX files. To do that, simply call the <code class="docutils literal notranslate"><span class="pre">gather_files_from_manifest</span></code> function, providing the Election year as an argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">el00_files</span> <span class="o">=</span> <span class="n">gather_files_from_manifest</span><span class="p">(</span><span class="s1">&#39;2000&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">el00_files</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://d2rxokvmqqcpq7.cloudfront.net/cdx11-indexes/2000/unique.20010415093936.surt.cdx.gz&#39;,
+ &#39;https://d2rxokvmqqcpq7.cloudfront.net/cdx11-indexes/2000/unique.20010415094743.surt.cdx.gz&#39;,
+ &#39;https://d2rxokvmqqcpq7.cloudfront.net/cdx11-indexes/2000/unique.20010415095044.surt.cdx.gz&#39;,
+ &#39;https://d2rxokvmqqcpq7.cloudfront.net/cdx11-indexes/2000/unique.20010415095244.surt.cdx.gz&#39;,
+ &#39;https://d2rxokvmqqcpq7.cloudfront.net/cdx11-indexes/2000/unique.20010415095459.surt.cdx.gz&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cdx-file">
+<h2>CDX File<a class="headerlink" href="#cdx-file" title="Permalink to this heading">#</a></h2>
+<p>Next, we’ll demonstrate what a particular CDX File looks like</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdx</span> <span class="o">=</span> <span class="n">fetch_file</span><span class="p">(</span><span class="n">el00_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdx</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;com,voter)/home/candidates/info/0,1214,2-11880-,00.html 20001002182124 http://www.voter.com:80/home/candidates/info/0,1214,2-11880-,00.html text/html 200 FYXP43MQC5GVBQMVK3ETWSPXUBR5ICKP - - 5051 149 unique.20010415093936.arc.gz&#39;,
+ &#39;com,voter)/home/candidates/info/0,1214,2-18885-,00.html 20001002185814 http://www.voter.com:80/home/candidates/info/0,1214,2-18885-,00.html text/html 200 H6QN5ZULJ6YZP756QNVM3YXKXC7HZUIL - - 4829 5200 unique.20010415093936.arc.gz&#39;,
+ &#39;com,voter)/home/candidates/info/0,1214,2-18880-,00.html 20001002185815 http://www.voter.com:80/home/candidates/info/0,1214,2-18880-,00.html text/html 200 HFG67JI4KBPHFXMQE5DJRHF3OEKKBOO6 - - 4794 10029 unique.20010415093936.arc.gz&#39;,
+ &#39;com,voter)/home/officials/general/1,1195,2-2467-,00.html 20001002185815 http://voter.com:80/home/officials/general/1,1195,2-2467-,00.html text/html 200 HZJFLTHZD5MGEPJS2WVGBHQRQUPFBE3O - - 5282 14823 unique.20010415093936.arc.gz&#39;,
+ &#39;com,voter)/home/candidates/info/0,1214,2-18886-,00.html 20001002185816 http://www.voter.com:80/home/candidates/info/0,1214,2-18886-,00.html text/html 200 QAM7JW7S4CNYMP6HLA6DASOXTO2SIGWO - - 4823 20105 unique.20010415093936.arc.gz&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cdx-as-a-dataframe">
+<h2>CDX as a DataFrame<a class="headerlink" href="#cdx-as-a-dataframe" title="Permalink to this heading">#</a></h2>
+<p>Now, here is the same CDX transformed into a DataFrame</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdx_df</span> <span class="o">=</span> <span class="n">create_dataframe</span><span class="p">(</span><span class="n">cdx</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cdx_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>urlkey</th>
+      <th>timestamp</th>
+      <th>original</th>
+      <th>mimetype</th>
+      <th>statuscode</th>
+      <th>digest</th>
+      <th>redirect</th>
+      <th>metatags</th>
+      <th>file_size</th>
+      <th>offset</th>
+      <th>warc_filename</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>com,voter)/home/candidates/info/0,1214,2-11880...</td>
+      <td>20001002182124</td>
+      <td>http://www.voter.com:80/home/candidates/info/0...</td>
+      <td>text/html</td>
+      <td>200</td>
+      <td>FYXP43MQC5GVBQMVK3ETWSPXUBR5ICKP</td>
+      <td>-</td>
+      <td>-</td>
+      <td>5051</td>
+      <td>149</td>
+      <td>unique.20010415093936.arc.gz</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>com,voter)/home/candidates/info/0,1214,2-18885...</td>
+      <td>20001002185814</td>
+      <td>http://www.voter.com:80/home/candidates/info/0...</td>
+      <td>text/html</td>
+      <td>200</td>
+      <td>H6QN5ZULJ6YZP756QNVM3YXKXC7HZUIL</td>
+      <td>-</td>
+      <td>-</td>
+      <td>4829</td>
+      <td>5200</td>
+      <td>unique.20010415093936.arc.gz</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>com,voter)/home/candidates/info/0,1214,2-18880...</td>
+      <td>20001002185815</td>
+      <td>http://www.voter.com:80/home/candidates/info/0...</td>
+      <td>text/html</td>
+      <td>200</td>
+      <td>HFG67JI4KBPHFXMQE5DJRHF3OEKKBOO6</td>
+      <td>-</td>
+      <td>-</td>
+      <td>4794</td>
+      <td>10029</td>
+      <td>unique.20010415093936.arc.gz</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>com,voter)/home/officials/general/1,1195,2-246...</td>
+      <td>20001002185815</td>
+      <td>http://voter.com:80/home/officials/general/1,1...</td>
+      <td>text/html</td>
+      <td>200</td>
+      <td>HZJFLTHZD5MGEPJS2WVGBHQRQUPFBE3O</td>
+      <td>-</td>
+      <td>-</td>
+      <td>5282</td>
+      <td>14823</td>
+      <td>unique.20010415093936.arc.gz</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>com,voter)/home/candidates/info/0,1214,2-18886...</td>
+      <td>20001002185816</td>
+      <td>http://www.voter.com:80/home/candidates/info/0...</td>
+      <td>text/html</td>
+      <td>200</td>
+      <td>QAM7JW7S4CNYMP6HLA6DASOXTO2SIGWO</td>
+      <td>-</td>
+      <td>-</td>
+      <td>4823</td>
+      <td>20105</td>
+      <td>unique.20010415093936.arc.gz</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1096875</th>
+      <td>com,voter)/home/candidates/info/0,1214,2-9118-...</td>
+      <td>20001002183052</td>
+      <td>http://www.voter.com:80/home/candidates/info/0...</td>
+      <td>-</td>
+      <td>-</td>
+      <td>3I42H3S6NNFQ2MSVX7XZKYAYSCX5QBYJ</td>
+      <td>-</td>
+      <td>-</td>
+      <td>118</td>
+      <td>145323588</td>
+      <td>unique.20010415093936.arc.gz</td>
+    </tr>
+    <tr>
+      <th>1096876</th>
+      <td>com,voter)/home/candidates/info/0,1214,2-9115-...</td>
+      <td>20001002183052</td>
+      <td>http://www.voter.com:80/home/candidates/info/0...</td>
+      <td>-</td>
+      <td>-</td>
+      <td>3I42H3S6NNFQ2MSVX7XZKYAYSCX5QBYJ</td>
+      <td>-</td>
+      <td>-</td>
+      <td>118</td>
+      <td>145323706</td>
+      <td>unique.20010415093936.arc.gz</td>
+    </tr>
+    <tr>
+      <th>1096877</th>
+      <td>com,voter)/home/candidates/info/0,1214,2-15361...</td>
+      <td>20001002182249</td>
+      <td>http://www.voter.com:80/home/candidates/info/0...</td>
+      <td>-</td>
+      <td>-</td>
+      <td>3I42H3S6NNFQ2MSVX7XZKYAYSCX5QBYJ</td>
+      <td>-</td>
+      <td>-</td>
+      <td>119</td>
+      <td>145323824</td>
+      <td>unique.20010415093936.arc.gz</td>
+    </tr>
+    <tr>
+      <th>1096878</th>
+      <td>com,voter)/home/candidates/info/0,1214,2-12994...</td>
+      <td>20001002181842</td>
+      <td>http://www.voter.com:80/home/candidates/info/0...</td>
+      <td>text/html</td>
+      <td>404</td>
+      <td>UDSH36NBYWO2X73LNMX2LEHLNQ7FYXHZ</td>
+      <td>-</td>
+      <td>-</td>
+      <td>351</td>
+      <td>145323943</td>
+      <td>unique.20010415093936.arc.gz</td>
+    </tr>
+    <tr>
+      <th>1096879</th>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+<p>1096880 rows × 11 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="election-2000-dataframe">
+<h2>Election 2000 DataFrame<a class="headerlink" href="#election-2000-dataframe" title="Permalink to this heading">#</a></h2>
+<p>Now we’ll just create a DataFrame from the whole 2000 Election dataset. To do that, we’ll use the <code class="docutils literal notranslate"><span class="pre">create_dataframe_from_manifest</span></code> which loops over the files and calls <code class="docutils literal notranslate"><span class="pre">create_dataframe</span></code> programmatically instead of manually and individually as we did above.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">el00_df</span> <span class="o">=</span> <span class="n">create_dataframe_from_manifest</span><span class="p">(</span><span class="n">el00_files</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mimetypes">
+<h2>Mimetypes<a class="headerlink" href="#mimetypes" title="Permalink to this heading">#</a></h2>
+<p>For this exercise, we’re going to take a brief look at the mimetypes. First, we’ll select all the mimetypes in the Dataframe and get their sums by calling <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> which is a method from Pandas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">el00_mimetypes</span> <span class="o">=</span> <span class="n">el00_df</span><span class="p">[</span><span class="s1">&#39;mimetype&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">el00_mimetypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-                           1094810
+text/html                      6209
+application/pdf                  13
+image/gif                        11
+image/jpeg                        4
+text/plain                        3
+application/mac-binhex40          1
+Name: mimetype, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dropping-and-graphing">
+<h2>Dropping and Graphing<a class="headerlink" href="#dropping-and-graphing" title="Permalink to this heading">#</a></h2>
+<p>You can see from the output above, that the majority of the mimetypes are not listed and show up as <code class="docutils literal notranslate"><span class="pre">-</span></code>. Further research into this could prove interesting. For now, however, we’re just going to drop them and graph the remainder.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">el00_mimetypes</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;-&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:&gt;
+</pre></div>
+</div>
+<img alt="../../_images/ec0c2f7fa8e647d80d754d22e6c8ec22fa5134d55c4bd17ee340dc44774fedec.png" src="../../_images/ec0c2f7fa8e647d80d754d22e6c8ec22fa5134d55c4bd17ee340dc44774fedec.png" />
+</div>
+</div>
+</section>
+<section id="fetching-the-text">
+<h2>Fetching the Text<a class="headerlink" href="#fetching-the-text" title="Permalink to this heading">#</a></h2>
+<p>Now that we know the majority of the remaining resources in this dataset have a text-based mimetype, we can gather all the text and do some basic analysis. First, we’ll fetch all the text from just the first 50 rows. If you have access to a larger machine, you may certainly increase the number or run it across the whole DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_df</span> <span class="o">=</span> <span class="n">fetch_all_text</span><span class="p">(</span><span class="n">el00_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="top-25-words">
+<h2>Top 25 Words<a class="headerlink" href="#top-25-words" title="Permalink to this heading">#</a></h2>
+<p>Now that the text has been fetched, we’ll do a simple summation and sorting, displaying the top 25 words from the first 50 rows of the 2000 Election dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_df</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>information    248
+com            150
+voter          150
+terms          121
+contact        119
+state          105
+candidate       95
+service         78
+return          72
+senate          70
+candidates      62
+elected         62
+officials       62
+check           56
+ca              54
+new             53
+capitol         52
+background      52
+general         51
+use             51
+rights          50
+press           50
+2000            50
+privacy         50
+portions        50
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">#</a></h2>
+<p>Please feel free to use this notebook and the functions found here to help in your exploration of the U.S. Election datasets.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Data Sets\Web Archives"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exploring the United States Election Datasets</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-global-variables">Defining Global Variables</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#functions">Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gathering-the-list-of-cdx-files">Gathering the list of CDX Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cdx-file">CDX File</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cdx-as-a-dataframe">CDX as a DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#election-2000-dataframe">Election 2000 DataFrame</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mimetypes">Mimetypes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dropping-and-graphing">Dropping and Graphing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fetching-the-text">Fetching the Text</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#top-25-words">Top 25 Words</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Library of Congress staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <header class="loc-header">
+    <div class="loc-logo">
+        <a href="https://www.loc.gov/"><img src="/data-exploration/_static/LOC_Logo_horiz_inv.png" alt="The Library of Congress logo" title="Go to the Library of Congress homepage" /></a>
+    </div>
+    <div class="project-description">
+        <p>In-depth tutorials for working with Library of Congress data via APIs and code. <a href="https://github.com/libraryOfCongress/data-exploration/" class="button small">View the code</a></p>
+    </div>
+</header>
+<footer class="loc-footer">
+    <p>In-depth tutorials for working with Library of Congress data via APIs and code.</p>
+    <ul class="loc-footer-nav-list">
+        <li><a href="https://github.com/libraryOfCongress/data-exploration/">Source code</a></li>  
+        <li><a href="https://www.loc.gov/">The Library of Congress</a></li>
+        <li><a href="https://loc.gov/legal">Privacy Policy</a></li>
+        <li><a href="https://www.loc.gov/accessibility/">Accessibilty</a></li>
+        <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Github Privacy Statement</a></li>
+        <li><a href="https://creativecommons.org/publicdomain/zero/1.0/">License</a></li>
+        <li><a href="mailto:LC-Labs@loc.gov">Contact</a></li>
+    </ul>
+</footer>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

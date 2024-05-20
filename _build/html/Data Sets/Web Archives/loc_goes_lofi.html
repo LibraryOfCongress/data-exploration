@@ -1,0 +1,652 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>&lt;no title&gt; &#8212; Tutorials for Data Exploration</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/loc.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/loc.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Data Sets/Web Archives/loc_goes_lofi';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="LoC Data Package Tutorial: Sanborn Maps collection" href="../../Data%20Packages/sanborn.html" />
+    <link rel="prev" title="Exploring the GIPHY.com Metadata" href="getting_started_with_giphy.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tutorials for Data Exploration</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Tutorials for Data Exploration
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Loc.gov JSON API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/LOC.gov%20JSON%20API.html">LOC.gov JSON API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.html">Accessing images from the loc.gov JSON API for image analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Dominant%20colors.html">Color clusters in images in Library of Congress collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Connecting the image file to the metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Extracting%20location%20data%20for%20geovisualization.html">Extracting location data from the loc.gov API for geovisualization</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/maps/maps-analyzing-metadata.html">Analyzing and visualizing cartographic metadata from loc.gov</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chronicling America notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Chronicling%20America%20API/ChronAm%20API%20Samples.html">ChronAm API Guide</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Web Archives notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_memegenerator.html">Exploring the Memegenerator Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_giphy.html">Exploring the GIPHY.com Metadata</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/digitized-books.html">LoC Data Package Tutorial: Selected Digitized Books Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/directories.html">LoC Data Package Tutorial: City and Telephone Directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/telephone.html">LoC Data Package Tutorial: Digitized Telephone Directories Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/stereographs.html">LoC Data Package Tutorial: Stereograph Card Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/austro-hungarian-maps.html">LoC Data Package Tutorial: Austro-Hungarian maps set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/gen-coll-assessment.html">LoC Data Package Tutorial: General Collections Assessment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Library API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20IIIF%20API/IIIF.html">IIIF API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20Sitemaps%20API/Sitemap.html">What are Sitemaps?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20web%20interface/OpenSearch.html">OpenSearch Guide</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Data Sets/Web Archives/loc_goes_lofi.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><no title></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pydub</span> <span class="kn">import</span> <span class="n">AudioSegment</span>
+<span class="kn">from</span> <span class="nn">pydub.playback</span> <span class="kn">import</span> <span class="n">play</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">speed_change</span><span class="p">(</span><span class="n">sound</span><span class="p">,</span> <span class="n">speed</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="c1"># https://stackoverflow.com/questions/51434897/how-to-change-audio-playback-speed-using-pydub</span>
+    <span class="c1"># Manually override the frame_rate. This tells the computer how many</span>
+    <span class="c1"># samples to play per second</span>
+    <span class="n">sound_with_altered_frame_rate</span> <span class="o">=</span> <span class="n">sound</span><span class="o">.</span><span class="n">_spawn</span><span class="p">(</span><span class="n">sound</span><span class="o">.</span><span class="n">raw_data</span><span class="p">,</span> <span class="n">overrides</span><span class="o">=</span><span class="p">{</span>
+        <span class="s2">&quot;frame_rate&quot;</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">sound</span><span class="o">.</span><span class="n">frame_rate</span> <span class="o">*</span> <span class="n">speed</span><span class="p">)</span>
+    <span class="p">})</span>
+
+    <span class="c1"># convert the sound with altered frame rate to a standard frame rate</span>
+    <span class="c1"># so that regular playback programs will work right. They often only</span>
+    <span class="c1"># know how to play audio at standard frame rate (like 44.1k)</span>
+    <span class="k">return</span> <span class="n">sound_with_altered_frame_rate</span><span class="o">.</span><span class="n">set_frame_rate</span><span class="p">(</span><span class="n">sound</span><span class="o">.</span><span class="n">frame_rate</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_random_sound</span><span class="p">():</span>
+    <span class="c1"># pydub supports mp3, wav, and mp4, so </span>
+    <span class="c1"># filter out extensions that are not those</span>
+    <span class="n">sounds</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span>
+        <span class="nb">filter</span><span class="p">(</span>
+            <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\.mp3|\.wav|\.mp4&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span>
+            <span class="p">[</span><span class="n">g</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">glob</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/*&#39;</span><span class="p">)]))</span>
+    
+    <span class="c1"># get a random int from the range of 0 - number of items in sounds list</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">choice</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sounds</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sounds</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+    
+    <span class="c1"># play up to 20 seconds of the sample</span>
+    <span class="n">play</span><span class="p">(</span><span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="n">sounds</span><span class="p">[</span><span class="n">n</span><span class="p">])[:</span><span class="mi">20000</span><span class="p">])</span>    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_random_sound</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sampling sounds that were discovered from the get_random_sound function</span>
+<span class="n">silence</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">silent</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">opening_bit</span> <span class="o">=</span> <span class="n">AudioSegment</span>\
+<span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/VNHV4ETRBCPFRYMKTDQTBBXP7MDIRSES.mp3&#39;</span><span class="p">)[:</span><span class="mi">10</span> <span class="o">*</span> <span class="mi">300</span><span class="p">]</span>
+<span class="n">outro_speech</span> <span class="o">=</span> <span class="n">AudioSegment</span>\
+<span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/Q526WMMXREAFK6KIGZKC2LO42R2BRKUJ.mp3&#39;</span><span class="p">)[</span><span class="mi">2000</span><span class="p">:</span><span class="mi">11900</span><span class="p">]</span>
+<span class="n">elevator</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/CAQY57V3XBWV3R2MTF5OVIUAYMUSIMYZ.mp3&#39;</span><span class="p">)[:</span><span class="mi">20000</span><span class="p">]</span>
+<span class="n">low_reverb</span> <span class="o">=</span> <span class="n">speed_change</span><span class="p">(</span>
+            <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/EPOMMZ4E5SVGJ25AACNN34XCGC6FE4CK.mp3&#39;</span><span class="p">)[:</span><span class="mi">700</span><span class="p">],</span> <span class="mf">.4</span>
+        <span class="p">)</span>
+<span class="n">thud</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/LKXPK4P7QM63MOQXGEDA42DAGKMLEI23.mp3&#39;</span><span class="p">)[</span><span class="mi">600</span><span class="p">:</span><span class="mi">900</span><span class="p">]</span>
+<span class="n">moon</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/KL43UGQ476FFG6YD66AVJSYMDHKE4AXL.wav&#39;</span><span class="p">)[:</span><span class="mi">3000</span><span class="p">]</span>
+<span class="n">clap</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/UEMJ2NUMWD2EK74TWU22GTRLBQXXZ5GI.mp3&#39;</span><span class="p">)[:</span><span class="mi">1500</span><span class="p">]</span>
+<span class="n">melody</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/UQKFDBADCQXSW7SY73FPKXNFPFAXQLVP.mp3&#39;</span><span class="p">)[</span><span class="mi">1500</span><span class="p">:</span><span class="mi">8500</span><span class="p">]</span>
+<span class="n">giant_bear</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/CD5OAIP5C5DV5K2G5DJKMXD5MMTT32AX.mp3&#39;</span><span class="p">)[</span><span class="mi">1500</span><span class="p">:</span><span class="mi">4700</span><span class="p">]</span>
+<span class="n">no</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/HXZRKQKIZZIE4D5KGT5BGDGSVOO57MIG.mp3&#39;</span><span class="p">)[:</span><span class="mi">2000</span><span class="p">]</span>
+<span class="n">good_evening</span> <span class="o">=</span> <span class="n">AudioSegment</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/KPE2N7CO5ELM2BR4B2CHV3OFZEXSJICT.mp3&#39;</span><span class="p">)[:</span><span class="mi">3000</span><span class="p">]</span>
+<span class="n">low_level_background_noise</span> <span class="o">=</span> <span class="n">AudioSegment</span>\
+<span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="s1">&#39;lcwa_gov_audio_data/data/JLCIUWJD2BF4JMIBQSREMANR3SUSTJQA.mp4&#39;</span><span class="p">)[:</span><span class="mi">10</span> <span class="o">*</span> <span class="mi">2000</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># combining and remixing some of the samples from above to create longer tracks</span>
+<span class="n">background</span> <span class="o">=</span> <span class="n">low_level_background_noise</span><span class="o">.</span><span class="n">overlay</span><span class="p">((</span><span class="n">silence</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">low_reverb</span><span class="o">*</span><span class="mi">11</span><span class="p">))</span>
+<span class="n">moon_loop</span> <span class="o">=</span> <span class="n">moon</span><span class="p">[</span><span class="mi">1000</span><span class="p">:</span><span class="mi">3000</span><span class="p">]</span>\
+        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AudioSegment</span><span class="o">.</span><span class="n">silent</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>\
+        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">moon</span><span class="p">[</span><span class="mi">2700</span><span class="p">:</span><span class="mi">3000</span><span class="p">]</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>\
+        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AudioSegment</span><span class="o">.</span><span class="n">silent</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>\
+        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">moon</span><span class="p">[</span><span class="mi">1000</span><span class="p">:</span><span class="mi">2000</span><span class="p">])</span>\
+        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AudioSegment</span><span class="o">.</span><span class="n">silent</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>\
+        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">moon</span><span class="p">[</span><span class="mi">2600</span><span class="p">:</span><span class="mi">3000</span><span class="p">])</span>\
+        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AudioSegment</span><span class="o">.</span><span class="n">silent</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>\
+        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">moon</span><span class="p">[</span><span class="mi">2100</span><span class="p">:</span><span class="mi">2400</span><span class="p">])</span>\
+        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AudioSegment</span><span class="o">.</span><span class="n">silent</span><span class="p">(</span><span class="mi">100</span><span class="p">))</span>\
+        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">moon</span><span class="p">[</span><span class="mi">1000</span><span class="p">:</span><span class="mi">3000</span><span class="p">])</span>\
+        <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AudioSegment</span><span class="o">.</span><span class="n">silent</span><span class="p">(</span><span class="mi">400</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># piecing everything together into one track</span>
+<span class="n">final_sound</span> <span class="o">=</span> <span class="p">(((</span><span class="n">background</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">silence</span><span class="o">*</span><span class="mi">40</span><span class="p">))</span>
+     <span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">opening_bit</span><span class="o">.</span><span class="n">fade_in</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">silence</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">good_evening</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">silence</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">moon_loop</span><span class="o">.</span><span class="n">fade_out</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+              <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">silence</span><span class="o">*</span><span class="mi">4</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AudioSegment</span><span class="o">.</span><span class="n">silent</span><span class="p">(</span><span class="mi">400</span><span class="p">))</span>
+              <span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">giant_bear</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">silence</span><span class="o">*</span><span class="mi">11</span><span class="p">))</span>
+                      <span class="o">.</span><span class="n">overlay</span><span class="p">((</span><span class="n">silence</span><span class="o">*</span><span class="mi">3</span><span class="p">)</span>
+                               <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">speed_change</span><span class="p">(</span><span class="n">melody</span><span class="p">,</span> <span class="mf">.5</span><span class="p">)</span>
+                                       <span class="o">.</span><span class="n">fade_in</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+                                       <span class="o">.</span><span class="n">fade_out</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+                                      <span class="p">)))</span>
+              <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">no</span><span class="o">+</span><span class="mi">10</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">AudioSegment</span><span class="o">.</span><span class="n">silent</span><span class="p">(</span><span class="mi">400</span><span class="p">))</span>
+              <span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">clap</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clap</span><span class="o">.</span><span class="n">reverse</span><span class="p">())))</span>
+              <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">silence</span><span class="p">)</span>
+              <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">outro_speech</span><span class="o">.</span><span class="n">fade_out</span><span class="p">(</span><span class="mi">1000</span><span class="p">))</span>
+             <span class="p">)</span><span class="o">.</span><span class="n">overlay</span><span class="p">(</span><span class="n">silence</span>
+                       <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">speed_change</span><span class="p">(</span><span class="n">elevator</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">)</span>
+                               <span class="o">.</span><span class="n">reverse</span><span class="p">()</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">silence</span><span class="o">*</span><span class="mi">3</span><span class="p">)))</span>                                  
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># saving track out with metadata</span>
+<span class="n">final_sound</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="s2">&quot;loc_mashup.mp3&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;mp3&quot;</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">{</span>
+    <span class="s1">&#39;artist&#39;</span><span class="p">:</span> <span class="s1">&#39;Various artists&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;creator&#39;</span><span class="p">:</span> <span class="s1">&#39;Chase Dooley&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;album&#39;</span><span class="p">:</span> <span class="s1">&#39;LOC Mashup&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;comments&#39;</span><span class="p">:</span> <span class="s1">&#39;This is a composite of audio tracks taken from the LCWA .gov Audio dataset&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Data Sets\Web Archives"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="getting_started_with_giphy.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exploring the GIPHY.com Metadata</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../Data%20Packages/sanborn.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">LoC Data Package Tutorial: Sanborn Maps collection</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="simple visible nav section-nav flex-column">
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Library of Congress staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <header class="loc-header">
+    <div class="loc-logo">
+        <a href="https://www.loc.gov/"><img src="/data-exploration/_static/LOC_Logo_horiz_inv.png" alt="The Library of Congress logo" title="Go to the Library of Congress homepage" /></a>
+    </div>
+    <div class="project-description">
+        <p>In-depth tutorials for working with Library of Congress data via APIs and code. <a href="https://github.com/libraryOfCongress/data-exploration/" class="button small">View the code</a></p>
+    </div>
+</header>
+<footer class="loc-footer">
+    <p>In-depth tutorials for working with Library of Congress data via APIs and code.</p>
+    <ul class="loc-footer-nav-list">
+        <li><a href="https://github.com/libraryOfCongress/data-exploration/">Source code</a></li>  
+        <li><a href="https://www.loc.gov/">The Library of Congress</a></li>
+        <li><a href="https://loc.gov/legal">Privacy Policy</a></li>
+        <li><a href="https://www.loc.gov/accessibility/">Accessibilty</a></li>
+        <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Github Privacy Statement</a></li>
+        <li><a href="https://creativecommons.org/publicdomain/zero/1.0/">License</a></li>
+        <li><a href="mailto:LC-Labs@loc.gov">Contact</a></li>
+    </ul>
+</footer>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1287 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>LOC.gov JSON API Guide &#8212; Tutorials for Data Exploration</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/loc.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/loc.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'loc.gov JSON API/LOC.gov JSON API';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Accessing images from the loc.gov JSON API for image analysis" href="Accessing%20images%20for%20analysis.html" />
+    <link rel="prev" title="Tutorials for Data Exploration" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tutorials for Data Exploration</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Tutorials for Data Exploration
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Loc.gov JSON API notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">LOC.gov JSON API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Accessing%20images%20for%20analysis.html">Accessing images from the loc.gov JSON API for image analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Dominant%20colors.html">Color clusters in images in Library of Congress collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Connecting the image file to the metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Extracting%20location%20data%20for%20geovisualization.html">Extracting location data from the loc.gov API for geovisualization</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="maps/maps-analyzing-metadata.html">Analyzing and visualizing cartographic metadata from loc.gov</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chronicling America notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Chronicling%20America%20API/ChronAm%20API%20Samples.html">ChronAm API Guide</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Web Archives notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html">Exploring the Memegenerator Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Sets/Web%20Archives/getting_started_with_giphy.html">Exploring the GIPHY.com Metadata</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/digitized-books.html">LoC Data Package Tutorial: Selected Digitized Books Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/directories.html">LoC Data Package Tutorial: City and Telephone Directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/telephone.html">LoC Data Package Tutorial: Digitized Telephone Directories Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/stereographs.html">LoC Data Package Tutorial: Stereograph Card Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/austro-hungarian-maps.html">LoC Data Package Tutorial: Austro-Hungarian maps set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/gen-coll-assessment.html">LoC Data Package Tutorial: General Collections Assessment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Library API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../loc.gov%20IIIF%20API/IIIF.html">IIIF API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loc.gov%20Sitemaps%20API/Sitemap.html">What are Sitemaps?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loc.gov%20web%20interface/OpenSearch.html">OpenSearch Guide</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/loc.gov JSON API/LOC.gov JSON API.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>LOC.gov JSON API Guide</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-json">What is JSON?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-skills-do-you-need-to-navigate-it">What skills do you need to navigate it?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-you-do-with-it">What can you do with it?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-look-at-the-trending-content">A look at the trending content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ok-so-i-got-some-text-that-looks-like-gibberish-now-what">Ok so I got some text that looks like gibberish, now what?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-it-stop-after-40">Why does it stop after 40?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-more-closely-at-collections">Looking more closely at Collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asking-another-question">Asking another question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digging-into-the-results">Digging into the results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-research">Further Research</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="loc-gov-json-api-guide">
+<h1><a class="reference external" href="http://LOC.gov">LOC.gov</a> JSON API Guide<a class="headerlink" href="#loc-gov-json-api-guide" title="Permalink to this heading">#</a></h1>
+<p>The Library of Congress has created an API to allow for automated processes to interact with its collections data. The way that we interact with this data is through JSON.</p>
+<section id="what-is-json">
+<h2>What is JSON?<a class="headerlink" href="#what-is-json" title="Permalink to this heading">#</a></h2>
+<p>JSON (JavaScript Object Notation) is a lightweight data-interchange format. It is easy for humans to read and write. It is easy for machines to parse and generate.</p>
+</section>
+<section id="what-skills-do-you-need-to-navigate-it">
+<h2>What skills do you need to navigate it?<a class="headerlink" href="#what-skills-do-you-need-to-navigate-it" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Reading</p></li>
+<li><p>Curiosity</p></li>
+<li><p>A willingness to try (and maybe mess up and then try again)</p></li>
+</ul>
+</section>
+<section id="what-can-you-do-with-it">
+<h2>What can you do with it?<a class="headerlink" href="#what-can-you-do-with-it" title="Permalink to this heading">#</a></h2>
+<p>Explore, discover, and make cool stuff! Let’s look at some examples you can try:</p>
+</section>
+<section id="a-look-at-the-trending-content">
+<h2>A look at the trending content<a class="headerlink" href="#a-look-at-the-trending-content" title="Permalink to this heading">#</a></h2>
+<p>What’s the latest on the Library of Congress homepage? We can explore what’s happening by asking for the JSON data about the trending content:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="c1">#import the library that we use to make the http request</span>
+<span class="c1"># To get the JSON data add &#39;?fo=json&#39; to the end of the URL.</span>
+<span class="c1"># the &#39;at=trending_content&#39; part says only get me the json about the trending content. </span>
+<span class="c1"># If you leave that off you will get lots more information</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.loc.gov/?fo=json&amp;at=trending_content&quot;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="c1">#print out the results:</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;trending_content&#39;: [{&#39;link&#39;: &#39;/item/prn-20-032/&#39;,
+   &#39;image&#39;: &#39;/static/home/images/trending/collections/loc-collectionsapp_480x309.jpg&#39;,
+   &#39;portal&#39;: &#39;New App&#39;,
+   &#39;title&#39;: &#39;LOC Collections App Puts Digital Treasures in Your Hand&#39;},
+  {&#39;link&#39;: &#39;https://blogs.loc.gov/loc/2020/06/the-most-mysterious-woman-identified/&#39;,
+   &#39;image&#39;: &#39;/static/home/images/trending/blogs/mystery-woman-found_480x309.jpg&#39;,
+   &#39;portal&#39;: &#39;Blog&#39;,
+   &#39;title&#39;: &#39;Mystery Woman Identified!&#39;},
+  {&#39;link&#39;: &#39;https://guides.loc.gov/american-revolution&#39;,
+   &#39;image&#39;: &#39;/static/home/images/trending/researchers/american-revolution_480x309.jpg&#39;,
+   &#39;portal&#39;: &#39;Celebrate&#39;,
+   &#39;title&#39;: &#39;The American Revolution: A Resource Guide&#39;},
+  {&#39;link&#39;: &#39;https://blogs.loc.gov/loc/2020/06/how-will-we-remember-covid-19/&#39;,
+   &#39;image&#39;: &#39;/static/home/images/trending/blogs/pandemic_480x309.jpg&#39;,
+   &#39;portal&#39;: &#39;Blog&#39;,
+   &#39;title&#39;: &#39;How Will We Remember COVID? The Library Documents a Pandemic&#39;},
+  {&#39;link&#39;: &#39;/exhibits/&#39;,
+   &#39;image&#39;: &#39;/static/home/images/trending/exhibits/exhibitions-evergreen-suffrage-48079406641_69c1146579_k.jpg&#39;,
+   &#39;portal&#39;: &#39;Exhibitions&#39;,
+   &#39;title&#39;: &#39;Visit Fascinating Library Exhibitions Online&#39;},
+  {&#39;link&#39;: &#39;/news/&#39;,
+   &#39;image&#39;: &#39;/static/home/images/trending/evergreen/tj-lights-48079402371.jpg&#39;,
+   &#39;portal&#39;: &#39;News&#39;,
+   &#39;title&#39;: &#39;Get the Most Current News from the Library of Congress&#39;}]}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="ok-so-i-got-some-text-that-looks-like-gibberish-now-what">
+<h2>Ok so I got some text that looks like gibberish, now what?<a class="headerlink" href="#ok-so-i-got-some-text-that-looks-like-gibberish-now-what" title="Permalink to this heading">#</a></h2>
+<p>Now we can use a bit of Python to do cool stuff with it! Want to see all of the titles of the Library of Congress collections? Sure, let’s try it!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collections_json</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.loc.gov/collections/?fo=json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">collection</span> <span class="ow">in</span> <span class="n">collections_json</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">collection</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10th-16th Century Liturgical Chants
+Aaron Copland Collection
+Abdul Hamid II Collection
+Abdul-Hamid II Collection of Books and Serials Gifted to the Library of Congress
+Abraham Lincoln Papers at the Library of Congress
+Afghanistan Web Archive
+Afghanistan, Iran, Pakistan and Tajikistan Government Web Archive
+Afghanistan, Iran, Pakistan, and Tajikistan Elections Web Archive
+African American Perspectives: Materials Selected from the Rare Book Collection
+African American Photographs Assembled for 1900 Paris Exposition
+African Government Web Archive
+African-American Band Music &amp; Recordings, 1883-1923
+After the Day of Infamy: &quot;Man-on-the-Street&quot; Interviews Following the Attack on Pearl Harbor
+Ainu and Ezochi Rare Collection
+Alan Lomax Collection
+Alan Lomax Collection of Michigan and Wisconsin Recordings
+Albert Schatz Collection
+Alexander Graham Bell Family Papers at the Library of Congress
+Alexander Hamilton Papers
+Alexander Hamilton Stephens Papers
+The Alfred Whital Stern Collection of Lincolniana
+Amazing Grace
+America at Work, America at Leisure: Motion Pictures from 1894-1915
+America Singing: Nineteenth-Century Song Sheets
+An American Ballroom Companion: Dance Instruction Manuals, ca. 1490-1920
+American Choral Music
+American Civil War Sesquicentennial Web Archive
+American Colony in Jerusalem, 1870-2006
+American English Dialect Recordings: The Center for Applied Linguistics Collection
+American Federation of Labor Records
+American Leaders Speak: Recordings from World War I
+American Life Histories: Manuscripts from the Federal Writers&#39; Project, 1936-1940
+American Music Creators Web Archive
+American Music Industry Web Archive
+American Notes: Travels in America, 1750-1920
+American Revolution and Its Era: Maps and Charts of North America and the West Indies, 1750-1789
+American Variety Stage: Vaudeville and Popular Entertainment, 1870-1920
+Ancestral Voices
+Andre Kostelanetz Collection
+Andrew Jackson Papers
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="why-does-it-stop-after-40">
+<h2>Why does it stop after 40?<a class="headerlink" href="#why-does-it-stop-after-40" title="Permalink to this heading">#</a></h2>
+<p>You might be thinking “there must be colletions after “B”… and you’re correct.
+If we were to give you the data for all our collections it would take a really long time to return the information. So instead we break it into pages. The <em>pagination</em> section of the json contains the information that you need to really get everything (this list is going to be LONG!):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collections_json</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.loc.gov/collections/?fo=json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span> <span class="c1">#As long as we have a next page, go and fetch it</span>
+    <span class="k">for</span> <span class="n">collection</span> <span class="ow">in</span> <span class="n">collections_json</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]:</span> 
+        <span class="nb">print</span><span class="p">(</span><span class="n">collection</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">])</span> <span class="c1">#print out the collection&#39;s title</span>
+    <span class="n">next_page</span> <span class="o">=</span> <span class="n">collections_json</span><span class="p">[</span><span class="s2">&quot;pagination&quot;</span><span class="p">][</span><span class="s2">&quot;next&quot;</span><span class="p">]</span> <span class="c1">#get the next page url</span>
+    <span class="k">if</span> <span class="n">next_page</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="c1">#make sure we haven&#39;t hit the end of the pages</span>
+        <span class="n">collections_json</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">next_page</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">break</span> <span class="c1">#we are done and can stop looping</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10th-16th Century Liturgical Chants
+Aaron Copland Collection
+Abdul Hamid II Collection
+Abdul-Hamid II Collection of Books and Serials Gifted to the Library of Congress
+Abraham Lincoln Papers at the Library of Congress
+Afghanistan Web Archive
+Afghanistan, Iran, Pakistan and Tajikistan Government Web Archive
+Afghanistan, Iran, Pakistan, and Tajikistan Elections Web Archive
+African American Perspectives: Materials Selected from the Rare Book Collection
+African American Photographs Assembled for 1900 Paris Exposition
+African Government Web Archive
+African-American Band Music &amp; Recordings, 1883-1923
+After the Day of Infamy: &quot;Man-on-the-Street&quot; Interviews Following the Attack on Pearl Harbor
+Ainu and Ezochi Rare Collection
+Alan Lomax Collection
+Alan Lomax Collection of Michigan and Wisconsin Recordings
+Albert Schatz Collection
+Alexander Graham Bell Family Papers at the Library of Congress
+Alexander Hamilton Papers
+Alexander Hamilton Stephens Papers
+The Alfred Whital Stern Collection of Lincolniana
+Amazing Grace
+America at Work, America at Leisure: Motion Pictures from 1894-1915
+America Singing: Nineteenth-Century Song Sheets
+An American Ballroom Companion: Dance Instruction Manuals, ca. 1490-1920
+American Choral Music
+American Civil War Sesquicentennial Web Archive
+American Colony in Jerusalem, 1870-2006
+American English Dialect Recordings: The Center for Applied Linguistics Collection
+American Federation of Labor Records
+American Leaders Speak: Recordings from World War I
+American Life Histories: Manuscripts from the Federal Writers&#39; Project, 1936-1940
+American Music Creators Web Archive
+American Music Industry Web Archive
+American Notes: Travels in America, 1750-1920
+American Revolution and Its Era: Maps and Charts of North America and the West Indies, 1750-1789
+American Variety Stage: Vaudeville and Popular Entertainment, 1870-1920
+Ancestral Voices
+Andre Kostelanetz Collection
+Andrew Jackson Papers
+Andrew Johnson Papers
+Anna E. Dickinson Papers
+Anna Maria Brodeau Thornton Papers
+Ansel Adams&#39;s Photographs of Japanese-American Internment at Manzanar
+Architecture, Design &amp; Engineering Drawings
+Archive of Hispanic Literature on Tape
+Archive of Recorded Poetry and Literature
+Armenian Rarities Collection
+Associated Press News Dispatches, 1915-1930
+Author Websites Web Archive
+Bain Collection
+Ballets Russes de Serge Diaghilev
+Band Music from the Civil War Era
+Bangladeshi Elections Web Archive
+Banking Industry in Southeast Asia Web Archive
+Baseball Cards
+Baseball Sheet Music
+Before and After the Great Earthquake and Fire: Early Films of San Francisco, 1897-1916
+Benjamin Franklin Papers
+Benjamin Harrison Papers
+Bess Lomax Hawes Collection
+Betty Herndon Maury Maury Papers
+Blackwell Family Papers
+Blue Ridge Parkway Folklife Project
+Books About Music Before 1800
+Born in Slavery: Slave Narratives from the Federal Writers&#39; Project, 1936-1938
+Brady-Handy Collection
+Branch Rickey Papers
+Brazil Cordel Literature Web Archive
+Brazilian Elections Web Archive
+Bronislava Nijinska Collection
+Brumfield Collection
+Buckaroos in Paradise: Ranching Culture in Northern Nevada, 1945-1982
+Burma/Myanmar Elections Web Archive
+Business in America Web Archive
+By Popular Demand: Jackie Robinson and Other Baseball Highlights, 1860s-1960s
+Cabinet of American Illustration
+California as I Saw It: First-Person Narratives of California&#39;s Early Years, 1849-1900
+California Gold: Northern California Folk Music from the Thirties Collected by Sidney Robertson Cowell
+Cambini Quintets
+Cambodian Elections Web Archive
+Capital and the Bay: Narratives of Washington and the Chesapeake Bay Region, 1600-1925
+Captain Pearl R. Nye: Life on the Ohio and Erie Canal
+The Carnegie Hall Collection of Conversations with Composers
+Carnegie Survey of the Architecture of the South
+Carpenter Collection
+Carrie Chapman Catt Papers
+Cartoon Drawings
+Cartoon Drawings: Herblock Collection
+Cartoon Drawings: Swann Collection of Caricature and Cartoon
+Cartoon Prints, American
+Cartoon Prints, British
+Case Books
+A Century of Lawmaking for a New Nation: U.S. Congressional Documents and Debates 1774-1875
+Charles S. Hamlin Papers
+Charles Wellington Reed Papers, 1776 to 1926
+Chester Alan Arthur Papers
+Chicago Ethnic Arts Project Collection
+Children&#39;s Book Selections
+China-Pakistan Economic Corridor (CPEC) 2018-2020 Web Archive
+Chinese Rare Book Digital Collection
+Chronicling America
+Cities and Towns
+Civil Rights History Project
+Civil War
+Civil War Glass Negatives and Related Prints
+Civil War Maps
+Civil War Sheet Music Collection
+Civil War Soldier in the Wild Cat Regiment : Selections from the Tilton C. Reynolds Papers
+Clara Barton Papers
+Code of Federal Regulations
+College Women&#39;s Association of Japan Print Show Collection
+Colorado Folklife Project Collection
+Comics Literature and Criticism Web Archive
+Confederate States of America Records
+Coptic Orthodox Liturgical Chant and Hymnody
+Country Studies
+Crisis in Darfur 2006 Web Archive
+Curtis (Edward S.) Collection
+Daguerreotypes
+The Danny Kaye and Sylvia Fine Collection
+Dayton C. Miller Collection
+Department of Defense Annual Reports (1948-1996) and Military Branch Budget Justification Books (1980-1996)
+Detroit Publishing Company
+The Different Faces of Nationalism in Pakistan Web Archive
+Directory of US Newspapers in American Libraries
+Discovery and Exploration
+Documents from the Continental Congress and the Constitutional Convention, 1774-1789
+Dolly Parton and the Roots of Country Music
+Donald Benham Civil War Collection
+Drawings (Documentary)
+Drawings (Master)
+E. B. Washburne Papers
+Early American Sheet Music
+Early Copyright Records Collection, 1790 to 1870
+East European Government Ministries Web Archive
+Economics Blogs Web Archive
+Edwin McMasters Stanton Papers, 1818-1921
+Egypt 2008 Web Archive
+Egyptian Elections Web Archive
+Elizabeth Cady Stanton Papers
+Elliott Carter Collection
+Eltaher Collection
+Emile Berliner and the Birth of the Recording Industry
+Ernest Bloch Collection
+Eugene Meyer Papers
+Event Videos
+The Evolution of the Conservation Movement
+Executive Branch Federal Government Web Archive
+Farm Security Administration/Office of War Information Black-and-White Negatives
+Farm Security Administration/Office of War Information Color Photographs
+Federal Advisory Committee Web Archive
+Federal Courts Web Archive
+Federal Register
+Federal Theatre Project, 1935 to 1939
+Felix Mendelssohn at the Library of Congress
+Fenton Crimean War Photographs
+Fiddle Tunes of the Old Frontier: The Henry Reed Collection
+Finding Our Place in the Cosmos: From Galileo to Sagan and Beyond
+Fine Prints
+Fine Prints: Japanese, pre-1915
+Florida Folklife from the WPA Collections, 1937-1942
+Food and Foodways Web Archive
+Foreign Law Web Archive
+France in America
+Franklin Pierce Papers
+Franz Liszt at the Library of Congress
+Frederick Douglass Newspapers, 1847-1874
+Frederick Douglass Papers at the Library of Congress
+Frederick Law Olmsted Papers
+Freedom&#39;s Fortress: The Library of Congress, 1939-1953
+Frontline Diplomacy: The Foreign Affairs Oral History Collection of the Association for Diplomatic Studies and Training
+Gaetano Brunetti Manuscript Scores
+General Maps
+General News on the Internet Web Archive
+Genthe Collection
+Geographers on Film
+George Brinton McClellan Papers
+George S. Patton Papers: Diaries, 1910-1945
+George Washington Papers
+The Gerry Mulligan Collection
+Gideon Welles Papers
+Gladstone Collection of African American Photographs
+Goldstein Foundation Collection--Prints and Drawings
+Gottscho-Schleisner Collection
+Grabill Collection
+Great Conversations in Music
+Groups of Images (LOTs)
+Guide Records
+Hannah Arendt Papers
+Harris &amp; Ewing Collection
+Herndon-Weik Collection of Lincolniana
+Hidden Treasures at the Library of Congress
+Highsmith (Carol M.) Archive
+Hispano Music and Culture of the Northern Rio Grande: The Juan B. Rael Collection
+Historic American Buildings Survey/Historic American Engineering Record/Historic American Landscapes Survey
+Historic Sheet Music Collection, 1800-1922
+Home Sweet Home: Life in Nineteenth-Century Ohio
+Horace Greeley Papers
+Horace H. Lurton Papers
+Horydczak Collection
+Hotchkiss Map Collection
+Ilka Kolsky Artwork
+Indian Elections Web Archive
+Indigenous Law Web Archive
+Indonesian Elections Web Archive
+Inside an American Factory: Films of the Westinghouse Works, 1904
+International Tribunals Web Archive
+Inventing Entertainment: The Early Motion Pictures and Sound Recordings of the Edison Companies
+Iraq War 2003 Web Archive
+Irving Fine Collection, ca. 1914-1962
+James A. Garfield Papers
+James Buchanan and Harriet Lane Johnston Papers
+James K. Polk Papers
+James Madison Papers, 1723-1859
+James Monroe Papers
+Japanese Censorship Collection
+Japanese-American Internment Camp Newspapers, 1942-1946
+Jazz on the Screen Filmography
+Jedediah Hotchkiss Papers
+Joe Smith
+John Carvel Arnold Papers
+John G. Nicolay Papers
+John J. Pershing Papers
+John Tyler Papers
+Johnston (Frances Benjamin) Collection
+Joseph Holt Papers
+Jubal Anderson Early Papers
+Korab Collection
+Lamb Studios Archive
+Laotian Elections Web Archive
+Lars Schmidt Collection
+Last Days of a President: Films of McKinley and the Pan-American Exposition, 1901
+Lawrence &amp; Houseworth Collection
+LC Commissioned Composers Web Archive
+Legal Blawgs Web Archive
+Legislative Branch Web Archive
+Leonard Bernstein
+Lessing J. Rosenwald Collection
+Lewis Carroll Scrapbooks
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lewis H. Machen Family Papers
+LGBTQ+ Politics and Political Candidates Web Archive
+LGBTQ+ Studies Web Archive
+The Library of Congress Celebrates the Songs of America
+Library of Congress Concerts
+Library of Congress Websites Web Archive
+The Life of a City: Early Films of New York, 1898-1906
+Liljenquist Family Collection of Civil War Photographs
+Lomax Collection
+Look Collection
+Louisiana: European Explorations and the Louisiana Purchase
+Lowell Folklife Project Collection
+Macedonian Politics Web Archive
+Maine Acadian Cultural Survey Collection
+Malaysian Elections Web Archive
+Manuscript Division Web Archive
+Manuscripts from the Monasteries of Mt. Athos
+Manuscripts in St. Catherine&#39;s Monastery, Mount Sinai
+Manuscripts in the Libraries of the Greek and Armenian Patriarchates in Jerusalem
+Mapping the National Parks
+Maps of Liberia, 1830-1870
+The March King: John Philip Sousa
+Margaret Bayard Smith Papers
+Martha Graham at the Library of Congress
+Martin Van Buren Papers, 1787 to 1910
+Mary Ann Bickerdyke Papers
+Mary Church Terrell Papers
+Matson (G. Eric and Edith) Photograph Collection
+Meeting of Frontiers
+Middle East/North Africa Government Institutions Web Archive
+Military Battles and Campaigns
+Millard Fillmore Papers
+The Moldenhauer Archives - The Rosaleen Moldenhauer Memorial
+Montana Folklife Survey Collection
+Music for the Nation: American Sheet Music, ca. 1820-1860
+Music for the Nation: American Sheet Music, ca. 1870-1885
+Music Treasures Consortium
+Musical Instruments at the Library of Congress
+Nathan W. Daniels Diary and Scrapbook
+National American Woman Suffrage Association Collection
+National American Woman Suffrage Association Records
+National Child Labor Committee Collection
+National Jukebox
+National Photo Company Collection
+National Screening Room
+National Transportation Safety Board Orders, Petitions, and Decisions
+Nelson W. Aldrich Papers
+New Mexico Folklife Project Collection
+New York Journal and Related Titles, 1896-1899
+Newspaper Pictorials: World War I Rotogravures, 1914-1919
+North Korean Serials
+Now What a Time: Blues, Gospel, and the Fort Valley Music Festivals, 1938-1943
+Occupational Folklife Project
+Olmsted Associates Records
+Omaha Indian Music
+Omar Ibn Said Collection
+Origins of American Animation
+Panoramic Maps
+Panoramic Photographs
+Papal Transition 2005 Web Archive
+Papal Transition 2013 Web Archive
+Patriotic Melodies
+Performing Arts Web Archive
+Persian Language Rare Materials
+PH Filing Series Photographs
+Philip Henry Sheridan Papers
+Philippine Elections Web Archive
+Phillips/Mathée Collection
+Photochrom Prints
+Pioneering the Upper Midwest: Books from Michigan, Minnesota, and Wisconsin, ca. 1820-1910
+Polish Declarations of Admiration and Friendship for the United States, 1926
+Political Islam Web Archive
+Popular Graphic Arts
+Posters: Artist Posters
+Posters: Performing Arts Posters
+Posters: Spanish Civil War Posters
+Posters: World War I Posters
+Posters: WPA Posters
+Posters: Yanker Poster Collection
+Prairie Settlement: Nebraska Photographs and Family Letters, 1862-1912
+Pre-1700 Musical Treasures: Manuscript and Print Collection
+Printed Ephemera: Three Centuries of Broadsides and Other Printed Ephemera
+Prokudin-Gorskii Collection
+Prosperity and Thrift: The Coolidge Era and the Consumer Economy, 1921-1929
+Public Policy Topics Web Archive
+Publications of the Law Library of Congress
+Puerto Rico at the Dawn of the Modern Age: Nineteenth- and Early-Twentieth-Century Perspectives
+Quilts and Quiltmaking in America, 1978-1996
+Ragtime
+Railroad Maps, 1828-1900
+Rare Book Selections
+Rhode Island Folklife Project Collection
+Robert Lansing Papers
+Rochambeau Map Collection
+The Roger Reynolds Collection
+Roman Totenberg Papers
+Roman Totenberg Papers: Totenberg-Wilk Holocaust Material
+Rosa Parks Papers
+Royal Cremation Ceremony for H.M. King Bhumibol Adulyadej of Thailand Web Archive
+Salmon P. Chase Papers
+Samuel Barber at the Library of Congress
+Samuel F. B. Morse Papers at the Library of Congress, 1793-1919
+Samuel J. Gibson Diary and Correspondence
+Sanborn Maps
+Science Blogs Web Archive
+Selected Datasets
+Selected Digitized Books
+Selections from the Katherine Dunham Collection
+Selections from the National Film Registry
+September 11, 2001 Web Archive
+September 11, 2001, Documentary Project
+Show Music on Record
+Sigmund Freud Papers
+Sikkim Photos (Kandell Collection)
+Sir Francis Drake (Kraus Collection)
+Slaves and the Courts, 1740-1860
+Small Press Expo Comic and Comic Art Web Archive
+South Pacific Islands Web Archive
+South-Central Georgia Folklife Project Collection
+Southern Mosaic: The John and Ruby Lomax 1939 Southern States Recording Trip
+The Spalding Base Ball Guides, 1889-1939
+Spanish Legal Documents (15th-19th Centuries)
+The Spanish-American War in Motion Pictures
+Sports Byline
+Sri Lankan Elections Web Archive
+Stars and Stripes: The American Soldiers&#39; Newspaper of World War I, 1918-1919
+Stereograph Cards
+Susan B. Anthony Papers
+Tending the Commons: Folklife and Landscape in Southern West Virginia
+Thaddeus Stevens Papers
+Thai Elections Web Archive
+Theodore Roosevelt Papers
+Theodore Roosevelt: His Life and Times on Film
+Thomas Biggs Harned Collection of Walt Whitman Papers
+Thomas Jefferson Papers, 1606-1827
+Tibetan Oral History Archive Project
+Timor-Leste 2010-2011 Web Archive
+Timor-Leste Elections Web Archive
+Tissandier Collection
+Today in History
+Traditional Music and Spoken Word
+Transit of Venus March
+Transportation and Communication
+U.S. Code
+U.S. Reports
+U.S. Telephone Directory Collection
+Ulysses S. Grant Papers
+United States Congressional Web Archive
+United States Elections Web Archive
+United States Supreme Court Nominations Web Archive
+Van Vechten Collection
+Variety Stage Sound Recordings and Motion Pictures
+Veterans History Project
+Veterans History Project Web Archive
+Vietnam-Era Prisoner-of-War/Missing-in-Action Database
+Vietnamese Elections Web Archive
+Visual Image Web Archive
+Voices from the Dust Bowl: the Charles L. Todd and Robert Sonkin Migrant Worker Collection, 1940-1941
+Voices Remembering Slavery: Freed People Tell Their Stories
+Walt Whitman Papers (Miscellaneous Manuscript Collection)
+Walt Whitman Papers in the Charles E. Feinberg Collection
+War of 1812 Bicentennial Web Archive
+Warren G. Harding-Carrie Fulton Phillips Correspondence
+Washington During the Civil War: The Diary of Horatio Nelson Taft, 1861-1865
+Web Cultures Web Archive
+Webcomics Web Archive
+Webinars
+Wilbur and Orville Wright Papers at the Library of Congress
+William A. Gladstone Afro-American Military Collection
+William H. Taft Papers
+William Henry Harrison Papers
+William McKinley Papers
+William P. Gottlieb Collection
+William Speiden Journals
+William T. Sherman Papers
+Winter Olympic Games 2002 Web Archive
+Wm. Oland Bourne Papers
+Women of Protest: Photographs from the Records of the National Woman&#39;s Party
+Women&#39;s and Gender Studies Web Archive
+Women&#39;s Suffrage in Sheet Music
+Woodrow Wilson Papers
+Woody Guthrie and the Archive of American Folk Song: Correspondence, 1940-1950
+Working in Paterson: Occupational Heritage in an Urban Setting
+World War History: Newspaper Clippings, 1914-1926
+World War I Centennial Web Archive
+World War I Sheet Music
+World War II Military Situation Maps
+World&#39;s Transportation Commission
+Wright Brothers Negatives
+Yiddish American Popular Sheet Music
+Zachary Taylor Papers
+Zine Web Archive
+Zora Neale Hurston Plays at the Library of Congress
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="looking-more-closely-at-collections">
+<h2>Looking more closely at Collections<a class="headerlink" href="#looking-more-closely-at-collections" title="Permalink to this heading">#</a></h2>
+<p>We hear you saying “Ohh cool, you have World War I Sheet Music! “
+Yes we do! Let’s grab the titles and the front covers:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span> <span class="c1">#tell python that we want to reuse some code to display the images for us</span>
+
+<span class="n">wwi_sheet_music</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.loc.gov/collections/world-war-i-sheet-music/?fo=json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="c1">#get the JSON data</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">wwi_sheet_music</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">])</span> <span class="c1">#print out the title</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;image_url&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span> <span class="c1">#display the front cover art</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>All the way from San Jose
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200211896/0001.tif/239"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sailor&#39;s life
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206210/0001.tif/134"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>For the boys who did not return
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206211/0001.tif/133"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The  parting sailor boy&#39;s vow
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206212/0001.tif/135"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>God speed the day we get the Kaiser&#39;s goat
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206213/0001.tif/147"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>On to Berlin spirit of 1918
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206214/0001.tif/137"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hats off to U.S.A
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206215/0001.tif/138"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hats off to U.S.A
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206216/0001.tif/138"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Now he is over
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206217/0001.tif/132"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Kaiser Bill, world&#39;s assassin
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206218/0001.tif/141"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>America, the greatest of them all
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206219/0001.tif/138"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Good bye my boy we&#39;re proud to see you go
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206220/0001.tif/250"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Ev-ry-bod-y takes you by the hand in home sweet home
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206221/0001.tif/137"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Arise! ye stalwart sons
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206222/0001.tif/139"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>When I come back to you op. 75, no. 1
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206223/0001.tif/245"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Since my boy has gone away
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206224/0001.tif/134"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The  Irish Kaiser
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206225/0001.tif/143"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Safe for democracy New America
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206226/0001.tif/138"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Safe for democracy Take your pen and sign the peace
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206227/0001.tif/140"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Safe for democracy When my boy comes marching home
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206228/0001.tif/139"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lullaby of war while your daddy&#39;s far away
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206229/0001.tif/141"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Welcome home to our soldier boys
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206230/0001.tif/137"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>There is no place like home dear in the good old U.S.A
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206232/0001.tif/141"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The  working man
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206233/0001.tif/139"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Lafayette--we are here!
+</pre></div>
+</div>
+<div class="output text_html"><img src="https://lcweb2.loc.gov/diglib/media/loc.natlib.ihas.200206235/0001.tif/141"/></div></div>
+</div>
+</section>
+<section id="asking-another-question">
+<h2>Asking another question<a class="headerlink" href="#asking-another-question" title="Permalink to this heading">#</a></h2>
+<p>You noticed that the sheet music covers sometimes include publishers. You wonder if you can get more details about that. Yes, you can!
+Much of the sheet music was published by multiple organizations or people and around the country and world.
+We’ll use some python code to display the list of publishers and created date of the titles:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wwi_sheet_music</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.loc.gov/collections/world-war-i-sheet-music/?fo=json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">wwi_sheet_music</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]:</span>
+    <span class="n">item_json</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;?fo=json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&#39;</span><span class="si">%s</span><span class="s2">&#39;, </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">item_json</span><span class="p">[</span><span class="s2">&quot;item&quot;</span><span class="p">][</span><span class="s2">&quot;title&quot;</span><span class="p">],</span> <span class="n">item_json</span><span class="p">[</span><span class="s2">&quot;item&quot;</span><span class="p">][</span><span class="s2">&quot;created_published&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;All the way from San Jose&#39;, [&#39;1948, monographic.&#39;, &#39;SANTLY-JOY, Inc. Music Publishers,, New York :, [1948].&#39;]
+&#39;Sailor&#39;s life&#39;, [&#39;1919, monographic.&#39;, &#39;Delmar Music Co.,, Chicago :, [1919].&#39;]
+&#39;For the boys who did not return&#39;, [&#39;1919, monographic.&#39;, &#39;Legters Music Co.,, Chicago :, [1919].&#39;]
+&#39;The  parting sailor boy&#39;s vow&#39;, [&#39;1918, monographic.&#39;, &#39;Ehrgott &amp; Kahl,, Union Square, N.Y. :, [1918].&#39;]
+&#39;God speed the day we get the Kaiser&#39;s goat&#39;, [&#39;1918, monographic.&#39;, &#39;Adam D. Kahler,, [United States?] :, [1918].&#39;]
+&#39;On to Berlin spirit of 1918&#39;, [&#39;1918, monographic.&#39;, &#39;O.L. Burch,, Denver, Colo. :, [1918].&#39;]
+&#39;Hats off to U.S.A&#39;, [&#39;1917, monographic.&#39;, &#39;Howard Earl Jaynes,, Detroit, Mich. :, [1917].&#39;]
+&#39;Hats off to U.S.A&#39;, [&#39;monographic.&#39;]
+&#39;Now he is over&#39;, [&#39;1919, monographic.&#39;, &#39;Delmar Music Co.,, Chicago:, [1919].&#39;]
+&#39;Kaiser Bill, world&#39;s assassin&#39;, [&#39;monographic.&#39;]
+&#39;America, the greatest of them all&#39;, [&#39;monographic.&#39;]
+&#39;Good bye my boy we&#39;re proud to see you go&#39;, [&#39;monographic.&#39;]
+&#39;Ev-ry-bod-y takes you by the hand in home sweet home&#39;, [&#39;1919, monographic.&#39;, &#39;Triangle Music Pub. Co.,, New York :, [1919].&#39;]
+&#39;Arise! ye stalwart sons&#39;, [&#39;monographic.&#39;]
+&#39;When I come back to you op. 75, no. 1&#39;, [&#39;monographic.&#39;, &#39;Willis Music Company,, Cincinatti, O. :, [1919].&#39;]
+&#39;Since my boy has gone away&#39;, [&#39;monographic.&#39;]
+&#39;The  Irish Kaiser&#39;, [&#39;1917, monographic.&#39;, &#39;Edwin Forrest Kamerly,, Philadelphia :, [1917].&#39;]
+&#39;Safe for democracy New America&#39;, [&#39;monographic.&#39;]
+&#39;Safe for democracy Take your pen and sign the peace&#39;, [&#39;monographic.&#39;]
+&#39;Safe for democracy When my boy comes marching home&#39;, [&#39;monographic.&#39;]
+&#39;Lullaby of war while your daddy&#39;s far away&#39;, [&#39;monographic.&#39;, &#39;Thos. Goggan &amp; Bros.,, San Antonio, Texas :, [1917].&#39;]
+&#39;Welcome home to our soldier boys&#39;, [&#39;1918, monographic.&#39;, &#39;Jennie D. Kane,, Stroudsburg, Pa. :, [1918].&#39;]
+&#39;There is no place like home dear in the good old U.S.A&#39;, [&#39;1918, monographic.&#39;, &#39;Lyric Music Co.,, Seattle, Wash., U.S.A. :, [1918].&#39;]
+&#39;The  working man&#39;, [&#39;monographic.&#39;, &#39;Lyric Music Publishing Company,, Seattle, U.S.A. :, [1918].&#39;]
+&#39;Lafayette--we are here!&#39;, [&#39;monographic.&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="digging-into-the-results">
+<h2>Digging into the results<a class="headerlink" href="#digging-into-the-results" title="Permalink to this heading">#</a></h2>
+<p>Now that you have the list of who published the sheet music and when, you might want to learn where they were published.
+Let’s create a graph of the places where the sheet music was published for the first 25 items. Note, sheet music can have multiple places where it was published.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">location_counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="n">wwi_sheet_music</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.loc.gov/collections/world-war-i-sheet-music/?fo=json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">wwi_sheet_music</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="c1">#check that the item has a location, since it is optional</span>
+        <span class="k">for</span> <span class="n">location</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]:</span>
+            <span class="n">location_counter</span><span class="p">[</span><span class="n">location</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1">#add one for the location</span>
+    
+<span class="n">locations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">location_counter</span><span class="p">)</span>
+<span class="n">locations</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x110712bd0&gt;
+</pre></div>
+</div>
+<img alt="../_images/0905010c66d87fabb152e9253debfd3da843aac6fa3cee230a932e66603fb32b.png" src="../_images/0905010c66d87fabb152e9253debfd3da843aac6fa3cee230a932e66603fb32b.png" />
+</div>
+</div>
+</section>
+<section id="further-research">
+<h2>Further Research<a class="headerlink" href="#further-research" title="Permalink to this heading">#</a></h2>
+<p>Check out the “ask a librarian” section of our website: <a class="reference external" href="https://www.loc.gov/rr/askalib/">https://www.loc.gov/rr/askalib/</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./loc.gov JSON API"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorials for Data Exploration</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Accessing%20images%20for%20analysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Accessing images from the loc.gov JSON API for image analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-json">What is JSON?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-skills-do-you-need-to-navigate-it">What skills do you need to navigate it?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-you-do-with-it">What can you do with it?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-look-at-the-trending-content">A look at the trending content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ok-so-i-got-some-text-that-looks-like-gibberish-now-what">Ok so I got some text that looks like gibberish, now what?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-does-it-stop-after-40">Why does it stop after 40?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#looking-more-closely-at-collections">Looking more closely at Collections</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#asking-another-question">Asking another question</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digging-into-the-results">Digging into the results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-research">Further Research</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Library of Congress staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <header class="loc-header">
+    <div class="loc-logo">
+        <a href="https://www.loc.gov/"><img src="/data-exploration/_static/LOC_Logo_horiz_inv.png" alt="The Library of Congress logo" title="Go to the Library of Congress homepage" /></a>
+    </div>
+    <div class="project-description">
+        <p>In-depth tutorials for working with Library of Congress data via APIs and code. <a href="https://github.com/libraryOfCongress/data-exploration/" class="button small">View the code</a></p>
+    </div>
+</header>
+<footer class="loc-footer">
+    <p>In-depth tutorials for working with Library of Congress data via APIs and code.</p>
+    <ul class="loc-footer-nav-list">
+        <li><a href="https://github.com/libraryOfCongress/data-exploration/">Source code</a></li>  
+        <li><a href="https://www.loc.gov/">The Library of Congress</a></li>
+        <li><a href="https://loc.gov/legal">Privacy Policy</a></li>
+        <li><a href="https://www.loc.gov/accessibility/">Accessibilty</a></li>
+        <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Github Privacy Statement</a></li>
+        <li><a href="https://creativecommons.org/publicdomain/zero/1.0/">License</a></li>
+        <li><a href="mailto:LC-Labs@loc.gov">Contact</a></li>
+    </ul>
+</footer>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

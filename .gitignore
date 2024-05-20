@@ -6,11 +6,16 @@
 # ignore built site
 /docs/_site/*
 
-# ignore all Jupyter notebook checkpoints
-**/*.ipynb_checkpoints
-
 # ignore outputs and checkpoints for Rosenwald Script
 loc.gov JSON API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/images
 loc.gov JSON API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/.ipynb_checkpoints
+
+# Notebooks
+**/*.ipynb_checkpoints
+**/*.ipynb_checkpoints/
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
+_build/.doctrees/*
+_build/jupyter_execute/*
 
 *.pyc

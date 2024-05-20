@@ -1,0 +1,32 @@
+# Book settings
+title: Tutorials for Data Exploration
+author: Library of Congress staff
+html:
+    extra_footer: |
+        <header class="loc-header">
+            <div class="loc-logo">
+                <a href="https://www.loc.gov/"><img src="/data-exploration/_static/LOC_Logo_horiz_inv.png" alt="The Library of Congress logo" title="Go to the Library of Congress homepage" /></a>
+            </div>
+            <div class="project-description">
+                <p>In-depth tutorials for working with Library of Congress data via APIs and code. <a href="https://github.com/libraryOfCongress/data-exploration/" class="button small">View the code</a></p>
+            </div>
+        </header>
+        <footer class="loc-footer">
+            <p>In-depth tutorials for working with Library of Congress data via APIs and code.</p>
+            <ul class="loc-footer-nav-list">
+                <li><a href="https://github.com/libraryOfCongress/data-exploration/">Source code</a></li>  
+                <li><a href="https://www.loc.gov/">The Library of Congress</a></li>
+                <li><a href="https://loc.gov/legal">Privacy Policy</a></li>
+                <li><a href="https://www.loc.gov/accessibility/">Accessibilty</a></li>
+                <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Github Privacy Statement</a></li>
+                <li><a href="https://creativecommons.org/publicdomain/zero/1.0/">License</a></li>
+                <li><a href="mailto:LC-Labs@loc.gov">Contact</a></li>
+            </ul>
+        </footer>
+
+# The following values assume that you are executing the notebooks yourself before you build
+# Re-execution of notebooks are turned off since these scripts take a very long time to (re-)build
+# Look here for more options: https://jupyterbook.org/en/stable/content/execute.html
+execute:
+  execute_notebooks: 'off'
+  stderr_output: remove

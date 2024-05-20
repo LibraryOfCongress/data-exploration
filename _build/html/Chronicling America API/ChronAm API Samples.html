@@ -1,0 +1,779 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>ChronAm API Guide &#8212; Tutorials for Data Exploration</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/loc.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/loc.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Chronicling America API/ChronAm API Samples';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Exploring the Memegenerator Metadata" href="../Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html" />
+    <link rel="prev" title="Analyzing and visualizing cartographic metadata from loc.gov" href="../loc.gov%20JSON%20API/maps/maps-analyzing-metadata.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tutorials for Data Exploration</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Tutorials for Data Exploration
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Loc.gov JSON API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../loc.gov%20JSON%20API/LOC.gov%20JSON%20API.html">LOC.gov JSON API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.html">Accessing images from the loc.gov JSON API for image analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loc.gov%20JSON%20API/Dominant%20colors.html">Color clusters in images in Library of Congress collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loc.gov%20JSON%20API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Connecting the image file to the metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loc.gov%20JSON%20API/Extracting%20location%20data%20for%20geovisualization.html">Extracting location data from the loc.gov API for geovisualization</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../loc.gov%20JSON%20API/maps/maps-analyzing-metadata.html">Analyzing and visualizing cartographic metadata from loc.gov</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chronicling America notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">ChronAm API Guide</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Web Archives notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html">Exploring the Memegenerator Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Sets/Web%20Archives/getting_started_with_giphy.html">Exploring the GIPHY.com Metadata</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/digitized-books.html">LoC Data Package Tutorial: Selected Digitized Books Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/directories.html">LoC Data Package Tutorial: City and Telephone Directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/telephone.html">LoC Data Package Tutorial: Digitized Telephone Directories Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/stereographs.html">LoC Data Package Tutorial: Stereograph Card Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/austro-hungarian-maps.html">LoC Data Package Tutorial: Austro-Hungarian maps set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/gen-coll-assessment.html">LoC Data Package Tutorial: General Collections Assessment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Library API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../loc.gov%20IIIF%20API/IIIF.html">IIIF API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loc.gov%20Sitemaps%20API/Sitemap.html">What are Sitemaps?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../loc.gov%20web%20interface/OpenSearch.html">OpenSearch Guide</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Chronicling America API/ChronAm API Samples.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>ChronAm API Guide</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">ChronAm API Guide</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-chronicling-americas-api">What is Chronicling America’s API?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-you-do-with-it">What can you do with it?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-stuff">Make stuff!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discover-stuff">Discover stuff!</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-discover-and-make">Let’s Discover and Make</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-results-arizona">Exploring Results: Arizona</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-else-can-we-do-end-or-extend-debates">What else can we do? End or extend Debates</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#further-research">Further Research</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chronam-api-guide">
+<h1>ChronAm API Guide<a class="headerlink" href="#chronam-api-guide" title="Permalink to this heading">#</a></h1>
+<p>Chronicling America is a website containing historic newspapers and the Library of Congress has created an API to allow for automated processes to interact with that data.</p>
+<section id="what-is-chronicling-americas-api">
+<h2>What is Chronicling America’s API?<a class="headerlink" href="#what-is-chronicling-americas-api" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>a set of subroutine definitions, protocols, and tools for building software and applications…</p></li>
+</ul>
+<p>Only kidding! It’s some text on a screen. Go ahead, you can read it!</p>
+<p><a class="reference external" href="http://chroniclingamerica.loc.gov/lccn/sn85058396/1916-09-12/ed-1/seq-2.json">http://chroniclingamerica.loc.gov/lccn/sn85058396/1916-09-12/ed-1/seq-2.json</a>
+Not only can you read it, so can different programs and applications, making it a flexible and powerful tool for researching within Chronicling America. To use the Chronicling America API, you’ll need a</p>
+<ul class="simple">
+<li><p>Willingness to try (and maybe mess up and try again)</p></li>
+<li><p>Curiosity</p></li>
+<li><p>Reading - closely and carefully</p></li>
+</ul>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="what-can-you-do-with-it">
+<h1>What can you do with it?<a class="headerlink" href="#what-can-you-do-with-it" title="Permalink to this heading">#</a></h1>
+<p>There are a lot of possibillities! Look at some examples of what can be done with Chronicling America’s API.
+You can:</p>
+<section id="make-stuff">
+<h2>Make stuff!<a class="headerlink" href="#make-stuff" title="Permalink to this heading">#</a></h2>
+<p>For example, researchers made an interactive map of the United States that allows visitors to visualize Chronicling America search results across space and time.</p>
+</section>
+<section id="discover-stuff">
+<h2>Discover stuff!<a class="headerlink" href="#discover-stuff" title="Permalink to this heading">#</a></h2>
+<p>In 2016, challenge participants were asked “How can you use open data to explore history?” Members of the public were invited to craft web-based projects that demonstrated the potential for using the data found in Chronicling America.</p>
+<p>Learn more about these and other successful projects from this challenge at this blogpost on The Signal <a class="reference external" href="https://blogs.loc.gov/thesignal/2016/08/the-neh-chronicling-america-challenge-using-big-data-to-ask-big-questions/">https://blogs.loc.gov/thesignal/2016/08/the-neh-chronicling-america-challenge-using-big-data-to-ask-big-questions/</a></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="let-s-discover-and-make">
+<h1>Let’s Discover and Make<a class="headerlink" href="#let-s-discover-and-make" title="Permalink to this heading">#</a></h1>
+<p>Ready to explore? Let’s go!
+Suppose you want to find out how many pages of newspapers we have for Arizona? You’ll see that we ask for results by state, and specifically those from Arizona.
+In the next block you just need to fill in the API URL. For example, put “<a class="reference external" href="http://chroniclingamerica.loc.gov/search/pages/results/?state=Arizona&amp;amp;format=json">http://chroniclingamerica.loc.gov/search/pages/results/?state=Arizona&amp;format=json</a>” in there. By looking at the JSON that is returned we can see that we are getting the first page of results, which includes 20 items.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span> <span class="c1">#import the library that we use to make the http request</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://chroniclingamerica.loc.gov/search/pages/results/?state=Arizona&amp;format=json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">r</span><span class="p">[</span><span class="s1">&#39;itemsPerPage&#39;</span><span class="p">]</span> <span class="c1">#print out the number of items per page:</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exploring-results-arizona">
+<h2>Exploring Results: Arizona<a class="headerlink" href="#exploring-results-arizona" title="Permalink to this heading">#</a></h2>
+<p>Let’s see what the first result looks like - thanks to Chronicling America OCR, we can actually read the text from the newspaper page. Check it out! First, you’ll ask for:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="p">[</span><span class="s1">&#39;items&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;ocr_eng&#39;</span><span class="p">]</span> <span class="c1">#no need to repeat the code from above since jupyter notebooks retains it</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;TilU AIUZOXA JIU\&#39;U1I1jICA: SUNDA.Y SlOIiMKU, JLTKK lO, 1\&#39;JOO\nTHE ARIZONA REPUBLICAN\nPublished Every Day in the Year bj\nTHE\nArizona Publishing Co.\nGEO. W. VICKERS. Pres. and Cen. Mg.\nExclusive Morning Associated Press\nP\&#39;spatches. . ,\nThe only Perfecting Prss In Arizona\nThe only battery of Linotypes In\nArizona.\nPublication office: 35-38 East Adams\nstreet. Telephone Main 47.\nEntered at the postoffiee at Phoenix,\nArizona, as mall matter of the second\nclass.\nSUBSCRIPTION RATES.\nBy mail, dally, one year WOO\nWeekly, one year 2.00\nCash in advance.\nBY CARRIER.\nDally, per month 73 cts\nUNlONfcQLrL\nPHOENIX. ARIZONA, JL\&#39;XLO U. 1906.\nA BEGGING SENATORSHIP.\nThe rejection by that unambitious ag\nlku\&#39;turist, the Hon. Dwtght Coburn. of\nthe appointment to the vacant Kansas\nsenatorship need not be attributed to\nhis utter disregard of pomp and pow\ner. Mr. Coburn is already in power,\nvast power, practically illimitab\&#39;.e pow\ner. He is lord of the immeasurable\ncornfie\&#39;ds of Kansas, cf wheat fields so\nwide that the human eye cannot reach\nthe boundaries. Mr. Coburn is at tha\nhead of the agricultural department\nof the most agricultural state in the\nunion. What more could he desire\nwithout subjecting himself to the sus\npicion of sordidness?\nBesides the prof fere J gift was not as\nalluring at c\&#39;ose range as it might have\nappeared from a distance to be. It will\ntake a lot of disinfecting to rid it of\nthe smell of Burton. The odor was one\nwhich must have boon nauseating to\none whose nostrils had become used to\nthe fragrance of new mown hay and\nthe healthful though frequently homely\nsmells of the soil.\nA United States senatorship is some\nthing we are not accustomed to see\ndespised. We have known men to pol\nlute their souls for an opportunity to\npollute a toga. It can be readily un\nderstood though that a pure minded\nman with an over nice sense or uonor\nwould hesitate to mount to a seat to\nwhich so much of dishonor has at\ntached. Then there was not much tim given\nto a successor of Burton to make the\ncountry forget Burton. The term wi 1\nexpire next March. It is this latter\nfact that probably moved Governor\nHoch to nominate Mr. Coburn to whom\nhe owed no overwhelm;ngpo\&#39;itical debt,\nsuch as the services of Judge Caldwell\nimposed upon and such as in a small\ner measure he owed to JuJge Benson,\nto whom he has tendered the oppoim\nment. Both these men contributed\nlargely to his political making.\nReverting to Mr. Coburn, there is an\nother possible reason why he declined\nthe senatorship which was held out to\nhim. Perhaps the;e is a touch of sup\nerstition about him.. That senatorial\nline from Lane, the suicide down,\nmight set even an unsupersti\ntious man to thinking. It is\nan unbroken line of misfor\ntune, sudden physical or political death\nand dishonor. It has long been ca,l!sl\nin Kansas, the fatal succession.&quot;\nIt is a pleasing peculiarity of Judge\nKent\&#39;s adjudication of watjr disputes,\nthat the litigants are not kept wait\ning long for a status of some sort. In\nthe complex relations of the water\nusers of the valley to one another it\nis difficult to pick out the exact rights\nof any of them. There is sucn a thing\nthough, as distributing irrigating water\nin such a way as to serve the greatest\npossible number with the least possible\nprejudice to the rights of any. That\nwas accomp\&#39;ishod by the- decree of yes\nterday. All the litigants of cours.\ncould not hae all they wanted, biit\nthey must fee: that thy did very well\nwith 32.1X10 inches in the river when\nthere ought to have been at least 60, 0n0.\nTHE PROBLEM OF PRESIDENTS.\nMr. Williams\&#39; suggestion that ex-\npresidents, ox-blacksmiths and ox-car-rentors\nshould equally become the\ncharges of the country will perhaps\nmeet with more favor throughout the\ncountry than the other suggestion that\nformer presidents be maintained in a\nstation of life to which they had been\nelevated; sometimes by accident. We\nlook upon the presidency as a more or\nless sacred office in which the person\nality of the occupant is for four or\neight years lost. But at the end of\nhis term he regains his personality,\ntakes it away with him and becomes a\nplain America n citizen, with the ad\nvantage over his fellow cili.ens of hav\ning xecured a place more- or !\&#39;ss oft\nin the history of hi.--, country. No pres\nident has ever retired from ollice in\nwant or in the vicinity of want. None\nare likely to do so, but most of them\nhave retired with earning capabilities\nincreased by prestige.\nIt is generally admitted, though, thai\npresidents should be better paid; that\nthey should not only receive a more\nmunificent salary, or, rather, a salary\nmore nearly munificent, ana tliat jro-\nvision should be made for their neces\nsarily heavy expenses.\nBut it is undoubtedly the belief o\nthe majority of Americans that, having\nretired from office, presidents should\nbo welcomed bark to the ranks on\nequal terms.\nStill, the proposition for the pension\ning of presidents is immensely superior\nto one advanced and quite widely advo\ncated a couple of years ago of creating\nfor them a sort of aristocracy similar\nto that of the Elder Statesmen of\nJapan.\nWe have other problems much more\nvital than this one of our ex-prcsl-dents.\nAmericans will welcome home that\nplucky adopted daughter. Miss May\nSutton, with as great fervor as if her\nlaurels were not soiled by defeat. One\ncannot always be a tennis champion\nor any other kind of a champion worth\nbeing.\nIs it not possible that the failure of\nthe water works at Cincinnati yester\nday was a visitation of a just provi\ndence provoked by a Cincinnati court\ntaking jurisdiction in the rhoenix\nwater works matter?\nLittle James\n(Thc Views of all Parties to the Late\nPacking House Expose.)\nThis here whole Country\&#39;s been give\na Emmytick last week. A Emmytick\nis something \&#39;at Works on th\&#39; Stum\nmick like a Crime does on the Con\nscience. It produces what some ad\nvanced Sientists calls Intestnle Re\nmorse. It\&#39;s something \&#39;at makes you\nwish you hadn\&#39;t.\nIt\&#39;s been give this time in what\&#39;s\ncalled a Alleypathic dose to Disting\nwish it f\&#39;um them MiuUoor Doses what\nth\&#39; Homypathists gives which only ex\ncites th\&#39; Stummick to Riot an\&#39; Disor\nder. A Alleypathic close is Calcylated\nto raise a Generle Inscrreckshun an\nthen put it down by makin\&#39; a Clean\nSwec p.\nThis was th\&#39; first time \&#39;at they was\neves a Emmytick give to everybody\nwithout regard to Age, Sects or Collor,\n\&#39;cept them \&#39;at hadn\&#39;t never et no Pack\nin\&#39; house Proddux. It was fun fer\nthem to stand by an\&#39; watch th\&#39; rest of\nth\&#39; 80 Millyun.s of People in th\&#39; United\nStates turn theirselfs Inside out to see\nif they was any traces of that there\nCand Beef Lingrrin\&#39; anywhere into \&#39;em\nyit.\nThis wholesale Emmytick was ad\nminiistered by two Emminent Alley\npaths called Docter Xeill an\&#39; Docter\nRetinoids, which opened up a oflis in\nth\&#39; Stock Yards Districk in Chicago,\nwhere they compounded th\&#39; Medicine\nwhich has give th\&#39; Whole Nashun th\&#39;\nSee sickness.\nTh\&#39; Docters they sc-z: &quot;We know this\nis pretty Ruff on th\&#39; Pokes but it\&#39;ll be\nRood fer their insides. We ain\&#39;t mix\nin\&#39; it up Speshal\&#39;.y fer th&quot; Peeple. Th&quot;\nI\&#39;ackin&quot; Houses is th&quot; Ducks we\&#39;re af\nter, an\&#39; in order to git rid of \&#39;em th\&#39;\nWhole Body pollytick \&#39;II haf to suffer\nsome. When a man takes a Ordnary\nEmmytick it makes him sjick clean to\nhis Extremitous an&quot; he wonders why\nthey can\&#39;t git up a medicin \&#39;at \&#39;II do its\nwork without afectin\&#39; th\&#39; Whole Sys\ntem that away. We can\&#39;t avo\&#39;d cre\nalin\&#39; this here Nashnle Nawsea but th\&#39;\ncountry\&#39;ll be much healthier when it\&#39;s\nall over after it Throze up tb Packin\&#39;\nHouses.&quot;\nThe 1\&#39;okss while they was Rithin\&#39; in\nPane they sez: &quot;Mebby this here\&#39;s all\nfer th\&#39; Best but we wisht \&#39;at Docter\nNeill an\&#39; Docter Rennolds had \&#39;a\&#39; give\nus Cloroform an\&#39; removed these here\nPackin\&#39; Houses by a Surgicle Oper\nar.hun of some k\&#39;nd so\&#39;s it wuddent a\nupsot onr Kizzicle Systems sV\&#39;\nBut the Reel howl comes f\&#39;um th\&#39;\nPackers theirselfs as soon as they got\nso\&#39;s \&#39;at they could Speek. They asts\n&quot;Is this here what you call a Paternle\nGuverment \&#39;at\&#39;s tryin&quot; to Encurridge\nus to work fer a Commershle Sup\npremisy among the Nashuns of th\&#39;\nEarth? Jist when we git things start\ned rite it comes along an\&#39; Thto.o us\nDown. Spose we was a Pixel i in\&#39; th\&#39;\nPeeple. Th\&#39; guverment could Reform\nus if it wanted to without Bustin\&#39; us\nI up in B:zness. We wasn\&#39;t Reely doin\&#39;\nno harm. If th\&#39; Fokes was a eatin\&#39;\nSuperanuyated Horses an\&#39; thought it\nwas Chicken they was satisfide. We\nwas sellin\&#39; \&#39;em th\&#39; Horse meat as\ncheap as we could an\&#39; make a liviu\&#39;\nProfit. Mebbe we didn\&#39;t cleen up our\nSlotter Houses morcn\&#39;n wunst about\nevery so offen an\&#39; mebbe we got a lot\no\&#39; Lothesome diseases canned uo an\&#39;\nput onto th\&#39; market, but them &quot;tTtrks\nwasn\&#39;t Advertised on th\&#39; Handsome\nLabils of th\&#39; cans which is th\&#39; highest\nSpeciment.s of th\&#39; Printers\&#39; Art.\n&quot;Th-se here Docters Neill an&quot; Reti\nnoids lias made more people sick hi\ntheir stummicks in a single day all\nover th\&#39; United States \&#39;n our com\nbined Beef Trust\&#39;s done in its Whole\nCarear.\n&quot;But if tli&quot; guverment was Hell bent\non our Rforniashun, what did it come\na Buttiir in this away fer? Why didn\&#39;t\nit call us out to Wun Side an\&#39; say. \&#39;Wo\ngot our ize on you; Now. you do Dif\nfrunt.\&#39; We\&#39;re Intelligent Gentlemen.\nWe can take a hint without bein\&#39;\nburied in th\&#39; Debrees of our Bizness.&quot;\nLITTLE JAMES.\nEven the boastful man has but lit\ntle to say about his go d brick invest\nments. Chicago News.\no\nMelczer Bros. Co., sole dealers Old\nRutledge.\n\&#39;t\&#39;Vk fiVi\&#39;-ifeSS\n!AU0G!(\nEXTRA LOW PRICE\nat\nTHE FAIR\n212 E. Washington Street,\nI\ni\n1 ; jj\nr 1\nM\nit\nid Timar - - - -finnr, i . , M ,, hlt j ,i , , , ,\nAV. l&amp;LrllS h On North Fourth Ave. we arc- It I f\nMENTONE\nSANATORIUM\nSituated at Mentone. California,\non Santa l\&#39;e and Southern Pa\ncific railroads, 3 miles from Bed\nlands, an- all-the-year-round re\nsort for the treatment of throat\nand lung troubles. Altitude, 1800\nfeet fanned by mountain ana\nocean breezes. Kates, including\nroom or tent, board and all pro\nfessional services, $12.50 to $20\nper week.\nBeautifully illustrated booklet\nfree. A postal card will fetch\nit.\nAddress\nA. R. SCHULTZ, Business Mgr.\nMentone, California.\nMiller\&#39;s\nDrug Store\nN. E. Cor. Center\nand Wash Sts.\nPhone Main 113.\nExquisite\ndrinks of every\ngood kind at\nthe Big White\nOnyx Fountain\nStop today.\nProof\nWe have been claiming\nmost satisfactory drug\nice in this city. Test\nclaims. Compare our quali\nties and prices. Consider our\nsystem of double checking all\nprescriptions, which elimi\nnates the possibility of error.\nGive our drug service a trial.\nWe have no fear but what you\nu ill come again.\nOpen All Right.\nGold,\nSilver, and\nOres and\nWORKS: Humboldt, Yavapai County, Arizona, Near Prescott.\nOFFICES: Prescott Nat;onal Bank Building, Prescott, Arizona. Empire\nBuilding, New York.\nCHARLES E. FINNEY, Vice President and\nEWARD W. BROOKS, Or Purchasing Agent.\na Come in and See\nBaldwin,\nWeber,\ni\nWhich we have been selling in this terri\ntory for 25 years.\nREDEWILL\nI24 West\nWashltiRton\nAll Horse and Mule breeders Take Notice\nThe imported French Tercheron stallion Calypso, who was imported t.y\na! TheUvV n 80&quot;S1w1ill0ma,ke -eason of 1906 at my home ranch, known\n- k, I . J&quot;2 miIe West 0f Alhambra on Grand canal Calypso is\nweight 2050 lbs., age 7 years, registered No. 43881, record No\nin the American stud book and also the famous mamoth Jack Napo\nleon whose colts took first and second prizes at the Territorial fair will\nmake the season at the same place.\nTerms: Calypso, ?15 season; Napoleon $10 season. Usual privileges\n. M. B. HOROVITZ Owner.\nn .\nIn arranging\nyou via\nV\nWABASH\nfroir.\niicagu or St. T.onis lo New York\nequipment, fast time via Niagara Fall\nBerkshire hills.\nROSS C. CLINE.\nAgent.\nWE DON\&#39;T THROW DIRT BUT WE SELL\nPROPERTY WITH US AND LETS &quot;GET BUSY.&quot;\nW. H. Ward &amp; Company\nNo. 9 West Adama Street.\nPhone 7-11 Black. List\nyour\nI fcJ olferins a modern -room house, BI . 3\nu\nw w ith large hall, bath and large II j I\nserein room: a &quot;(Hid barn, with J\n1 U\nI I H mow for hay, and stalls and car- I ; J,. kl\nIII p!f o o Jl\nI \&#39; riage room floored; east front- pj Jr\nJ 9 age, with fine shade and lawn. \&#39; j :\nU a The house was newly painted I; j 1\nI N i. \&#39;\nS r &quot;I\n- less than a year ago. The price ;. j h\nH ii I .J\n\&#39; p for a few days\n1 !i\nI Greene &amp; Griffin if\nREAL ESTATE\nn 42 N. Center St. Wlfi\ni ; i ii\n! Sooit\&#39;s Sanlai-PGpsis Oapsofo i\nA POSITIVE. CURE\nfii.&quot; &quot;i Vor inflammation irCatsrr\ntV\&#39;\&#39;V. W ci she hl!i.ider P.nd Uiseait\n-5-. j, J-ldncys No corn no pa:\nW Cures quickly aul Perm\nTAi!X &quot; 1 rrrt\&#39;y the vers; case o\nj fct r- IJ TOncrfhi-a an.l tjicet, i-\nt t-ZZi. I lutfit of Lev-- long s:ai0\nY I \&#39;&quot;f- AJiutoly narroic-\n! tefi o\&#39;d bv druKsists. Prl.;\nijv-V Jl.\&#39;O. or tiy w1, pos\&#39;-ti..\nI a I-. .:v--. Z0.i 1 &quot; &quot; &quot;s - WHEN\nELVEY &amp;. HULETT. AGENTS.\nTHE j\nHUMBOLDT, ARIZONA\ni\nBUYERS OF H\nCopper\nCopper Ues.\nGeneral Manager.\nOffice, Phoenix, Ariz.\nR\nyi\nour World Renown\nBehr,\nFischer,\nfVlUSIC 0\nStreet\n32 she:\nH\n1\nFollow tK Plag\n9\nfor your trip cast,\nask agent to route\nCONTINENTAL LIMITED.\nami Now V.ur):, n,i ..r.i..iu m...i\ns, Mohawk. Valley! Hudson Iliver ami\nLOS ANGELES.\nIT. LIST\nYOUR\nWeal Tstate, Insurance\nand Brokerage\nPHOENIX, ARIZ.\nProperty With Us.\nSummer Prices\nPrevail\nBuying NOW means buying at a\nunusual sacrilice in prices to sell pianos in the dull season.\nRENTALS from $4.00 per month up.\nThe Wiley B. Allen\nCompany\n9-11 East\nPianos tuned in city, $4.00.\nKj.r..,3f.\&#39;KxtXrJ\&#39;.\nSt. Louis in 53 hrs. 10 miiL\nVIA GOLDEN STATE LIMITED\nAn electric lighted veatlbuled train, through without change via\nSouthern Pacific\nEl Paso &amp; Southwestern\nRock island\nStandard observation, 2 tourist sleepers, library buffet cars, mag\nnificent dining cars. Meals a \&#39;.a carte.\nl-\&#39;or folders rates and schedules for any trip address\nRICHARD WARREN, V. R. STILES,\nTraveling Passenger Agent. General Pasesnger Agent.\nEl PASO, TEXAS.\nWhy be Uncomfortable\nELECTRIC FANS AND ELECTRIC IRONS CAN BE ATTACHED\nANYWHERE IN YOUR RESIDENCE\nWORKING OR RESTING. DECIDE\nYOUR WIFE AT HOME THIS SUMMER.\nPACIFIC GAS &amp; ELEC. CO.\nCORNER FIRST AVE. AND JEFFERSON ST.\nARIZONA SCHOOL OF MUSIC\nMRS. SHIRLEY CHRISTY, Director\nSummer term beginning June 4th. Piano, Prof. Elmer A\nj Todd; Elocution and Physical\nCcoley.\nYee Sing\&#39;s American Kitchen\nParties served with extra fine real Chinese China dishes. Private rooms\nand family ctyle when desired. Sing does all his own pastry. For a good\ndinner on special occasions or at ordinary times come to Sing\&#39;s new Ameri\ncan Kitchen.\n33 North Center Street. Phoenix\nIF YOU DESIRE TO EAT CLEAN,\nATRIAL.\nUje ENGLISH\nCHARLIE\nXXX&quot;X\n&amp; QUNG, Props., 25 and.\nThe California\nRestaurant\ncttttt\nGloves Harness Saddles\nAT WHOLESALE PRICES\nARIZONA SADDLERY CO.\nPhone Black 1492. 45 N. Center St., Phoenix\nOak Creeii\nNorthern Arizona\&#39;s most (lelk\nlitihtful\nchoice fruits, unequalled climate and\nD.\nMESA-ROOSEVELT STAGE CO.\nMESA,\nROOSEVELT,\nDaily Except Sunday.\nLeave 8:00 a, m. Mesa\nLeave 6:00 a. m. Roosevelt\nArrives at Globe following flay at 4 p. m.\nDuring week of Territorial fair, Phoenix.\nRoosevelt to Mesa,\n- ,.Wt 8X6 f repared t0 aanaie slow and fast treight In any quantity.\nV rite for rates. n.n.rt -;-. a :\nlilZ Y. TI?r 3Tt rT-rTTV. 1 . J (Hi Will. . J .MJUH Wl\nf -f 1- -I- -r -b -h -fr -i- . 4- -t.\n\&#39;t -b-h\nHotel Adams Cafe\n. TOM, Proprietor.\ny Having sold out my interest in the American Kitchen\nmy entire attention to Cafe in Adams Hotel\n.. . FINE COOKING PRICES REASONABLE.\n$o.00 Meal T.cket for $4.50. All Pastry Made by Tom\n3d\nianos\no o\nvery profitable saving,\n&quot;Ve will make\nE.\nP.\nN.\nC.\nJENKINS. Manager.\nPADDOCK. Ass\&#39;t Man.\nr i\nWashinpton St.\nli\nJl\nS3\n1\nAND GIVE YOU A BREEZE WHILE\nTHE QUESTION NOW AND KEEP\nCOME IN AND SEE US.\nCulture, Mrs. May French\nArizona.\nX:4MX:x:HX?.j\nWHOLESOME\nFOOD GIVE US\nKITCHEN\n27, N.\nFirst St. Phone Red 143. 4-\nxx\&#39;:-x4xx--x-\n35 North First Ave,\nPhccnix, - - Arizona\nBesort\nSedona, Arizona.\nCoconino County.\nsummer resent. Tnril\&#39;T viainvn\nscenery. (let full information from \&#39;\nE. SCHNEBLY, Prop. Sedona, Ariz.\n&quot;LIFE BY EASY STAGES.&quot; VI\nGLOBE.\nS:45 p.m. arrive\n4:30 p. m. arrive\nrate $10 round trip,\n! -I- ? - -fr .j. 4- 4- 4. t\nili give\n5-\nr\nft tfittit tif ttttt.t!\nORDINANCE NO. 384\nConcerning\&#39; the Annual Levy, Assess\nment and Collection of City Taxes.\nThe Common Council of Phoenix do\nordain as follows:\nSection 1. A city tax of seventy (70)\ncents upon every one hundred ($100.00)\ndollars of the assessed valuation of\nproperty is hereby levied and Imposed\nupon all property, real and persona!\n(except such as may be by law exempt\nfrom taxation) in the City of Phoenix,\nfor the general current expenses of said\ncity, for the fiscal year commencing on\nthe 1st day of July. 1906. and ending\non the 30th day of June, 1S07.\nSection 2. An additional tax of\nseven (7) cents upon every one hun\ndred ($100.00) dollars of the assessed\nvaluation of property is hereby levied\nand imposed upon all property real anil\npersonal (except such as may be by law\nexempt from taxation) in the City of\nPhoenix for the payment of accruing\ninterest upon the bonds of said city.\nviz: The road bonds, for the fiscal year\n\&#39; commencing July 1st. 1906. and endins\n: on the 3fth day of June, 1907.\n! Section 3. An additional tax of thir\nteen (13) cents upon every one hundred\n($100.00) dollars of the assessed valu\nation of property is hereby levied and\nimposed upon all property real ana\npersonal (except such as may be by\nlaw exempt from taxation) in the City\nof Phoenix, for the payment of accru\ning interest on the bonds of said city,\nviz: the Fire Apparatus bonds; the\nCity Hall bonds; the City Hall; Fire\nEngines; and Plaza bonds for the fis\ncal year commencing on the 1st day of\nJuly, 1906, and ending on the 30th day\nof June. 1907.\nSection 4. An additional tax of five\n(5) cents upon every one hundred\n($100.00) dollars of the assessed valua\ntion of property is hereby levied and\nimposed upon all property real and per\nsonal (except such as may be by law\nexempt from taxation) in the City of\nrhoenix. for the establishing and\nj maintaining in the City of Phoenix fre\nj public libraries and reading rooms and\nI purchasing such books, journals and\nother publications and erecting and\nmaintaining such building or buildings\nj as may be necessary therefor for the\nfiscal year commencing on the 1st day\nof July, 1906, and ending on the 30th,\nday of June. 1907.\nSection 5. An additional tax of fif\nteen (13) cents upon every one hun\ndred ($100.00) dollars of the assessed\nvaluation of property Is hereby levied\nand imposed upon all property real and\npersonal (except such as may be by\nlaw exempt from taxation) In the City\nof Phoenix, for the payment of the ac\ncruing interest on the bonds of said\ncity, viz: the Water Works bonds for\nthe fiscal year commencing on the 1st\nday of July. 1906, and ending on the\ni 20th day of June. 1907.\nSection 6. All ordinances and parts\nj of ordinances in conflict with the pro\nj visions of this ordinance are hereby re\ni pealed and any clerical error or ot her\nj irregularity in any assessment shall\nnot invalidate the levy provided for by\ntins ordinance.\nSection 7. This ordinance shall take\neffect and be in force from and after\nits passage, approval and publication\nfor ten (10) days in a newspaper pub\nlished in the City of Phoenix. Arizona\nTerritory.\nPassed by the Common Council this\nth day of June, 1906.\nApproved this 4th day of June. A. D\n1906.\nL. W. COGGIXS.\nt,est: Mavor.\nC. W. P.ARXETT.\nCity Kecorder Pro Tern.\nORDINANCE NO. 333.\nAn Ordinance to Grant E. W.\nCertain Privileges.\nSpearg\nThe Common Council of Phoenix do\nordain as follows:\nSection 1. K. W. Spears. i hereby\ngranted the right and privilege to lay.\n; construct and maintain and operate a\ni sl&quot;Sle railroad track, for his private\ni use, commencing at a point on the\nnorth side of the Santa Ke, Prescott\nand rhoenix Railroad track, midway\nj between 2nd and 3rd streets on Jack\nson street in the City of rhoenix. run\nning thence in a northeasterly direction\nalong Jackson street and across Srd\nstreet to south half of Block 39 of said\nCity of Phoenix.\nSection 2. That said tracks shall be\nlaid on the grade of said streets and\nalleys, and that they shall be planked\nwith substantial planks on the outside\nof each rail and over the whole of the\ninterior of said tracks for their fuil\nlength. Said tracks shall be used, laid\nand operated subject to all rules, regu\nlations or ordinances as the Common\nCouncil of the City of Phoenix ma\nfrom time to time ordain or prescribe.\nSection 3. The said E. V. Spears\nhis heirs, executors and assigns shall\nDe responsible for any and all acci\ndents that shall occur to any rerson\nbecause of the negligent laying, main\ntaining or operating of said tracks by\nsaid E. V. Spears, or by any perso,;\nlaying, maintaining, operating or utng\nthe same by the permission of &quot;said E.\nTV. Spears, his heirs, executors and as\nsigns and said E. W. Spears, his heirs,\nexecutors and assigns shall defend at\nhis or their expense any and all suits\nwhich may be brought against the City\nof Phoenix because of the laving, main -\n! talnlng and operation of said tracks,\n! ntiil M,.. I.&quot; t. . , .\nnit: fuiu r.. w . Ljiears. nis npirs.\nexecutors and assigns further aroo\nto pay any and all Judgments whleii\nmay be obtained against the said City\nof Phoenix because of any act arising\nout or the laying, maintaining and op\nerating of said railroad tracks.\nSection 4. This ordinance shall take\nI effect and be In force from and after\nus passage and publication according\nto law, and the cost of the publication\nof this ordinance shall be borne by the\nsaid K. V.&quot;. Spears.\nSection j. The acceptance by E. TV.\nSpears of this permit shall be deemed\nto be an acceptance by him of all the\nobligations by this ordinance provided\nto be borne and performed by him.\nPassed the Common Council of Phoe\nnix, this 4th day of Juno. 1!i.\nL. COGGIXS.\nattest :\nC. W. HAllN KTT,\nCity Recorder Pro Tcm.\nMayor.\nFOR YOUR BUSINESS\&#39; SAKE\nTALK with TODD\nRepublics office, 10 to II xa. Cdlz&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, we’ve said give us the OCR results in English for the 1st item.
+Try it for yourself with the 5th item:
+r[‘items][4][‘ocr_eng’]</p>
+</section>
+<section id="what-else-can-we-do-end-or-extend-debates">
+<h2>What else can we do? End or extend Debates<a class="headerlink" href="#what-else-can-we-do-end-or-extend-debates" title="Permalink to this heading">#</a></h2>
+<p>Let’s say you’re having a debate with your friends. They all think dogs were more widely covered in historical newspapers = they cite the media influence of Lassie and Underdog. But you think cats would clearly take up more column inches. Can you use the Chronicling America API to help resolve the debate?
+You betcha!</p>
+<p>This time, we’re going to use some search terms. This approach is a bit different, because now the search is based on a relevancy ranking (unlike the previous one). Take a look at what this search looks like:
+<a class="reference external" href="http://chroniclingamerica.loc.gov/search/pages/results/?proxtext=dogs">http://chroniclingamerica.loc.gov/search/pages/results/?proxtext=dogs</a></p>
+<p>Remember, we’re working with the JSON data. So, you’ll add “&amp;format=json” to the end of it to get the API version again:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dogs_search</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://chroniclingamerica.loc.gov/search/pages/results/?proxtext=dogs&amp;format=json&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To help us, we name the variable that the results are stored in with a shorthand. We’re going to call it “dogs_search”
+Now we can check in on the total number of “items” again. In this result, “items” are pages that contain the word dogs! So we say give us the total number of items from the results:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dogs_search</span><span class="p">[</span><span class="s1">&#39;totalItems&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1830394
+</pre></div>
+</div>
+</div>
+</div>
+<p>About 1.8 million results…hmmm. Well, that seems like quite a few pages of dogs… Let’s look at one example. Remember, if we want the first result, we’ll ask for “0”:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dogs_search</span><span class="p">[</span><span class="s1">&#39;items&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;http://chroniclingamerica.loc.gov/lccn/sn83045487/1913-04-21/ed-1/seq-20.json&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we can look at the items themselves again: ‘<a class="reference external" href="http://chroniclingamerica.loc.gov/lccn/sn83045487/1913-04-21/ed-1/seq-20.json">http://chroniclingamerica.loc.gov/lccn/sn83045487/1913-04-21/ed-1/seq-20.json</a>’</p>
+<p>Take a closer look at the OCR text:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://chroniclingamerica.loc.gov/lccn/sn83045487/1913-04-21/ed-1/seq-20/ocr.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;WOMEN LIKE DOGS BECAUSE DOGS, UNLIKE\nMEN, ADORE THEM ALWAYS BILLIE BURKE\nSome woman who evidently had been as unfortunate in her choice of\nmen and friends as she was unfortunate in her choice of a dogr made that\noft-iygeated speech: &quot;Themore I see of men the-better Hike dogs.&quot;\nlake all smart\&#39; epigrams, the intimation is hardly true, for there are\nsplendid men, as well as. fine dogs, in the world.\nThe normal woman .likes men as well as they like her, and that is a\ngood .deal. The. ;antagonism, between the sexes which?. wehear so much;\nabout f roinZtfre \&#39; suffragets\&#39;is\&#39;-\&#39;ali; toriuny\&#39;fbt, j - &quot; -&quot;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>At any rate, there’s some mounting evidence for the dog side of the debate. You still want to explore the frequency of cat mentions. But first, you decide to check in on a more complicated question like “which state likes dogs?” We will measure this by volume of mentions. You decide to take just the first twenty results for the search “dog” on Chronicling America (because it would take too long to do them all).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pages</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://chroniclingamerica.loc.gov/search/pages/results/?proxtext=dog&amp;rows=20&amp;format=json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that we added “%rows=20” to the previous query, which means “I only want 20 results per page”. Most search engines (including this one) let us paginate the results and pick which page we want. Without picking one, we get the first one. So, this is really saying “give me the top 20 most relevant results”. And again, we want the JSON.</p>
+<p>Now we’re going to loop over all the results and count them.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">pages</span><span class="p">[</span><span class="s1">&#39;items&#39;</span><span class="p">]:</span>
+    <span class="n">c</span><span class="p">[</span><span class="n">page</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="n">c</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;California&#39;, 6),
+ (&#39;Kentucky&#39;, 5),
+ (&#39;District of Columbia&#39;, 3),
+ (&#39;New York&#39;, 2),
+ (&#39;Illinois&#39;, 2),
+ (&#39;Washington&#39;, 1),
+ (&#39;Minnesota&#39;, 1)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>So the first 20 results tell us that California was a fan of Fido… or at least has a significant number of dog mentions. Now that we have the doggie data, it’s time to crunch some cats numbers. Let’s take a look at the same process but with cats instead of dogs:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cats_search</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://chroniclingamerica.loc.gov/search/pages/results/?proxtext=cat&amp;rows=20&amp;format=json&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">cats_search</span><span class="p">[</span><span class="s1">&#39;totalItems&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2486385
+</pre></div>
+</div>
+</div>
+</div>
+<p>That is a lot of cats!
+Just to be sure, let’s take a quick look at the first result page:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cats_search</span><span class="p">[</span><span class="s1">&#39;items&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;url&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;http://chroniclingamerica.loc.gov/lccn/sn85066387/1903-08-02/ed-1/seq-19.json&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can’t convince your pals on pure volume alone. So, why don’t we explore the breakdown of coverage from state to state and cats vs dogs.</p>
+<p>How will you prove the results? Let’s get the first 20 pages, with 20 results for each page. That is a total of 400 individual pages, and count which states they come from. We will do this for both dogs and cats and then graph them:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="n">pages_of_results</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">dogs_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="n">cats_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">pages_of_results</span><span class="p">):</span>
+    <span class="n">dogs_json</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://chroniclingamerica.loc.gov/search/pages/results/?proxtext=dog&amp;rows=20&amp;format=json&amp;page=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">))</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">dogs_json</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]:</span> 
+        <span class="n">dogs_count</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">pages_of_results</span><span class="p">):</span>
+    <span class="n">cats_json</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;http://chroniclingamerica.loc.gov/search/pages/results/?proxtext=cat&amp;rows=20&amp;format=json&amp;page=&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">))</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">cats_json</span><span class="p">[</span><span class="s2">&quot;items&quot;</span><span class="p">]:</span> 
+        <span class="n">cats_count</span><span class="p">[</span><span class="n">item</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        
+<span class="n">dog_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">dogs_count</span><span class="p">)</span>
+<span class="n">cat_series</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">cats_count</span><span class="p">)</span>
+
+<span class="n">dog_vs_cat</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">dog_series</span><span class="p">,</span> <span class="n">cat_series</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">keys</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;dogs&quot;</span><span class="p">,</span> <span class="s2">&quot;cats&quot;</span><span class="p">])</span>
+<span class="n">dog_vs_cat</span>
+<span class="n">dog_vs_cat</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.axes._subplots.AxesSubplot at 0x1148e7f98&gt;
+</pre></div>
+</div>
+<img alt="../_images/0a1125948e473445743edecae08638c1eb106317cabf2b32fcd08e6a44a62521.png" src="../_images/0a1125948e473445743edecae08638c1eb106317cabf2b32fcd08e6a44a62521.png" />
+</div>
+</div>
+<p>Well by volume, cats are definitely winning but you’ll want to do some closer inspection.
+In the meantime, you can give your friends Illinois, Kentucky, Virginia, and New York as consolation!</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="further-research">
+<h1>Further Research<a class="headerlink" href="#further-research" title="Permalink to this heading">#</a></h1>
+<p>Now you’re ready to tackle answers in other debates. Remember you can explore more from Chronicling America here: <a class="reference external" href="http://chroniclingamerica.loc.gov/about/">http://chroniclingamerica.loc.gov/about/</a>
+You can also Ask A Librarian: <a class="reference external" href="https://www.loc.gov/rr/askalib/">https://www.loc.gov/rr/askalib/</a></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Chronicling America API"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../loc.gov%20JSON%20API/maps/maps-analyzing-metadata.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analyzing and visualizing cartographic metadata from loc.gov</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exploring the Memegenerator Metadata</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">ChronAm API Guide</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-chronicling-americas-api">What is Chronicling America’s API?</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#what-can-you-do-with-it">What can you do with it?</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#make-stuff">Make stuff!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discover-stuff">Discover stuff!</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-discover-and-make">Let’s Discover and Make</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-results-arizona">Exploring Results: Arizona</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-else-can-we-do-end-or-extend-debates">What else can we do? End or extend Debates</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#further-research">Further Research</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Library of Congress staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <header class="loc-header">
+    <div class="loc-logo">
+        <a href="https://www.loc.gov/"><img src="/data-exploration/_static/LOC_Logo_horiz_inv.png" alt="The Library of Congress logo" title="Go to the Library of Congress homepage" /></a>
+    </div>
+    <div class="project-description">
+        <p>In-depth tutorials for working with Library of Congress data via APIs and code. <a href="https://github.com/libraryOfCongress/data-exploration/" class="button small">View the code</a></p>
+    </div>
+</header>
+<footer class="loc-footer">
+    <p>In-depth tutorials for working with Library of Congress data via APIs and code.</p>
+    <ul class="loc-footer-nav-list">
+        <li><a href="https://github.com/libraryOfCongress/data-exploration/">Source code</a></li>  
+        <li><a href="https://www.loc.gov/">The Library of Congress</a></li>
+        <li><a href="https://loc.gov/legal">Privacy Policy</a></li>
+        <li><a href="https://www.loc.gov/accessibility/">Accessibilty</a></li>
+        <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Github Privacy Statement</a></li>
+        <li><a href="https://creativecommons.org/publicdomain/zero/1.0/">License</a></li>
+        <li><a href="mailto:LC-Labs@loc.gov">Contact</a></li>
+    </ul>
+</footer>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
