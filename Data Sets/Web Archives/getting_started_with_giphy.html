@@ -1,0 +1,973 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Exploring the GIPHY.com Metadata &#8212; Tutorials for Data Exploration</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/loc.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/loc.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Data Sets/Web Archives/getting_started_with_giphy';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="loc_goes_lofi.html" />
+    <link rel="prev" title="Exploring the Memegenerator Metadata" href="getting_started_with_memegenerator.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tutorials for Data Exploration</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Tutorials for Data Exploration
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Loc.gov JSON API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/LOC.gov%20JSON%20API.html">LOC.gov JSON API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.html">Accessing images from the loc.gov JSON API for image analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Dominant%20colors.html">Color clusters in images in Library of Congress collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Connecting the image file to the metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Extracting%20location%20data%20for%20geovisualization.html">Extracting location data from the loc.gov API for geovisualization</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/maps/maps-analyzing-metadata.html">Analyzing and visualizing cartographic metadata from loc.gov</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chronicling America notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Chronicling%20America%20API/ChronAm%20API%20Samples.html">ChronAm API Guide</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Web Archives notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_memegenerator.html">Exploring the Memegenerator Metadata</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploring the GIPHY.com Metadata</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/digitized-books.html">LoC Data Package Tutorial: Selected Digitized Books Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/directories.html">LoC Data Package Tutorial: City and Telephone Directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/telephone.html">LoC Data Package Tutorial: Digitized Telephone Directories Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/stereographs.html">LoC Data Package Tutorial: Stereograph Card Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/austro-hungarian-maps.html">LoC Data Package Tutorial: Austro-Hungarian maps set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/gen-coll-assessment.html">LoC Data Package Tutorial: General Collections Assessment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Library API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20IIIF%20API/IIIF.html">IIIF API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20Sitemaps%20API/Sitemap.html">What are Sitemaps?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20web%20interface/OpenSearch.html">OpenSearch Guide</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Data Sets/Web Archives/getting_started_with_giphy.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exploring the GIPHY.com Metadata</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exploring the GIPHY.com Metadata</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-environment">Setting up the Environment</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-imports">Module Imports</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-writing-and-getting">Reading, Writing, and Getting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#processing">Processing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-results">Visualizing the Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-functions">Defining the Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-giphy-data-set">get_giphy_data_set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-giphy-data-set">load_giphy_data_set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-import-dates">get_import_dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-bar-chart-from-distribution">create_bar_chart_from_distribution</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-functions">Running the Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data-set">1) Get the Data Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data-set">2) Load the Data Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-of-the-giphy-data-set-content">Preview of the <code class="docutils literal notranslate"><span class="pre">giphy_data_set</span></code> content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chart-the-import-dates">3) Chart the Import Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smallest-largest">4) Smallest &amp; Largest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-the-titles">5) Search the Titles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrate-the-dataset">6) Hydrate the Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exploring-the-giphy-com-metadata">
+<h1>Exploring the <a class="reference external" href="http://GIPHY.com">GIPHY.com</a> Metadata<a class="headerlink" href="#exploring-the-giphy-com-metadata" title="Permalink to this heading">#</a></h1>
+<p>This notebook demonstrates an intermediate approach to exploring the <a class="reference external" href="http://GIPHY.com">GIPHY.com</a> data set produced by the Library of Congress. <a class="reference external" href="http://GIPHY.com">GIPHY.com</a> is a site that has been archived by the Library of Congress in its Web Cultures archive. The data explored here is available from the LC Labs experiments page located here: <a class="reference external" href="https://labs.loc.gov/experiments/webarchive-datasets/">https://labs.loc.gov/experiments/webarchive-datasets/</a>.</p>
+<p>As an intermediate approach, this notebook uses functions as reuseable blocks of code. These functions could potentially be used outside of this notebook to help you explore the data further.</p>
+<p>If you’re looking for more of a beginner’s approach, check out the Meme Generator notebook, which explores the <a class="reference external" href="http://memegenerator.net">memegenerator.net</a> data set, also produced by the Library of Congress.</p>
+<p>This notebook is divided into the following sections:</p>
+<ol class="arabic simple">
+<li><p>Setting up the Environment</p></li>
+<li><p>Defining the Functions</p></li>
+<li><p>Running the Functions</p></li>
+</ol>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="setting-up-the-environment">
+<h1>Setting up the Environment<a class="headerlink" href="#setting-up-the-environment" title="Permalink to this heading">#</a></h1>
+<section id="module-imports">
+<h2>Module Imports<a class="headerlink" href="#module-imports" title="Permalink to this heading">#</a></h2>
+<p>Below are all the <code class="docutils literal notranslate"><span class="pre">import</span></code> statements we’ll need in order perform some basic computations over the GIPHY data set. They are broken out into sections based on their use in this notebook. You will need to install the following Python modules:</p>
+<ul class="simple">
+<li><p>matplotlib</p></li>
+<li><p>tqdm</p></li>
+</ul>
+<section id="reading-writing-and-getting">
+<h3>Reading, Writing, and Getting<a class="headerlink" href="#reading-writing-and-getting" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">import</span></code> statements below are for modules that we’ll use to get and read in the <code class="docutils literal notranslate"><span class="pre">giphy.csv</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="processing">
+<h3>Processing<a class="headerlink" href="#processing" title="Permalink to this heading">#</a></h3>
+<p>The following <code class="docutils literal notranslate"><span class="pre">import</span></code> statements will help in the processing, sorting, and counting of the information from the data set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">operator</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualizing-the-results">
+<h3>Visualizing the Results<a class="headerlink" href="#visualizing-the-results" title="Permalink to this heading">#</a></h3>
+<p>The following <code class="docutils literal notranslate"><span class="pre">import</span></code> statements allow for us to visual the processes we’ll be running.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">random</span> <span class="kn">import</span> <span class="n">choice</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="defining-the-functions">
+<h1>Defining the Functions<a class="headerlink" href="#defining-the-functions" title="Permalink to this heading">#</a></h1>
+<p>Below are four functions that we’ll use in our exploration of the GIPHY data set.</p>
+<section id="get-giphy-data-set">
+<h2>get_giphy_data_set<a class="headerlink" href="#get-giphy-data-set" title="Permalink to this heading">#</a></h2>
+<p>This function checks to see if the giphy data set is present. The path it checks and the location to which it eventually downloads and unzips the data set can be modified, if desired. But by default, the function checks for a folder called <code class="docutils literal notranslate"><span class="pre">giphy-dataset</span></code> in the current working directory and for a file called <code class="docutils literal notranslate"><span class="pre">giphy.csv</span></code> within that folder.</p>
+<p>If the folder and file are present, nothing is done because the data set is already downloaded and extracted. If it’s not, then the function navigations to the data set’s downloadable URL, and saves the file as <code class="docutils literal notranslate"><span class="pre">giphy-dataset.zip</span></code> in the current working directory.</p>
+<p>Then, the function unzips the folder in the current working directory to create a folder called <code class="docutils literal notranslate"><span class="pre">giphy-dataset</span></code>, which contains the dataset file: <code class="docutils literal notranslate"><span class="pre">giphy.csv</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_giphy_data_set</span><span class="p">():</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;giphy-dataset/giphy.csv&#39;</span><span class="p">):</span>
+        <span class="n">urlretrieve</span><span class="p">(</span><span class="s1">&#39;https://s3.us-east-2.amazonaws.com/lclabspublicdata/giphy-dataset.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;giphy-dataset.zip&#39;</span><span class="p">)</span>
+        <span class="n">z</span> <span class="o">=</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="s1">&#39;giphy-dataset.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+        <span class="n">z</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="s1">&#39;./&#39;</span><span class="p">)</span>
+        <span class="n">z</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-giphy-data-set">
+<h2>load_giphy_data_set<a class="headerlink" href="#load-giphy-data-set" title="Permalink to this heading">#</a></h2>
+<p>As the name implies, this function loads, or reads in, the data set as a list of lists–where each row in the data set is a list of each cell in that row. This list of lists is stored as a variable and return as the output of the function.</p>
+<p>This function utilizes prior knowledge of the data set, which may elude first-time users. For instance:
+The data set is read in under a <code class="docutils literal notranslate"><span class="pre">utf16</span></code> encoding.</p>
+<p>Additionally, you’ll see that a delimiter is set to the value equivalent of a tab. That is because the rows’ cells are tab, not comma, separated. This again, was due to certain constraints where creating and saving the original data set.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">load_giphy_data_set</span><span class="p">():</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s1">&#39;giphy-dataset/giphy.csv&#39;</span><span class="p">):</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;giphy-dataset/giphy.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r+&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf16&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">):</span>
+                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-import-dates">
+<h2>get_import_dates<a class="headerlink" href="#get-import-dates" title="Permalink to this heading">#</a></h2>
+<p>The following function will grab all the values from the <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">Date</span></code> column of the data set and turn the string <code class="docutils literal notranslate"><span class="pre">m/dd/yyyy</span></code> into a <a class="reference external" href="https://docs.python.org/3.7/library/datetime.html"><code class="docutils literal notranslate"><span class="pre">datetime</span></code> object</a> that can be grouped and sorted chronologically.</p>
+<p>The function takes the data set as a parameter and will return a dictionary of dates and the frequency of their occurrence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_import_dates</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="c1"># The Import Date field is structured like so: m/dd/yyyy H:M</span>
+        <span class="c1"># We&#39;re not interested in the hours or minutes, so we split the string</span>
+        <span class="c1"># on the empty space, creating a list: [&#39;m/dd/yyyy&#39;, &#39;H:M&#39;].</span>
+        <span class="c1"># However, we only want the first item in the list, so we specify that</span>
+        <span class="c1"># by adding [0] after the split.</span>
+        <span class="n">string_date</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Import Date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="c1"># We don&#39;t want the entries that are listed as &#39;NA&#39;</span>
+        <span class="c1"># and since 1970 is a default date, we don&#39;t want to </span>
+        <span class="c1"># count those either.</span>
+        <span class="c1"># All other dates are added.</span>
+        <span class="k">if</span> <span class="n">string_date</span> <span class="o">!=</span> <span class="s1">&#39;NA&#39;</span> <span class="ow">and</span> <span class="s1">&#39;1970&#39;</span><span class="ow">not</span> <span class="ow">in</span> <span class="n">string_date</span><span class="p">:</span>
+            <span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">string_date</span><span class="p">,</span> <span class="s1">&#39;%m/</span><span class="si">%d</span><span class="s1">/%Y&#39;</span><span class="p">)</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date</span><span class="p">)</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+    <span class="n">dates</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">dates</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># we only want to include the dates that have more than 35 GIFs associated with them.</span>
+    <span class="c1"># Otherwise, the tail of the data gets very long. In fact, doing this limits</span>
+    <span class="c1"># the results to just 44 dates.</span>
+    <span class="k">for</span> <span class="n">date_pair</span> <span class="ow">in</span> <span class="n">dates</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">date_pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">35</span><span class="p">:</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">date_pair</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">results</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="create-bar-chart-from-distribution">
+<h2>create_bar_chart_from_distribution<a class="headerlink" href="#create-bar-chart-from-distribution" title="Permalink to this heading">#</a></h2>
+<p>The following function creates a bar chart from a distribution object, that is, a list of tuples wherein the first item is a value and the second item in the tuple is the number of times that value occurred in the distribution.</p>
+<p>It takes an optional parameter of title for the chart.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_bar_chart_from_distributions</span><span class="p">(</span><span class="n">dist</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="c1"># This is bit of code in the brackets, is just a fancy way</span>
+    <span class="c1"># of creating a list with a for loop. It&#39;s called a list comprehension.</span>
+    <span class="c1"># All it is doing is looping through the tuples in the dist variable</span>
+    <span class="c1"># and assigning the first item in that tuple to the list, which is then</span>
+    <span class="c1"># stored in the variable x_values</span>
+    <span class="n">x_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">dist</span><span class="p">]</span>
+    <span class="n">y_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_values</span><span class="p">))</span>
+    <span class="c1"># Similar to x_values, except the second value from the tuple is stored</span>
+    <span class="c1"># in the list</span>
+    <span class="n">freq</span> <span class="o">=</span> <span class="p">[</span><span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">dist</span><span class="p">]</span>
+    <span class="c1"># Assigns all the colors from the Matplotlib&#39;s XKCD&#39;s color dictionary to a list</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">XKCD_COLORS</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="c1"># We&#39;re using another list comprehension to randomly choose a color for each item in x_values</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">choice</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x_values</span><span class="p">]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="n">x_values</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">title</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">35</span><span class="p">)</span>   
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="running-the-functions">
+<h1>Running the Functions<a class="headerlink" href="#running-the-functions" title="Permalink to this heading">#</a></h1>
+<p>Now that we’ve defined the functions, we can run them.</p>
+<section id="get-the-data-set">
+<h2>1) Get the Data Set<a class="headerlink" href="#get-the-data-set" title="Permalink to this heading">#</a></h2>
+<p>Call the <code class="docutils literal notranslate"><span class="pre">get_giphy_data_set</span></code> function that will download and extract the data set for us</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_giphy_data_set</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-the-data-set">
+<h2>2) Load the Data Set<a class="headerlink" href="#load-the-data-set" title="Permalink to this heading">#</a></h2>
+<p>Now that the data set is downloded and extracted, call the <code class="docutils literal notranslate"><span class="pre">load_giphy_data_set</span></code> function that reads in and returns the GIPHY data set as a list of dictionary objects.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">giphy_data_set</span> <span class="o">=</span> <span class="n">load_giphy_data_set</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="preview-of-the-giphy-data-set-content">
+<h2>Preview of the <code class="docutils literal notranslate"><span class="pre">giphy_data_set</span></code> content<a class="headerlink" href="#preview-of-the-giphy-data-set-content" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">giphy_data_set</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;GIF ID&#39;: &#39;1000eGIbYHercI&#39;,
+  &#39;Web Archive Link&#39;: &#39;http://webarchive.loc.gov/all/20150318155641/http://media.giphy.com/media/1000eGIbYHercI/giphy.gif&#39;,
+  &#39;MD5 Hash&#39;: &#39;b9a248bc783052ba1ccf29c5a9ac9ed1&#39;,
+  &#39;File Size (In Bytes)&#39;: &#39;1508448&#39;,
+  &#39;GIPHY Title&#39;: &#39;slipper GIF&#39;,
+  &#39;Import Date&#39;: &#39;9/21/2013 3:37&#39;,
+  &#39;Trending Date&#39;: &#39;1/1/1970 0:00&#39;},
+ {&#39;GIF ID&#39;: &#39;1000fHsBSKSL6w&#39;,
+  &#39;Web Archive Link&#39;: &#39;http://webarchive.loc.gov/all/20150318155641/http://media.giphy.com/media/1000fHsBSKSL6w/giphy.gif&#39;,
+  &#39;MD5 Hash&#39;: &#39;91d00a6dd66f7fa8e6d132601a9778e1&#39;,
+  &#39;File Size (In Bytes)&#39;: &#39;547019&#39;,
+  &#39;GIPHY Title&#39;: &#39;swag hustling GIF&#39;,
+  &#39;Import Date&#39;: &#39;6/22/2015 5:35&#39;,
+  &#39;Trending Date&#39;: &#39;1/12/2016 23:45&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">import_dates</span> <span class="o">=</span> <span class="n">get_import_dates</span><span class="p">(</span><span class="n">giphy_data_set</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="chart-the-import-dates">
+<h2>3) Chart the Import Dates<a class="headerlink" href="#chart-the-import-dates" title="Permalink to this heading">#</a></h2>
+<p>We’ll chart the Import Dates collected, counted, sorted, and stored in the <code class="docutils literal notranslate"><span class="pre">import_dates</span></code> variable. We’ll pass that variable into the <code class="docutils literal notranslate"><span class="pre">create_bar_chart_from_distributions</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mf">48.0</span><span class="p">,</span> <span class="mf">32.0</span><span class="p">)</span>
+<span class="n">create_bar_chart_from_distributions</span><span class="p">(</span><span class="n">import_dates</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;GIFs By Upload Date&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/5b8191b06b6167c6226e3f6771d739fa1f8e6d6d3e34fc8610279149ea2d97b1.png" src="../../_images/5b8191b06b6167c6226e3f6771d739fa1f8e6d6d3e34fc8610279149ea2d97b1.png" />
+</div>
+</div>
+</section>
+<section id="smallest-largest">
+<h2>4) Smallest &amp; Largest<a class="headerlink" href="#smallest-largest" title="Permalink to this heading">#</a></h2>
+<p>Just for fun let’s see what the smallest GIF is, bytes wise. We can sort our <code class="docutils literal notranslate"><span class="pre">giphy_data_set</span></code> list using the <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">Size</span> <span class="pre">(In</span> <span class="pre">Bytes)</span></code> dictionary key:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="n">giphy_data_set</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">giphy_data_set</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">gif</span><span class="p">:</span> <span class="nb">int</span><span class="p">(</span><span class="n">gif</span><span class="p">[</span><span class="s1">&#39;File Size (In Bytes)&#39;</span><span class="p">]))</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">giphy_data_set</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> - [</span><span class="si">{}</span><span class="s1">.gif] is </span><span class="si">{}</span><span class="s1"> bytes&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;GIPHY Title&#39;</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="s1">&#39;GIF ID&#39;</span><span class="p">],</span> <span class="n">s</span><span class="p">[</span><span class="s1">&#39;File Size (In Bytes)&#39;</span><span class="p">]))</span>
+<span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">s</span><span class="p">[</span><span class="s1">&#39;Web Archive Link&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NA - [20Tx6RZNskcxi.gif] is 158 bytes
+</pre></div>
+</div>
+<div class="output text_html"><img src="http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/20Tx6RZNskcxi/giphy.gif"/></div></div>
+</div>
+<p>… and the largest</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">giphy_data_set</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> - [</span><span class="si">{}</span><span class="s1">.gif] is </span><span class="si">{}</span><span class="s1"> bytes&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">l</span><span class="p">[</span><span class="s1">&#39;GIPHY Title&#39;</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="s1">&#39;GIF ID&#39;</span><span class="p">],</span> <span class="n">l</span><span class="p">[</span><span class="s1">&#39;File Size (In Bytes)&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>flaming guitar GIF - [3AvZg1V7GsuAM.gif] is 120784008 bytes
+</pre></div>
+</div>
+</div>
+</div>
+<p>Yeah, that’s a 115 MB GIF so we’re not displaying it here in the Notebook! But you can check it out <a class="reference external" href="http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3AvZg1V7GsuAM/giphy.gif">here</a></p>
+</section>
+<section id="search-the-titles">
+<h2>5) Search the Titles<a class="headerlink" href="#search-the-titles" title="Permalink to this heading">#</a></h2>
+<p>We can also create a text box here in the notebook to let you search through the GIF titles and display them. Type a word into the text box and you should see some results pop up. If you aren’t running the notebook yourself you probably won’t see the input box, but the word ‘book’ was used.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">widgets</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">clear_output</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="n">widgets</span><span class="o">.</span><span class="n">Text</span><span class="p">()</span>
+<span class="n">display</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">handle_text</span><span class="p">(</span><span class="n">sender</span><span class="p">):</span>
+    <span class="n">clear_output</span><span class="p">()</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;\b&#39;</span> <span class="o">+</span> <span class="n">text</span><span class="o">.</span><span class="n">value</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;\b&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">IGNORECASE</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">gif</span> <span class="ow">in</span> <span class="n">giphy_data_set</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">p</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">gif</span><span class="p">[</span><span class="s1">&#39;GIPHY Title&#39;</span><span class="p">]):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">gif</span><span class="p">[</span><span class="s1">&#39;GIPHY Title&#39;</span><span class="p">])</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">gif</span><span class="p">[</span><span class="s1">&#39;Web Archive Link&#39;</span><span class="p">])</span>
+            <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">gif</span><span class="p">[</span><span class="s1">&#39;Web Archive Link&#39;</span><span class="p">]))</span>
+            
+<span class="n">text</span><span class="o">.</span><span class="n">on_submit</span><span class="p">(</span><span class="n">handle_text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "007c55bb7d9447fbadfa02806441f7e4", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>supreme court book GIF
+http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/12vuErPc7GgUmc/giphy.gif
+</pre></div>
+</div>
+<div class="output text_html"><img src="http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/12vuErPc7GgUmc/giphy.gif"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>stare down super bowl GIF by Disney&#39;s The Jungle Book
+http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o6gbaRCPEmINyv088/giphy.gif
+</pre></div>
+</div>
+<div class="output text_html"><img src="http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o6gbaRCPEmINyv088/giphy.gif"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>thats not what happened in the book GIF by Look Human
+http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o7TKyf2G4drLNOsUw/giphy.gif
+</pre></div>
+</div>
+<div class="output text_html"><img src="http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o7TKyf2G4drLNOsUw/giphy.gif"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>colors book GIF
+http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o7qE4Glxfb2oTuoWk/giphy.gif
+</pre></div>
+</div>
+<div class="output text_html"><img src="http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o7qE4Glxfb2oTuoWk/giphy.gif"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>jungle book snake GIF
+http://webarchive.loc.gov/all/20150318155641/http://media.giphy.com/media/2lbhL8dSGMh8I/giphy.gif
+</pre></div>
+</div>
+<div class="output text_html"><img src="http://webarchive.loc.gov/all/20150318155641/http://media.giphy.com/media/2lbhL8dSGMh8I/giphy.gif"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>super bowl disney GIF by Disney&#39;s The Jungle Book
+http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o6gb2FAisWxzLGVna/giphy.gif
+</pre></div>
+</div>
+<div class="output text_html"><img src="http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o6gb2FAisWxzLGVna/giphy.gif"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>super bowl disney GIF by Disney&#39;s The Jungle Book
+http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o6gb7NIowzNCp7Qsg/giphy.gif
+</pre></div>
+</div>
+<div class="output text_html"><img src="http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o6gb7NIowzNCp7Qsg/giphy.gif"/></div><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>super bowl disney GIF by Disney&#39;s The Jungle Book
+http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o6gb19H5BFEB4cjZK/giphy.gif
+</pre></div>
+</div>
+<div class="output text_html"><img src="http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o6gb19H5BFEB4cjZK/giphy.gif"/></div></div>
+</div>
+</section>
+<section id="hydrate-the-dataset">
+<h2>6) Hydrate the Dataset<a class="headerlink" href="#hydrate-the-dataset" title="Permalink to this heading">#</a></h2>
+<p>Finally we will download all the GIFs to your workstation for you to use. There are 10,972 of them, and we will pause a little bit between image downloads so as not to overload LC’s webarchive server, so it’ll take a while (probably about 6 hours).</p>
+<p>First lets make a directory to put the GIFs (<code class="docutils literal notranslate"><span class="pre">files/gifs</span></code>):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gifs_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;giphy-dataset/gifs&#39;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">gifs_dir</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">gifs_dir</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now lets iterate through our dataset and download each one. They will be downloaded to the <code class="docutils literal notranslate"><span class="pre">giphy-dataset/gifs</span></code> directory. We use <a class="reference external" href="https://github.com/tqdm/tqdm">tqdm</a> to provide a progress bar so you know something is happening.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">progress</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">giphy_data_set</span><span class="p">),</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;gif&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">gif</span> <span class="ow">in</span> <span class="n">giphy_data_set</span><span class="p">:</span>
+    <span class="n">progress</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="n">gif_id</span> <span class="o">=</span> <span class="n">gif</span><span class="p">[</span><span class="s1">&#39;GIF ID&#39;</span><span class="p">]</span>
+    <span class="n">gif_url</span> <span class="o">=</span> <span class="n">gif</span><span class="p">[</span><span class="s1">&#39;Web Archive Link&#39;</span><span class="p">]</span>
+    
+    <span class="n">filename</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gifs_dir</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.gif&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gif_id</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+        <span class="k">continue</span>
+        
+    <span class="n">urlretrieve</span><span class="p">(</span><span class="n">gif_url</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">gifs_dir</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.gif&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">gif_id</span><span class="p">)))</span>
+    <span class="n">sleep</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+</div>
+</div>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>We hope that this notebook has helped you understand and explore this dataset! As you continue to explore, we’d love to hear about anything interesting and cool that you make. You can contact us by leaving a comment on the Library of Congress’ The Signal blog (<a class="reference external" href="http://blogs.loc.gov/thesignal/">http://blogs.loc.gov/thesignal/</a>) or through our contact form at <a class="reference external" href="https://www.loc.gov/programs/web-archiving/about-this-program/contact-us/">https://www.loc.gov/programs/web-archiving/about-this-program/contact-us/</a>.</p>
+<p>You can read more about how Library of Congress staff analyzed this data set in this post on The Signal blog: <a class="reference external" href="http://blogs.loc.gov/thesignal/2018/10/data-mining-memes-in-the-digital-culture-web-archive/">http://blogs.loc.gov/thesignal/2018/10/data-mining-memes-in-the-digital-culture-web-archive/</a>. Have fun exploring these memes in more detail!</p>
+<p><strong>Contributors:</strong></p>
+<ul class="simple">
+<li><p>Chase Dooley</p></li>
+<li><p>Jesse Johnston</p></li>
+<li><p>Aly DesRochers</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Data Sets\Web Archives"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="getting_started_with_memegenerator.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exploring the Memegenerator Metadata</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="loc_goes_lofi.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">&lt;no title&gt;</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Exploring the GIPHY.com Metadata</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-environment">Setting up the Environment</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-imports">Module Imports</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-writing-and-getting">Reading, Writing, and Getting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#processing">Processing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualizing-the-results">Visualizing the Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-functions">Defining the Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-giphy-data-set">get_giphy_data_set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-giphy-data-set">load_giphy_data_set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-import-dates">get_import_dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-bar-chart-from-distribution">create_bar_chart_from_distribution</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-functions">Running the Functions</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-the-data-set">1) Get the Data Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-the-data-set">2) Load the Data Set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preview-of-the-giphy-data-set-content">Preview of the <code class="docutils literal notranslate"><span class="pre">giphy_data_set</span></code> content</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chart-the-import-dates">3) Chart the Import Dates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#smallest-largest">4) Smallest &amp; Largest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-the-titles">5) Search the Titles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hydrate-the-dataset">6) Hydrate the Dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Library of Congress staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <header class="loc-header">
+    <div class="loc-logo">
+        <a href="https://www.loc.gov/"><img src="/data-exploration/_static/LOC_Logo_horiz_inv.png" alt="The Library of Congress logo" title="Go to the Library of Congress homepage" /></a>
+    </div>
+    <div class="project-description">
+        <p>In-depth tutorials for working with Library of Congress data via APIs and code. <a href="https://github.com/libraryOfCongress/data-exploration/" class="button small">View the code</a></p>
+    </div>
+</header>
+<footer class="loc-footer">
+    <p>In-depth tutorials for working with Library of Congress data via APIs and code.</p>
+    <ul class="loc-footer-nav-list">
+        <li><a href="https://github.com/libraryOfCongress/data-exploration/">Source code</a></li>  
+        <li><a href="https://www.loc.gov/">The Library of Congress</a></li>
+        <li><a href="https://loc.gov/legal">Privacy Policy</a></li>
+        <li><a href="https://www.loc.gov/accessibility/">Accessibilty</a></li>
+        <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Github Privacy Statement</a></li>
+        <li><a href="https://creativecommons.org/publicdomain/zero/1.0/">License</a></li>
+        <li><a href="mailto:LC-Labs@loc.gov">Contact</a></li>
+    </ul>
+</footer>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

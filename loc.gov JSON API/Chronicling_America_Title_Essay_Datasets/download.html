@@ -1,0 +1,2058 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Title Essays &#8212; Tutorials for Data Exploration</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/loc.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/loc.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'loc.gov JSON API/Chronicling_America_Title_Essay_Datasets/download';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tutorials for Data Exploration</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Tutorials for Data Exploration
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Loc.gov JSON API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../LOC.gov%20JSON%20API.html">LOC.gov JSON API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Accessing%20images%20for%20analysis.html">Accessing images from the loc.gov JSON API for image analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Dominant%20colors.html">Color clusters in images in Library of Congress collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Connecting the image file to the metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Extracting%20location%20data%20for%20geovisualization.html">Extracting location data from the loc.gov API for geovisualization</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../maps/maps-analyzing-metadata.html">Analyzing and visualizing cartographic metadata from loc.gov</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chronicling America notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Chronicling%20America%20API/ChronAm%20API%20Samples.html">ChronAm API Guide</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Web Archives notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html">Exploring the Memegenerator Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Sets/Web%20Archives/getting_started_with_giphy.html">Exploring the GIPHY.com Metadata</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/digitized-books.html">LoC Data Package Tutorial: Selected Digitized Books Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/directories.html">LoC Data Package Tutorial: City and Telephone Directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/telephone.html">LoC Data Package Tutorial: Digitized Telephone Directories Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/stereographs.html">LoC Data Package Tutorial: Stereograph Card Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/austro-hungarian-maps.html">LoC Data Package Tutorial: Austro-Hungarian maps set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/gen-coll-assessment.html">LoC Data Package Tutorial: General Collections Assessment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Library API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20IIIF%20API/IIIF.html">IIIF API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20Sitemaps%20API/Sitemap.html">What are Sitemaps?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20web%20interface/OpenSearch.html">OpenSearch Guide</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/loc.gov JSON API/Chronicling_America_Title_Essay_Datasets/download.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Title Essays</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Title Essays</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-loop">Main Loop</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p>This Jupyter Notebook produces a dataset from the Chronicling America Title Essays. It introduces readers to the concept of the <a class="reference external" href="https://www.loc.gov/apis/">Library of Congress API</a>, the various facets that it queries, and the titles essays themselves. It is meant to act as a stand-in workshop that introduces a few programming elements while producing the neccessay code to bulk download and package the Chronicling America title essays. If you would like to jump ahead and see the packaged title essays themselves, they are included in this repository as a comma-separated values (CSV) file titled lc_output.csv. That file is updated periodically and was last created on October 13, 2022.</p>
+<p>To best understand this Jupyter Notebook, read it in conjunction with the following Jupyter <a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.ipynb">notebook</a>. While this notebook provides the reader with the ability to produce datasets, the following notebook hopes to contextualize these data by providing code-snippets for possible project starting points.</p>
+<p>As a whole, this notebook should be read as a hands-on tutorial for downloading data, selecting metadata fields, and writing that data to CSVs.</p>
+<p>Please note that not all newspapers have title essays and that title essays are added on a rolling basis. This data is up to date as of October 13, 2022.</p>
+<hr class="docutils" />
+<p>Although they produce different datasets, other notebooks within this <a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.ipynb">repository</a> function in a similar way to this one. Please use them for reference and as a further guide.</p>
+<hr class="docutils" />
+<section id="title-essays">
+<h1>Title Essays<a class="headerlink" href="#title-essays" title="Permalink to this heading">#</a></h1>
+<p>In addition to standardized description based on existing cataloging records, newspapers that have been selected for digitization by the <a class="reference external" href="https://www.loc.gov/ndnp/">National Digital Newspaper Program</a> (NDNP) state partners are accompanied by supplementary description (also known as “title essays”). These essays contain basic information about the paper, including:</p>
+<ul class="simple">
+<li><p>place of publication (if not already evident);</p></li>
+<li><p>dates and schedule of publication (e.g., weekly, daily, morning, or evening);</p></li>
+<li><p>geographic area covered and circulation statistics;</p></li>
+<li><p>political, religious, or other affiliation and reason for publication;</p></li>
+<li><p>specialized audiences;</p></li>
+<li><p>physical attributes;</p></li>
+<li><p>changes in name, format, and ownership.</p></li>
+</ul>
+<p>In addition, title essays usually discuss:</p>
+<ul class="simple">
+<li><p>editors, publishers, or reporters of note;</p></li>
+<li><p>significant events covered by the paper in the relevant time period (a short quote from the paper itself can help provide a sense of the paper’s voice);</p></li>
+<li><p>special features such as poetry or fiction, women’s section, sports, society, etc.;</p></li>
+<li><p>relationships with other area newspapers;</p></li>
+<li><p>innovations or advances in newspaper production and technology.</p></li>
+</ul>
+<p>These brief essays appear as part of the descriptive title information, NDNP state partners research and write these essays specifically for Chronicling America. <a class="reference external" href="https://www.neh.gov/divisions/preservation">The Division of Preservation and Access</a> of the <a class="reference external" href="https://www.neh.gov">National Endowment of the Humanities</a> review the essays as part of the NDNP partnership. The essays are intended as starting points for additional research and understanding of the historical role of each newspaper.</p>
+<p>Newspapers that have title essays are identified in the <a class="reference external" href="https://chroniclingamerica.loc.gov/newspapers/">All Digitized Newspapers list</a> where the “More Info” value is “Yes.” The content of the essays can be searched through the U.S. Newspaper Directory search form, using the “keyword” search. Results will link to records that include those keywords.</p>
+<p>Historical newspapers reflect the language and attitudes of their time, and may contain biased, offensive, and outdated words and images that may be hurtful to particular groups or people. In the title essays, writers strive to avoid this language in supplemental text and only include these terms where it is deemed necessary to understanding the context in which the newspaper was produced. Title essay authors only use such language in the title of the newspaper, the name of an affiliated organization, part of the self-identification of a person or group, or if we are directly quoting from the newspaper. Even then, the title essays only include these terms if the author deems it necessary to understanding the context in which the newspaper was produced.</p>
+<hr class="docutils" />
+<p>This code produces a static dataset from Chronicling America’s Title Essays. It also includes elements of those title’s MARC records. See below for specific details of the metadata captured when the code is run.</p>
+<p>Finally, because this code is written for pedagogic purposes, it is highly commented. Feel free to fork this code, or take elements for your project.</p>
+<hr class="docutils" />
+</section>
+<section id="part-1">
+<h1>Part 1<a class="headerlink" href="#part-1" title="Permalink to this heading">#</a></h1>
+<hr class="docutils" />
+<p>The code elements within this notebook can be run by clicking the Run button above.</p>
+<p><img alt="Screen%20Shot%202022-10-20%20at%2012.32.35%20PM.png" src="loc.gov JSON API/Chronicling_America_Title_Essay_Datasets/attachment:Screen%20Shot%202022-10-20%20at%2012.32.35%20PM.png" /></p>
+<p>Feel free to edit the code within these boxes, save a copy, and reuse it for your purposes.</p>
+<p>First, as with most Python notebooks, we will import the necessary Python libraries.</p>
+<p>Included below is a list of the libraries we are importing along with a link to further documentation.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/">BeautifulSoup</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/csv.html">csv</a></p></li>
+<li><p><a class="reference external" href="https://numpy.org/doc/stable/">numpy</a></p></li>
+<li><p><a class="reference external" href="https://pandas.pydata.org/docs/">pandas</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/random.html">random</a></p></li>
+<li><p><a class="reference external" href="https://requests.readthedocs.io/en/latest/">requests</a></p></li>
+<li><p><a class="reference external" href="https://docs.python.org/3/library/time.html">time</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import necessary libraries.</span>
+
+<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">time</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s first get an idea of the newspapers available in Chronicling America.</p>
+<p>In order to do this, we’ll go to the Library of Congress’s website for the <a class="reference external" href="https://www.loc.gov/collections/directory-of-us-newspapers-in-american-libraries/?all=true&amp;c=50&amp;fa=partof_collection:chronicling+america&amp;sp=1">Directory of US Newspapers and filter by Chroncling America</a>. As of October 13, 2022, this search returns 3,683 full text newspaper titles.</p>
+<p>We’ll use these URLs and the LCCNs from these URLS to construct our dataset.</p>
+<p>However, first we need to “crawl” this website to save these urls. Web crawling is a form of data mining that anticipates programatically going through web pages and vacuuming up the data on them. Others have written more comprehensive guides and tools do <a class="reference external" href="https://programminghistorian.org/en/lessons/fetch-and-parse-data-with-openrefine">exist</a>.</p>
+<p>The following two blocks of code generate a list of urls. Like most Jupyter notebooks, this code is broken down into manageable sections that can be run independently of each other.</p>
+<ol class="arabic simple">
+<li><p>The first block of code creates a list of pages from the Directory of US Newspapers that contain Chronicling America urls.</p></li>
+<li><p>The second block, iterates through those pages with Chronicling America urls and saves those urls to a new list. Our code pauses for two seconds, or “sleeps,” in between each page so as not to overload the Library of Congress’s servers. The end result is a list of 3683 urls.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_url</span> <span class="o">=</span> <span class="s1">&#39;https://www.loc.gov/collections/directory-of-us-newspapers-in-american-libraries/?all=true&amp;c=1000&amp;fa=partof_collection:chronicling+america&amp;sp=</span><span class="si">{}</span><span class="s1">&#39;</span>
+
+<span class="n">pages</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">total_url</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> 
+                 <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Use beautiful soup to grab urls for lccns:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">links</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">pages</span><span class="p">:</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">page</span><span class="p">)</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s2">&quot;html.parser&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">title</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;span&quot;</span><span class="p">,</span> <span class="s2">&quot;item-description-title&quot;</span><span class="p">):</span>
+        <span class="n">link</span> <span class="o">=</span> <span class="n">title</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)[</span><span class="s2">&quot;href&quot;</span><span class="p">]</span>
+        <span class="n">links</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s list the first 10 links to make sure everything worked correctly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">links</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;https://www.loc.gov/item/sn85026945/&#39;,
+ &#39;https://www.loc.gov/item/sn93067670/&#39;,
+ &#39;https://www.loc.gov/item/sn93067668/&#39;,
+ &#39;https://www.loc.gov/item/sn84026853/&#39;,
+ &#39;https://www.loc.gov/item/sn85042527/&#39;,
+ &#39;https://www.loc.gov/item/sn88064057/&#39;,
+ &#39;https://www.loc.gov/item/sn83045004/&#39;,
+ &#39;https://www.loc.gov/item/sn83045003/&#39;,
+ &#39;https://www.loc.gov/item/sn98069055/&#39;,
+ &#39;https://www.loc.gov/item/sn83016734/&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>And that those link out to a single column csv for analysis and storage.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">header</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;lccn&quot;</span><span class="p">]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;lc_output.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">write</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> 
+    <span class="n">write</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">header</span><span class="p">)</span> 
+    <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links</span><span class="p">:</span>
+        <span class="n">write</span><span class="o">.</span><span class="n">writerow</span><span class="p">([</span><span class="n">link</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+</section>
+<section id="part-2">
+<h1>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading">#</a></h1>
+<hr class="docutils" />
+<p>Next, we will take that list of URLs and create a small script to pull down data from the Library API. I originally wrote it as a parallelized script that downloaded the code in about 45 minutes. Unfortunately, it kept overloading the Library of Congress API. I re-wrote it so that it instead uses a handful of ‘user-agents’ to download the data. This “slow” method takes about three hours.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;lc_output.csv&quot;</span><span class="p">)</span>  
+    
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lccn</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>https://www.loc.gov/item/sn85026945/</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>https://www.loc.gov/item/sn93067670/</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>https://www.loc.gov/item/sn93067668/</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>https://www.loc.gov/item/sn84026853/</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>https://www.loc.gov/item/sn85042527/</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>https://www.loc.gov/item/sn88064057/</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>https://www.loc.gov/item/sn83045004/</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>https://www.loc.gov/item/sn83045003/</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>https://www.loc.gov/item/sn98069055/</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>https://www.loc.gov/item/sn83016734/</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lccns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">lccn</span>
+<span class="n">lccns</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    https://www.loc.gov/item/sn85026945/
+1    https://www.loc.gov/item/sn93067670/
+2    https://www.loc.gov/item/sn93067668/
+3    https://www.loc.gov/item/sn84026853/
+4    https://www.loc.gov/item/sn85042527/
+Name: lccn, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">urls</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">lccn</span> <span class="ow">in</span> <span class="n">lccns</span><span class="p">:</span>
+    <span class="n">urls</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">lccn</span><span class="si">}</span><span class="s2">?fo=json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">urls</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3683
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># N.B. As of October 13, 2022, ther are only about ~2000 unique essays. The rest are variations and duplicates. </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;user_agents.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">user_agents_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">readlines</span><span class="p">()]</span>
+
+<span class="n">user_agents_list</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Mozilla/5.0 (Linux; U; Android 4.0.3; ko-kr; LG-L160L Build/IML74K) AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30&#39;,
+ &#39;Mozilla/5.0 (Linux; U; Android 4.0.3; de-ch; HTC Sensation Build/IML74K) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_agents_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1"># headers = {&#39;User-agent&#39; : user_agents_list[val]}</span>
+<span class="n">val</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Custom headers are often used to avoid timeouts. This function sets up a custom header. </span>
+<span class="c1"># While we do not use it in our code, we&#39;ve kept in place for documentation purposes.</span>
+<span class="k">def</span> <span class="nf">rando_headers</span><span class="p">():</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">user_agents_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-agent&#39;</span> <span class="p">:</span> <span class="n">user_agents_list</span><span class="p">[</span><span class="n">val</span><span class="p">]}</span>
+<span class="c1">#     print(headers)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>First, we’ll get one record to determine both the structure of the json and figure out which aspects of the record we want to download. We do so below.</p>
+<p>This JSON data is an adaption of the bibliographic metadata created for the Library of Congress’s <a class="reference external" href="https://www.loc.gov/aba/pcc/conser/index.html">CONSER Program</a>. The CONSER metadata is standard for all Chronicling America and Library of Congress serials. The <a class="reference external" href="https://www.loc.gov/aba/pcc/conser/more-documentation.html">CONSER Documentation and Updates</a> page, specifically the section on newspapers, contains more information about the application of CONSER to serials.</p>
+<p>Additionally, the following page contains information for mapping <a class="reference external" href="https://www.loc.gov/aba/pcc/conser/issues/CSR.html">CONSER Standard Record (CSR) to Metadata Application Profiles (MAPs)</a>. This includes information about mapping CONSER to MARC21.</p>
+<p>Finally, please find more information about the metadata contained in the CONSER Standard Record <a class="reference external" href="https://www.loc.gov/aba/pcc/conser/documents/CONSER-RDA-CSR.pdf">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get one record to see fields.</span>
+<span class="c1"># compare extract_timestamp </span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.loc.gov/item/sn85059812/?fo=json&quot;</span><span class="p">)</span>
+<span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;articles_and_essays&#39;: None,
+ &#39;cite_this&#39;: {&#39;apa&#39;: &#39;(1901, January 1)  &lt;cite&gt;The Advocate Charleston, W. Va. -1913&lt;/cite&gt;. Retrieved from the Library of Congress, https://www.loc.gov/item/sn85059812/.&#39;,
+  &#39;chicago&#39;: &#39;&lt;cite&gt;The Advocate Charleston, W. Va. -1913&lt;/cite&gt;. (Charleston, WV), Jan. 1 1901. https://www.loc.gov/item/sn85059812/.&#39;,
+  &#39;mla&#39;: &#39;&lt;cite&gt;The Advocate Charleston, W. Va. -1913&lt;/cite&gt;. (Charleston, WV) 1 Jan. 1901. Retrieved from the Library of Congress, www.loc.gov/item/sn85059812/.&#39;},
+ &#39;holdings_url&#39;: &#39;https://www.loc.gov/item/sn85059812/?st=holdings&#39;,
+ &#39;item&#39;: {&#39;_version_&#39;: 1746559459402973184,
+  &#39;access_restricted&#39;: False,
+  &#39;aka&#39;: [&#39;http://lccn.loc.gov/sn85059812&#39;,
+   &#39;http://www.loc.gov/item/sn85059812/&#39;],
+  &#39;batch&#39;: [&#39;wvu_lincoln_ver01&#39;],
+  &#39;call_number&#39;: [&#39;ISSN RECORD&#39;],
+  &#39;campaigns&#39;: [],
+  &#39;composite_location&#39;: [&#39;0/united states/&#39;,
+   &#39;1/united states/west virginia/&#39;,
+   &#39;2/united states/west virginia/kanawha/&#39;,
+   &#39;3/united states/west virginia/kanawha/charleston/&#39;],
+  &#39;control_number&#39;: &#39;&#39;,
+  &#39;created_published&#39;: [&#39;Charleston, W. Va. : Advocate Pub. Co.&#39;],
+  &#39;date&#39;: &#39;1901&#39;,
+  &#39;dates_of_publication&#39;: &#39;1901-1913&#39;,
+  &#39;description&#39;: [&#39;Weekly Began in 1901; ceased in 1913? Cf. W. Va. State Gazetteers. &quot;The Advocate reaches more colored readers than any newspaper in West Virginia.&quot; Afro-American. Vol. 6, no. 24 (Feb. 7, 1907).&#39;],
+  &#39;digitized&#39;: True,
+  &#39;display_offsite&#39;: True,
+  &#39;essay&#39;: &#39;&lt;p&gt;Established in 1901, the &lt;em&gt;Advocate&lt;/em&gt; served Charleston&amp;#8217;s and West Virginia&amp;#8217;s African-American communities via its weekly columns. Reaching a wide African-American audience and promising them &amp;#8220;more news than any other race paper published,&amp;#8221; the &lt;em&gt;Advocate&lt;/em&gt; indeed offered its readers a plethora of local, state, and national news. The paper paid especial attention to African-American political and social affairs.&lt;/p&gt;\n\n&lt;p&gt;The founder of the &lt;em&gt;Advocate&lt;/em&gt; was Samuel Starks, the first African-American state librarian for West Virginia. Starks was also a member and eventual leader of the Colored Knights of Pythias, an inclusive, international fraternal organization. The &lt;em&gt;Advocate&lt;/em&gt;&amp;#8216;s offices were located in Charleston&amp;#8217;s Pythian building. Starks&amp;#8217;s death in 1908 prompted mournful remembrances from admirers across the country, including Booker T. Washington. The paper landed in the hands of John C. Gilmer, one of the &lt;em&gt;Advocate&lt;/em&gt;&amp;#8216;s writers, and Gilmer edited the paper until its cessation. He had received his education at Storer College, a historically black institution in Harper&amp;#8217;s Ferry, as well as the University of Pittsburgh (then Western University of Pennsylvania), where he was the first African-American graduate.&lt;/p&gt;\n\n&lt;p&gt;The weekly &lt;em&gt;Advocate&lt;/em&gt; kept readers abreast of current events, often focusing on racial issues. The paper didn&amp;#8217;t shy away from exposing racial discrimination and violence, including the emotionally laden topic of lynching. Yet the newspaper also covered lighter fare, reporting on civic and religious events, politics, foreign affairs, local gossip, and more. Reflecting the interests of its founder, the affairs of the Colored Knights of Pythias often received extensive coverage.&lt;/p&gt;\n\n&lt;p&gt;Politically, the &lt;em&gt;Advocate&lt;/em&gt; reflected John Gilmer&amp;#8217;s independent streak. Although the newspaper supported the Republican Party&amp;#8212;the party of Abraham Lincoln and emancipation&amp;#8212;throughout much of its tenure, it was not averse to bucking the party line. In 1912 Gilmer threw his support behind Theodore Roosevelt&amp;#8217;s breakaway Progressive Party, serving as a delegate at the Progressive National Convention. Answering the charge that he was a traitor to his race by breaking away from the Republican Party, Gilmer responded by praising the Progressives&amp;#8217; labor policies and called on African-American readers to &amp;#8220;carefully weigh the broken promises of the Republican party and the open hostility of the Democrats with the frank declarations of the Progressives.&amp;#8221; This independent thinking was also exhibited in Gilmer&amp;#8217;s views on race in the South. Gilmer questioned whether whites would ever see African Americans as equals, and instead focused on earning true equality within segregated society. Despite these unorthodox stances, Gilmer was widely respected within the state&amp;#8217;s journalistic and African-American communities.&lt;/p&gt;\n\n&lt;p&gt;It is unclear why the &lt;em&gt;Advocate&lt;/em&gt;&amp;#8216;s publication ceased in late 1912 or 1913. The paper remains, however, a window into West Virginia&amp;#8217;s vibrant African-American community in the early twentieth century.&lt;/p&gt;&#39;,
+  &#39;essay_contributor&#39;: [&#39;West Virginia University&#39;],
+  &#39;extract_timestamp&#39;: &#39;2022-06-30T14:04:35.295Z&#39;,
+  &#39;extract_urls&#39;: [&#39;http://lccn.loc.gov/sn85059812#newspaper-titles&#39;,
+   &#39;http://lccn.loc.gov/sn85059812#catalog&#39;,
+   &#39;https://s3.amazonaws.com/chronam-bib-derivatives/sn85059812.xml#ndnp/newspapers&#39;],
+  &#39;format&#39;: [{&#39;newspaper&#39;: &#39;https://www.loc.gov/search/?fa=original_format:newspaper&amp;fo=json&#39;}],
+  &#39;genre&#39;: [&#39;Newspapers&#39;],
+  &#39;group&#39;: [&#39;newspaper-titles&#39;,
+   &#39;catalog&#39;,
+   &#39;ndnp/newspapers&#39;,
+   &#39;main-catalog&#39;,
+   &#39;united-states-newspaper-directory&#39;],
+  &#39;hassegments&#39;: False,
+  &#39;holding_data&#39;: [{&#39;dates&#39;: [&#39;02/1986&#39;],
+    &#39;description&#39;: [&#39;s=&lt;1907:2:7-1912:11:14&gt;&#39;],
+    &#39;institutions&#39;: [{&#39;institution_city&#39;: &#39;Morgantown&#39;,
+      &#39;institution_name&#39;: &#39;West Virginia Newsp Proj&#39;,
+      &#39;institution_state&#39;: &#39;WV&#39;}],
+    &#39;more_titles_url&#39;: &#39;https://www.loc.gov/collections/directory-of-us-newspapers-in-american-libraries/?fa=number_institution:West+Virginia+Newsp+Proj&#39;,
+    &#39;number_holding_type&#39;: [&#39;Microfilm Service Copy&#39;],
+    &#39;source_filename&#39;: &#39;https://chronam-bib.s3.amazonaws.com/holdings/metacoll.DLC.lhr.USNP.marcxml.00005.xml&#39;}],
+  &#39;id&#39;: &#39;http://www.loc.gov/item/sn85059812/&#39;,
+  &#39;image_url&#39;: [],
+  &#39;index&#39;: 1,
+  &#39;item&#39;: {&#39;call_number&#39;: [&#39;ISSN RECORD&#39;],
+   &#39;created_published&#39;: [&#39;Charleston, W. Va. : Advocate Pub. Co.&#39;],
+   &#39;date&#39;: &#39;1901&#39;,
+   &#39;essay&#39;: &#39;&lt;p&gt;Established in 1901, the &lt;em&gt;Advocate&lt;/em&gt; served Charleston&amp;#8217;s and West Virginia&amp;#8217;s African-American communities via its weekly columns. Reaching a wide African-American audience and promising them &amp;#8220;more news than any other race paper published,&amp;#8221; the &lt;em&gt;Advocate&lt;/em&gt; indeed offered its readers a plethora of local, state, and national news. The paper paid especial attention to African-American political and social affairs.&lt;/p&gt;\n\n&lt;p&gt;The founder of the &lt;em&gt;Advocate&lt;/em&gt; was Samuel Starks, the first African-American state librarian for West Virginia. Starks was also a member and eventual leader of the Colored Knights of Pythias, an inclusive, international fraternal organization. The &lt;em&gt;Advocate&lt;/em&gt;&amp;#8216;s offices were located in Charleston&amp;#8217;s Pythian building. Starks&amp;#8217;s death in 1908 prompted mournful remembrances from admirers across the country, including Booker T. Washington. The paper landed in the hands of John C. Gilmer, one of the &lt;em&gt;Advocate&lt;/em&gt;&amp;#8216;s writers, and Gilmer edited the paper until its cessation. He had received his education at Storer College, a historically black institution in Harper&amp;#8217;s Ferry, as well as the University of Pittsburgh (then Western University of Pennsylvania), where he was the first African-American graduate.&lt;/p&gt;\n\n&lt;p&gt;The weekly &lt;em&gt;Advocate&lt;/em&gt; kept readers abreast of current events, often focusing on racial issues. The paper didn&amp;#8217;t shy away from exposing racial discrimination and violence, including the emotionally laden topic of lynching. Yet the newspaper also covered lighter fare, reporting on civic and religious events, politics, foreign affairs, local gossip, and more. Reflecting the interests of its founder, the affairs of the Colored Knights of Pythias often received extensive coverage.&lt;/p&gt;\n\n&lt;p&gt;Politically, the &lt;em&gt;Advocate&lt;/em&gt; reflected John Gilmer&amp;#8217;s independent streak. Although the newspaper supported the Republican Party&amp;#8212;the party of Abraham Lincoln and emancipation&amp;#8212;throughout much of its tenure, it was not averse to bucking the party line. In 1912 Gilmer threw his support behind Theodore Roosevelt&amp;#8217;s breakaway Progressive Party, serving as a delegate at the Progressive National Convention. Answering the charge that he was a traitor to his race by breaking away from the Republican Party, Gilmer responded by praising the Progressives&amp;#8217; labor policies and called on African-American readers to &amp;#8220;carefully weigh the broken promises of the Republican party and the open hostility of the Democrats with the frank declarations of the Progressives.&amp;#8221; This independent thinking was also exhibited in Gilmer&amp;#8217;s views on race in the South. Gilmer questioned whether whites would ever see African Americans as equals, and instead focused on earning true equality within segregated society. Despite these unorthodox stances, Gilmer was widely respected within the state&amp;#8217;s journalistic and African-American communities.&lt;/p&gt;\n\n&lt;p&gt;It is unclear why the &lt;em&gt;Advocate&lt;/em&gt;&amp;#8216;s publication ceased in late 1912 or 1913. The paper remains, however, a window into West Virginia&amp;#8217;s vibrant African-American community in the early twentieth century.&lt;/p&gt;&#39;,
+   &#39;essay_contributor&#39;: [&#39;West Virginia University&#39;],
+   &#39;format&#39;: [&#39;newspaper&#39;],
+   &#39;genre&#39;: [&#39;Newspapers&#39;],
+   &#39;language&#39;: [&#39;eng&#39;],
+   &#39;location&#39;: [&#39;West Virginia--Charleston&#39;, &#39;Charleston (W. Va.)&#39;],
+   &#39;medium&#39;: [&#39;volumes&#39;],
+   &#39;notes&#39;: [&#39;Weekly&#39;,
+    &#39;Began in 1901; ceased in 1913? Cf. W. Va. State Gazetteers.&#39;,
+    &#39;&quot;The Advocate reaches more colored readers than any newspaper in West Virginia.&quot;&#39;,
+    &#39;Afro-American.&#39;,
+    &#39;Vol. 6, no. 24 (Feb. 7, 1907).&#39;],
+   &#39;raw_lccn&#39;: &#39;sn 85059812 &#39;,
+   &#39;source_group&#39;: &#39;ndnp/wvu&#39;,
+   &#39;subjects&#39;: [&#39;African Americans--West Virginia--Charleston--Newspapers&#39;,
+    &#39;Charleston (W. Va.)--Newspapers&#39;,
+    &#39;African Americans&#39;,
+    &#39;West Virginia--Charleston&#39;,
+    &#39;United States--West Virginia--Kanawha--Charleston&#39;],
+   &#39;title&#39;: &#39;The advocate.&#39;},
+  &#39;item_type&#39;: &#39;title&#39;,
+  &#39;language&#39;: [&#39;english&#39;],
+  &#39;languages&#39;: [{&#39;english&#39;: &#39;https://www.loc.gov/search/?fa=language:english&amp;fo=json&#39;}],
+  &#39;latlong&#39;: [38.35016, -81.63895],
+  &#39;library_of_congress_control_number&#39;: &#39;sn85059812&#39;,
+  &#39;location&#39;: [&#39;kanawha&#39;, &#39;united states&#39;, &#39;west virginia&#39;, &#39;charleston&#39;],
+  &#39;location_city&#39;: [&#39;charleston&#39;],
+  &#39;location_country&#39;: [&#39;united states&#39;],
+  &#39;location_county&#39;: [&#39;kanawha&#39;],
+  &#39;location_state&#39;: [&#39;west virginia&#39;],
+  &#39;location_str&#39;: &#39;Charleston, West Virginia&#39;,
+  &#39;locations&#39;: [{&#39;charleston&#39;: &#39;https://www.loc.gov/search/?fa=location:charleston&amp;fo=json&#39;},
+   {&#39;kanawha&#39;: &#39;https://www.loc.gov/search/?fa=location:kanawha&amp;fo=json&#39;},
+   {&#39;united states&#39;: &#39;https://www.loc.gov/search/?fa=location:united+states&amp;fo=json&#39;},
+   {&#39;west virginia&#39;: &#39;https://www.loc.gov/search/?fa=location:west+virginia&amp;fo=json&#39;}],
+  &#39;locations_city&#39;: [{&#39;charleston&#39;: &#39;https://www.loc.gov/search/?fa=location_city:charleston&amp;fo=json&#39;}],
+  &#39;locations_country&#39;: [{&#39;united states&#39;: &#39;https://www.loc.gov/search/?fa=location_country:united+states&amp;fo=json&#39;}],
+  &#39;locations_county&#39;: [{&#39;kanawha&#39;: &#39;https://www.loc.gov/search/?fa=location_county:kanawha&amp;fo=json&#39;}],
+  &#39;locations_state&#39;: [{&#39;west virginia&#39;: &#39;https://www.loc.gov/search/?fa=location_state:west+virginia&amp;fo=json&#39;}],
+  &#39;locations_str&#39;: [{&#39;Charleston, West Virginia&#39;: &#39;https://www.loc.gov/search/?fa=location_str:Charleston,+West+Virginia&amp;fo=json&#39;}],
+  &#39;lonlat&#39;: [-81.63895, 38.35016],
+  &#39;medium&#39;: [&#39;volumes&#39;],
+  &#39;notes&#39;: [&#39;Weekly&#39;,
+   &#39;Began in 1901; ceased in 1913? Cf. W. Va. State Gazetteers.&#39;,
+   &#39;&quot;The Advocate reaches more colored readers than any newspaper in West Virginia.&quot;&#39;,
+   &#39;Afro-American.&#39;,
+   &#39;Vol. 6, no. 24 (Feb. 7, 1907).&#39;],
+  &#39;number&#39;: [&#39;west virginia newsp proj&#39;,
+   &#39;sn85059812&#39;,
+   &#39;2021-09-08t17:28:32.910059&#39;,
+   &#39;1&#39;,
+   &#39;12920534&#39;,
+   &#39;2021-11-24t09:46:51.764528&#39;,
+   &#39;microfilm service copy&#39;,
+   &#39;online resource&#39;,
+   &#39;2574-6464&#39;],
+  &#39;number_hasessay&#39;: [&#39;1&#39;],
+  &#39;number_holding_type&#39;: [&#39;online resource&#39;, &#39;microfilm service copy&#39;],
+  &#39;number_institution&#39;: [&#39;west virginia newsp proj&#39;],
+  &#39;number_issn&#39;: [&#39;2574-6464&#39;],
+  &#39;number_lccn&#39;: [&#39;sn85059812&#39;],
+  &#39;number_oclc&#39;: [&#39;12920534&#39;],
+  &#39;number_source_modified&#39;: [&#39;2021-11-24t09:46:51.764528&#39;,
+   &#39;2021-09-08t17:28:32.910059&#39;],
+  &#39;original_format&#39;: [&#39;newspaper&#39;],
+  &#39;other_formats&#39;: [{&#39;label&#39;: &#39;MARCXML Record&#39;,
+    &#39;link&#39;: &#39;https://lccn.loc.gov/sn85059812/marcxml&#39;},
+   {&#39;label&#39;: &#39;MODS Record&#39;, &#39;link&#39;: &#39;https://lccn.loc.gov/sn85059812/mods&#39;},
+   {&#39;label&#39;: &#39;Dublin Core Record&#39;,
+    &#39;link&#39;: &#39;https://lccn.loc.gov/sn85059812/dc&#39;}],
+  &#39;other_title&#39;: [],
+  &#39;partof&#39;: [{&#39;count&#39;: 1,
+    &#39;title&#39;: &#39;the advocate (charleston, w. va.) 1901-1913&#39;,
+    &#39;url&#39;: &#39;https://www.loc.gov/search/?fa=partof:the+advocate+%28charleston,+w.+va.%29+1901-1913&amp;fo=json&#39;},
+   {&#39;count&#39;: 154979,
+    &#39;title&#39;: &#39;directory of us newspapers in american libraries&#39;,
+    &#39;url&#39;: &#39;https://www.loc.gov/collections/directory-of-us-newspapers-in-american-libraries/?fo=json&#39;},
+   {&#39;count&#39;: 267046,
+    &#39;title&#39;: &#39;chronicling america&#39;,
+    &#39;url&#39;: &#39;https://www.loc.gov/collections/chronicling-america/?fo=json&#39;},
+   {&#39;count&#39;: 277009,
+    &#39;title&#39;: &#39;serial and government publications division&#39;,
+    &#39;url&#39;: &#39;https://www.loc.gov/search/?fa=partof:serial+and+government+publications+division&amp;fo=json&#39;},
+   {&#39;count&#39;: 1343565,
+    &#39;title&#39;: &#39;catalog&#39;,
+    &#39;url&#39;: &#39;https://www.loc.gov/search/?fa=partof:catalog&amp;fo=json&#39;}],
+  &#39;partof_collection&#39;: [&#39;chronicling america&#39;,
+   &#39;directory of us newspapers in american libraries&#39;],
+  &#39;partof_division&#39;: [&#39;serial and government publications division&#39;],
+  &#39;partof_title&#39;: [&#39;the advocate (charleston, w. va.) 1901-1913&#39;],
+  &#39;publication_frequency&#39;: [&#39;weekly&#39;],
+  &#39;raw_lccn&#39;: &#39;sn 85059812 &#39;,
+  &#39;resources&#39;: [],
+  &#39;rights&#39;: [&#39;&lt;p&gt;The Library of Congress believes that the newspapers in Chronicling America are in the public domain or have no known copyright restrictions.  Newspapers published in the United States more than 95 years ago are in the public domain in their entirety. Any newspapers in Chronicling America that were published less than 95 years ago are also believed to be in the public domain, but may contain some copyrighted third party materials. Researchers using newspapers published less than 95 years ago should be alert for modern content (for example, registered and renewed for copyright and published with notice) that may be copyrighted.  Responsibility for making an independent legal assessment of an item and securing any necessary permissions ultimately rests with persons desiring to use the item.&lt;/p&gt;\n&lt;p&gt;The NEH awardee responsible for producing each digital object is presented in the Chronicling America page display, below the page image  – e.g. Image produced by the Library of Congress. For more information on current NDNP awardees, see &lt;a href=&quot;https://www.loc.gov/ndnp/listawardees.html&quot;&gt;https://www.loc.gov/ndnp/listawardees.html&lt;/a&gt;.&lt;/p&gt;\n&lt;p&gt;For more information on Library of Congress policies and disclaimers regarding rights and reproductions, see &lt;a href=&quot;https://www.loc.gov/homepage/legal.html&quot;&gt;https://www.loc.gov/homepage/legal.html&lt;/a&gt;&lt;/p&gt;&#39;],
+  &#39;score&#39;: 7.499361,
+  &#39;shelf_id&#39;: &#39;ISSN RECORD&#39;,
+  &#39;site&#39;: [&#39;chroniclingamerica&#39;, &#39;catalog&#39;, &#39;usnd&#39;],
+  &#39;source_group&#39;: &#39;ndnp/wvu&#39;,
+  &#39;subject&#39;: [&#39;newspapers&#39;,
+   &#39;charleston (w. va.)&#39;,
+   &#39;united states&#39;,
+   &#39;west virginia&#39;,
+   &#39;kanawha&#39;,
+   &#39;charleston&#39;,
+   &#39;african american&#39;,
+   &#39;african americans&#39;],
+  &#39;subject_ethnicity&#39;: [&#39;african american&#39;],
+  &#39;subject_headings&#39;: [&#39;African Americans--West Virginia--Charleston--Newspapers&#39;,
+   &#39;Charleston (W. Va.)--Newspapers&#39;,
+   &#39;African Americans&#39;,
+   &#39;West Virginia--Charleston&#39;,
+   &#39;United States--West Virginia--Kanawha--Charleston&#39;],
+  &#39;subjects&#39;: [{&#39;african american&#39;: &#39;https://www.loc.gov/search/?fa=subject:african+american&amp;fo=json&#39;},
+   {&#39;african americans&#39;: &#39;https://www.loc.gov/search/?fa=subject:african+americans&amp;fo=json&#39;},
+   {&#39;charleston&#39;: &#39;https://www.loc.gov/search/?fa=subject:charleston&amp;fo=json&#39;},
+   {&#39;charleston (w. va.)&#39;: &#39;https://www.loc.gov/search/?fa=subject:charleston+%28w.+va.%29&amp;fo=json&#39;},
+   {&#39;kanawha&#39;: &#39;https://www.loc.gov/search/?fa=subject:kanawha&amp;fo=json&#39;},
+   {&#39;newspapers&#39;: &#39;https://www.loc.gov/search/?fa=subject:newspapers&amp;fo=json&#39;},
+   {&#39;united states&#39;: &#39;https://www.loc.gov/search/?fa=subject:united+states&amp;fo=json&#39;},
+   {&#39;west virginia&#39;: &#39;https://www.loc.gov/search/?fa=subject:west+virginia&amp;fo=json&#39;}],
+  &#39;subjects_ethnicity&#39;: [{&#39;african american&#39;: &#39;https://www.loc.gov/search/?fa=subject_ethnicity:african+american&amp;fo=json&#39;}],
+  &#39;timestamp&#39;: &#39;2022-10-13T08:14:58.506Z&#39;,
+  &#39;title&#39;: &#39;The Advocate (Charleston, W. Va.) 1901-1913&#39;,
+  &#39;type&#39;: [&#39;newspaper&#39;],
+  &#39;url&#39;: &#39;https://www.loc.gov/item/sn85059812/&#39;},
+ &#39;more_like_this&#39;: [{&#39;access_restricted&#39;: False,
+   &#39;aka&#39;: [&#39;http://www.loc.gov/item/sn85059815/&#39;,
+    &#39;http://lccn.loc.gov/sn85059815&#39;],
+   &#39;batch&#39;: [&#39;wvu_gorn_ver01&#39;],
+   &#39;campaigns&#39;: [],
+   &#39;date&#39;: &#39;1894&#39;,
+   &#39;description&#39;: [&#39;Weekly Began in 1894. &quot;A religious journal.&quot; Editor: Rev. C.B. Graham. Members of the Methodist-Episcopal Church. Archived issues are available in digital format from the Library of Congress Chronicling America online collection. Description based on: Vol. 2, no. 4 (Jan. 1895).&#39;],
+   &#39;digitized&#39;: True,
+   &#39;extract_timestamp&#39;: &#39;2022-06-30T14:04:35.295Z&#39;,
+   &#39;group&#39;: [&#39;newspaper-titles&#39;,
+    &#39;catalog&#39;,
+    &#39;ndnp/newspapers&#39;,
+    &#39;main-catalog&#39;,
+    &#39;united-states-newspaper-directory&#39;],
+   &#39;hassegments&#39;: False,
+   &#39;id&#39;: &#39;http://www.loc.gov/item/sn85059815/&#39;,
+   &#39;image_url&#39;: [],
+   &#39;index&#39;: 1,
+   &#39;language&#39;: [&#39;english&#39;],
+   &#39;latlong&#39;: [38.35016, -81.63895],
+   &#39;location&#39;: [&#39;kanawha&#39;, &#39;united states&#39;, &#39;west virginia&#39;, &#39;charleston&#39;],
+   &#39;location_str&#39;: &#39;&#39;,
+   &#39;lonlat&#39;: [-81.63895, 38.35016],
+   &#39;number&#39;: [&#39;sn85059815&#39;,
+    &#39;west virginia newsp proj&#39;,
+    &#39;12920587&#39;,
+    &#39;2640-1851&#39;,
+    &#39;library of virginia, the&#39;,
+    &#39;2021-09-08t17:28:32.910059&#39;,
+    &#39;1&#39;,
+    &#39;microfilm service copy&#39;,
+    &#39;microform&#39;,
+    &#39;2021-11-24t09:46:51.764528&#39;,
+    &#39;online resource&#39;],
+   &#39;original_format&#39;: [&#39;newspaper&#39;],
+   &#39;other_title&#39;: [],
+   &#39;partof&#39;: [&#39;the charleston advocate (charleston, w. va.) 1894-189?&#39;,
+    &#39;catalog&#39;,
+    &#39;directory of us newspapers in american libraries&#39;,
+    &#39;serial and government publications division&#39;,
+    &#39;chronicling america&#39;],
+   &#39;publication_frequency&#39;: [&#39;weekly&#39;],
+   &#39;score&#39;: 4.732917,
+   &#39;shelf_id&#39;: &#39;Newspaper&#39;,
+   &#39;site&#39;: [&#39;chroniclingamerica&#39;, &#39;catalog&#39;, &#39;usnd&#39;],
+   &#39;subject&#39;: [&#39;newspapers&#39;,
+    &#39;charleston (w. va.)&#39;,
+    &#39;united states&#39;,
+    &#39;west virginia&#39;,
+    &#39;kanawha&#39;,
+    &#39;charleston&#39;],
+   &#39;timestamp&#39;: &#39;2022-10-13T08:14:58.506Z&#39;,
+   &#39;title&#39;: &#39;The Charleston advocate.&#39;,
+   &#39;type&#39;: &#39;title&#39;,
+   &#39;url&#39;: &#39;https://www.loc.gov/item/sn85059815/&#39;},
+  {&#39;access_restricted&#39;: False,
+   &#39;aka&#39;: [&#39;http://virginiachronicle.com/&#39;,
+    &#39;http://lccn.loc.gov/sn85059862&#39;,
+    &#39;http://www.loc.gov/item/sn85059862/&#39;],
+   &#39;batch&#39;: [&#39;wvu_hogan_ver01&#39;],
+   &#39;campaigns&#39;: [],
+   &#39;date&#39;: &#39;1856&#39;,
+   &#39;description&#39;: [&#39;Weekly Vol. 2, no. 23 (Sept. 30, 1856)- Ceased July 2, 1861. Cf. Simmons, R. Star of the Kanawha Valley. &quot;State sovereignty &amp; a constitutional union.&quot; Available on microfilm from U.M.I. Archived issues are available in digital format from the Library of Congress Chronicling America online collection.&#39;],
+   &#39;digitized&#39;: True,
+   &#39;extract_timestamp&#39;: &#39;2022-06-30T14:04:35.295Z&#39;,
+   &#39;group&#39;: [&#39;newspaper-titles&#39;,
+    &#39;catalog&#39;,
+    &#39;ndnp/newspapers&#39;,
+    &#39;main-catalog&#39;,
+    &#39;united-states-newspaper-directory&#39;],
+   &#39;hassegments&#39;: False,
+   &#39;id&#39;: &#39;http://www.loc.gov/item/sn85059862/&#39;,
+   &#39;image_url&#39;: [],
+   &#39;index&#39;: 2,
+   &#39;language&#39;: [&#39;english&#39;],
+   &#39;latlong&#39;: [38.35016, -81.63895],
+   &#39;location&#39;: [&#39;kanawha&#39;, &#39;united states&#39;, &#39;west virginia&#39;, &#39;charleston&#39;],
+   &#39;location_str&#39;: &#39;&#39;,
+   &#39;lonlat&#39;: [-81.63895, 38.35016],
+   &#39;number&#39;: [&#39;west virginia newsp proj&#39;,
+    &#39;2022-07-08t06:56:49&#39;,
+    &#39;12926190&#39;,
+    &#39;sn85059861&#39;,
+    &#39;library of virginia, the&#39;,
+    &#39;2021-09-08t17:28:32.910059&#39;,
+    &#39;1&#39;,
+    &#39;2373-3772&#39;,
+    &#39;microfilm service copy&#39;,
+    &#39;sn85059862&#39;,
+    &#39;kanawha cnty pub libr&#39;,
+    &#39;microform&#39;,
+    &#39;2021-11-24t09:46:51.764528&#39;,
+    &#39;univ of kentucky libr&#39;,
+    &#39;online resource&#39;],
+   &#39;original_format&#39;: [&#39;newspaper&#39;],
+   &#39;other_title&#39;: [],
+   &#39;partof&#39;: [&#39;directory of us newspapers in american libraries&#39;,
+    &#39;catalog&#39;,
+    &#39;kanawha valley star (charleston, va. [w. va.]) 1856-1861&#39;,
+    &#39;serial and government publications division&#39;,
+    &#39;chronicling america&#39;],
+   &#39;publication_frequency&#39;: [&#39;weekly&#39;],
+   &#39;score&#39;: 4.732917,
+   &#39;shelf_id&#39;: &#39;Newspaper&#39;,
+   &#39;site&#39;: [&#39;chroniclingamerica&#39;, &#39;catalog&#39;, &#39;usnd&#39;],
+   &#39;subject&#39;: [&#39;newspapers&#39;,
+    &#39;charleston (w. va.)&#39;,
+    &#39;united states&#39;,
+    &#39;west virginia&#39;,
+    &#39;kanawha&#39;,
+    &#39;charleston&#39;],
+   &#39;timestamp&#39;: &#39;2022-10-13T08:14:58.506Z&#39;,
+   &#39;title&#39;: &#39;Kanawha Valley star.&#39;,
+   &#39;type&#39;: &#39;title&#39;,
+   &#39;url&#39;: &#39;https://www.loc.gov/item/sn85059862/&#39;},
+  {&#39;access_restricted&#39;: False,
+   &#39;aka&#39;: [&#39;http://www.loc.gov/item/sn85059867/&#39;,
+    &#39;http://lccn.loc.gov/sn85059867&#39;],
+   &#39;batch&#39;: [&#39;wvu_gorn_ver01&#39;],
+   &#39;campaigns&#39;: [],
+   &#39;date&#39;: &#39;1874&#39;,
+   &#39;description&#39;: [&#39;Biweekly Began in 1874; ceased in 1874. Cf. Hardesty, H.H. Hardesty\&#39;s Historical and Geographical Encyclopedia ... Kanawha County, W. Va. &quot;Prohibition our country\&#39; hope: Total abstinence our only safeguard.&quot; Editors: S.G. Crouch &amp; J.B. Crouch. Archived issues are available in digital format from the Library of Congress Chronicling America online collection. Description based on: Vol. 1, no. 7 (Nov. 30, 1874).&#39;],
+   &#39;digitized&#39;: True,
+   &#39;extract_timestamp&#39;: &#39;2022-06-30T14:04:35.295Z&#39;,
+   &#39;group&#39;: [&#39;newspaper-titles&#39;,
+    &#39;catalog&#39;,
+    &#39;ndnp/newspapers&#39;,
+    &#39;main-catalog&#39;,
+    &#39;united-states-newspaper-directory&#39;],
+   &#39;hassegments&#39;: False,
+   &#39;id&#39;: &#39;http://www.loc.gov/item/sn85059867/&#39;,
+   &#39;image_url&#39;: [],
+   &#39;index&#39;: 3,
+   &#39;language&#39;: [&#39;english&#39;],
+   &#39;latlong&#39;: [38.35016, -81.63895],
+   &#39;location&#39;: [&#39;kanawha&#39;, &#39;united states&#39;, &#39;west virginia&#39;, &#39;charleston&#39;],
+   &#39;location_str&#39;: &#39;&#39;,
+   &#39;lonlat&#39;: [-81.63895, 38.35016],
+   &#39;number&#39;: [&#39;sn85059867&#39;,
+    &#39;2640-4869&#39;,
+    &#39;2021-09-08t17:28:32.910059&#39;,
+    &#39;1&#39;,
+    &#39;2021-11-24t09:46:51.764528&#39;,
+    &#39;12926214&#39;,
+    &#39;online resource&#39;],
+   &#39;original_format&#39;: [&#39;newspaper&#39;],
+   &#39;other_title&#39;: [&#39;Temperance star and home magazine&#39;],
+   &#39;partof&#39;: [&#39;catalog&#39;,
+    &#39;the temperance star (charleston, w. va.) 1874-1874&#39;,
+    &#39;directory of us newspapers in american libraries&#39;,
+    &#39;serial and government publications division&#39;,
+    &#39;chronicling america&#39;],
+   &#39;publication_frequency&#39;: [&#39;biweekly&#39;],
+   &#39;score&#39;: 4.732917,
+   &#39;shelf_id&#39;: &#39;Newspaper&#39;,
+   &#39;site&#39;: [&#39;chroniclingamerica&#39;, &#39;catalog&#39;, &#39;usnd&#39;],
+   &#39;subject&#39;: [&#39;newspapers&#39;,
+    &#39;charleston (w. va.)&#39;,
+    &#39;united states&#39;,
+    &#39;west virginia&#39;,
+    &#39;kanawha&#39;,
+    &#39;charleston&#39;],
+   &#39;timestamp&#39;: &#39;2022-10-13T08:14:58.506Z&#39;,
+   &#39;title&#39;: &#39;The temperance star.&#39;,
+   &#39;type&#39;: &#39;title&#39;,
+   &#39;url&#39;: &#39;https://www.loc.gov/item/sn85059867/&#39;},
+  {&#39;access_restricted&#39;: False,
+   &#39;aka&#39;: [&#39;http://www.loc.gov/item/sn84026789/&#39;,
+    &#39;http://lccn.loc.gov/sn84026789&#39;,
+    &#39;https://www.virginiachronicle.com&#39;],
+   &#39;batch&#39;: [&#39;wvu_gorn_ver01&#39;],
+   &#39;campaigns&#39;: [],
+   &#39;date&#39;: &#39;1864&#39;,
+   &#39;description&#39;: [&#39;Weekly Vol. 1, no. 1 (Oct. 26, 1864)- Ceased in 1877? Cf. Hardesty, H.H. Hardesty\&#39;s Historical and Geographical Encyclopedia ... Kanawha Co., W. Va. &quot;Republican and pro-union.&quot; Publishers: S.S. and E.T. Moore, 1864; Moore Bros. and George W. Atkinson, 1864-1870; Moore Bros., Atkinson and A.F. Gibbens, 1870-1876; W.L. Moore &amp; Co., 1876-1877. Archived issues are available in digital format from the Library of Congress Chronicling America online collection.&#39;],
+   &#39;digitized&#39;: True,
+   &#39;extract_timestamp&#39;: &#39;2022-06-30T14:04:35.295Z&#39;,
+   &#39;group&#39;: [&#39;newspaper-titles&#39;,
+    &#39;catalog&#39;,
+    &#39;ndnp/newspapers&#39;,
+    &#39;main-catalog&#39;,
+    &#39;united-states-newspaper-directory&#39;],
+   &#39;hassegments&#39;: False,
+   &#39;id&#39;: &#39;http://www.loc.gov/item/sn84026789/&#39;,
+   &#39;image_url&#39;: [],
+   &#39;index&#39;: 4,
+   &#39;language&#39;: [&#39;english&#39;],
+   &#39;latlong&#39;: [38.35016, -81.63895],
+   &#39;location&#39;: [&#39;kanawha&#39;, &#39;united states&#39;, &#39;west virginia&#39;, &#39;charleston&#39;],
+   &#39;location_str&#39;: &#39;&#39;,
+   &#39;lonlat&#39;: [-81.63895, 38.35016],
+   &#39;number&#39;: [&#39;west virginia newsp proj&#39;,
+    &#39;10671693&#39;,
+    &#39;new york hist soc, newsp proj&#39;,
+    &#39;2640-494x&#39;,
+    &#39;duke univ libr&#39;,
+    &#39;virginia historical society library&#39;,
+    &#39;library of virginia, the&#39;,
+    &#39;2021-09-08t17:28:32.910059&#39;,
+    &#39;1&#39;,
+    &#39;american antiquarian soc, newsp proj&#39;,
+    &#39;microfilm service copy&#39;,
+    &#39;microform&#39;,
+    &#39;2021-11-24t09:46:51.764528&#39;,
+    &#39;univ of kentucky libr&#39;,
+    &#39;sn84026789&#39;,
+    &#39;online resource&#39;,
+    &#39;original&#39;],
+   &#39;original_format&#39;: [&#39;newspaper&#39;],
+   &#39;other_title&#39;: [],
+   &#39;partof&#39;: [&#39;chronicling america&#39;,
+    &#39;catalog&#39;,
+    &#39;directory of us newspapers in american libraries&#39;,
+    &#39;the west virginia journal (charleston, w. va.) 1864-1877&#39;,
+    &#39;serial and government publications division&#39;],
+   &#39;publication_frequency&#39;: [&#39;weekly&#39;],
+   &#39;score&#39;: 4.732917,
+   &#39;shelf_id&#39;: &#39;Newspaper&#39;,
+   &#39;site&#39;: [&#39;chroniclingamerica&#39;, &#39;catalog&#39;, &#39;usnd&#39;],
+   &#39;subject&#39;: [&#39;newspapers&#39;,
+    &#39;charleston (w. va.)&#39;,
+    &#39;united states&#39;,
+    &#39;west virginia&#39;,
+    &#39;kanawha&#39;,
+    &#39;charleston&#39;],
+   &#39;timestamp&#39;: &#39;2022-10-13T08:01:14.182Z&#39;,
+   &#39;title&#39;: &#39;The West Virginia journal.&#39;,
+   &#39;type&#39;: &#39;title&#39;,
+   &#39;url&#39;: &#39;https://www.loc.gov/item/sn84026789/&#39;},
+  {&#39;access_restricted&#39;: False,
+   &#39;aka&#39;: [&#39;http://lccn.loc.gov/sn85059855&#39;,
+    &#39;http://www.loc.gov/item/sn85059855/&#39;],
+   &#39;batch&#39;: [&#39;wvu_brubeck_ver02&#39;],
+   &#39;campaigns&#39;: [],
+   &#39;date&#39;: &#39;1906&#39;,
+   &#39;description&#39;: [&#39;Weekly Began May 24, 1906. Ceased in 1915? &quot;Vote the Socialist ticket and free your class from wage slavery.&quot; &quot;Published in the interest of the great majority -- the working class.&quot; Editor: C.H. Boswell. Archived issues are available in digital format from the Library of Congress Chronicling America online collection. &quot;Official organ of the Socialist Party.&quot; Merged with: Socialist and labor star (Huntington, W. Va.), to form: The Argus-star (non-extant). Description based on: Vol. 7, no. 9 (Jan. 2, 1913)=w. no. 348; title from caption. Socialist and labor star 2640-3803 (DLC)sn 85059765 (OCoLC)12897672 Argus-star&#39;],
+   &#39;digitized&#39;: True,
+   &#39;extract_timestamp&#39;: &#39;2022-06-30T14:04:35.028Z&#39;,
+   &#39;group&#39;: [&#39;newspaper-titles&#39;,
+    &#39;catalog&#39;,
+    &#39;ndnp/newspapers&#39;,
+    &#39;main-catalog&#39;,
+    &#39;united-states-newspaper-directory&#39;],
+   &#39;hassegments&#39;: False,
+   &#39;id&#39;: &#39;http://www.loc.gov/item/sn85059855/&#39;,
+   &#39;image_url&#39;: [],
+   &#39;index&#39;: 5,
+   &#39;language&#39;: [&#39;english&#39;],
+   &#39;latlong&#39;: [38.35016, -81.63895],
+   &#39;location&#39;: [&#39;kanawha&#39;, &#39;united states&#39;, &#39;west virginia&#39;, &#39;charleston&#39;],
+   &#39;location_str&#39;: &#39;&#39;,
+   &#39;lonlat&#39;: [-81.63895, 38.35016],
+   &#39;number&#39;: [&#39;sn85059765&#39;,
+    &#39;12926141&#39;,
+    &#39;sn85059855&#39;,
+    &#39;west virginia newsp proj&#39;,
+    &#39;2021-09-08t17:28:32.910059&#39;,
+    &#39;1&#39;,
+    &#39;microfilm service copy&#39;,
+    &#39;kanawha cnty pub libr&#39;,
+    &#39;2021-11-24t09:46:51.764528&#39;,
+    &#39;online resource&#39;,
+    &#39;2471-2213&#39;],
+   &#39;original_format&#39;: [&#39;newspaper&#39;],
+   &#39;other_title&#39;: [],
+   &#39;partof&#39;: [&#39;catalog&#39;,
+    &#39;the labor argus (charleston, w. va.) 1906-1915&#39;,
+    &#39;directory of us newspapers in american libraries&#39;,
+    &#39;serial and government publications division&#39;,
+    &#39;chronicling america&#39;],
+   &#39;publication_frequency&#39;: [&#39;weekly&#39;],
+   &#39;score&#39;: 4.420828,
+   &#39;shelf_id&#39;: &#39;Newspaper HX1 .L1313&#39;,
+   &#39;site&#39;: [&#39;chroniclingamerica&#39;, &#39;catalog&#39;, &#39;usnd&#39;],
+   &#39;subject&#39;: [&#39;newspapers&#39;,
+    &#39;charleston (w. va.)&#39;,
+    &#39;periodicals&#39;,
+    &#39;united states&#39;,
+    &#39;socialism&#39;,
+    &#39;west virginia&#39;,
+    &#39;kanawha&#39;,
+    &#39;charleston&#39;,
+    &#39;working class&#39;],
+   &#39;timestamp&#39;: &#39;2022-10-13T08:14:58.506Z&#39;,
+   &#39;title&#39;: &#39;The labor argus.&#39;,
+   &#39;type&#39;: &#39;title&#39;,
+   &#39;url&#39;: &#39;https://www.loc.gov/item/sn85059855/&#39;},
+  {&#39;access_restricted&#39;: False,
+   &#39;aka&#39;: [&#39;http://www.loc.gov/item/sn85059834/&#39;,
+    &#39;http://lccn.loc.gov/sn85059834&#39;],
+   &#39;batch&#39;: [&#39;wvu_gorn_ver01&#39;],
+   &#39;campaigns&#39;: [],
+   &#39;date&#39;: &#39;1862&#39;,
+   &#39;description&#39;: [&#39;Daily Began in 1862. Archived issues are available in digital format from the Library of Congress Chronicling America online collection. Description based on: Vol. 1, no. 2 (Sept. 29, 1862).&#39;],
+   &#39;digitized&#39;: True,
+   &#39;extract_timestamp&#39;: &#39;2022-06-30T14:04:35.295Z&#39;,
+   &#39;group&#39;: [&#39;newspaper-titles&#39;,
+    &#39;catalog&#39;,
+    &#39;ndnp/newspapers&#39;,
+    &#39;main-catalog&#39;,
+    &#39;united-states-newspaper-directory&#39;],
+   &#39;hassegments&#39;: False,
+   &#39;id&#39;: &#39;http://www.loc.gov/item/sn85059834/&#39;,
+   &#39;image_url&#39;: [],
+   &#39;index&#39;: 6,
+   &#39;language&#39;: [&#39;english&#39;],
+   &#39;latlong&#39;: [38.35016, -81.63895],
+   &#39;location&#39;: [&#39;kanawha&#39;, &#39;united states&#39;, &#39;west virginia&#39;, &#39;charleston&#39;],
+   &#39;location_str&#39;: &#39;&#39;,
+   &#39;lonlat&#39;: [-81.63895, 38.35016],
+   &#39;number&#39;: [&#39;west virginia newsp proj&#39;,
+    &#39;12923891&#39;,
+    &#39;virginia historical society library&#39;,
+    &#39;2640-2033&#39;,
+    &#39;library of virginia, the&#39;,
+    &#39;2021-09-08t17:28:32.910059&#39;,
+    &#39;1&#39;,
+    &#39;2020-03-24t07:57:44&#39;,
+    &#39;microfilm service copy&#39;,
+    &#39;microform&#39;,
+    &#39;2021-11-24t09:46:51.764528&#39;,
+    &#39;univ of kentucky libr&#39;,
+    &#39;sn85059834&#39;,
+    &#39;online resource&#39;,
+    &#39;original&#39;],
+   &#39;original_format&#39;: [&#39;newspaper&#39;],
+   &#39;other_title&#39;: [],
+   &#39;partof&#39;: [&#39;the guerilla (charleston, va. [w. va.]) 1862-186?&#39;,
+    &#39;catalog&#39;,
+    &#39;directory of us newspapers in american libraries&#39;,
+    &#39;serial and government publications division&#39;,
+    &#39;chronicling america&#39;],
+   &#39;publication_frequency&#39;: [&#39;daily&#39;],
+   &#39;score&#39;: 4.094357,
+   &#39;shelf_id&#39;: &#39;Newspaper&#39;,
+   &#39;site&#39;: [&#39;chroniclingamerica&#39;, &#39;catalog&#39;, &#39;usnd&#39;],
+   &#39;subject&#39;: [&#39;(united states&#39;,
+    &#39;)&#39;,
+    &#39;newspapers&#39;,
+    &#39;charleston (w. va.)&#39;,
+    &#39;civil war&#39;,
+    &#39;united states&#39;,
+    &#39;west virginia&#39;,
+    &#39;kanawha&#39;,
+    &#39;charleston&#39;,
+    &#39;american civil war&#39;,
+    &#39;history&#39;],
+   &#39;timestamp&#39;: &#39;2022-10-13T08:14:58.506Z&#39;,
+   &#39;title&#39;: &#39;The guerilla.&#39;,
+   &#39;type&#39;: &#39;title&#39;,
+   &#39;url&#39;: &#39;https://www.loc.gov/item/sn85059834/&#39;}],
+ &#39;options&#39;: {&#39;access_group&#39;: [&#39;&#39;],
+  &#39;access_group_raw&#39;: &#39;&#39;,
+  &#39;all&#39;: None,
+  &#39;api_version&#39;: &#39;1&#39;,
+  &#39;app_context&#39;: None,
+  &#39;application_version&#39;: &#39;$Revision$&#39;,
+  &#39;attribute&#39;: None,
+  &#39;attribute!&#39;: None,
+  &#39;attribute_map&#39;: None,
+  &#39;cache_tags&#39;: [&#39;newspaper-titles&#39;,
+   &#39;catalog&#39;,
+   &#39;ndnp/newspapers&#39;,
+   &#39;main-catalog&#39;,
+   &#39;united-states-newspaper-directory&#39;,
+   &#39;gmd.mar&#39;,
+   &#39;general-maps&#39;,
+   &#39;paprika-iabooks&#39;,
+   &#39;coll&#39;,
+   &#39;groups-of-images&#39;,
+   &#39;nclc&#39;,
+   &#39;national-child-labor-committee&#39;],
+  &#39;callback&#39;: None,
+  &#39;clip&#39;: None,
+  &#39;clip_image_width&#39;: None,
+  &#39;clip_rotation&#39;: None,
+  &#39;content_filter&#39;: None,
+  &#39;content_replacement&#39;: &#39;&#39;,
+  &#39;count&#39;: None,
+  &#39;dates&#39;: None,
+  &#39;default_count&#39;: 25,
+  &#39;delimiter&#39;: None,
+  &#39;digital_id&#39;: None,
+  &#39;display_level&#39;: None,
+  &#39;distance&#39;: None,
+  &#39;downloadOption&#39;: None,
+  &#39;duration&#39;: 0.6472959518432617,
+  &#39;embed&#39;: [],
+  &#39;embed!&#39;: [],
+  &#39;excludeTerms&#39;: None,
+  &#39;facetLimits&#39;: &#39;&#39;,
+  &#39;facetPrefix&#39;: None,
+  &#39;facet_count&#39;: None,
+  &#39;facet_style&#39;: None,
+  &#39;field&#39;: None,
+  &#39;format&#39;: &#39;json&#39;,
+  &#39;host&#39;: &#39;www.loc.gov&#39;,
+  &#39;ical&#39;: False,
+  &#39;id&#39;: &#39;sn85059812/&#39;,
+  &#39;iiif&#39;: False,
+  &#39;index&#39;: None,
+  &#39;inputEncoding&#39;: &#39;UTF-8&#39;,
+  &#39;is_portal&#39;: None,
+  &#39;item&#39;: None,
+  &#39;items&#39;: None,
+  &#39;keys&#39;: None,
+  &#39;language&#39;: None,
+  &#39;latlong&#39;: None,
+  &#39;method&#39;: &#39;GET&#39;,
+  &#39;newSearch&#39;: None,
+  &#39;new_clip_url&#39;: False,
+  &#39;onsite&#39;: False,
+  &#39;operator&#39;: None,
+  &#39;outputEncoding&#39;: &#39;UTF-8&#39;,
+  &#39;page_has_campaign&#39;: False,
+  &#39;path_info&#39;: &#39;/item/sn85059812/&#39;,
+  &#39;port&#39;: &#39;443&#39;,
+  &#39;proxypath&#39;: None,
+  &#39;query_string&#39;: &#39;fo=json&#39;,
+  &#39;redirect_proxy&#39;: False,
+  &#39;redirect_to_item&#39;: None,
+  &#39;referer&#39;: None,
+  &#39;region&#39;: &#39;&#39;,
+  &#39;release_id&#39;: 123456789,
+  &#39;request_params&#39;: {&#39;fo&#39;: [&#39;json&#39;]},
+  &#39;request_url&#39;: &#39;https://www.loc.gov/item/sn85059812/?fo=json&#39;,
+  &#39;resource&#39;: &#39;&#39;,
+  &#39;resource_sequence&#39;: None,
+  &#39;scheme&#39;: &#39;https&#39;,
+  &#39;searchIn&#39;: None,
+  &#39;searchTerms&#39;: &#39;&#39;,
+  &#39;segments&#39;: None,
+  &#39;site_id&#39;: None,
+  &#39;site_type&#39;: None,
+  &#39;solrQuery&#39;: &#39;&#39;,
+  &#39;sortBy&#39;: None,
+  &#39;sortOrder&#39;: None,
+  &#39;startPage&#39;: None,
+  &#39;style&#39;: None,
+  &#39;suggested&#39;: None,
+  &#39;target&#39;: None,
+  &#39;template&#39;: &#39;item/base&#39;,
+  &#39;timestamp&#39;: 1665704407.087899,
+  &#39;unionFacets&#39;: &#39;&#39;,
+  &#39;webcast_permalink&#39;: None},
+ &#39;related_items&#39;: [{&#39;access_restricted&#39;: False,
+   &#39;aka&#39;: [&#39;http://www.loc.gov/resource/g3894c.ct006793/&#39;,
+    &#39;http://www.loc.gov/item/2006636200/&#39;,
+    &#39;http://hdl.loc.gov/loc.gmd/g3894c.ct006793&#39;,
+    &#39;http://lccn.loc.gov/2006636200&#39;],
+   &#39;campaigns&#39;: [],
+   &#39;contributor&#39;: [&#39;freedley &amp; morris&#39;],
+   &#39;date&#39;: &#39;1874&#39;,
+   &#39;dates&#39;: [&#39;1874-01-01T00:00:00Z&#39;],
+   &#39;description&#39;: [&#39;Shows outlines, location, and construction types of buildings. Prime meridian: Washington. Pen-and-ink and watercolor on tracing paper. Freedley &amp; Morris business card pasted on left of title. Available also through the Library of Congress Web site as a raster image.&#39;],
+   &#39;digitized&#39;: True,
+   &#39;extract_timestamp&#39;: &#39;2021-11-12T17:10:55.249Z&#39;,
+   &#39;group&#39;: [&#39;gmd.mar&#39;, &#39;catalog&#39;, &#39;general-maps&#39;, &#39;main-catalog&#39;],
+   &#39;hassegments&#39;: False,
+   &#39;id&#39;: &#39;http://www.loc.gov/item/2006636200/&#39;,
+   &#39;image_url&#39;: [&#39;https://tile.loc.gov/storage-services/service/gmd/gmd389/g3894/g3894c/ct006793.gif&#39;,
+    &#39;https://tile.loc.gov/storage-services/service/gmd/gmd389/g3894/g3894c/ct006793.gif#h=142&amp;w=150&#39;,
+    &#39;https://tile.loc.gov/image-services/iiif/service:gmd:gmd389:g3894:g3894c:ct006793/full/pct:12.5/0/default.jpg#h=1368&amp;w=1449&#39;,
+    &#39;https://tile.loc.gov/image-services/iiif/service:gmd:gmd389:g3894:g3894c:ct006793/full/pct:25/0/default.jpg#h=2737&amp;w=2898&#39;],
+   &#39;index&#39;: 1,
+   &#39;language&#39;: [&#39;english&#39;],
+   &#39;location&#39;: [&#39;united states&#39;, &#39;charleston&#39;, &#39;west virginia&#39;],
+   &#39;mime_type&#39;: [&#39;image/gif&#39;, &#39;image/tiff&#39;, &#39;image/jpeg&#39;, &#39;image/jp2&#39;],
+   &#39;number&#39;: [&#39;http://www.loc.gov/item/14651703&#39;,
+    &#39;2016-10-07t11:16:24&#39;,
+    &#39;http://www.loc.gov/item/2006636200&#39;,
+    &#39;2006636200&#39;],
+   &#39;online_format&#39;: [&#39;image&#39;],
+   &#39;original_format&#39;: [&#39;map&#39;],
+   &#39;other_title&#39;: [],
+   &#39;partof&#39;: [&#39;american memory&#39;,
+    &#39;cities and towns&#39;,
+    &#39;catalog&#39;,
+    &#39;geography and map division&#39;],
+   &#39;score&#39;: 1.6817979,
+   &#39;shelf_id&#39;: &#39;G3894.C4G475 1874 .F7&#39;,
+   &#39;site&#39;: [&#39;ammem&#39;, &#39;catalog&#39;],
+   &#39;subject&#39;: [&#39;maps, manuscript&#39;,
+    &#39;charleston (w. va.)&#39;,
+    &#39;united states&#39;,
+    &#39;maps&#39;,
+    &#39;west virginia&#39;,
+    &#39;charleston&#39;,
+    &#39;fire insurance&#39;],
+   &#39;timestamp&#39;: &#39;2021-11-18T15:49:00.265Z&#39;,
+   &#39;title&#39;: &#39;Insurance map of Charleston, W. Va.&#39;,
+   &#39;url&#39;: &#39;https://www.loc.gov/item/2006636200/&#39;},
+  {&#39;access_restricted&#39;: False,
+   &#39;aka&#39;: [&#39;http://lccn.loc.gov/09001965&#39;,
+    &#39;http://www.loc.gov/item/09001965/&#39;,
+    &#39;http://www.loc.gov/resource/gdcmassbookdig.centurychronicle00char/&#39;,
+    &#39;https://hdl.loc.gov/loc.gdc/scd0001.00144404129&#39;,
+    &#39;http://www.loc.gov/resource/scd0001.00144404129/&#39;],
+   &#39;campaigns&#39;: [],
+   &#39;contributor&#39;: [&#39;charleston, w. va. chamber of commerce&#39;],
+   &#39;date&#39;: &#39;1901&#39;,
+   &#39;dates&#39;: [&#39;1901-01-01T00:00:00Z&#39;],
+   &#39;description&#39;: [&#39;Also available in digital form.&#39;],
+   &#39;digitized&#39;: True,
+   &#39;extract_timestamp&#39;: &#39;2022-04-16T21:03:31.634Z&#39;,
+   &#39;group&#39;: [&#39;paprika-iabooks&#39;, &#39;catalog&#39;, &#39;main-catalog&#39;],
+   &#39;hassegments&#39;: True,
+   &#39;id&#39;: &#39;http://www.loc.gov/item/09001965/&#39;,
+   &#39;image_url&#39;: [&#39;https://tile.loc.gov/image-services/iiif/public:gdcmassbookdig:centurychronicle00char:centurychronicle00char_0007/full/pct:25.0/0/default.jpg#h=842&amp;w=515&#39;,
+    &#39;https://tile.loc.gov/image-services/iiif/public:gdcmassbookdig:centurychronicle00char:centurychronicle00char_0007/full/pct:50.0/0/default.jpg#h=1685&amp;w=1031&#39;,
+    &#39;https://tile.loc.gov/image-services/iiif/public:gdcmassbookdig:centurychronicle00char:centurychronicle00char_0007/full/pct:100.0/0/default.jpg#h=3371&amp;w=2062&#39;],
+   &#39;index&#39;: 2,
+   &#39;language&#39;: [&#39;english&#39;],
+   &#39;location&#39;: [&#39;charleston&#39;, &#39;west virginia&#39;],
+   &#39;mime_type&#39;: [&#39;image/jpeg&#39;],
+   &#39;number&#39;: [&#39;09001965&#39;, &#39;2019-01-10t10:14:12&#39;],
+   &#39;online_format&#39;: [&#39;image&#39;],
+   &#39;original_format&#39;: [&#39;book&#39;],
+   &#39;other_title&#39;: [],
+   &#39;partof&#39;: [&#39;general collections&#39;, &#39;catalog&#39;, &#39;selected digitized books&#39;],
+   &#39;score&#39;: 1.6733488,
+   &#39;shelf_id&#39;: &#39;F249.C4 C4 Microfilm 68343 F&#39;,
+   &#39;site&#39;: [&#39;catalog&#39;],
+   &#39;subject&#39;: [&#39;charleston (w. va.)&#39;],
+   &#39;timestamp&#39;: &#39;2022-04-17T01:44:54.731Z&#39;,
+   &#39;title&#39;: &#39;The century chronicle,&#39;,
+   &#39;url&#39;: &#39;https://www.loc.gov/item/09001965/&#39;},
+  {&#39;access_restricted&#39;: False,
+   &#39;aka&#39;: [&#39;https://hdl.loc.gov/loc.gmd/g3894c.ct009533&#39;,
+    &#39;http://www.loc.gov/resource/g3894c.ct009533/&#39;,
+    &#39;http://www.loc.gov/item/2012589612/&#39;,
+    &#39;http://lccn.loc.gov/2012589612&#39;],
+   &#39;campaigns&#39;: [],
+   &#39;contributor&#39;: [&#39;taylor, d. f.&#39;, &#39;howell, d. j.&#39;],
+   &#39;date&#39;: &#39;1890&#39;,
+   &#39;dates&#39;: [&#39;1890-01-01T00:00:00Z&#39;],
+   &#39;description&#39;: [&#39;Shows buildings, property lines and names of some residents. Oriented with north toward the upper left. Includes ill. of selected buildings. Available also through the Library of Congress Web site as a raster image.&#39;],
+   &#39;digitized&#39;: True,
+   &#39;extract_timestamp&#39;: &#39;2021-11-12T17:10:13.083Z&#39;,
+   &#39;group&#39;: [&#39;gmd.mar&#39;, &#39;catalog&#39;, &#39;general-maps&#39;, &#39;main-catalog&#39;],
+   &#39;hassegments&#39;: False,
+   &#39;id&#39;: &#39;http://www.loc.gov/item/2012589612/&#39;,
+   &#39;image_url&#39;: [&#39;https://tile.loc.gov/storage-services/service/gmd/gmd389/g3894/g3894c/ct009533.gif&#39;,
+    &#39;https://tile.loc.gov/storage-services/service/gmd/gmd389/g3894/g3894c/ct009533.gif#h=142&amp;w=150&#39;,
+    &#39;https://tile.loc.gov/image-services/iiif/service:gmd:gmd389:g3894:g3894c:ct009533/full/pct:12.5/0/default.jpg#h=1134&amp;w=1200&#39;,
+    &#39;https://tile.loc.gov/image-services/iiif/service:gmd:gmd389:g3894:g3894c:ct009533/full/pct:25/0/default.jpg#h=2268&amp;w=2401&#39;],
+   &#39;index&#39;: 3,
+   &#39;language&#39;: [&#39;english&#39;],
+   &#39;location&#39;: [&#39;united states&#39;, &#39;charleston&#39;, &#39;charlestown&#39;, &#39;west virginia&#39;],
+   &#39;mime_type&#39;: [&#39;image/gif&#39;, &#39;image/tiff&#39;, &#39;image/jpeg&#39;, &#39;image/jp2&#39;],
+   &#39;number&#39;: [&#39;http://www.loc.gov/item/17141194&#39;,
+    &#39;2018-04-30t15:13:37&#39;,
+    &#39;http://www.loc.gov/item/2012589612&#39;,
+    &#39;2012589612&#39;],
+   &#39;online_format&#39;: [&#39;image&#39;],
+   &#39;original_format&#39;: [&#39;map&#39;],
+   &#39;other_title&#39;: [],
+   &#39;partof&#39;: [&#39;american memory&#39;,
+    &#39;cities and towns&#39;,
+    &#39;catalog&#39;,
+    &#39;geography and map division&#39;,
+    &#39;cultural landscapes&#39;],
+   &#39;score&#39;: 1.3497701,
+   &#39;shelf_id&#39;: &#39;G3894.C4 1890 .T2&#39;,
+   &#39;site&#39;: [&#39;ammem&#39;, &#39;catalog&#39;],
+   &#39;subject&#39;: [&#39;cadastral maps&#39;,
+    &#39;charleston (w. va.)&#39;,
+    &#39;united states&#39;,
+    &#39;maps&#39;,
+    &#39;west virginia&#39;,
+    &#39;real property&#39;,
+    &#39;charlestown&#39;,
+    &#39;landowners&#39;],
+   &#39;timestamp&#39;: &#39;2021-11-18T16:08:28.729Z&#39;,
+   &#39;title&#39;: &#39;Map of the property of the Charlestown Mining, Manufacturing and Improvement Company : Charlestown, Jefferson Co., W. VA.&#39;,
+   &#39;url&#39;: &#39;https://www.loc.gov/item/2012589612/&#39;},
+  {&#39;access_restricted&#39;: True,
+   &#39;aka&#39;: [&#39;https://www.loc.gov/pictures/item/2004667123/&#39;,
+    &#39;http://www.loc.gov/item/2004667123/&#39;,
+    &#39;http://www.loc.gov/pictures/item/2004667123/&#39;,
+    &#39;https://www.loc.gov/pictures/collection/coll/item/2004667123/&#39;,
+    &#39;http://www.loc.gov/pictures/collection/coll/item/2004667123/&#39;,
+    &#39;http://lccn.loc.gov/2004667123&#39;,
+    &#39;http://lcweb2.loc.gov/pp/cphquery.html&#39;],
+   &#39;campaigns&#39;: [],
+   &#39;date&#39;: &#39;1921&#39;,
+   &#39;dates&#39;: [&#39;1921-01-01T00:00:00Z&#39;],
+   &#39;description&#39;: [&#39;1 album (ca. 150 photographic prints) | Photographs show group portraits of officers and men; communications and other training; obsolescent U.S. Navy and other ships in use as bomb test targets; inspection; etc. Also, camp and landing field set up during coal strike (Aug. 1921) and Charleston, West Virginia.&#39;],
+   &#39;digitized&#39;: True,
+   &#39;extract_timestamp&#39;: &#39;2022-08-30T02:46:14.596Z&#39;,
+   &#39;group&#39;: [&#39;coll&#39;, &#39;catalog&#39;, &#39;groups-of-images&#39;, &#39;main-catalog&#39;],
+   &#39;hassegments&#39;: False,
+   &#39;id&#39;: &#39;http://www.loc.gov/item/2004667123/&#39;,
+   &#39;image_url&#39;: [&#39;https://www.loc.gov/static/images/original-format/group-of-images.svg&#39;],
+   &#39;index&#39;: 4,
+   &#39;language&#39;: [&#39;english&#39;],
+   &#39;location&#39;: [&#39;hampton&#39;,
+    &#39;langley field&#39;,
+    &#39;virginia&#39;,
+    &#39;united states&#39;,
+    &#39;west virginia&#39;,
+    &#39;charleston&#39;],
+   &#39;mime_type&#39;: [&#39;image/jpg&#39;],
+   &#39;number&#39;: [&#39;http://www.loc.gov/item/13486316&#39;],
+   &#39;online_format&#39;: [&#39;image&#39;],
+   &#39;original_format&#39;: [&#39;photo, print, drawing&#39;],
+   &#39;other_title&#39;: [],
+   &#39;partof&#39;: [&#39;prints &amp; photographs online catalog (library of congress)&#39;,
+    &#39;catalog&#39;,
+    &#39;groups of images (lots)&#39;,
+    &#39;lot 6095&#39;,
+    &#39;prints and photographs division&#39;],
+   &#39;score&#39;: 1.0346885,
+   &#39;shelf_id&#39;: &#39;LOT 6095 (G) [P&amp;P]&#39;,
+   &#39;site&#39;: [&#39;pictures&#39;, &#39;catalog&#39;],
+   &#39;subject&#39;: [&#39;langley field (va.)&#39;,
+    &quot;miners&#39; strikes&quot;,
+    &#39;hampton&#39;,
+    &#39;air bases&#39;,
+    &#39;photograph albums&#39;,
+    &#39;aerial bombings&#39;,
+    &#39;army&#39;,
+    &#39;photographic prints&#39;,
+    &#39;military education&#39;,
+    &#39;west virginia&#39;,
+    &#39;charleston (w. va.)&#39;,
+    &#39;virginia&#39;,
+    &#39;air service&#39;,
+    &#39;united states&#39;,
+    &#39;military personnel&#39;,
+    &#39;navy&#39;,
+    &#39;first provisional air brigade&#39;,
+    &#39;group portraits&#39;,
+    &#39;portrait photographs&#39;],
+   &#39;timestamp&#39;: &#39;2022-08-30T02:47:19.043Z&#39;,
+   &#39;title&#39;: &#39;Photographic record; activities of First Provisional Air Brigade, Langley Field, Hampton, Va., 1921&#39;,
+   &#39;type&#39;: &#39;still image&#39;,
+   &#39;url&#39;: &#39;https://www.loc.gov/item/2004667123/&#39;},
+  {&#39;access_restricted&#39;: False,
+   &#39;aka&#39;: [&#39;http://www.loc.gov/pictures/collection/nclc/item/2018678317/&#39;,
+    &#39;https://hdl.loc.gov/loc.pnp/nclc.04438&#39;,
+    &#39;https://hdl.loc.gov/loc.pnp/cph.3b03546&#39;,
+    &#39;http://www.loc.gov/item/2018678317/&#39;,
+    &#39;http://www.loc.gov/pictures/item/2018678317/&#39;,
+    &#39;http://www.loc.gov/resource/nclc.04438/&#39;,
+    &#39;http://www.loc.gov/resource/cph.3b03546/&#39;,
+    &#39;http://lccn.loc.gov/2018678317&#39;],
+   &#39;campaigns&#39;: [],
+   &#39;contributor&#39;: [&#39;hine, lewis wickes&#39;],
+   &#39;date&#39;: &#39;1921&#39;,
+   &#39;dates&#39;: [&#39;1921-01-01T00:00:00Z&#39;],
+   &#39;description&#39;: [&#39;1 photographic print.&#39;],
+   &#39;digitized&#39;: True,
+   &#39;extract_timestamp&#39;: &#39;2021-09-01T22:55:04.467Z&#39;,
+   &#39;group&#39;: [&#39;nclc&#39;,
+    &#39;catalog&#39;,
+    &#39;national-child-labor-committee&#39;,
+    &#39;main-catalog&#39;],
+   &#39;hassegments&#39;: False,
+   &#39;id&#39;: &#39;http://www.loc.gov/item/2018678317/&#39;,
+   &#39;image_url&#39;: [&#39;https://tile.loc.gov/storage-services/service/pnp/nclc/04400/04438_150px.jpg#h=103&amp;w=150&#39;,
+    &#39;https://tile.loc.gov/storage-services/service/pnp/nclc/04400/04438t.gif#h=103&amp;w=150&#39;,
+    &#39;https://tile.loc.gov/storage-services/service/pnp/nclc/04400/04438r.jpg#h=441&amp;w=640&#39;,
+    &#39;https://tile.loc.gov/storage-services/service/pnp/nclc/04400/04438v.jpg#h=705&amp;w=1024&#39;],
+   &#39;index&#39;: 5,
+   &#39;language&#39;: [&#39;english&#39;],
+   &#39;location&#39;: [&#39;united states&#39;, &#39;charleston&#39;, &#39;west virginia&#39;],
+   &#39;mime_type&#39;: [&#39;image/gif&#39;, &#39;image/jpg&#39;, &#39;image/tif&#39;],
+   &#39;number&#39;: [&#39;http://www.loc.gov/item/ncl2004004709/pp&#39;,
+    &#39;http://www.loc.gov/item/20689249&#39;],
+   &#39;online_format&#39;: [&#39;image&#39;],
+   &#39;original_format&#39;: [&#39;photo, print, drawing&#39;],
+   &#39;other_title&#39;: [],
+   &#39;partof&#39;: [&#39;lot 7482&#39;,
+    &#39;catalog&#39;,
+    &#39;national child labor committee collection&#39;,
+    &#39;prints and photographs division&#39;],
+   &#39;score&#39;: 1.0241301,
+   &#39;shelf_id&#39;: &#39;LOT 7482, no. 5119 [P&amp;P]&#39;,
+   &#39;site&#39;: [&#39;pictures&#39;, &#39;catalog&#39;],
+   &#39;subject&#39;: [&#39;photographic prints&#39;,
+    &#39;charleston&#39;,
+    &#39;united states&#39;,
+    &#39;boys&#39;,
+    &#39;poverty&#39;,
+    &#39;swine&#39;,
+    &#39;west virginia&#39;,
+    &#39;4-h clubs&#39;,
+    &#39;african americans&#39;],
+   &#39;timestamp&#39;: &#39;2021-09-04T13:41:33.121Z&#39;,
+   &#39;title&#39;: &#39;George Cox, 13 yr. old colored boy, has just joined the 4 H Club and is raising a pig. His father is a &quot;renter&quot; in this poor home near the W. Va. Collegiate Institute (near Charleston) the state colored agricultural college. Mr. A.W. Curtis, Agri. Agent, is helping George.  Location: Charleston [vicinity], West Virginia&#39;,
+   &#39;url&#39;: &#39;https://www.loc.gov/item/2018678317/&#39;},
+  {&#39;access_restricted&#39;: False,
+   &#39;aka&#39;: [&#39;http://www.loc.gov/pictures/collection/nclc/item/2018678736/&#39;,
+    &#39;https://hdl.loc.gov/loc.pnp/nclc.04439&#39;,
+    &#39;http://www.loc.gov/item/2018678736/&#39;,
+    &#39;http://www.loc.gov/pictures/item/2018678736/&#39;,
+    &#39;http://www.loc.gov/resource/nclc.04439/&#39;,
+    &#39;http://lccn.loc.gov/2018678736&#39;],
+   &#39;campaigns&#39;: [],
+   &#39;contributor&#39;: [&#39;hine, lewis wickes&#39;],
+   &#39;date&#39;: &#39;1921&#39;,
+   &#39;dates&#39;: [&#39;1921-01-01T00:00:00Z&#39;],
+   &#39;description&#39;: [&#39;1 photographic print.&#39;],
+   &#39;digitized&#39;: True,
+   &#39;extract_timestamp&#39;: &#39;2021-09-01T22:55:06.740Z&#39;,
+   &#39;group&#39;: [&#39;nclc&#39;,
+    &#39;catalog&#39;,
+    &#39;national-child-labor-committee&#39;,
+    &#39;main-catalog&#39;],
+   &#39;hassegments&#39;: False,
+   &#39;id&#39;: &#39;http://www.loc.gov/item/2018678736/&#39;,
+   &#39;image_url&#39;: [&#39;https://tile.loc.gov/storage-services/service/pnp/nclc/04400/04439_150px.jpg#h=109&amp;w=150&#39;,
+    &#39;https://tile.loc.gov/storage-services/service/pnp/nclc/04400/04439t.gif#h=109&amp;w=150&#39;,
+    &#39;https://tile.loc.gov/storage-services/service/pnp/nclc/04400/04439r.jpg#h=464&amp;w=640&#39;,
+    &#39;https://tile.loc.gov/storage-services/service/pnp/nclc/04400/04439v.jpg#h=742&amp;w=1024&#39;],
+   &#39;index&#39;: 6,
+   &#39;language&#39;: [&#39;english&#39;],
+   &#39;location&#39;: [&#39;united states&#39;, &#39;charleston&#39;, &#39;west virginia&#39;],
+   &#39;mime_type&#39;: [&#39;image/gif&#39;, &#39;image/jpg&#39;, &#39;image/tif&#39;],
+   &#39;number&#39;: [&#39;http://www.loc.gov/item/20689714&#39;,
+    &#39;http://www.loc.gov/item/ncl2004005129/pp&#39;],
+   &#39;online_format&#39;: [&#39;image&#39;],
+   &#39;original_format&#39;: [&#39;photo, print, drawing&#39;],
+   &#39;other_title&#39;: [],
+   &#39;partof&#39;: [&#39;lot 7482&#39;,
+    &#39;catalog&#39;,
+    &#39;national child labor committee collection&#39;,
+    &#39;prints and photographs division&#39;],
+   &#39;score&#39;: 1.0241301,
+   &#39;shelf_id&#39;: &#39;LOT 7482, no. 5120 [P&amp;P]&#39;,
+   &#39;site&#39;: [&#39;pictures&#39;, &#39;catalog&#39;],
+   &#39;subject&#39;: [&#39;families&#39;,
+    &#39;photographic prints&#39;,
+    &#39;charleston&#39;,
+    &#39;united states&#39;,
+    &#39;poverty&#39;,
+    &#39;swine&#39;,
+    &#39;west virginia&#39;,
+    &#39;4-h clubs&#39;,
+    &#39;african americans&#39;],
+   &#39;timestamp&#39;: &#39;2021-09-04T13:42:50.891Z&#39;,
+   &#39;title&#39;: &#39;George Cox, 13 year old colored boy, has just joined the 4 H Club and is raising a pig. His father is a &quot;renter&quot; in this poor home near the W. Va. Collegiate Institute (Near Charleston) the State colored agricultural college. Mr. A.W. Curtis, Agri. Agent, is helping George.  Location: Charleston [vicinity], West Virginia&#39;,
+   &#39;url&#39;: &#39;https://www.loc.gov/item/2018678736/&#39;}],
+ &#39;resources&#39;: [],
+ &#39;timestamp&#39;: 1665704407735}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once we determine which fields we want to use, we next create a function that downloads selected MARC fields along with the title essays and save them to a Python dictionary.</p>
+<p>This section needs to be fleshed out a bit more with examples for how to append more / less information from MARC records. It would also be useful to limit by particular subject tags i.e. <code class="docutils literal notranslate"><span class="pre">African</span> <span class="pre">American</span></code></p>
+<p>The following code function downloads all data. We filter based on marc record fields i.e. <code class="docutils literal notranslate"><span class="pre">created_published</span></code> or <code class="docutils literal notranslate"><span class="pre">date.</span></code> These can be further limited based on criteria (see the commented out code below for examples). Feel free to experiment or reach out if you need assistance delimiting data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parse_json</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+    <span class="n">datum</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+    
+    <span class="n">json_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span> <span class="k">if</span> <span class="n">response</span> <span class="ow">and</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span> <span class="k">else</span> <span class="kc">None</span>
+    
+    <span class="k">if</span> <span class="n">json_data</span> <span class="ow">and</span> <span class="s1">&#39;item&#39;</span> <span class="ow">in</span> <span class="n">json_data</span><span class="p">:</span>
+        
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;created_published&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;created_published&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="c1"># datum[&#39;date&#39;] = json_data.get(&#39;item&#39;).get(&#39;date&#39;, &#39;1861&#39;)</span>
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;dates_of_publication&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;dates_of_publication&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;essay&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;essay&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;essay_contributor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;essay_contributor&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;language&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;language&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;latlong&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;latlong&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;raw_lccn&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;raw_lccn&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;subjects&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;subjects&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="c1"># datum[&#39;subjects&#39;] = json_data.get(&#39;item&#39;).get(&#39;subjects&#39;, &#39;African Americans&#39;)</span>
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">datum</span><span class="p">[</span><span class="s1">&#39;url&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">json_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;item&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;url&#39;</span><span class="p">,</span> <span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">datum</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="main-loop">
+<h2>Main Loop<a class="headerlink" href="#main-loop" title="Permalink to this heading">#</a></h2>
+<p>Now that our function is defined and our fields are selected, we can run our code below. We append our data into a large list so that we can save it to a csv later.</p>
+<p>We give our script a timeout of 15 seconds and write the links that don’t download to a file called <code class="docutils literal notranslate"><span class="pre">errors.txt</span></code>.</p>
+<p>Note that the code below takes about 3 hours to run.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+
+<span class="n">datas</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">url</span> <span class="ow">in</span> <span class="n">urls</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">datas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">parse_json</span><span class="p">(</span><span class="n">url</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;errors.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">continue</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2min 12s, sys: 13.2 s, total: 2min 26s
+Wall time: 2h 44min 43s
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally we write out the data to a csv. If you decide to download different records, you’ll need to change the <code class="docutils literal notranslate"><span class="pre">field_names</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;chron_am_essays.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">field_names</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;created_published&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="s1">&#39;dates_of_publication&#39;</span><span class="p">,</span> <span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;essay&#39;</span><span class="p">,</span> <span class="s1">&#39;essay_contributor&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;language&#39;</span><span class="p">,</span> <span class="s1">&#39;latlong&#39;</span><span class="p">,</span> <span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="s1">&#39;raw_lccn&#39;</span><span class="p">,</span> <span class="s1">&#39;subjects&#39;</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span><span class="p">]</span>
+        <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">field_names</span><span class="p">)</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">({</span><span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">field_names</span><span class="p">})</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">datas</span><span class="p">:</span>
+            <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;chron_am_essays.csv&quot;</span><span class="p">)</span>  
+    
+<span class="n">raw</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>created_published</th>
+      <th>date</th>
+      <th>dates_of_publication</th>
+      <th>description</th>
+      <th>essay</th>
+      <th>essay_contributor</th>
+      <th>language</th>
+      <th>latlong</th>
+      <th>location</th>
+      <th>raw_lccn</th>
+      <th>subjects</th>
+      <th>title</th>
+      <th>url</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>['Abbeville, S.C. : Charles H. Allen, 1847-186...</td>
+      <td>1847</td>
+      <td>1847-1869</td>
+      <td>['Weekly Vol. 4, no. 1 (Mar. 3, 1847)-v. 25, n...</td>
+      <td>&lt;p&gt;\n\tFor nearly a century, the &lt;em&gt;Abbeville...</td>
+      <td>['University of South Carolina; Columbia, SC']</td>
+      <td>['english']</td>
+      <td>[34.17895, -82.38025]</td>
+      <td>['united states', 'south carolina', 'abbeville...</td>
+      <td>sn 85026945</td>
+      <td>['Abbeville (S.C.)--Newspapers', 'Abbeville Co...</td>
+      <td>The Abbeville banner.</td>
+      <td>https://www.loc.gov/item/sn85026945/</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>['Abbeville, S.C. : Hugh Wilson']</td>
+      <td>1865</td>
+      <td>1865-1865</td>
+      <td>['Weekly Began in July 1865. Ceased with Aug. ...</td>
+      <td>&lt;p&gt;\n\tThe short-lived weekly &lt;em&gt;Abbeville Bu...</td>
+      <td>['University of South Carolina; Columbia, SC']</td>
+      <td>['english']</td>
+      <td>[34.17895, -82.38025]</td>
+      <td>['united states', 'abbeville county', 'abbevil...</td>
+      <td>sn 93067670</td>
+      <td>['Abbeville County (S.C.)--Newspapers', 'South...</td>
+      <td>The Abbeville bulletin.</td>
+      <td>https://www.loc.gov/item/sn93067670/</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>['Abbeville, S.C. : Bonham and Perrin']</td>
+      <td>1884</td>
+      <td>1884-1887</td>
+      <td>['Weekly Began Oct. 1, 1884; ceased in 1887. C...</td>
+      <td>&lt;p&gt;\n\tThe &lt;em&gt;Abbeville Messenger&lt;/em&gt; (1884-...</td>
+      <td>['University of South Carolina; Columbia, SC']</td>
+      <td>['english']</td>
+      <td>[34.17895, -82.38025]</td>
+      <td>['united states', 'abbeville county', 'abbevil...</td>
+      <td>sn 93067668</td>
+      <td>['Abbeville County (S.C.)--Newspapers', 'South...</td>
+      <td>The Abbeville messenger.</td>
+      <td>https://www.loc.gov/item/sn93067668/</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>['Abbeville, S.C. : W.A. Lee &amp; Hugh Wilson, 18...</td>
+      <td>1869</td>
+      <td>1869-1924</td>
+      <td>['Triweekly, Jan. 7, 1920-Feb. 13, 1924 Began ...</td>
+      <td>&lt;p&gt;\n\tFor nearly a century, the &lt;em&gt;Abbeville...</td>
+      <td>['University of South Carolina; Columbia, SC']</td>
+      <td>['english']</td>
+      <td>[34.17895, -82.38025]</td>
+      <td>['united states', 'south carolina', 'abbeville...</td>
+      <td>sn 84026853</td>
+      <td>['Abbeville (S.C.)--Newspapers', 'Abbeville Co...</td>
+      <td>The Abbeville press and banner.</td>
+      <td>https://www.loc.gov/item/sn84026853/</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>['Abbeville, S.C. : W.A. Lee and Hugh Wilson, ...</td>
+      <td>1860</td>
+      <td>1860-1869</td>
+      <td>['Weekly Vol. 8, no. 28 (Nov. 9, 1860)-v. 17, ...</td>
+      <td>&lt;p&gt;\n\tFor nearly a century, the &lt;em&gt;Abbeville...</td>
+      <td>['University of South Carolina; Columbia, SC']</td>
+      <td>['english']</td>
+      <td>[34.17895, -82.38025]</td>
+      <td>['united states', 'south carolina', 'abbeville...</td>
+      <td>sn 85042527</td>
+      <td>['Abbeville (S.C.)--Newspapers', 'Abbeville Co...</td>
+      <td>Abbeville press.</td>
+      <td>https://www.loc.gov/item/sn85042527/</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3678</th>
+      <td>['Allegheny, Pa. : Narod. Hrv. Zajednica']</td>
+      <td>1894</td>
+      <td>1894-current</td>
+      <td>['Weekly (except the second week in July and t...</td>
+      <td>&lt;p&gt;\n\tThe&amp;#160;&lt;em&gt;Zajedni&lt;/em&gt;&lt;em&gt;&amp;#269;&lt;/em...</td>
+      <td>['Ohio Historical Society, Columbus, OH']</td>
+      <td>['english', 'croatian']</td>
+      <td>[41.0981, -80.65079]</td>
+      <td>['mahoning', 'mahoning county', 'pennsylvania'...</td>
+      <td>sn 84024547</td>
+      <td>['Croats--United States--Newspapers', 'Croatia...</td>
+      <td>Zajedničar = Fraternalist.</td>
+      <td>https://www.loc.gov/item/sn84024547/</td>
+    </tr>
+    <tr>
+      <th>3679</th>
+      <td>['Chicago, Ill. : Polish National Alliance, 19...</td>
+      <td>1900</td>
+      <td>1900-1913</td>
+      <td>['Began with rok 19, no. 1 (13 Stycznia, 1900)...</td>
+      <td>&lt;p&gt;\n\tIn 1881, &lt;em&gt;Zgoda&lt;/em&gt; (&amp;#8220;Harmony...</td>
+      <td>['University of Illinois at Urbana-Champaign L...</td>
+      <td>['polish', 'english']</td>
+      <td>[41.88425, -87.63245]</td>
+      <td>['wisconsin', 'chicago', 'illinois', 'united s...</td>
+      <td>2017218620</td>
+      <td>['Polish people--United States--Newspapers', '...</td>
+      <td>Zgoda : Wydania dla niewiast</td>
+      <td>https://www.loc.gov/item/2017218620/</td>
+    </tr>
+    <tr>
+      <th>3680</th>
+      <td>['Chicago, Ill. : Polish National Alliance, 19...</td>
+      <td>1902</td>
+      <td>1902-1913</td>
+      <td>['Began with rok 21, no. 1 (Stycznia 2, 1902);...</td>
+      <td>&lt;p&gt;\n\tIn 1881, &lt;em&gt;Zgoda&lt;/em&gt; (&amp;#8220;Harmony...</td>
+      <td>['University of Illinois at Urbana-Champaign L...</td>
+      <td>['polish', 'english']</td>
+      <td>[41.88425, -87.63245]</td>
+      <td>['wisconsin', 'chicago', 'illinois', 'united s...</td>
+      <td>2017218621</td>
+      <td>['Polish people--United States--Newspapers', '...</td>
+      <td>Zgoda : Wydanie dla mężczyzn</td>
+      <td>https://www.loc.gov/item/2017218621/</td>
+    </tr>
+    <tr>
+      <th>3681</th>
+      <td>['Chicago, Illinois : Polish National Alliance...</td>
+      <td>1914</td>
+      <td>1914-current</td>
+      <td>['Quarterly, January/March 2014- Began with ro...</td>
+      <td>&lt;p&gt;\n\tIn 1881, &lt;em&gt;Zgoda&lt;/em&gt; (&amp;#8220;Harmony...</td>
+      <td>['University of Illinois at Urbana-Champaign L...</td>
+      <td>['polish', 'english']</td>
+      <td>[41.88425, -87.63245]</td>
+      <td>['wisconsin', 'chicago', 'illinois', 'united s...</td>
+      <td>2017218622</td>
+      <td>['Polish people--United States--Periodicals', ...</td>
+      <td>Zgoda = Unity</td>
+      <td>https://www.loc.gov/item/2017218622/</td>
+    </tr>
+    <tr>
+      <th>3682</th>
+      <td>['Milwaukee, Wis. : Polish National Alliance']</td>
+      <td>1881</td>
+      <td>1881-1901</td>
+      <td>["Quarterly, January/March 2014- Began in 1881...</td>
+      <td>&lt;p&gt;\n\tIn 1881, &lt;em&gt;Zgoda&lt;/em&gt; (&amp;#8220;Harmony...</td>
+      <td>['University of Illinois at Urbana-Champaign L...</td>
+      <td>['polish', 'english']</td>
+      <td>[41.88425, -87.63245]</td>
+      <td>['wisconsin', 'chicago', 'illinois', 'united s...</td>
+      <td>sn 91037345</td>
+      <td>['Polish people--United States--Newspapers', '...</td>
+      <td>Zgoda = Unity</td>
+      <td>https://www.loc.gov/item/sn91037345/</td>
+    </tr>
+  </tbody>
+</table>
+<p>3683 rows × 13 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./loc.gov JSON API\Chronicling_America_Title_Essay_Datasets"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Title Essays</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-loop">Main Loop</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Library of Congress staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <header class="loc-header">
+    <div class="loc-logo">
+        <a href="https://www.loc.gov/"><img src="/data-exploration/_static/LOC_Logo_horiz_inv.png" alt="The Library of Congress logo" title="Go to the Library of Congress homepage" /></a>
+    </div>
+    <div class="project-description">
+        <p>In-depth tutorials for working with Library of Congress data via APIs and code. <a href="https://github.com/libraryOfCongress/data-exploration/" class="button small">View the code</a></p>
+    </div>
+</header>
+<footer class="loc-footer">
+    <p>In-depth tutorials for working with Library of Congress data via APIs and code.</p>
+    <ul class="loc-footer-nav-list">
+        <li><a href="https://github.com/libraryOfCongress/data-exploration/">Source code</a></li>  
+        <li><a href="https://www.loc.gov/">The Library of Congress</a></li>
+        <li><a href="https://loc.gov/legal">Privacy Policy</a></li>
+        <li><a href="https://www.loc.gov/accessibility/">Accessibilty</a></li>
+        <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Github Privacy Statement</a></li>
+        <li><a href="https://creativecommons.org/publicdomain/zero/1.0/">License</a></li>
+        <li><a href="mailto:LC-Labs@loc.gov">Contact</a></li>
+    </ul>
+</footer>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

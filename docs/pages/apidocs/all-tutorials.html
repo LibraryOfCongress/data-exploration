@@ -1,0 +1,813 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>General Search and Query &#8212; Tutorials for Data Exploration</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/loc.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/loc.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/pages/apidocs/all-tutorials';</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tutorials for Data Exploration</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../../intro.html">
+                    Tutorials for Data Exploration
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Loc.gov JSON API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../loc.gov%20JSON%20API/LOC.gov%20JSON%20API.html">LOC.gov JSON API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.html">Accessing images from the loc.gov JSON API for image analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../loc.gov%20JSON%20API/Dominant%20colors.html">Color clusters in images in Library of Congress collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../loc.gov%20JSON%20API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Connecting the image file to the metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../loc.gov%20JSON%20API/Extracting%20location%20data%20for%20geovisualization.html">Extracting location data from the loc.gov API for geovisualization</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../../loc.gov%20JSON%20API/maps/maps-analyzing-metadata.html">Analyzing and visualizing cartographic metadata from loc.gov</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chronicling America notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Chronicling%20America%20API/ChronAm%20API%20Samples.html">ChronAm API Guide</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Web Archives notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html">Exploring the Memegenerator Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Data%20Sets/Web%20Archives/getting_started_with_giphy.html">Exploring the GIPHY.com Metadata</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Data%20Packages/digitized-books.html">LoC Data Package Tutorial: Selected Digitized Books Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Data%20Packages/directories.html">LoC Data Package Tutorial: City and Telephone Directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Data%20Packages/telephone.html">LoC Data Package Tutorial: Digitized Telephone Directories Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Data%20Packages/stereographs.html">LoC Data Package Tutorial: Stereograph Card Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Data%20Packages/austro-hungarian-maps.html">LoC Data Package Tutorial: Austro-Hungarian maps set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Data%20Packages/gen-coll-assessment.html">LoC Data Package Tutorial: General Collections Assessment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Library API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../loc.gov%20IIIF%20API/IIIF.html">IIIF API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../loc.gov%20Sitemaps%20API/Sitemap.html">What are Sitemaps?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../loc.gov%20web%20interface/OpenSearch.html">OpenSearch Guide</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/docs/pages/apidocs/all-tutorials.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>General Search and Query</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">General Search and Query</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json-api-overview">JSON API Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opensearch">OpenSearch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sitemaps">Sitemaps</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#images">Images</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-images-for-analysis">Accessing Images for Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iiif">IIIF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-color-analysis">Image Color Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#geographic-data-and-maps">Geographic Data and Maps</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-location-data">Extracting Location Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maps-downloading-and-querying">Maps Downloading and Querying</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maps-metadata">Maps Metadata</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#historic-newspapers">Historic Newspapers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chronicling-america">Chronicling America</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chronicling-america-csv">Chronicling America CSV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chronicling-america-issue-counts-csv">Chronicling America Issue Counts CSV</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other">Other</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memegenerator-metadata">Memegenerator Metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giphy-com-metadata">GIPHY.com Metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-remixing-sound">Accessing and Remixing Sound</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#american-folklife-center-scripts">American Folklife Center Scripts</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p>Almost all of these documents are Jupyter notebooks, which is a programming environment that runs in a web browser. A notebook can contain both text in a markdown format and Python code that can be run directly as part of the workflow.</p>
+<p>If this is your first time using Jupyter notebooks, here are a couple great tutorials online to help you install and set up the software:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/setup/">https://reproducible-science-curriculum.github.io/workshop-RR-Jupyter/setup/</a></p></li>
+<li><p><a class="reference external" href="https://programminghistorian.org/en/lessons/jupyter-notebooks">https://programminghistorian.org/en/lessons/jupyter-notebooks</a></p></li>
+</ul>
+<p>Also, remember that the applications listed are only a few examples intended as a starting point! The possibilities are far wider. We’re excited to see what you do with the collections.</p>
+<p>{% include note.html content=”These tutorials are designed to help people understand the API and make use of it. The repository is intended to inspire creative uses of the Library of Congress collections. So, it’s not comprehensive, but highlights the most relevant aspects. If you have ideas about what other topics should be covered or anything else to make the API even more useful, let us know by emailing <a class="reference external" href="mailto:LC-Labs&#37;&#52;&#48;loc&#46;gov">LC-Labs<span>&#64;</span>loc<span>&#46;</span>gov</a>!” %}</p>
+<section id="general-search-and-query">
+<h1>General Search and Query<a class="headerlink" href="#general-search-and-query" title="Permalink to this heading">#</a></h1>
+<section id="json-api-overview">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/LOC.gov%20JSON%20API.ipynb">JSON API Overview</a><a class="headerlink" href="#json-api-overview" title="Permalink to this heading">#</a></h2>
+<p>An overview of how to retrieve information in a JSON format from the Library of Congress API. This tutorial sets a baseline for doing powerful data retrieval and visualization projects.</p>
+<p><strong>Background knowledge:</strong></p>
+<ul class="simple">
+<li><p>Understand URLs for <a class="reference external" href="http://loc.gov">loc.gov</a> API <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/requests/">requests</a> and how to modify them</p></li>
+</ul>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Get and visualize data</p></li>
+<li><p>Show images from collections</p></li>
+<li><p>Make cool projects like <a class="reference external" href="https://library-of-time.glitch.me/">this clock using collection item names</a> and <a class="reference external" href="https://jeffreyshen19.github.io/political-cartoon-visualizer/">this political cartoon visualizer</a> - for more inspiration, see the <a class="reference external" href="https://labs.loc.gov/work/experiments/?st=gallery">experiments</a> that LC Labs has been working on!</p></li>
+</ul>
+</section>
+<section id="opensearch">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20web%20interface/OpenSearch.ipynb">OpenSearch</a><a class="headerlink" href="#opensearch" title="Permalink to this heading">#</a></h2>
+<p>Brief guide to searching <a class="reference external" href="http://loc.gov">loc.gov</a> directly from a web browser.</p>
+<p><strong>Background knowledge:</strong> None</p>
+<p><strong>Applications:</strong> Searching the website</p>
+</section>
+<section id="sitemaps">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20Sitemaps%20API/Sitemap.ipynb">Sitemaps</a><a class="headerlink" href="#sitemaps" title="Permalink to this heading">#</a></h2>
+<p>Describes Sitemaps and how to get information about the frequency of page updates.</p>
+<p><strong>Background knowledge:</strong> None, but understanding the basics of <a class="reference external" href="https://www.sitemaps.org/">Sitemaps</a> and <a class="reference external" href="https://www.sitemaps.org/protocol.html">how the formatting works</a> is recommended</p>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Determining how often collections or parts of the website are updated</p></li>
+<li><p>Finding the number of items in a collection or sub-items on a page of the site</p></li>
+</ul>
+</section>
+</section>
+<section id="images">
+<h1>Images<a class="headerlink" href="#images" title="Permalink to this heading">#</a></h1>
+<section id="accessing-images-for-analysis">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.ipynb">Accessing Images for Analysis</a><a class="headerlink" href="#accessing-images-for-analysis" title="Permalink to this heading">#</a></h2>
+<p>How to access, display, and download images in bulk. Also provides information about what metadata is available and how to get particular details.</p>
+<p>This tutorial is for accessing images directly via the the API, so the images are generally smaller (150 px on one side) and low resolution. For accessing larger images that can be manipulated (size, rotation, crop, etc.), see the next tutorial, on IIIF.</p>
+<p><strong>Background knowledge:</strong></p>
+<ul class="simple">
+<li><p>Understand URLs for <a class="reference external" href="http://loc.gov">loc.gov</a> API <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/requests/">requests</a> and how to modify them</p></li>
+</ul>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Find URLs for images</p></li>
+<li><p>Download images in bulk</p></li>
+<li><p>Get information about the images, such as copyright and usage details, dates, locations, etc.</p></li>
+</ul>
+</section>
+<section id="iiif">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20IIIF%20API/IIIF.ipynb">IIIF</a><a class="headerlink" href="#iiif" title="Permalink to this heading">#</a></h2>
+<p>How to scale, rotate, reflect, crop, and otherwise manipulate images using the IIIF API.</p>
+<p>IIIF stands for the International Image Interoperability Framework. It is a standardized way to get images that is used by various libraries, museums, digital archives, etc.</p>
+<p><strong>Background knowledge:</strong></p>
+<ul class="simple">
+<li><p>Where to find the IIIF URLs (can be found in image metadata accessed via the JSON API)</p></li>
+<li><p>(optional) Details of <a class="reference external" href="https://iiif.io/api/image/2.1/#table-of-contents">IIIF URL structure</a></p></li>
+</ul>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Get higher resolution images and manipulate them</p></li>
+<li><p>Display images - individually or in galleries</p></li>
+<li><p>Can also be done in bulk</p></li>
+</ul>
+</section>
+<section id="image-color-analysis">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/Dominant%20colors.ipynb">Image Color Analysis</a><a class="headerlink" href="#image-color-analysis" title="Permalink to this heading">#</a></h2>
+<p>How to find and analyze the colors in an image. This tutorial uses <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">k-means clustering</a> to analyze and group the pixel values into 6 colors per image, but you can adjust that as needed.</p>
+<p><strong>Background knowledge:</strong></p>
+<ul class="simple">
+<li><p>Using <a class="reference external" href="https://www.w3schools.com/tags/att_a_href.asp">links in HTML</a></p></li>
+<li><p>How to create an <a class="reference external" href="https://www.w3schools.com/graphics/svg_rect.asp">SVG rectangle in HTML</a></p></li>
+</ul>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Visualize <a class="reference external" href="https://loc-colors.glitch.me/">colors in Library of Congress collections images</a></p></li>
+<li><p>Categorize or search images by color</p></li>
+</ul>
+<blockquote>
+<div><p><strong><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.ipynb">Downloading Monographs as Images</a></strong></p>
+</div></blockquote>
+<p>Similar to the Accessing Images for Data Analysis notebook — provides code for accessing and downloading images specifically from the <a class="reference external" href="https://www.loc.gov/rr/rarebook/rosenwald.html">Lessing J. Rosenwald Collection</a>.</p>
+<p>See background knowledge and applications for the accessing images notebook.</p>
+</section>
+</section>
+<section id="geographic-data-and-maps">
+<h1>Geographic Data and Maps<a class="headerlink" href="#geographic-data-and-maps" title="Permalink to this heading">#</a></h1>
+<section id="extracting-location-data">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/Extracting%20location%20data%20for%20geovisualization.ipynb">Extracting Location Data</a><a class="headerlink" href="#extracting-location-data" title="Permalink to this heading">#</a></h2>
+<p>Demonstrates how to retrieve geographic data (latitude and longitude) and plot it onto a map. This tutorial focuses on items in the Historic American Engineering Record (HAER). The way that geographic data is stored across collections does vary, so some collections may require more data cleaning and manipulation before doing geographic visualizations.</p>
+<p><strong>Background knowledge:</strong></p>
+<ul class="simple">
+<li><p>Understand URLs for <a class="reference external" href="http://loc.gov">loc.gov</a> API <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/requests/">requests</a> and how to modify them</p></li>
+<li><p>(optional) Python <a class="reference external" href="https://python-visualization.github.io/folium/modules.html#module-folium.map">folium mapping</a></p></li>
+<li><p>(optional) Python <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">pandas dataframe</a></p></li>
+</ul>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Map item locations</p></li>
+<li><p>Analyze geographic data and connect it to other information, such as date</p></li>
+<li><p>Compare geographies across collections</p></li>
+</ul>
+</section>
+<section id="maps-downloading-and-querying">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/maps/maps-downloading-querying.ipynb">Maps Downloading and Querying</a><a class="headerlink" href="#maps-downloading-and-querying" title="Permalink to this heading">#</a></h2>
+<p>How to query and download cartographic material. Includes:</p>
+<ul class="simple">
+<li><p>performing bulk downloads of cartographic materials using the <a class="reference external" href="http://loc.gov">loc.gov</a> API and Python</p></li>
+<li><p>crafting advanced API queries for map content</p></li>
+<li><p>performing post-query filtering</p></li>
+</ul>
+<p><strong>Background knowledge:</strong> None, though it may be useful to have some familiarity with Python</p>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Download and display images from the collections</p></li>
+<li><p>Create sets of images that can be used in a number of other applications</p></li>
+</ul>
+</section>
+<section id="maps-metadata">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/maps/maps-analyzing-metadata.ipynb">Maps Metadata</a><a class="headerlink" href="#maps-metadata" title="Permalink to this heading">#</a></h2>
+<p>How to find, analyze, and visualize cartographic metadata. This tutorial focuses on metadata associated with the files in the Maps Downloading and Querying tutorial as well as items in the Sanborn Maps collection.</p>
+<p><strong>Background knowledge:</strong></p>
+<ul class="simple">
+<li><p>How to <a class="reference external" href="https://www.w3schools.com/python/python_pip.asp">install a python package using pip</a> - or some other package manager</p></li>
+</ul>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Search for items within a collection/dataset that have particular locations, dates, etc.</p></li>
+<li><p>Analyze the different parts of the metadata (longest/shortest/average item length, most common dates or locations)</p></li>
+<li><p>Create charts with the data that compare all of the items</p></li>
+</ul>
+</section>
+</section>
+<section id="historic-newspapers">
+<h1>Historic Newspapers<a class="headerlink" href="#historic-newspapers" title="Permalink to this heading">#</a></h1>
+<section id="chronicling-america">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/Chronicling%20America%20API/ChronAm%20API%20Samples.ipynb">Chronicling America</a><a class="headerlink" href="#chronicling-america" title="Permalink to this heading">#</a></h2>
+<p>The Chronicling America database also has an API that functions similarly to the wider <a class="reference external" href="http://loc.gov">loc.gov</a> API. Its URLs start with <a class="reference external" href="https://www.chroniclingamerica.loc.gov/">https://www.chroniclingamerica.loc.gov/</a> instead of <a class="reference external" href="https://www.loc.gov/">https://www.loc.gov/</a> but the endings for querying are the same.</p>
+<p>This tutorial provides an introduction to what information is available via the API — one notable difference is that since this collection consists of newspaper pages, you can retrieve the text from the page (collected using <a class="reference external" href="https://en.wikipedia.org/wiki/Optical_character_recognition">OCR</a>) via the API. It also covers searching for keywords and analyzing data from bulk records.</p>
+<p><strong>Background knowledge:</strong></p>
+<ul class="simple">
+<li><p>Understand URLs for <a class="reference external" href="http://loc.gov">loc.gov</a> API <a class="reference external" href="https://www.loc.gov/apis/json-and-yaml/requests/">requests</a> and how to modify them</p></li>
+</ul>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Visualize search results on a map</p></li>
+<li><p>Find certain quotes through time</p></li>
+<li><p>Do historical research</p></li>
+<li><p>See <a class="reference external" href="https://blogs.loc.gov/thesignal/2016/08/the-neh-chronicling-america-challenge-using-big-data-to-ask-big-questions/">these projects</a> for more!</p></li>
+</ul>
+</section>
+<section id="chronicling-america-csv">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/tree/master/Chronicling%20America%20API/chronam_all_digitized">Chronicling America CSV</a><a class="headerlink" href="#chronicling-america-csv" title="Permalink to this heading">#</a></h2>
+<p>The Python script here creates a csv file of all of the digitized titles in Chronicling America, with their associated metadata.</p>
+<p><strong>Background knowledge:</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.codecademy.com/articles/command-line-commands#:~:text=The%20command%20line%20is%20a,or%20Finder%20on%20Mac%20OS.">Command line basics</a></p></li>
+<li><p>Need Python 3 installed - basic understanding of how Python and the API work needed for modification</p></li>
+</ul>
+<p><strong>Applications:</strong> The produced csv can be used for a number of different data analysis and <a class="reference external" href="https://www.loc.gov/ndnp/data-visualizations/">visualization</a> applications. See the Memegenerator and GIPHY tutorials for more on how to use Python code to analyze data in csv file formats.</p>
+</section>
+<section id="chronicling-america-issue-counts-csv">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/tree/master/Chronicling%20America%20API/chronam_issue_counts">Chronicling America Issue Counts CSV</a><a class="headerlink" href="#chronicling-america-issue-counts-csv" title="Permalink to this heading">#</a></h2>
+<p>These scripts create csv files where each row contains the state name, year, and the number of newspaper issues in the Chronicling America database available in that state and year. Each script does this for one state.</p>
+<p>See above (Chronicling America CSV) for background knowledge needed and potential applications.</p>
+</section>
+</section>
+<section id="other">
+<h1>Other<a class="headerlink" href="#other" title="Permalink to this heading">#</a></h1>
+<section id="memegenerator-metadata">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Sets/Web%20Archives/getting_started_with_memegenerator.ipynb">Memegenerator Metadata</a><a class="headerlink" href="#memegenerator-metadata" title="Permalink to this heading">#</a></h2>
+<p>Introduction to csv data analysis in Python using the Memgenerator dataset from <a class="reference external" href="https://labs.loc.gov/work/experiments/webarchive-datasets/">this page</a>. Shows how to:</p>
+<ul class="simple">
+<li><p>find column headers to see what data is available</p></li>
+<li><p>count occurrences within the dataset</p></li>
+<li><p>visualize data in a bar graph</p></li>
+<li><p>retrieve and display images</p></li>
+</ul>
+<p><strong>Background knowledge:</strong> None, though it may be useful to have some familiarity with Python</p>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Exploring memes</p></li>
+<li><p>Finding <a class="reference external" href="https://blogs.loc.gov/thesignal/2018/10/data-mining-memes-in-the-digital-culture-web-archive/">top 10s and other statistics</a> in a dataset</p></li>
+<li><p>Data analysis and visualization for any dataset</p></li>
+</ul>
+</section>
+<section id="giphy-com-metadata">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Sets/Web%20Archives/getting_started_with_giphy.ipynb">GIPHY.com Metadata</a><a class="headerlink" href="#giphy-com-metadata" title="Permalink to this heading">#</a></h2>
+<p>Slightly more advanced csv data analysis in Python using the <a class="reference external" href="https://labs.loc.gov/work/experiments/webarchive-datasets/">GIPHY.com dataset taken from this page</a>. Shows how to:</p>
+<ul class="simple">
+<li><p>Get dates for the GIFs</p></li>
+<li><p>Group and visualize the dates</p></li>
+<li><p>Find the GIF file sizes</p></li>
+<li><p>Search the titles in the dataset</p></li>
+<li><p>Download all of the GIFs</p></li>
+</ul>
+<p><strong>Background knowledge:</strong> some familiarity with Python and/or data analysis - the Memegenerator tutorial is a good place to start</p>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Exploring GIFs</p></li>
+<li><p>Searching through datasets</p></li>
+<li><p>Data analysis and visualization for any dataset</p></li>
+</ul>
+</section>
+<section id="accessing-and-remixing-sound">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Sets/Web%20Archives/loc_goes_lofi.ipynb">Accessing and Remixing Sound</a><a class="headerlink" href="#accessing-and-remixing-sound" title="Permalink to this heading">#</a></h2>
+<p>Provides code for selecting random audio segments and combining them together. Assumes that users have already downloaded the <a class="reference external" href="https://s3.us-east-2.amazonaws.com/lclabspublicdata/lcwa_gov_audio_data.zip">audio files</a> into the same folder as this notebook. The dataset includes 1000 randomly selected audio clips. For more information on how this dataset was generated, see the <a class="reference external" href="https://s3.us-east-2.amazonaws.com/lclabspublicdata/lcwa_gov_audio_README.txt">README</a>.</p>
+<p><strong>Background knowledge:</strong></p>
+<ul class="simple">
+<li><p>Python:</p>
+<ul>
+<li><p><a class="reference external" href="https://docs.python.org/3/reference/import.html">Importing packages</a></p></li>
+<li><p><a class="reference external" href="https://www.w3schools.com/python/python_functions.asp">Defining functions</a></p></li>
+<li><p>Using the <a class="reference external" href="https://github.com/jiaaro/pydub">pydub package</a></p></li>
+<li><p>(optional) Using the <a class="reference external" href="https://docs.python.org/3/library/glob.html">glob</a>, <a class="reference external" href="https://docs.python.org/3/howto/regex.html">re</a>, and <a class="reference external" href="https://docs.python.org/3/library/random.html">random</a> packages</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Create remixed audio</p></li>
+<li><p>Manipulate existing audio files</p></li>
+<li><p>Build interactive audio sampling tools, like <a class="reference external" href="https://citizen-dj.labs.loc.gov/">this</a></p></li>
+</ul>
+</section>
+<section id="american-folklife-center-scripts">
+<h2><a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/tree/master/Processing%20Scripts/americanfolklifecenter">American Folklife Center Scripts</a><a class="headerlink" href="#american-folklife-center-scripts" title="Permalink to this heading">#</a></h2>
+<p>Includes 2 bash scripts, <a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/Processing%20Scripts/americanfolklifecenter/reportmd.sh">reportmd.sh</a> and <a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/Processing%20Scripts/americanfolklifecenter/processfiles.sh">processfiles.sh</a>. These scripts intend to make processing and data analysis easier by automating some of the initial steps. They can be run on any command line interface (i.e. Terminal for macOS, PowerShell or Command prompt for Windows), and the script will prompt user inputs.</p>
+<p>Reportmd - Reports collection records out into CSV, GZ, and XML files.</p>
+<p>Processfiles - Does processing to clean up files, including batch file renaming, deleting files, and flattening directories.</p>
+<p><strong>Note:</strong> These scripts are complex and require background knowledge to fully understand. However, they can be run and used without that background.</p>
+<p><strong>Background knowledge:</strong></p>
+<ul class="simple">
+<li><p>Bash scripts:</p>
+<ul>
+<li><p><a class="reference external" href="https://www.taniarascia.com/how-to-create-and-use-bash-scripts/">one tutorial</a></p></li>
+<li><p><a class="reference external" href="https://ryanstutorials.net/bash-scripting-tutorial/bash-script.php">another tutorial</a></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Applications:</strong></p>
+<ul class="simple">
+<li><p>Get data into a different file format</p></li>
+<li><p>Automate some data cleaning/processing</p></li>
+<li><p>Can be modified to work for other datasets and collections outside of the American Folklife Center</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs\pages\apidocs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">General Search and Query</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#json-api-overview">JSON API Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#opensearch">OpenSearch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sitemaps">Sitemaps</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#images">Images</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-images-for-analysis">Accessing Images for Analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iiif">IIIF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-color-analysis">Image Color Analysis</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#geographic-data-and-maps">Geographic Data and Maps</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-location-data">Extracting Location Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maps-downloading-and-querying">Maps Downloading and Querying</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maps-metadata">Maps Metadata</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#historic-newspapers">Historic Newspapers</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chronicling-america">Chronicling America</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chronicling-america-csv">Chronicling America CSV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chronicling-america-issue-counts-csv">Chronicling America Issue Counts CSV</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#other">Other</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memegenerator-metadata">Memegenerator Metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#giphy-com-metadata">GIPHY.com Metadata</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-and-remixing-sound">Accessing and Remixing Sound</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#american-folklife-center-scripts">American Folklife Center Scripts</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Library of Congress staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <header class="loc-header">
+    <div class="loc-logo">
+        <a href="https://www.loc.gov/"><img src="/data-exploration/_static/LOC_Logo_horiz_inv.png" alt="The Library of Congress logo" title="Go to the Library of Congress homepage" /></a>
+    </div>
+    <div class="project-description">
+        <p>In-depth tutorials for working with Library of Congress data via APIs and code. <a href="https://github.com/libraryOfCongress/data-exploration/" class="button small">View the code</a></p>
+    </div>
+</header>
+<footer class="loc-footer">
+    <p>In-depth tutorials for working with Library of Congress data via APIs and code.</p>
+    <ul class="loc-footer-nav-list">
+        <li><a href="https://github.com/libraryOfCongress/data-exploration/">Source code</a></li>  
+        <li><a href="https://www.loc.gov/">The Library of Congress</a></li>
+        <li><a href="https://loc.gov/legal">Privacy Policy</a></li>
+        <li><a href="https://www.loc.gov/accessibility/">Accessibilty</a></li>
+        <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Github Privacy Statement</a></li>
+        <li><a href="https://creativecommons.org/publicdomain/zero/1.0/">License</a></li>
+        <li><a href="mailto:LC-Labs@loc.gov">Contact</a></li>
+    </ul>
+</footer>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

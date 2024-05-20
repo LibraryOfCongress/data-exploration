@@ -1,0 +1,847 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Exploring the Memegenerator Metadata &#8212; Tutorials for Data Exploration</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/loc.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/loc.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Data Sets/Web Archives/getting_started_with_memegenerator';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Exploring the GIPHY.com Metadata" href="getting_started_with_giphy.html" />
+    <link rel="prev" title="ChronAm API Guide" href="../../Chronicling%20America%20API/ChronAm%20API%20Samples.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tutorials for Data Exploration</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Tutorials for Data Exploration
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Loc.gov JSON API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/LOC.gov%20JSON%20API.html">LOC.gov JSON API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.html">Accessing images from the loc.gov JSON API for image analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Dominant%20colors.html">Color clusters in images in Library of Congress collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Connecting the image file to the metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/Extracting%20location%20data%20for%20geovisualization.html">Extracting location data from the loc.gov API for geovisualization</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20JSON%20API/maps/maps-analyzing-metadata.html">Analyzing and visualizing cartographic metadata from loc.gov</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chronicling America notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Chronicling%20America%20API/ChronAm%20API%20Samples.html">ChronAm API Guide</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Web Archives notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Exploring the Memegenerator Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started_with_giphy.html">Exploring the GIPHY.com Metadata</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/digitized-books.html">LoC Data Package Tutorial: Selected Digitized Books Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/directories.html">LoC Data Package Tutorial: City and Telephone Directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/telephone.html">LoC Data Package Tutorial: Digitized Telephone Directories Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/stereographs.html">LoC Data Package Tutorial: Stereograph Card Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/austro-hungarian-maps.html">LoC Data Package Tutorial: Austro-Hungarian maps set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/gen-coll-assessment.html">LoC Data Package Tutorial: General Collections Assessment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Library API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20IIIF%20API/IIIF.html">IIIF API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20Sitemaps%20API/Sitemap.html">What are Sitemaps?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20web%20interface/OpenSearch.html">OpenSearch Guide</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Data Sets/Web Archives/getting_started_with_memegenerator.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Exploring the Memegenerator Metadata</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-exploration-verification-of-the-data-set">1. Initial exploration &amp; verification of the data set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#count-and-display-information-about-the-memes-represented-in-the-data-set">2. Count and display information about the memes represented in the data set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#count-visualize-the-types-of-memes-in-the-dataset">3. Count &amp; visualize the types of memes in the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-and-display-meme-images">4. Retrieve and display meme images</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="exploring-the-memegenerator-metadata">
+<h1>Exploring the Memegenerator Metadata<a class="headerlink" href="#exploring-the-memegenerator-metadata" title="Permalink to this heading">#</a></h1>
+<p>This notebook demonstrates some of the basic things that can be done with the set of data from memegenerator.
+<a class="reference external" href="https://memegenerator.net/">Meme Generator</a> is a site that has been archived by the Library of Congress in its Web Cultures archive. The data explored here is available from the LC Labs experiments page located here: <a class="reference external" href="https://labs.loc.gov/experiments/webarchive-datasets/">https://labs.loc.gov/experiments/webarchive-datasets/</a>.</p>
+<p>This notebook has a few sections:</p>
+<ol class="arabic simple">
+<li><p>Initial exploration &amp; verification of the data set</p></li>
+<li><p>Count and display information about the memes represented in the data set</p></li>
+<li><p>Count &amp; visualize the types of memes in the data set</p></li>
+<li><p>Retrieve and display a specific meme</p></li>
+</ol>
+<section id="initial-exploration-verification-of-the-data-set">
+<h2>1. Initial exploration &amp; verification of the data set<a class="headerlink" href="#initial-exploration-verification-of-the-data-set" title="Permalink to this heading">#</a></h2>
+<p>This example assumes that you have downloaded the zip file, unzipped and located the <code class="docutils literal notranslate"><span class="pre">memegenerator.csv</span></code> file, and saved that file in the same folder as this notebook.
+The file is available from <a class="reference external" href="https://labs.loc.gov/experiments/webarchive-datasets/">this page</a>. To find the csv, click “Meme Generator Data Set Download External,” unzip the file, and move the unzipped files into the same folder as this notebook. The blocks of code below demonstrate a few basic steps that allow you to open up the csv file and count the rows.</p>
+<p>First, let’s open up the csv and take a closer look at it. Before we open the file, we will need to import a few basic modules. We will use the csv module to work with the downloaded data set, the string module provides a few useful string manipulation tools, and pandas supports visualizing the information.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we open the csv file using python’s csv module, we can read the data into a dictionary, then isolate individual elements according to the associated column heading. Let’s find out what the column names are:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## use the contextual with open() method to open the file and read it</span>
+<span class="c1">## note that the file is a &#39;utf-16&#39; encoding</span>
+<span class="c1">## to reuse this example you may need to change the filepath</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;memegenerator.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-16&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">memedata</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">memedata</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Output fieldnames:&#39;</span><span class="p">,</span><span class="n">reader</span><span class="o">.</span><span class="n">fieldnames</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">heading</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">fieldnames</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Headers output:&#39;</span><span class="p">,</span><span class="n">heading</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output fieldnames: [&#39;Meme ID\tArchived URL\tBase Meme Name\tMeme Page URL\tMD5 Hash\tFile Size (In Bytes)\tAlternate Text&#39;]
+Headers output: Meme ID	Archived URL	Base Meme Name	Meme Page URL	MD5 Hash	File Size (In Bytes)	Alternate Text
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before proceeding, take a careful look at the above output. In <code class="docutils literal notranslate"><span class="pre">Output</span> <span class="pre">fieldnames:</span></code>, notice that the printed output appears to be a list (enclosed in square brackets <code class="docutils literal notranslate"><span class="pre">[]</span></code>) with a single string inside of it. That is not what we would expect. Instead, we want a list of the column headers. If you compare that with the <code class="docutils literal notranslate"><span class="pre">Headers</span> <span class="pre">output:</span></code>), you’ll see that the fieldnames string prints values separated by <code class="docutils literal notranslate"> </code> and the headers lists has multiple spaces. It turns out that the data fields in this file are separated by <code class="docutils literal notranslate"><span class="pre">Tab</span></code>, not comma. That’s okay, but we need to specify the delimiter is a tab, rather than the default comma.</p>
+<p>It is necessary to specify the encoding, which is <code class="docutils literal notranslate"><span class="pre">utf-16</span></code>. This allows for correct representation of the text  in the file, which contains text in various languages other than English and requires additional character sets.</p>
+<p>With this knowledge, it’s possible to print a clean list of the headers. Adding up the counter variable <code class="docutils literal notranslate"><span class="pre">column</span></code> will allow us to number the column headings.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">column</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;memegenerator.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-16&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">memedata</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">memedata</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">header</span> <span class="ow">in</span> <span class="n">reader</span><span class="o">.</span><span class="n">fieldnames</span><span class="p">:</span>
+        <span class="n">column</span> <span class="o">=</span> <span class="n">column</span> <span class="o">+</span> <span class="mi">1</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Header &#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">column</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;: &#39;</span><span class="o">+</span><span class="n">header</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Header 1: Meme ID
+Header 2: Archived URL
+Header 3: Base Meme Name
+Header 4: Meme Page URL
+Header 5: MD5 Hash
+Header 6: File Size (In Bytes)
+Header 7: Alternate Text
+</pre></div>
+</div>
+</div>
+</div>
+<p>So with seven headers, we can expect to find up to seven data values for each row. We know the file is encoded in <code class="docutils literal notranslate"><span class="pre">utf-16</span></code>, and we know that the field delimiters are Tabs.</p>
+<p>Finally, to make the data easier to use, let’s create a data object that can be referred back to and easily referenced without using the <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">open()</span></code> command each time. If you’re doing this a lot, it would be a good idea to create a function to do this, but for the purposes of the this exploratory notebook, we will just read the contents of the csv into a list called <code class="docutils literal notranslate"><span class="pre">memeData</span></code>.</p>
+<p>Tip: python variables are case sensitive. So in the block below, <code class="docutils literal notranslate"><span class="pre">memeData</span></code> and <code class="docutils literal notranslate"><span class="pre">memedata</span></code> are separate variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">memeData</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;memegenerator.csv&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-16&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">memedata</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">memedata</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="n">memeData</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total records in the memeData list:&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">memeData</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total records in the memeData list: 57652
+</pre></div>
+</div>
+</div>
+</div>
+<p>The information about the set at <a class="reference external" href="https://labs.loc.gov/experiments/webarchive-datasets/">loc.gov</a> indicates that the memegenerator set includes 57,652 records. That number matches the tally above, which gives a basic indicator that the data corresponds and the program is looping through it accurately. We’ve verified that we can successfully open and read through the file!</p>
+</section>
+<section id="count-and-display-information-about-the-memes-represented-in-the-data-set">
+<h2>2. Count and display information about the memes represented in the data set<a class="headerlink" href="#count-and-display-information-about-the-memes-represented-in-the-data-set" title="Permalink to this heading">#</a></h2>
+<p>Now that we know more about the data format, including the column headers, we can loop through the rows to count them. We can also pull out the “Meme ID” value for each meme represented in the set, which gives a quick way to refer to individual records in the data set.</p>
+<p>To set this up, try just counting the first few rows first (below, we have stopped the loop with a break statement, which kicks us out of the loop if the counter value is greater than 2). This sample uses the counter variable <code class="docutils literal notranslate"><span class="pre">memeCount</span></code> to count the rows as the code loops through, and to print out the <code class="docutils literal notranslate"><span class="pre">Meme</span> <span class="pre">ID</span></code> and <code class="docutils literal notranslate"><span class="pre">Base</span> <span class="pre">Meme</span> <span class="pre">Name</span></code> field contents. For testing, this example limits our activity with a break loop, which escapes from the routine when the count exceeds 2.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">memeCount</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="c1">## instead of using the contextual with open() command as above, now just use memeData</span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">memeData</span><span class="p">:</span> 
+    <span class="n">memeCount</span> <span class="o">=</span> <span class="n">memeCount</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">memeCount</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">memeCount</span><span class="p">,</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;Meme ID&#39;</span><span class="p">],</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;Base Meme Name&#39;</span><span class="p">],</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;Meme Page URL&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 10509464 Spiderman Approves http://memegenerator.net/instance/10509464
+2 12285257 Alright Then Business Kid http://memegenerator.net/instance/12285257
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can try many different ways to experiment with filtering or controlling the data using other <code class="docutils literal notranslate"><span class="pre">if</span></code> statements. For example, could you count only the “Advice Yoda Gives” memes?</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hint</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;Base Meme Name&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Advice Yoda Gives&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="count-visualize-the-types-of-memes-in-the-dataset">
+<h2>3. Count &amp; visualize the types of memes in the dataset<a class="headerlink" href="#count-visualize-the-types-of-memes-in-the-dataset" title="Permalink to this heading">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">Base</span> <span class="pre">Meme</span> <span class="pre">Name</span></code> appears to offer a typology of the memes and refers to the “source” image that was used to create the meme. How many base meme images are in the set? And how many examples of each are there? We could use a spreadsheet program to answer these questions, but we can also do just a bit more data exploration to see how we can answer those questions using python.</p>
+<p>The next block uses <code class="docutils literal notranslate"><span class="pre">memeCount</span></code> again for testing. Below, the loop stops after the count exceeds 15, which gives enough sample output to analyze.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## set up the counter again, and create a dictionary for the types</span>
+<span class="n">memeCount</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">types</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="n">counts</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Here</span><span class="se">\&#39;</span><span class="s1">s the types and IDs from each row scanned:&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">memeData</span><span class="p">:</span> 
+    <span class="k">if</span> <span class="n">memeCount</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+        <span class="k">break</span>
+    <span class="n">memeCount</span> <span class="o">=</span> <span class="n">memeCount</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">memeID</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;Meme ID&#39;</span><span class="p">]</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;Base Meme Name&#39;</span><span class="p">]</span>
+    <span class="c1">#uncomment the next row if you want to see the output as the loop goes through each row</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">memeCount</span><span class="p">,</span><span class="n">kind</span><span class="p">,</span><span class="n">memeID</span><span class="p">)</span>
+
+    <span class="c1">## Using the counts dictionary, above, see if the type is already in the dictionary, </span>
+    <span class="c1">## if not noted, add it, if it is noted, increase the count...</span>
+    <span class="k">if</span> <span class="n">kind</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">kind</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">kind</span><span class="p">]</span> <span class="o">=</span> <span class="n">counts</span><span class="p">[</span><span class="n">kind</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1">## Now add kind to the list of types</span>
+    <span class="k">if</span> <span class="n">kind</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">types</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">kind</span><span class="p">)</span>
+
+<span class="c1">#sort the list</span>
+<span class="n">types</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">LIST OF TYPES&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;List of types:&#39;</span><span class="p">,</span><span class="n">types</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Found&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">types</span><span class="p">),</span><span class="s1">&#39;types in&#39;</span><span class="p">,</span><span class="n">memeCount</span><span class="p">,</span><span class="s1">&#39;rows.</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;DICTIONARY OF TYPES BY COUNT&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">counts</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">counts</span><span class="p">[</span><span class="n">x</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Here&#39;s the types and IDs from each row scanned:
+1 Spiderman Approves 10509464
+2 Alright Then Business Kid 12285257
+3 Archer 20612245
+4 Futurama Fry 20614628
+5 One Does Not Simply 24194267
+
+LIST OF TYPES
+List of types: [&#39;Alright Then Business Kid&#39;, &#39;Archer&#39;, &#39;Futurama Fry&#39;, &#39;One Does Not Simply&#39;, &#39;Spiderman Approves&#39;]
+Found 5 types in 5 rows.
+
+DICTIONARY OF TYPES BY COUNT
+{&#39;Spiderman Approves&#39;: 1, &#39;Alright Then Business Kid&#39;: 1, &#39;Archer&#39;: 1, &#39;Futurama Fry&#39;: 1, &#39;One Does Not Simply&#39;: 1}
+Spiderman Approves 1
+Alright Then Business Kid 1
+Archer 1
+Futurama Fry 1
+One Does Not Simply 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">types</span></code> list won’t be necessary when the dictionary includes the whole set, so the code below uses a single dictionary (<code class="docutils literal notranslate"><span class="pre">typesDict</span></code>) to count the types of base memes and tally the occurences of each type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## set up the counter again, and create a dictionary for all the types in the dataset</span>
+<span class="n">memeCount</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">typesDict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">record</span> <span class="ow">in</span> <span class="n">memeData</span><span class="p">:</span> 
+    <span class="n">memeCount</span> <span class="o">=</span> <span class="n">memeCount</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">memeID</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;Meme ID&#39;</span><span class="p">]</span>
+    <span class="n">kind</span> <span class="o">=</span> <span class="n">record</span><span class="p">[</span><span class="s1">&#39;Base Meme Name&#39;</span><span class="p">]</span>
+
+    <span class="c1">## Using the typesDict dictionary, see if the type is already in the dictionary, </span>
+    <span class="c1">## if not noted, add it, if it is noted, increase the count...</span>
+    <span class="k">if</span> <span class="n">kind</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">typesDict</span><span class="p">:</span>
+        <span class="n">typesDict</span><span class="p">[</span><span class="n">kind</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">typesDict</span><span class="p">[</span><span class="n">kind</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Items in the dictionary:&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">typesDict</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Items in the dictionary: 1914
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have noted 1,914 separate indicators describing the base image used in the memes. This is the answer to the first question in this section. How many base meme images are in the set? <strong>1,914</strong>. So this set has nearly two thousand general types of memes.</p>
+<p>This information would be more interesting if we could chart the more frequent base meme types. To do that, let’s use the pandas module to create a graph of the main types.</p>
+<p>There are a lot of base memes, so the dictionary called <code class="docutils literal notranslate"><span class="pre">larges</span></code> in the next block allows to split out those memes that only have 400 or more exemplars.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">larges</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">typesDict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">val</span> <span class="o">&gt;=</span> <span class="mi">400</span><span class="p">:</span>
+        <span class="n">larges</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+<span class="c1">#print larges.value()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;This many base memes have more than four hundred instances:&#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">larges</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">larges</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">larges</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This many base memes have more than four hundred instances: 11 &lt;class &#39;dict&#39;&gt;
+{&#39;Futurama Fry&#39;: 660, &#39;Insanity Wolf&#39;: 610, &#39;Philosoraptor&#39;: 530, &#39;Foul Bachelor Frog&#39;: 469, &#39;Joseph Ducreux&#39;: 414, &#39;Success Kid&#39;: 510, &#39;Y U No&#39;: 766, &#39;Socially Awkward Penguin&#39;: 446, &#39;Forever Alone&#39;: 414, &#39;Advice Yoda Gives&#39;: 419, &#39;The Most Interesting Man In The World&#39;: 507}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that the types have been identified and counted, it is possible to visualize the results. We can use the “pandas” library to create a bar chart as an initial example. This module allows for many more complex visualizations, which are explained in more detail in the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/">module’s documentation</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Use pandas to create a bar chart and sort from largest to smallest</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">larges</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
+
+<span class="n">graphable</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">larges</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">graphable</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Occurences&#39;</span><span class="p">])</span>
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;Orange&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Most Common Meme Types in the Set&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3b8333fadfb6e53007b85686779f761e138cc94409d5a56a606b5be2d2cb1263.png" src="../../_images/3b8333fadfb6e53007b85686779f761e138cc94409d5a56a606b5be2d2cb1263.png" />
+</div>
+</div>
+</section>
+<section id="retrieve-and-display-meme-images">
+<h2>4. Retrieve and display meme images<a class="headerlink" href="#retrieve-and-display-meme-images" title="Permalink to this heading">#</a></h2>
+<p>Now let’s see how to actually view the meme images. Each record has an <code class="docutils literal notranslate"><span class="pre">Archived</span> <span class="pre">URL</span></code> field, which contains a link to a jpg file. We can check the link like this:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">archivedURL</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">memeData</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Meme ID&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;10698210&#39;</span><span class="p">:</span>
+        <span class="n">archivedURL</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;Archived URL&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">archivedURL</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>http://webarchive.loc.gov/all/19960101000000-20160901235959*/http://cdn.meme.am/instances/250x250/10698210.jpg
+</pre></div>
+</div>
+</div>
+</div>
+<p>Displaying the image is a bit more challenging since this URL does not directly reference the image; instead, the response to this URL is the archive’s datepicker, which allows a user with a browser to choose the image based on the date when it was harvested. Our URLs do not include the specific capture date.</p>
+<p>We can get around this with a better understanding of the archived URL. The archived URL has four main parts:</p>
+<ol class="arabic simple">
+<li><p>the web archive domain, <a class="reference external" href="http://webarchive.loc.gov">webarchive.loc.gov</a></p></li>
+<li><p>the access scope, all</p></li>
+<li><p>the date range, 19960101000000-20160901235959*</p></li>
+<li><p>the original URL of the resource, <a class="reference external" href="http://cdn.meme.am/instances/250x250/10698210.jpg">http://cdn.meme.am/instances/250x250/10698210.jpg</a></p></li>
+</ol>
+<p>The full URL <a class="reference external" href="http://webarchive.loc.gov/all/19960101000000-20160901235959*/http://cdn.meme.am/instances/250x250/10698210.jpg">http://webarchive.loc.gov/all/19960101000000-20160901235959*/http://cdn.meme.am/instances/250x250/10698210.jpg</a> takes you to a calendar page displaying all the captures for that URL over time.</p>
+<p>Using the understanding of the Wayback URL structure, we can either jump to the first or last capture by replacing the date range with a <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">2</span></code>, respectively. More about the Wayback Machine and the URL construction can be found here: <a class="github reference external" href="https://github.com/iipc/openwayback/wiki/OpenWayback-Replay-API">iipc/openwayback</a>.</p>
+<p>So let’s pull a particular meme out of the data set and see if we can get it to display. Using the <code class="docutils literal notranslate"><span class="pre">archivedURL</span></code> variable set above, we can replace the date range with a <code class="docutils literal notranslate"><span class="pre">0</span></code> to get the first capture.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">archivedURL</span> <span class="o">=</span> <span class="n">archivedURL</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;19960101000000-20160901235959*&#39;</span><span class="p">,</span> <span class="s1">&#39;0&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">archivedURL</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>http://webarchive.loc.gov/all/0/http://cdn.meme.am/instances/250x250/10698210.jpg
+</pre></div>
+</div>
+</div>
+</div>
+<p>And to actually display images, we’ll follow the pattern laid out by the <a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/LOC.gov%20JSON%20API.ipynb">LoC exploration demo for loc.gov</a> and use <code class="docutils literal notranslate"><span class="pre">Image</span></code> from <code class="docutils literal notranslate"><span class="pre">IPython.display</span></code> library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">archivedURL</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;jpg&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><img src="http://webarchive.loc.gov/all/0/http://cdn.meme.am/instances/250x250/10698210.jpg"/></div></div>
+</div>
+<p>Have fun exploring these memes in more detail! You can read more about how Library of Congress staff analyzed this data set in this post on The Signal blog: <a class="reference external" href="http://blogs.loc.gov/thesignal/2018/10/data-mining-memes-in-the-digital-culture-web-archive/">http://blogs.loc.gov/thesignal/2018/10/data-mining-memes-in-the-digital-culture-web-archive/</a>.</p>
+<p><strong>Contributors include:</strong>
+Jesse Johnston, Chase Dooley, Aly DesRochers</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Data Sets\Web Archives"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../Chronicling%20America%20API/ChronAm%20API%20Samples.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">ChronAm API Guide</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="getting_started_with_giphy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Exploring the GIPHY.com Metadata</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-exploration-verification-of-the-data-set">1. Initial exploration &amp; verification of the data set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#count-and-display-information-about-the-memes-represented-in-the-data-set">2. Count and display information about the memes represented in the data set</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#count-visualize-the-types-of-memes-in-the-dataset">3. Count &amp; visualize the types of memes in the dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-and-display-meme-images">4. Retrieve and display meme images</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Library of Congress staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <header class="loc-header">
+    <div class="loc-logo">
+        <a href="https://www.loc.gov/"><img src="/data-exploration/_static/LOC_Logo_horiz_inv.png" alt="The Library of Congress logo" title="Go to the Library of Congress homepage" /></a>
+    </div>
+    <div class="project-description">
+        <p>In-depth tutorials for working with Library of Congress data via APIs and code. <a href="https://github.com/libraryOfCongress/data-exploration/" class="button small">View the code</a></p>
+    </div>
+</header>
+<footer class="loc-footer">
+    <p>In-depth tutorials for working with Library of Congress data via APIs and code.</p>
+    <ul class="loc-footer-nav-list">
+        <li><a href="https://github.com/libraryOfCongress/data-exploration/">Source code</a></li>  
+        <li><a href="https://www.loc.gov/">The Library of Congress</a></li>
+        <li><a href="https://loc.gov/legal">Privacy Policy</a></li>
+        <li><a href="https://www.loc.gov/accessibility/">Accessibilty</a></li>
+        <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Github Privacy Statement</a></li>
+        <li><a href="https://creativecommons.org/publicdomain/zero/1.0/">License</a></li>
+        <li><a href="mailto:LC-Labs@loc.gov">Contact</a></li>
+    </ul>
+</footer>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
