@@ -192,6 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="Data%20Sets/Web%20Archives/loc_goes_lofi.html">LOC Goes Lofi</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
 <ul class="nav bd-sidenav">
@@ -398,7 +399,8 @@ document.write(`
 </div>
 </li>
 <li><p>Once built, you should be able to paste the file path (e.g. <code class="docutils literal notranslate"><span class="pre">file://path/to/data-exploration/_build/html/index.html</span></code>) displayed in the output into your browser bar to preview it.  Make any changes necessary and re-run steps 3 and 4.</p></li>
-<li><p>Once you are ready to publish, commit and push your changes to the master branch</p>
+<li><p>Once you are ready to publish, you will need to add an empty file called <code class="docutils literal notranslate"><span class="pre">.nojekll</span></code> to the folder <code class="docutils literal notranslate"><span class="pre">./_build/html/</span></code>. This will tell Github not to interpret this as a Jekyll site.</p>
+<p>Then commit and push your changes to the main branch</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
 </pre></div>
 </div>
