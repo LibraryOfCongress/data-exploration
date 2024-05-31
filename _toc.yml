@@ -4,6 +4,7 @@ parts:
   - caption: Loc.gov JSON API notebooks
     chapters:
       - file: loc.gov JSON API/LOC.gov JSON API.ipynb
+      - file: loc.gov JSON API/resources2pdf.ipynb
       - file: loc.gov JSON API/Accessing images for analysis.ipynb
       - file: loc.gov JSON API/Dominant colors.ipynb
       - file: loc.gov JSON API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading Monographs as Images in Rosenwald Collection.ipynb
