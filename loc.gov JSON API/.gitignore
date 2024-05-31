@@ -1,0 +1,3 @@
+# Output folders
+output/*
+!output/.keep
