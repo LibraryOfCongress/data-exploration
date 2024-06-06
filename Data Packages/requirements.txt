@@ -30,3 +30,6 @@ tqdm
 
 # For generating wordclouds
 wordcloud
+
+# For reading, parsing PDFs
+pypdf

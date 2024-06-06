@@ -23,6 +23,7 @@ parts:
       - file: Data Packages/sanborn.ipynb
       - file: Data Packages/free-to-use.ipynb
       - file: Data Packages/jukebox.ipynb
+      - file: Data Packages/dot-gov-pdf.ipynb
       - file: Data Packages/digitized-books.ipynb
       - file: Data Packages/directories.ipynb
       - file: Data Packages/telephone.ipynb
