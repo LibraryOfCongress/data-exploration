@@ -182,10 +182,20 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Chronicling America notebooks</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Chronicling%20America%20API/ChronAm%20API%20Samples.html">ChronAm API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loc.gov%20JSON%20API/Chronicling_America/README.html">Using the loc.gov API with the Chronicling America Historic Newspapers Collection</a></li>
 
 
 
+<li class="toctree-l1"><a class="reference internal" href="loc.gov%20JSON%20API/Chronicling_America/ChronAm_basic_API%20tasks.html">Learning and Applying Basic API Tasks in Chronicling America</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loc.gov%20JSON%20API/Chronicling_America/ChronAm_analyzing_specific_titles_limit_results.html">Using Chronicling America to analyze specific newspaper titles for content.</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="loc.gov%20JSON%20API/Chronicling_America/ChronAm_analyzing_word_frequency_newspaper_frontpages.html">Using Chronicling America to analyze word frequency in newspaper Front Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loc.gov%20JSON%20API/Chronicling_America/ChronAm_analyzing_language_location_frequency.html">Using Chronicling America to analyze word frequency and geographic usage</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="loc.gov%20JSON%20API/Chronicling_America/ChronAm-download_results.html">Downloading Search Results from Chronicling America</a></li>
+<li class="toctree-l1"><a class="reference internal" href="loc.gov%20JSON%20API/Chronicling_America/ChronAm-download_newspaper_title_batch.html">Downloading Newspaper Titles and Batches from Chronicling America</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Web Archives notebooks</span></p>
 <ul class="nav bd-sidenav">
@@ -388,7 +398,7 @@ document.write(`
 <p><em>These tutorials are designed to help people understand the API and make use of it. The repository is intended to inspire creative uses of the Library of Congress collections. So, it’s not comprehensive, but highlights the most relevant aspects. If you have ideas about what other topics should be covered or anything else to make the API even more useful, let us know by emailing <a class="reference external" href="mailto:LC-Labs&#37;&#52;&#48;loc&#46;gov">LC-Labs<span>&#64;</span>loc<span>&#46;</span>gov</a>!</em></p>
 <section id="general-search-and-query">
 <h2>General Search and Query<a class="headerlink" href="#general-search-and-query" title="Permalink to this heading">#</a></h2>
-<h3><a href="loc.gov%20JSON%20API/LOC.gov%20JSON%20API.html">JSON API Overview</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/LOC.gov%20JSON%20API.html">JSON API Overview</a></h3>
 <p>An overview of how to retrieve information in a JSON format from the Library of Congress API. This tutorial sets a baseline for doing powerful data retrieval and visualization projects.</p>
 <p><strong>Background knowledge:</strong></p>
 <ul class="simple">
@@ -400,11 +410,11 @@ document.write(`
 <li><p>Show images from collections</p></li>
 <li><p>Make cool projects like <a class="reference external" href="https://library-of-time.glitch.me/">this clock using collection item names</a> and <a class="reference external" href="https://jeffreyshen19.github.io/political-cartoon-visualizer/">this political cartoon visualizer</a> - for more inspiration, see the <a class="reference external" href="https://labs.loc.gov/work/experiments/?st=gallery">experiments</a> that LC Labs has been working on!</p></li>
 </ul>
-<h3><a href="loc.gov%20web%20interface/OpenSearch.html">OpenSearch</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20web%20interface/OpenSearch.html">OpenSearch</a></h3>
 <p>Brief guide to searching <a class="reference external" href="http://loc.gov">loc.gov</a> directly from a web browser.</p>
 <p><strong>Background knowledge:</strong> None</p>
 <p><strong>Applications:</strong> Searching the website</p>
-<h3><a href="loc.gov%20Sitemaps%20API/Sitemap.html">Sitemaps</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20Sitemaps%20API/Sitemap.html">Sitemaps</a></h3>
 <p>Describes Sitemaps and how to get information about the frequency of page updates.</p>
 <p><strong>Background knowledge:</strong> None, but understanding the basics of <a class="reference external" href="https://www.sitemaps.org/">Sitemaps</a> and <a class="reference external" href="https://www.sitemaps.org/protocol.html">how the formatting works</a> is recommended</p>
 <p><strong>Applications:</strong></p>
@@ -415,7 +425,7 @@ document.write(`
 </section>
 <section id="images">
 <h2>Images<a class="headerlink" href="#images" title="Permalink to this heading">#</a></h2>
-<h3><a href="loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.html">Accessing Images for Analysis</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.html">Accessing Images for Analysis</a></h3>
 <p>How to access, display, and download images in bulk. Also provides information about what metadata is available and how to get particular details.</p>
 <p>This tutorial is for accessing images directly via the the API, so the images are generally smaller (150 px on one side) and low resolution. For accessing larger images that can be manipulated (size, rotation, crop, etc.), see the next tutorial, on IIIF.</p>
 <p><strong>Background knowledge:</strong></p>
@@ -428,7 +438,7 @@ document.write(`
 <li><p>Download images in bulk</p></li>
 <li><p>Get information about the images, such as copyright and usage details, dates, locations, etc.</p></li>
 </ul>
-<h3><a href="loc.gov%20IIIF%20API/IIIF.html">IIIF</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20IIIF%20API/IIIF.html">IIIF</a></h3>
 <p>How to scale, rotate, reflect, crop, and otherwise manipulate images using the IIIF API.</p>
 <p>IIIF stands for the International Image Interoperability Framework. It is a standardized way to get images that is used by various libraries, museums, digital archives, etc.</p>
 <p><strong>Background knowledge:</strong></p>
@@ -442,7 +452,7 @@ document.write(`
 <li><p>Display images - individually or in galleries</p></li>
 <li><p>Can also be done in bulk</p></li>
 </ul>
-<h3><a href="loc.gov%20JSON%20API/Dominant%20colors.html">Image Color Analysis</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Dominant%20colors.html">Image Color Analysis</a></h3>
 <p>How to find and analyze the colors in an image. This tutorial uses <a class="reference external" href="https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html">k-means clustering</a> to analyze and group the pixel values into 6 colors per image, but you can adjust that as needed.</p>
 <p><strong>Background knowledge:</strong></p>
 <ul class="simple">
@@ -454,13 +464,13 @@ document.write(`
 <li><p>Visualize <a class="reference external" href="https://loc-colors.glitch.me/">colors in Library of Congress collections images</a></p></li>
 <li><p>Categorize or search images by color</p></li>
 </ul>
-<h3><a href="loc.gov%20JSON%20API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Downloading Monographs as Images</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Downloading Monographs as Images</a></h3>
 <p>Similar to the Accessing Images for Data Analysis notebook — provides code for accessing and downloading images specifically from the <a class="reference external" href="https://www.loc.gov/rr/rarebook/rosenwald.html">Lessing J. Rosenwald Collection</a>.</p>
 <p>See background knowledge and applications for the accessing images notebook.</p>
 </section>
 <section id="geographic-data-and-maps">
 <h2>Geographic Data and Maps<a class="headerlink" href="#geographic-data-and-maps" title="Permalink to this heading">#</a></h2>
-<h3><a href="loc.gov%20JSON%20API/Extracting%20location%20data%20for%20geovisualization.html">Extracting Location Data</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Extracting%20location%20data%20for%20geovisualization.html">Extracting Location Data</a></h3>
 <p>Demonstrates how to retrieve geographic data (latitude and longitude) and plot it onto a map. This tutorial focuses on items in the Historic American Engineering Record (HAER). The way that geographic data is stored across collections does vary, so some collections may require more data cleaning and manipulation before doing geographic visualizations.</p>
 <p><strong>Background knowledge:</strong></p>
 <ul class="simple">
@@ -474,7 +484,7 @@ document.write(`
 <li><p>Analyze geographic data and connect it to other information, such as date</p></li>
 <li><p>Compare geographies across collections</p></li>
 </ul>
-<h3><a href="loc.gov%20JSON%20API/maps/maps-downloading-querying.html">Maps Downloading and Querying</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/maps/maps-downloading-querying.html">Maps Downloading and Querying</a></h3>
 <p>How to query and download cartographic material. Includes:</p>
 <ul class="simple">
 <li><p>performing bulk downloads of cartographic materials using the <a class="reference external" href="http://loc.gov">loc.gov</a> API and Python</p></li>
@@ -487,7 +497,7 @@ document.write(`
 <li><p>Download and display images from the collections</p></li>
 <li><p>Create sets of images that can be used in a number of other applications</p></li>
 </ul>
-<h3><a href="loc.gov%20JSON%20API/maps/maps-analyzing-metadata.html">Maps Metadata</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/maps/maps-analyzing-metadata.html">Maps Metadata</a></h3>
 <p>How to find, analyze, and visualize cartographic metadata. This tutorial focuses on metadata associated with the files in the Maps Downloading and Querying tutorial as well as items in the Sanborn Maps collection.</p>
 <p><strong>Background knowledge:</strong></p>
 <ul class="simple">
@@ -502,8 +512,7 @@ document.write(`
 </section>
 <section id="historic-newspapers">
 <h2>Historic Newspapers<a class="headerlink" href="#historic-newspapers" title="Permalink to this heading">#</a></h2>
-<h3><a href="Chronicling%20America%20API/ChronAm%20API%20Samples.html">Chronicling America</a></h3>
-<p>The Chronicling America database also has an API that functions similarly to the wider <a class="reference external" href="http://loc.gov">loc.gov</a> API. Its URLs start with <a class="reference external" href="https://www.chroniclingamerica.loc.gov/">https://www.chroniclingamerica.loc.gov/</a> instead of <a class="reference external" href="https://www.loc.gov/">https://www.loc.gov/</a> but the endings for querying are the same.</p>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Chronicling_America/README.html">Chronicling America</a></h3>
 <p>This tutorial provides an introduction to what information is available via the API — one notable difference is that since this collection consists of newspaper pages, you can retrieve the text from the page (collected using <a class="reference external" href="https://en.wikipedia.org/wiki/Optical_character_recognition">OCR</a>) via the API. It also covers searching for keywords and analyzing data from bulk records.</p>
 <p><strong>Background knowledge:</strong></p>
 <ul class="simple">
@@ -516,21 +525,10 @@ document.write(`
 <li><p>Do historical research</p></li>
 <li><p>See <a class="reference external" href="https://blogs.loc.gov/thesignal/2016/08/the-neh-chronicling-america-challenge-using-big-data-to-ask-big-questions/">these projects</a> for more!</p></li>
 </ul>
-<h3><a href="https://github.com/LibraryOfCongress/data-exploration/tree/master/Chronicling%20America%20API/chronam_all_digitized">Chronicling America CSV</a></h3>
-The Python script here creates a csv file of all of the digitized titles in Chronicling America, with their associated metadata.
-<p><strong>Background knowledge:</strong></p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://www.codecademy.com/articles/command-line-commands#:~:text=The%20command%20line%20is%20a,or%20Finder%20on%20Mac%20OS.">Command line basics</a></p></li>
-<li><p>Need Python 3 installed - basic understanding of how Python and the API work needed for modification</p></li>
-</ul>
-<p><strong>Applications:</strong> The produced csv can be used for a number of different data analysis and <a class="reference external" href="https://www.loc.gov/ndnp/data-visualizations/">visualization</a> applications. See the Memegenerator and GIPHY tutorials for more on how to use Python code to analyze data in csv file formats.</p>
-<h3><a href="https://github.com/LibraryOfCongress/data-exploration/tree/master/Chronicling%20America%20API/chronam_issue_counts">Chronicling America Issue Counts CSV</a></h3>
-<p>These scripts create csv files where each row contains the state name, year, and the number of newspaper issues in the Chronicling America database available in that state and year. Each script does this for one state.</p>
-<p>See above (Chronicling America CSV) for background knowledge needed and potential applications.</p>
 </section>
 <section id="other">
 <h2>Other<a class="headerlink" href="#other" title="Permalink to this heading">#</a></h2>
-<h3><a href="Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html">Memegenerator Metadata</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html">Memegenerator Metadata</a></h3>
 <p>Introduction to csv data analysis in Python using the Memgenerator dataset from <a class="reference external" href="https://labs.loc.gov/work/experiments/webarchive-datasets/">this page</a>. Shows how to:</p>
 <ul class="simple">
 <li><p>find column headers to see what data is available</p></li>
@@ -545,7 +543,7 @@ The Python script here creates a csv file of all of the digitized titles in Chro
 <li><p>Finding <a class="reference external" href="https://blogs.loc.gov/thesignal/2018/10/data-mining-memes-in-the-digital-culture-web-archive/">top 10s and other statistics</a> in a dataset</p></li>
 <li><p>Data analysis and visualization for any dataset</p></li>
 </ul>
-<h3><a href="Data%20Sets/Web%20Archives/getting_started_with_giphy.html">GIPHY.com Metadata</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/Data%20Sets/Web%20Archives/getting_started_with_giphy.html">GIPHY.com Metadata</a></h3>
 <p>Slightly more advanced csv data analysis in Python using the <a class="reference external" href="https://labs.loc.gov/work/experiments/webarchive-datasets/">GIPHY.com dataset taken from this page</a>. Shows how to:</p>
 <ul class="simple">
 <li><p>Get dates for the GIFs</p></li>
@@ -561,7 +559,7 @@ The Python script here creates a csv file of all of the digitized titles in Chro
 <li><p>Searching through datasets</p></li>
 <li><p>Data analysis and visualization for any dataset</p></li>
 </ul>
-<h3><a href="Data%20Sets/Web%20Archives/loc_goes_lofi.html">Accessing and Remixing Sound</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/Data%20Sets/Web%20Archives/loc_goes_lofi.html">Accessing and Remixing Sound</a></h3>
 <p>Provides code for selecting random audio segments and combining them together. Assumes that users have already downloaded the <a class="reference external" href="https://s3.us-east-2.amazonaws.com/lclabspublicdata/lcwa_gov_audio_data.zip">audio files</a> into the same folder as this notebook. The dataset includes 1000 randomly selected audio clips. For more information on how this dataset was generated, see the <a class="reference external" href="https://s3.us-east-2.amazonaws.com/lclabspublicdata/lcwa_gov_audio_README.txt">README</a>.</p>
 <p><strong>Background knowledge:</strong></p>
 <ul class="simple">
