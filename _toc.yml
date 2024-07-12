@@ -12,7 +12,13 @@ parts:
       - file: loc.gov JSON API/maps/maps-analyzing-metadata.ipynb
   - caption: Chronicling America notebooks
     chapters:
-      - file: Chronicling America API/ChronAm API Samples.ipynb
+      - file: loc.gov JSON API/Chronicling_America/README.md
+      - file: loc.gov JSON API/Chronicling_America/ChronAm_basic_API tasks.ipynb
+      - file: loc.gov JSON API/Chronicling_America/ChronAm_analyzing_specific_titles_limit_results.ipynb
+      - file: loc.gov JSON API/Chronicling_America/ChronAm_analyzing_word_frequency_newspaper_frontpages.ipynb
+      - file: loc.gov JSON API/Chronicling_America/ChronAm_analyzing_language_location_frequency.ipynb
+      - file: loc.gov JSON API/Chronicling_America/ChronAm-download_results.ipynb
+      - file: loc.gov JSON API/Chronicling_America/ChronAm-download_newspaper_title_batch.ipynb
   - caption: Web Archives notebooks
     chapters:
       - file: Data Sets/Web Archives/getting_started_with_memegenerator.ipynb

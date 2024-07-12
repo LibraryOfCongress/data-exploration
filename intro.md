@@ -13,7 +13,7 @@ _These tutorials are designed to help people understand the API and make use of 
 
 ## General Search and Query
 
-<h3><a href="loc.gov%20JSON%20API/LOC.gov%20JSON%20API.html">JSON API Overview</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/LOC.gov%20JSON%20API.html">JSON API Overview</a></h3>
 
 An overview of how to retrieve information in a JSON format from the Library of Congress API. This tutorial sets a baseline for doing powerful data retrieval and visualization projects.
 
@@ -25,7 +25,7 @@ An overview of how to retrieve information in a JSON format from the Library of 
 * Show images from collections
 * Make cool projects like [this clock using collection item names](https://library-of-time.glitch.me/) and [this political cartoon visualizer](https://jeffreyshen19.github.io/political-cartoon-visualizer/) - for more inspiration, see the [experiments](https://labs.loc.gov/work/experiments/?st=gallery) that LC Labs has been working on!
 
-<h3><a href="loc.gov%20web%20interface/OpenSearch.html">OpenSearch</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20web%20interface/OpenSearch.html">OpenSearch</a></h3>
 
 Brief guide to searching loc.gov directly from a web browser.
 
@@ -33,7 +33,7 @@ Brief guide to searching loc.gov directly from a web browser.
 
 **Applications:** Searching the website
 
-<h3><a href="loc.gov%20Sitemaps%20API/Sitemap.html">Sitemaps</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20Sitemaps%20API/Sitemap.html">Sitemaps</a></h3>
 
 Describes Sitemaps and how to get information about the frequency of page updates.
 
@@ -45,7 +45,7 @@ Describes Sitemaps and how to get information about the frequency of page update
 
 ## Images
 
-<h3><a href="loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.html">Accessing Images for Analysis</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.html">Accessing Images for Analysis</a></h3>
 
 How to access, display, and download images in bulk. Also provides information about what metadata is available and how to get particular details.
 
@@ -59,7 +59,7 @@ This tutorial is for accessing images directly via the the API, so the images ar
 * Download images in bulk
 * Get information about the images, such as copyright and usage details, dates, locations, etc.
 
-<h3><a href="loc.gov%20IIIF%20API/IIIF.html">IIIF</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20IIIF%20API/IIIF.html">IIIF</a></h3>
 
 How to scale, rotate, reflect, crop, and otherwise manipulate images using the IIIF API.
 
@@ -74,7 +74,7 @@ IIIF stands for the International Image Interoperability Framework. It is a stan
 * Display images - individually or in galleries
 * Can also be done in bulk
 
-<h3><a href="loc.gov%20JSON%20API/Dominant%20colors.html">Image Color Analysis</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Dominant%20colors.html">Image Color Analysis</a></h3>
 
 How to find and analyze the colors in an image. This tutorial uses [k-means clustering](https://jakevdp.github.io/PythonDataScienceHandbook/05.11-k-means.html) to analyze and group the pixel values into 6 colors per image, but you can adjust that as needed.
 
@@ -86,7 +86,7 @@ How to find and analyze the colors in an image. This tutorial uses [k-means clus
 * Visualize [colors in Library of Congress collections images](https://loc-colors.glitch.me/)
 * Categorize or search images by color
 
-<h3><a href="loc.gov%20JSON%20API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Downloading Monographs as Images</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Downloading Monographs as Images</a></h3>
 
 Similar to the Accessing Images for Data Analysis notebook — provides code for accessing and downloading images specifically from the [Lessing J. Rosenwald Collection](https://www.loc.gov/rr/rarebook/rosenwald.html).
 
@@ -94,7 +94,7 @@ See background knowledge and applications for the accessing images notebook.
 
 ## Geographic Data and Maps
 
-<h3><a href="loc.gov%20JSON%20API/Extracting%20location%20data%20for%20geovisualization.html">Extracting Location Data</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Extracting%20location%20data%20for%20geovisualization.html">Extracting Location Data</a></h3>
 
 Demonstrates how to retrieve geographic data (latitude and longitude) and plot it onto a map. This tutorial focuses on items in the Historic American Engineering Record (HAER). The way that geographic data is stored across collections does vary, so some collections may require more data cleaning and manipulation before doing geographic visualizations.
 
@@ -108,7 +108,7 @@ Demonstrates how to retrieve geographic data (latitude and longitude) and plot i
 * Analyze geographic data and connect it to other information, such as date
 * Compare geographies across collections
 
-<h3><a href="loc.gov%20JSON%20API/maps/maps-downloading-querying.html">Maps Downloading and Querying</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/maps/maps-downloading-querying.html">Maps Downloading and Querying</a></h3>
 
 How to query and download cartographic material. Includes:
 * performing bulk downloads of cartographic materials using the loc.gov API and Python
@@ -121,7 +121,7 @@ How to query and download cartographic material. Includes:
 * Download and display images from the collections
 * Create sets of images that can be used in a number of other applications
 
-<h3><a href="loc.gov%20JSON%20API/maps/maps-analyzing-metadata.html">Maps Metadata</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/maps/maps-analyzing-metadata.html">Maps Metadata</a></h3>
 
 How to find, analyze, and visualize cartographic metadata. This tutorial focuses on metadata associated with the files in the Maps Downloading and Querying tutorial as well as items in the Sanborn Maps collection.
 
@@ -135,9 +135,7 @@ How to find, analyze, and visualize cartographic metadata. This tutorial focuses
 
 ## Historic Newspapers
 
-<h3><a href="Chronicling%20America%20API/ChronAm%20API%20Samples.html">Chronicling America</a></h3>
-
-The Chronicling America database also has an API that functions similarly to the wider loc.gov API. Its URLs start with https://www.chroniclingamerica.loc.gov/ instead of https://www.loc.gov/ but the endings for querying are the same.
+<h3><a href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Chronicling_America/README.html">Chronicling America</a></h3>
 
 This tutorial provides an introduction to what information is available via the API — one notable difference is that since this collection consists of newspaper pages, you can retrieve the text from the page (collected using [OCR](https://en.wikipedia.org/wiki/Optical_character_recognition)) via the API. It also covers searching for keywords and analyzing data from bulk records.
 
@@ -150,24 +148,9 @@ This tutorial provides an introduction to what information is available via the 
 * Do historical research
 * See [these projects](https://blogs.loc.gov/thesignal/2016/08/the-neh-chronicling-america-challenge-using-big-data-to-ask-big-questions/) for more!
 
-<h3><a href="https://github.com/LibraryOfCongress/data-exploration/tree/master/Chronicling%20America%20API/chronam_all_digitized">Chronicling America CSV</a></h3>
-The Python script here creates a csv file of all of the digitized titles in Chronicling America, with their associated metadata.
-
-**Background knowledge:**
-* [Command line basics](https://www.codecademy.com/articles/command-line-commands#:~:text=The%20command%20line%20is%20a,or%20Finder%20on%20Mac%20OS.)
-* Need Python 3 installed - basic understanding of how Python and the API work needed for modification
-
-**Applications:** The produced csv can be used for a number of different data analysis and [visualization](https://www.loc.gov/ndnp/data-visualizations/) applications. See the Memegenerator and GIPHY tutorials for more on how to use Python code to analyze data in csv file formats.
-
-<h3><a href="https://github.com/LibraryOfCongress/data-exploration/tree/master/Chronicling%20America%20API/chronam_issue_counts">Chronicling America Issue Counts CSV</a></h3>
-
-These scripts create csv files where each row contains the state name, year, and the number of newspaper issues in the Chronicling America database available in that state and year. Each script does this for one state.
-
-See above (Chronicling America CSV) for background knowledge needed and potential applications.
-
 ## Other
 
-<h3><a href="Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html">Memegenerator Metadata</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html">Memegenerator Metadata</a></h3>
 
 Introduction to csv data analysis in Python using the Memgenerator dataset from [this page](https://labs.loc.gov/work/experiments/webarchive-datasets/). Shows how to:
 * find column headers to see what data is available
@@ -182,7 +165,7 @@ Introduction to csv data analysis in Python using the Memgenerator dataset from 
 * Finding [top 10s and other statistics](https://blogs.loc.gov/thesignal/2018/10/data-mining-memes-in-the-digital-culture-web-archive/) in a dataset
 * Data analysis and visualization for any dataset
 
-<h3><a href="Data%20Sets/Web%20Archives/getting_started_with_giphy.html">GIPHY.com Metadata</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/Data%20Sets/Web%20Archives/getting_started_with_giphy.html">GIPHY.com Metadata</a></h3>
 
 Slightly more advanced csv data analysis in Python using the [GIPHY.com dataset taken from this page](https://labs.loc.gov/work/experiments/webarchive-datasets/). Shows how to:
 * Get dates for the GIFs
@@ -198,7 +181,7 @@ Slightly more advanced csv data analysis in Python using the [GIPHY.com dataset 
 * Searching through datasets
 * Data analysis and visualization for any dataset
 
-<h3><a href="Data%20Sets/Web%20Archives/loc_goes_lofi.html">Accessing and Remixing Sound</a></h3>
+<h3><a href="https://libraryofcongress.github.io/data-exploration/Data%20Sets/Web%20Archives/loc_goes_lofi.html">Accessing and Remixing Sound</a></h3>
 
 Provides code for selecting random audio segments and combining them together. Assumes that users have already downloaded the [audio files](https://s3.us-east-2.amazonaws.com/lclabspublicdata/lcwa_gov_audio_data.zip) into the same folder as this notebook. The dataset includes 1000 randomly selected audio clips. For more information on how this dataset was generated, see the [README](https://s3.us-east-2.amazonaws.com/lclabspublicdata/lcwa_gov_audio_README.txt).
 

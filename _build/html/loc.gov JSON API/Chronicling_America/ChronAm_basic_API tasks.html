@@ -1,0 +1,933 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Learning and Applying Basic API Tasks in Chronicling America &#8212; Tutorials for Data Exploration</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/loc.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/loc.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'loc.gov JSON API/Chronicling_America/ChronAm_basic_API tasks';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Using Chronicling America to analyze specific newspaper titles for content." href="ChronAm_analyzing_specific_titles_limit_results.html" />
+    <link rel="prev" title="Using the loc.gov API with the Chronicling America Historic Newspapers Collection" href="README.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Tutorials for Data Exploration</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    Tutorials for Data Exploration
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Loc.gov JSON API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../LOC.gov%20JSON%20API.html">LOC.gov JSON API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../resources2pdf.html">Downloading an item with multiple pages to PDF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Accessing%20images%20for%20analysis.html">Accessing images from the loc.gov JSON API for image analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Dominant%20colors.html">Color clusters in images in Library of Congress collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Connecting the image file to the metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Extracting%20location%20data%20for%20geovisualization.html">Extracting location data from the loc.gov API for geovisualization</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../maps/maps-analyzing-metadata.html">Analyzing and visualizing cartographic metadata from loc.gov</a></li>
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Chronicling America notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="README.html">Using the loc.gov API with the Chronicling America Historic Newspapers Collection</a></li>
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Learning and Applying Basic API Tasks in Chronicling America</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ChronAm_analyzing_specific_titles_limit_results.html">Using Chronicling America to analyze specific newspaper titles for content.</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="ChronAm_analyzing_word_frequency_newspaper_frontpages.html">Using Chronicling America to analyze word frequency in newspaper Front Pages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ChronAm_analyzing_language_location_frequency.html">Using Chronicling America to analyze word frequency and geographic usage</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="ChronAm-download_results.html">Downloading Search Results from Chronicling America</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ChronAm-download_newspaper_title_batch.html">Downloading Newspaper Titles and Batches from Chronicling America</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Web Archives notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html">Exploring the Memegenerator Metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Sets/Web%20Archives/getting_started_with_giphy.html">Exploring the GIPHY.com Metadata</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Sets/Web%20Archives/loc_goes_lofi.html">LOC Goes Lofi</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/dot-gov-pdf.html">LoC Data Package Tutorial: 1000 Dot Gov PDF Dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/digitized-books.html">LoC Data Package Tutorial: Selected Digitized Books Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/directories.html">LoC Data Package Tutorial: City and Telephone Directories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/telephone.html">LoC Data Package Tutorial: Digitized Telephone Directories Data Package</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/stereographs.html">LoC Data Package Tutorial: Stereograph Card Collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/austro-hungarian-maps.html">LoC Data Package Tutorial: Austro-Hungarian maps set</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/gen-coll-assessment.html">LoC Data Package Tutorial: General Collections Assessment</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Library API notebooks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20IIIF%20API/IIIF.html">IIIF API Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20Sitemaps%20API/Sitemap.html">What are Sitemaps?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../loc.gov%20web%20interface/OpenSearch.html">OpenSearch Guide</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/loc.gov JSON API/Chronicling_America/ChronAm_basic_API tasks.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Learning and Applying Basic API Tasks in Chronicling America</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-and-perform-a-query">Define and perform a query</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#print-out-metadata-from-the-first-result">Print out Metadata from the first result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination-via-api-query">Pagination via API Query</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="learning-and-applying-basic-api-tasks-in-chronicling-america">
+<h1>Learning and Applying Basic API Tasks in Chronicling America<a class="headerlink" href="#learning-and-applying-basic-api-tasks-in-chronicling-america" title="Permalink to this heading">#</a></h1>
+<p>This notebook is meant to teach you some of the basic API tasks you’ll encounter using the <a class="reference external" href="http://loc.gov">loc.gov</a> API.</p>
+<p>Feel free to download this notebook and run with your own search query.</p>
+<hr class="docutils" />
+<p>The first thing you want to do is import modules. Modules contain Python definitions and statements that you will need in order for the scripts to run.</p>
+<section id="importing-modules">
+<h2>Importing Modules<a class="headerlink" href="#importing-modules" title="Permalink to this heading">#</a></h2>
+<p>The following modules are some of the most common you will be needing.</p>
+<hr class="docutils" />
+<p>To import the modules you need for this notebook, simply run the following code below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pprint</span>
+<span class="kn">import</span> <span class="nn">re</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="define-and-perform-a-query">
+<h2>Define and perform a query<a class="headerlink" href="#define-and-perform-a-query" title="Permalink to this heading">#</a></h2>
+<p>After importing modules, you will typically define your query by pasting your API Query URL.</p>
+<ul class="simple">
+<li><p>In more complicated queries, you would also run functions which can refine your search.</p></li>
+<li><p>Your results will need to be read in JSON format so make sure “&amp;fo=json” is at the end of your API Query URL.</p></li>
+</ul>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li><p>Paste your Search Query URL into the <code class="docutils literal notranslate"><span class="pre">locgov_url_search</span> <span class="pre">=</span> <span class="pre">'{URL}'</span></code></p></li>
+<li><p>Make sure the search query URL has <code class="docutils literal notranslate"><span class="pre">&amp;fo=json</span></code> at the end</p></li>
+<li><p>When ready, Run the code.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define your query URL</span>
+<span class="n">locgov_url_search</span> <span class="o">=</span> <span class="s1">&#39;https://www.loc.gov/collections/chronicling-america/?dl=page&amp;end_date=1924-12-31&amp;ops=PHRASE&amp;qs=clara+bow&amp;searchType=advanced&amp;start_date=1924-10-01&amp;location_state=california&amp;fo=json&#39;</span>
+
+<span class="c1"># Run the query using the API</span>
+<span class="n">api_query</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">locgov_url_search</span><span class="p">)</span>
+
+<span class="c1"># Tell Python to read the results as json</span>
+<span class="n">search_result</span> <span class="o">=</span> <span class="n">api_query</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="print-out-metadata-from-the-first-result">
+<h2>Print out Metadata from the first result<a class="headerlink" href="#print-out-metadata-from-the-first-result" title="Permalink to this heading">#</a></h2>
+<p>After performing the query, typically you want to perform some sort of task.</p>
+<p>For the task here, you will print out the first results of the search query in JSON format. Notice the metadata elements on the left of each row.</p>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li><p>Simply press run. If you would rather see the second result, change the 0 to 1 before you press run.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Look at the first record in the results section</span>
+<span class="n">first_result</span> <span class="o">=</span> <span class="n">search_result</span><span class="p">[</span><span class="s1">&#39;results&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;access_restricted&#39;: False,
+ &#39;aka&#39;: [&#39;http://www.loc.gov/resource/sn92070146/1924-11-20/ed-1/?sp=6&#39;],
+ &#39;batch&#39;: [&#39;curiv_ocotillo_ver01&#39;],
+ &#39;campaigns&#39;: [],
+ &#39;composite_location&#39;: [&#39;0/united states/&#39;,
+                        &#39;1/united states/california/&#39;,
+                        &#39;2/united states/california/imperial/&#39;,
+                        &#39;3/united states/california/imperial/el centro/&#39;],
+ &#39;contributor&#39;: [&#39;university of california, riverside; riverside, ca&#39;],
+ &#39;date&#39;: &#39;1924-11-20&#39;,
+ &#39;dates&#39;: [&#39;1924-11-20&#39;],
+ &#39;description&#39;: [&#39;6 PURPORTED LOVE AFFAIRS OF WOODROW WILSON LABELED AS BASE &#39;
+                 &#39;LIES BY NOTED EDITOR EMpORIA Kan Nov 20The flew of Woodrow &#39;
+                 &#39;Wilson Amer nN wn r f I1P president to Mrs fare Peck which &#39;
+                 &#39;were mentioned 1 Wilsons so vailed love fairs contain the &#39;
+                 &#39;casual friend gossipy self expression of a de ni einrin to &#39;
+                 &#39;an honest woman I illiam Allen White noted editor d auilior &#39;
+                 &#39;declared in an inter w with the United Press here duv r r &#39;
+                 &#39;White in discussing the use of le WilsonPeck letters &#39;
+                 &#39;incident in is recent book The Life of Wood on Wilson &#39;
+                 &#39;declared he included I because it is revealing and be I ause &#39;
+                 &#39;honesty and candor seems to require it gc All the miserable &#39;
+                 &#39;buzzing and Hie Whole line of myths about Wilsons love &#39;
+                 &#39;affairs were ut terly false the Emporia editor de elafed I &#39;
+                 &#39;Mj Wilson was the victim of a foul slander arising out of &#39;
+                 &#39;the Bruriotlk mob psychology of salacious minds I Mrs Peck &#39;
+                 &#39;was on friendly and affectionate terms with the Wilson &#39;
+                 &#39;family I knew her before her di BvoreJrqm Air Peek She is a &#39;
+                 &#39;wo linan of the most dainty and exqui site spirit joyous &#39;
+                 &#39;innocent beau&#39;],
+ &#39;digitized&#39;: True,
+ &#39;extract_timestamp&#39;: &#39;2023-09-04T23:04:51.792Z&#39;,
+ &#39;group&#39;: [&#39;ndnp/curiv&#39;,
+           &#39;university-of-california-riverside-riverside-ca-awardee&#39;],
+ &#39;hassegments&#39;: False,
+ &#39;id&#39;: &#39;http://www.loc.gov/resource/sn92070146/1924-11-20/ed-1/?sp=6&#39;,
+ &#39;image_url&#39;: [&#39;https://tile.loc.gov/image-services/iiif/service:ndnp:curiv:batch_curiv_ocotillo_ver01:data:sn92070146:00414189696:1924112001:1270/full/pct:6.25/0/default.jpg#h=462&amp;w=365&#39;,
+               &#39;https://tile.loc.gov/image-services/iiif/service:ndnp:curiv:batch_curiv_ocotillo_ver01:data:sn92070146:00414189696:1924112001:1270/full/pct:12.5/0/default.jpg#h=925&amp;w=730&#39;,
+               &#39;https://tile.loc.gov/text-services/word-coordinates-service?segment=/service/ndnp/curiv/batch_curiv_ocotillo_ver01/data/sn92070146/00414189696/1924112001/1270.xml&amp;format=alto_xml&#39;],
+ &#39;index&#39;: 1,
+ &#39;language&#39;: [&#39;english&#39;],
+ &#39;location&#39;: [&#39;imperial county&#39;,
+              &#39;united states&#39;,
+              &#39;imperial&#39;,
+              &#39;san diego county&#39;,
+              &#39;california&#39;,
+              &#39;el centro&#39;],
+ &#39;location_city&#39;: [&#39;el centro&#39;],
+ &#39;location_country&#39;: [&#39;united states&#39;],
+ &#39;location_county&#39;: [&#39;imperial&#39;],
+ &#39;location_state&#39;: [&#39;california&#39;],
+ &#39;mime_type&#39;: [&#39;image/jp2&#39;,
+               &#39;application/pdf&#39;,
+               &#39;text/xml&#39;,
+               &#39;image/jpeg&#39;,
+               &#39;image/jpeg&#39;,
+               &#39;application/json&#39;,
+               &#39;text/plain&#39;],
+ &#39;number&#39;: [&#39;sn92070146&#39;, &#39;0000000006&#39;, &#39;1&#39;, &#39;0&#39;, &#39;4&#39;, &#39;6&#39;, &#39;9&#39;, &#39;8&#39;],
+ &#39;number_edition&#39;: [&#39;1&#39;],
+ &#39;number_lccn&#39;: [&#39;sn92070146&#39;],
+ &#39;number_page&#39;: [&#39;0000000006&#39;],
+ &#39;number_reel&#39;: [&#39;0&#39;, &#39;0&#39;, &#39;4&#39;, &#39;1&#39;, &#39;4&#39;, &#39;1&#39;, &#39;8&#39;, &#39;9&#39;, &#39;6&#39;, &#39;9&#39;, &#39;6&#39;],
+ &#39;online_format&#39;: [&#39;image&#39;, &#39;pdf&#39;, &#39;online text&#39;],
+ &#39;original_format&#39;: [&#39;newspaper&#39;],
+ &#39;other_title&#39;: [&#39;Imperial Valley press and El Centro progress&#39;,
+                 &#39;Post-press&#39;,
+                 &#39;Imperial Valley news-press&#39;,
+                 &#39;Imperial Valley press/Brawley news&#39;,
+                 &#39;Morning post-Imperial Valley press&#39;,
+                 &#39;At head of title: Extra Imperial Valley press&#39;],
+ &#39;page_coordinate_data&#39;: {&#39;coords_list&#39;: [[18161.0, 8627.0, 378.0, 104.0],
+                                          [18638.0, 8622.0, 335.0, 128.0],
+                                          [19748.0, 4091.0, 326.0, 128.0]],
+                          &#39;height&#39;: &#39;29600&#39;,
+                          &#39;relevant_snippet&#39;: &#39;... “doubling” for an &#39;
+                                              &quot;&#39;induction coil, &quot;
+                                              &#39;[[tag]]Clara[[/tag]]. &#39;
+                                              &#39;[[tag]]Bow[[/tag]], ingenue &#39;
+                                              &#39;film actress, and considered &#39;
+                                              &quot;&#39;one of Important Notice BARNES &quot;
+                                              &#39;GREATS.RING 1 MB OwiNGr TO THE &#39;
+                                              &#39;UNUSUAL AMOUNT OF PREPARATION &#39;
+                                              &#39;NECESSARY TOO THE— PRODUCTION &#39;
+                                              &#39;OF&quot; TI—IE— AAArriVE &#39;
+                                              &quot;JFPECTAC.LE- IZ^^HECOURT&#39;OF &quot;
+                                              &#39;QUEEN ANNE, AN C OUR. DCS iCiEZ &#39;
+                                              &#39;TO START TWC PE7RFOR.M AN/CC &#39;
+                                              &#39;PDONAOTLN\\ A/O .STREET PARADE &#39;
+                                              &#39;i WIUV BE GIVtW THM* 111111 1 &#39;
+                                              &quot;L- ——T HI UIIB.W T&#39;BMm El &quot;
+                                              &#39;Centro 9J.f 11 Monday, Nov. LU. &#39;
+                                              &#39;GRAND STAND CHAIR SEATS ON SALE &#39;
+                                              &#39;AT VALLEY DRUG CO. Thursday, &#39;
+                                              &#39;Novrnhvr 0. H e fed*. burned on &#39;
+                                              &#39;one the fllniin&quot; f tonight at &#39;
+                                              &quot;The n -i.| r freak electric g&#39; &quot;
+                                              &#39;platinum ring -.1 buckle termed &#39;
+                                              &quot;I&#39; a complete t the girl&#39;s Im &quot;
+                                              &#39;It. ...&#39;,
+                          &#39;searchTerms&#39;: {&#39;bow&#39;: [[18638.0,
+                                                   8622.0,
+                                                   335.0,
+                                                   128.0],
+                                                  [19748.0,
+                                                   4091.0,
+                                                   326.0,
+                                                   128.0]],
+                                          &#39;clara&#39;: [[18161.0,
+                                                     8627.0,
+                                                     378.0,
+                                                     104.0]]},
+                          &#39;width&#39;: &#39;23372&#39;},
+ &#39;page_id&#39;: &#39;sn92070146-1924-11-20-ed-1-1270&#39;,
+ &#39;partof&#39;: [&#39;imperial valley press (el centro, calif.) 1907-current&#39;,
+            &#39;serial and government publications division&#39;,
+            &#39;chronicling america&#39;],
+ &#39;partof_collection&#39;: [&#39;chronicling america&#39;],
+ &#39;partof_division&#39;: [&#39;serial and government publications division&#39;],
+ &#39;partof_title&#39;: [&#39;imperial valley press (el centro, calif.) 1907-current&#39;],
+ &#39;publication_frequency&#39;: [&#39;daily&#39;],
+ &#39;resources&#39;: [{&#39;files&#39;: 1,
+                &#39;url&#39;: &#39;https://www.loc.gov/resource/sn92070146/1924-11-20/ed-1/?sp=6&#39;}],
+ &#39;segmentof&#39;: [&#39;http://www.loc.gov/resource/sn92070146/1924-11-20/ed-1/&#39;],
+ &#39;shelf_id&#39;: &#39;6&#39;,
+ &#39;site&#39;: [&#39;chroniclingamerica&#39;],
+ &#39;subject&#39;: [&#39;imperial county&#39;,
+             &#39;united states&#39;,
+             &#39;el centro&#39;,
+             &#39;san diego county (calif.)&#39;,
+             &#39;newspapers&#39;,
+             &#39;imperial county (calif.)&#39;,
+             &#39;san diego county&#39;,
+             &#39;california&#39;,
+             &#39;imperial&#39;],
+ &#39;timestamp&#39;: &#39;2023-09-05T23:44:39.604Z&#39;,
+ &#39;title&#39;: &#39;Image 6 of Imperial Valley press (El Centro, Calif.), November 20, &#39;
+          &#39;1924&#39;,
+ &#39;type&#39;: [&#39;segment&#39;],
+ &#39;url&#39;: &#39;https://www.loc.gov/resource/sn92070146/1924-11-20/ed-1/?sp=6&amp;q=clara+bow&#39;,
+ &#39;word_coordinates_url&#39;: &#39;https://tile.loc.gov/text-services/word-coordinates-service?q=clara+bow&amp;relevant_snippet=1&amp;segment=%2Fservice%2Fndnp%2Fcuriv%2Fbatch_curiv_ocotillo_ver01%2Fdata%2Fsn92070146%2F00414189696%2F1924112001%2F1270.xml&amp;format=alto_xml&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the previous step, you created a JSON output of the metadata.</p>
+<p>If you want to print out specific metadata from the JSON output, here is an example with some of the most common metadata fields for newspapers:</p>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li><p>Press run to print. You can also go through the JSON to test other metadata elements.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Page/Title Description:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Date:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;date&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Edition Number:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;number_edition&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Newspaper Title:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;partof_title&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">LCCN:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;number_lccn&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Frequency:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;publication_frequency&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">State:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;location_state&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">County&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;location_county&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">City:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;location_city&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Language:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;language&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Link to Newspaper Page:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Link to Newspaper Issue:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;segmentof&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Collection:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;partof_collection&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Batch Name:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;batch&quot;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Contributor:&#39;</span><span class="p">)</span>
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">first_result</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Page/Title Description:
+&#39;Image 6 of Imperial Valley press (El Centro, Calif.), November 20, 1924&#39;
+
+Date:
+&#39;1924-11-20&#39;
+
+Edition Number:
+[&#39;1&#39;]
+
+Newspaper Title:
+[&#39;imperial valley press (el centro, calif.) 1907-current&#39;]
+
+LCCN:
+[&#39;sn92070146&#39;]
+
+Frequency:
+[&#39;daily&#39;]
+
+State:
+[&#39;california&#39;]
+
+County
+[&#39;imperial&#39;]
+
+City:
+[&#39;el centro&#39;]
+
+Language:
+[&#39;english&#39;]
+
+Link to Newspaper Page:
+&#39;http://www.loc.gov/resource/sn92070146/1924-11-20/ed-1/?sp=6&#39;
+
+Link to Newspaper Issue:
+[&#39;http://www.loc.gov/resource/sn92070146/1924-11-20/ed-1/&#39;]
+
+Collection:
+[&#39;chronicling america&#39;]
+
+Batch Name:
+[&#39;curiv_ocotillo_ver01&#39;]
+
+Contributor:
+[&#39;ndnp/curiv&#39;, &#39;university-of-california-riverside-riverside-ca-awardee&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pagination-via-api-query">
+<h2>Pagination via API Query<a class="headerlink" href="#pagination-via-api-query" title="Permalink to this heading">#</a></h2>
+<p>Other types of useful metadata includes pagination. Pagination can be used to display the # of pages of a Search Query or the current page of a newspaper image.</p>
+<ul class="simple">
+<li><p>The pagination results here should be the same as those shown after you performed an Advanced Search on Chronicling America.</p></li>
+<li><p>This is useful for validating the search query and checking whether there are too many results for your search. If there are too many results for your search, you may encounter issues processing your data.</p></li>
+<li><p>Note: We recommend keeping search results under 100,000 hits. Please use facets to limit the size of your results and search query or you may be automatically blocked. See Limitations and Rate Limits for more information.</p></li>
+</ul>
+<hr class="docutils" />
+<ol class="arabic simple">
+<li><p>Simply run the codes below.</p></li>
+</ol>
+<ul class="simple">
+<li><p>The first will give you the pagination metadata of the search result.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">search_result</span><span class="p">[</span><span class="s1">&#39;pagination&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;current&#39;: 1,
+ &#39;first&#39;: None,
+ &#39;from&#39;: 1,
+ &#39;last&#39;: None,
+ &#39;next&#39;: None,
+ &#39;of&#39;: 2,
+ &#39;page_list&#39;: [{&#39;number&#39;: 1, &#39;url&#39;: None}],
+ &#39;perpage&#39;: 40,
+ &#39;perpage_options&#39;: [20, 40, 80, 160],
+ &#39;previous&#39;: None,
+ &#39;results&#39;: &#39;1 - 2&#39;,
+ &#39;to&#39;: 2,
+ &#39;total&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>The second will print out the pagination metadata with more context.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Current page:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">search_result</span><span class="p">[</span><span class="s1">&#39;pagination&#39;</span><span class="p">][</span><span class="s1">&#39;current&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Path to request the next page:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">search_result</span><span class="p">[</span><span class="s1">&#39;pagination&#39;</span><span class="p">][</span><span class="s1">&#39;next&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Total number of results:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">search_result</span><span class="p">[</span><span class="s1">&#39;pagination&#39;</span><span class="p">][</span><span class="s1">&#39;of&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Total number of results per page:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">search_result</span><span class="p">[</span><span class="s1">&#39;pagination&#39;</span><span class="p">][</span><span class="s1">&#39;perpage&#39;</span><span class="p">]</span> <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Total number of pages:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">search_result</span><span class="p">[</span><span class="s1">&#39;pagination&#39;</span><span class="p">][</span><span class="s1">&#39;total&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Current page:
+1
+
+Path to request the next page:
+None
+
+Total number of results:
+2
+
+Total number of results per page:
+40
+
+Total number of pages:
+1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./loc.gov JSON API\Chronicling_America"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  <!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="README.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Using the loc.gov API with the Chronicling America Historic Newspapers Collection</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ChronAm_analyzing_specific_titles_limit_results.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Using Chronicling America to analyze specific newspaper titles for content.</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-modules">Importing Modules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#define-and-perform-a-query">Define and perform a query</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#print-out-metadata-from-the-first-result">Print out Metadata from the first result</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pagination-via-api-query">Pagination via API Query</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Library of Congress staff
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <header class="loc-header">
+    <div class="loc-logo">
+        <a href="https://www.loc.gov/"><img src="/data-exploration/_static/LOC_Logo_horiz_inv.png" alt="The Library of Congress logo" title="Go to the Library of Congress homepage" /></a>
+    </div>
+    <div class="project-description">
+        <p>In-depth tutorials for working with Library of Congress data via APIs and code. <a href="https://github.com/libraryOfCongress/data-exploration/" class="button small">View the code</a></p>
+    </div>
+</header>
+<footer class="loc-footer">
+    <p>In-depth tutorials for working with Library of Congress data via APIs and code.</p>
+    <ul class="loc-footer-nav-list">
+        <li><a href="https://github.com/libraryOfCongress/data-exploration/">Source code</a></li>  
+        <li><a href="https://www.loc.gov/">The Library of Congress</a></li>
+        <li><a href="https://loc.gov/legal">Privacy Policy</a></li>
+        <li><a href="https://www.loc.gov/accessibility/">Accessibilty</a></li>
+        <li><a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement">Github Privacy Statement</a></li>
+        <li><a href="https://creativecommons.org/publicdomain/zero/1.0/">License</a></li>
+        <li><a href="mailto:LC-Labs@loc.gov">Contact</a></li>
+    </ul>
+</footer>
+
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
