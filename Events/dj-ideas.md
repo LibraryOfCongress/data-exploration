@@ -1,18 +1,14 @@
+# Bite-size ideas for the "Doing DH @ LC" Create-a-thon 
 
+## Digital Humanities Preconference, August 5, 2024
 
 Just a few initial seed ideas for projects, if you don't have your own 
-
-
- 
-
-
 
 * Go to data.labs.loc.gov and just browse the various[ Exploratory Data Packages](https://data.labs.loc.gov/packages/) that are available, read through the documentation, take a look at the visualizations, and see if anything piques your interest 
 * Run through some of the[ Jupyter Notebook Tutorials for Data Exploration](https://libraryofcongress.github.io/data-exploration/intro.html) to get a sense of what's possible 
 * Get together with others at a table and create your own bite-sized ideas based on particular research questions, collections, or technical capabilities that interest you. Share it with LC staff (we'd definitely be interested!) 
 
 --- 
- 
 
 * Piping LC data packages into a database tool like Datasette for SQL-like querying and exploratory visualization 
     * [Datasette](https://datasette.io/) 
