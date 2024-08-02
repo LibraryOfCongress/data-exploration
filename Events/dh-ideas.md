@@ -4,7 +4,7 @@
 
 Just a few initial seed ideas for projects, if you don't have your own 
 
-* Go to data.labs.loc.gov and just browse the various[ Exploratory Data Packages](https://data.labs.loc.gov/packages/) that are available, read through the documentation, take a look at the visualizations, and see if anything piques your interest 
+* Go to data.labs.loc.gov and browse the various[ Exploratory Data Packages](https://data.labs.loc.gov/packages/) that are available, read through the documentation, take a look at the visualizations, and see if anything piques your interest 
 * Run through some of the[ Jupyter Notebook Tutorials for Data Exploration](https://libraryofcongress.github.io/data-exploration/intro.html) to get a sense of what's possible 
 * Get together with others at a table and create your own bite-sized ideas based on particular research questions, collections, or technical capabilities that interest you. Share it with LC staff (we'd definitely be interested!) 
 
@@ -13,8 +13,6 @@ Just a few initial seed ideas for projects, if you don't have your own
 * Piping LC data packages into a database tool like Datasette for SQL-like querying and exploratory visualization 
     * [Datasette](https://datasette.io/) 
     * [Minimal example with sample data on Glitch](https://third-boiling-system.glitch.me/data/sample-data_metadata) 
-* Looking at pre-prepped OCR, and detecting bad pages 
-    * Detect unusable OCR 
 * Color detection in Sanborn maps to extract material types 
     * Maybe it's possible to update pieces of this code, which includes color detection for material types, among other things:[ https://github.com/nypl-spacetime/building-inspector](https://github.com/nypl-spacetime/building-inspector) 
 * Mappable collections: 
@@ -39,6 +37,11 @@ Just a few initial seed ideas for projects, if you don't have your own
         * See for example:[ https://simonwillison.net/2024/Jul/14/pycon/#pycon-2024.051.jpeg](https://simonwillison.net/2024/Jul/14/pycon/#pycon-2024.051.jpeg),[ https://medium.com/@jrballesteros/chatgpt-for-parsing-addresses-and-geocoding-a8c9d0a91a5b](https://medium.com/@jrballesteros/chatgpt-for-parsing-addresses-and-geocoding-a8c9d0a91a5b) ,[ https://blog.geomusings.com/2024/05/14/simple-ner-with-chatgpt/](https://blog.geomusings.com/2024/05/14/simple-ner-with-chatgpt/)  
 * By the People transcription datasets – asking LLMs to work with those paper datasets 
     * By the People is the Library's public crowdsourced transcription program. For all completed campaigns, the transcribed text has been made available as easily-downloadable datasets on loc.gov:[ By the People completed transcriptions datasets](https://www.loc.gov/collections/selected-datasets/?fa=contributor:by+the+people+%28program%29). The text is ideal for various text analysis tasks including topic modeling, parsing and summarizing using large language models, and named entity recognition. You can find out more about the campaigns here:[ Campaign information.](https://crowd.loc.gov/campaigns/completed/) 
+    * Delve into the occult experiments of British Spiritualist, accountant, and Freemason,[ Frederick Hockley](https://crowd.loc.gov/campaigns/hockley/) (1808-1885) 
+    * [Organizing for Women’s Suffrage: The NAWSA Records](https://crowd.loc.gov/campaigns/organizing-for-womens-suffrage-the-nawsa-records/) 
+
+ 
+
 * Clustering the text of XML finding aids using sentence transformers 
     * The Library currently has 3,139 archival collections described in EAD-XML finding aids, at[ https://findingaids.loc.gov/](https://findingaids.loc.gov/). Try your hand at analyzing the full text of the finding aids. You can use sentence transformers for topic modeling, or try out large language models for generating summaries and topic terms. Tell us if you're interested, and we can give you the full set of XML documents, full text extracted from the Container Lists, and a CSV of various subject fields plus collection-level narrative fields like Abstract, Scope and Contents, and Biographical/Historical notes.  
 * Historical federal powerpoints:  
@@ -49,3 +52,11 @@ Just a few initial seed ideas for projects, if you don't have your own
     * This probably requires help to work with and explain how the data is structured, but if you're interested let us know and we can definitely help!  
 * Explore the Children's Literature, Philosophy, or Local History Collections  
     * The General Collections Assessment is an ongoing program to assess the Library's approximately 22 million books, bound serials and other materials classified under the General Collections. As part of this project, the Library is making available for exploration the underlying bibliographic datasets used as the primary data sources for the collection assessments.[ https://data.labs.loc.gov/gen-coll-assessment/](https://data.labs.loc.gov/gen-coll-assessment/)  
+
+     
+Not-yet-developed (?) bites: 
+
+* Looking at pre-prepped OCR, and detecting bad pages 
+    * Detect unusable OCR 
+
+
