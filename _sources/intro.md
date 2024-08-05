@@ -148,6 +148,10 @@ This tutorial provides an introduction to what information is available via the 
 * Do historical research
 * See [these projects](https://blogs.loc.gov/thesignal/2016/08/the-neh-chronicling-america-challenge-using-big-data-to-ask-big-questions/) for more!
 
+## Events
+
+<h3><a href="https://libraryofcongress.github.io/data-exploration/Events/dh-ideas.html">Bite-size ideas for the "Doing DH @ LC" Create-a-thon</a></h3>
+
 ## Other
 
 <h3><a href="https://libraryofcongress.github.io/data-exploration/Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html">Memegenerator Metadata</a></h3>
