@@ -31,9 +31,17 @@ And you will need read and write access to [the Github repository](https://githu
     jupyter-book build .
     ```
 
+    You can also signal a full re-build using the `--all` option:
+
+    ```
+    jupyter-book build --all .
+    ```
+
+    Or you can manually delete the `_build/html` folder to build fresh
+
 5. Once built, you should be able to paste the file path (e.g. `file://path/to/data-exploration/_build/html/index.html`) displayed in the output into your browser bar to preview it.  Make any changes necessary and re-run steps 3 and 4.
 
-6. Once you are ready to publish, you will need to add an empty file called `.nojekll` to the folder `./_build/html/`. This will tell Github not to interpret this as a Jekyll site.
+6. Once you are ready to publish, you will need to add an empty file called `.nojekyll` to the folder `./_build/html/`. This will tell Github not to interpret this as a Jekyll site.
 
     Then commit and push your changes to the main branch
 

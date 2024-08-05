@@ -36,6 +36,9 @@ parts:
       - file: Data Packages/stereographs.ipynb
       - file: Data Packages/austro-hungarian-maps.ipynb
       - file: Data Packages/gen-coll-assessment.ipynb
+  - caption: Events
+    chapters:
+      - file: Events/dh-ideas.md
   - caption: Other Library API notebooks
     chapters:
       - file: loc.gov IIIF API/IIIF.ipynb

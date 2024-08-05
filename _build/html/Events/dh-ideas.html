@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Chronicling American API &#8212; Tutorials for Data Exploration</title>
+    <title>Bite-size ideas for the “Doing DH @ LC” Create-a-thon &#8212; Tutorials for Data Exploration</title>
   
   
   
@@ -64,9 +64,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Chronicling America API/README';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Events/dh-ideas';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="IIIF API Guide" href="../loc.gov%20IIIF%20API/IIIF.html" />
+    <link rel="prev" title="LoC Data Package Tutorial: General Collections Assessment" href="../Data%20Packages/gen-coll-assessment.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -219,8 +221,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/gen-coll-assessment.html">LoC Data Package Tutorial: General Collections Assessment</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Events</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Events/dh-ideas.html">Bite-size ideas for the “Doing DH @ LC” Create-a-thon</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Bite-size ideas for the “Doing DH @ LC” Create-a-thon</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Other Library API notebooks</span></p>
 <ul class="nav bd-sidenav">
@@ -281,7 +283,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/Chronicling America API/README.md" target="_blank"
+      <li><a href="../_sources/Events/dh-ideas.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -350,7 +352,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -361,11 +365,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Chronicling American API</h1>
+    <h1>Bite-size ideas for the “Doing DH @ LC” Create-a-thon</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-humanities-preconference-august-5-2024">Digital Humanities Preconference, August 5, 2024</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -375,9 +387,128 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="chronicling-american-api">
-<h1>Chronicling American API<a class="headerlink" href="#chronicling-american-api" title="Permalink to this heading">#</a></h1>
-<p><strong>Note:</strong> The Chronicling American API will soon be retired and we recommend you transition to using the <a class="reference external" href="https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Chronicling_America/README.html">Library’s JSON API with the Chronicling America collection</a></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="bite-size-ideas-for-the-doing-dh-lc-create-a-thon">
+<h1>Bite-size ideas for the “Doing DH &#64; LC” Create-a-thon<a class="headerlink" href="#bite-size-ideas-for-the-doing-dh-lc-create-a-thon" title="Permalink to this heading">#</a></h1>
+<section id="digital-humanities-preconference-august-5-2024">
+<h2>Digital Humanities Preconference, August 5, 2024<a class="headerlink" href="#digital-humanities-preconference-august-5-2024" title="Permalink to this heading">#</a></h2>
+<p>Just a few initial seed ideas for projects, if you don’t have your own</p>
+<ul class="simple">
+<li><p>Go to <a class="reference external" href="http://data.labs.loc.gov">data.labs.loc.gov</a> and browse the various<a class="reference external" href="https://data.labs.loc.gov/packages/"> Exploratory Data Packages</a> that are available, read through the documentation, take a look at the visualizations, and see if anything piques your interest</p></li>
+<li><p>Run through some of the<a class="reference external" href="https://libraryofcongress.github.io/data-exploration/intro.html"> Jupyter Notebook Tutorials for Data Exploration</a> to get a sense of what’s possible</p></li>
+<li><p>Get together with others at a table and create your own bite-sized ideas based on particular research questions, collections, or technical capabilities that interest you. Share it with LC staff (we’d definitely be interested!)</p></li>
+</ul>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>Piping LC data packages into a database tool like Datasette for SQL-like querying and exploratory visualization</p>
+<ul>
+<li><p><a class="reference external" href="https://datasette.io/">Datasette</a></p></li>
+<li><p><a class="reference external" href="https://third-boiling-system.glitch.me/data/sample-data_metadata">Minimal example with sample data on Glitch</a></p></li>
+</ul>
+</li>
+<li><p>By the People transcription datasets – asking LLMs to work with those paper datasets</p>
+<ul>
+<li><p>By the People is the Library’s public crowdsourced transcription program. For all completed campaigns, the transcribed text has been made available as easily-downloadable datasets on <a class="reference external" href="http://loc.gov">loc.gov</a>:<a class="reference external" href="https://www.loc.gov/collections/selected-datasets/?fa=contributor:by+the+people+%28program%29"> By the People completed transcriptions datasets</a>. The text is ideal for various text analysis tasks including topic modeling, parsing and summarizing using large language models, and named entity recognition. You can find out more about the campaigns here:<a class="reference external" href="https://crowd.loc.gov/campaigns/completed/"> Campaign information.</a></p>
+<ul>
+<li><p>Delve into the occult experiments of British Spiritualist, accountant, and Freemason,<a class="reference external" href="https://crowd.loc.gov/campaigns/hockley/"> Frederick Hockley</a> (1808-1885)</p></li>
+<li><p><a class="reference external" href="https://crowd.loc.gov/campaigns/organizing-for-womens-suffrage-the-nawsa-records/">Organizing for Women’s Suffrage: The NAWSA Records</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Explore the Children’s Literature, Philosophy, or Local History Collections</p>
+<ul>
+<li><p>The General Collections Assessment is an ongoing program to assess the Library’s approximately 22 million books, bound serials and other materials classified under the General Collections. As part of this project, the Library is making available for exploration the underlying bibliographic datasets used as the primary data sources for the collection assessments.<a class="reference external" href="https://data.labs.loc.gov/gen-coll-assessment/"> https://data.labs.loc.gov/gen-coll-assessment/</a></p></li>
+</ul>
+</li>
+<li><p>Mappable collections:</p>
+<ul>
+<li><p>The<a class="reference external" href="https://data.labs.loc.gov/sanborn/"> Sanborn Maps Data Package</a><span style="text-decoration:underline;"> </span>comes with an easy-to-download CSV of metadata, including estimated latitudes and longitudes for most Sanborn atlases. This data is perfect for loading into map interfaces to experiment with representing the collection spatially. These coordinates were created by using the OpenStreetMap geocoder Nominatim.</p></li>
+<li><p>Several other data packages on <a class="reference external" href="http://data.labs.loc.gov">data.labs.loc.gov</a> were also geocoded using the same method, including<a class="reference external" href="https://data.labs.loc.gov/free-to-use/"> Free to Use and Reuse Data Package</a>,<a class="reference external" href="https://data.labs.loc.gov/jukebox/"> National Jukebox Data Package</a>,<a class="reference external" href="https://data.labs.loc.gov/telephone/"> Digitized Telephone Directories, 1891-1988 Data Package</a>, and<a class="reference external" href="https://data.labs.loc.gov/directories/"> Directory Holdings Data Package</a>.</p></li>
+<li><p>The<a class="reference external" href="https://data.labs.loc.gov/stereographs/"> Stereograph Card Images Data Package</a><span style="text-decoration:underline;"> </span>also comes with a CSV of metadata that includes estimated latitude and longitudes for almost 10% of the collection. These coordinates come directly from the <a class="reference external" href="http://loc.gov">loc.gov</a> API.</p></li>
+</ul>
+</li>
+<li><p>MARC Library Catalog records</p>
+<ul>
+<li><p>Interested in exploring library catalog records in bulk? Here are a few resources to get started!</p>
+<ul>
+<li><p><a class="reference external" href="https://www.loc.gov/cds/products/marcDist.php">MARC records</a> (browse down to MARC Open-Access) - bibliographic information for most of the Library’s collections circa 2016. 25 million records are available for exploration in UTF-8 and XML formats.</p></li>
+<li><p><a class="reference external" href="https://labs.loc.gov/static/labs/events/images/hack-to-learn-MARCSample.tar.gz">Sample MARC data set</a> and<a class="reference external" href="https://labs.loc.gov/static/labs/lc-for-robots/images/readme-marc.txt"> ReadMe file</a></p></li>
+<li><p><a class="reference external" href="https://data.labs.loc.gov/gen-coll-assessment/">General Collections Assessment Data Package</a> – currently contains data as CSV for three sections of the Library’s general collections: Children’s Literature, Philosophy, and Local History</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>A georeferencing tool like Allmaps for the Sanborns, or other Fire Insurance maps</p>
+<ul>
+<li><p>No coding required! Try out<a class="reference external" href="https://allmaps.org/"> Allmaps</a>, a georeferencing tool for IIIF-enabled maps. Head over to<a class="reference external" href="https://loc.gov/maps"> https://loc.gov/maps</a> to pick out some maps you’d like to georeference. Scroll down to the section “Getting started”.</p>
+<ul>
+<li><p><a class="reference external" href="https://guides.loc.gov/fire-insurance-maps/sanborn-atlas-volume-finder">Sanborn Atlas Volume Finder</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Historic American Buildings Survey/Historic American Engineering Record/Historic American Landscapes Survey</p>
+<ul>
+<li><p>One of the most popular collections at the Library, this collection  includes the records of three National Park Survey surveys that document achievements in architecture, engineering, and landscape design. A common request is to view a map of the survey locations, but the titles (which have the most precise location information) are difficult to work with using traditional geocoders. Large language models (LLMs) potentially offer a new route for geocoding and mapping this collection. If you’re interested in this challenge, let us know! We have a spreadsheet of data from the collection, including the titles of each survey. We’ve also pulled coordinates from Wikidata, which has crowdsourced locations for a small proportion of the collection.</p>
+<ul>
+<li><p>Try parsing addresses from the titles using an LLM</p></li>
+<li><p>Try directly geocoding the titles using an LLM</p></li>
+<li><p>Use the items with Wikidata coordinates for comparison</p></li>
+<li><p>See for example:<a class="reference external" href="https://simonwillison.net/2024/Jul/14/pycon/#pycon-2024.051.jpeg"> https://simonwillison.net/2024/Jul/14/pycon/#pycon-2024.051.jpeg</a>,<a class="reference external" href="https://medium.com/&#64;jrballesteros/chatgpt-for-parsing-addresses-and-geocoding-a8c9d0a91a5b"> https://medium.com/&#64;jrballesteros/chatgpt-for-parsing-addresses-and-geocoding-a8c9d0a91a5b</a> ,<a class="reference external" href="https://blog.geomusings.com/2024/05/14/simple-ner-with-chatgpt/"> https://blog.geomusings.com/2024/05/14/simple-ner-with-chatgpt/</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Analyzing archival Finding Aids</p>
+<ul>
+<li><p>The Library currently has 3,139 archival collections described in EAD-XML finding aids, at<a class="reference external" href="https://findingaids.loc.gov/"> https://findingaids.loc.gov/</a>. Try your hand at analyzing the full text of the finding aids. You can use sentence transformers for topic modeling, or try out large language models for generating summaries and topic terms.</p>
+<ul>
+<li><p>Tell us if you’re interested, and we can give you the full set of XML documents, full text extracted from the Container Lists, and a CSV of various subject fields plus collection-level narrative fields like Abstract, Scope and Contents, and Biographical/Historical notes.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Historical federal powerpoints:</p>
+<ul>
+<li><p>Our Web Archive collections include millions of PDFs, PowerPoints, audio files, data spreadsheets, and other files attached to websites going back to the late 1990s. At<a class="reference external" href="https://data.labs.loc.gov/dot-gov/"> data.labs.loc.gov/dot-gov/</a>, you’ll find a data package that contains random samples of these files from .gov websites archived between 1996 and 2017. For each of seven types of files (audio, CSV, image, PDF, PowerPoint, TSV, and Excel), 1,000 files are included plus basic metadata about the files including embedded tiles, timestamps, and more. Try analyzing the text, perform image or audio analysis, or just have some fun visualizing the metadata.</p>
+<ul>
+<li><p>Other web archive datasets are listed at<a class="reference external" href="https://labs.loc.gov/work/experiments/webarchive-datasets/"> https://labs.loc.gov/work/experiments/webarchive-datasets/</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Work with US Copyright Office bulk data:</p>
+<ul>
+<li><p><a class="reference external" href="https://data.copyright.gov/index.html">https://data.copyright.gov/index.html</a></p></li>
+<li><p>This probably requires help to work with and explain how the data is structured, but if you’re interested let us know and we can definitely help!</p></li>
+</ul>
+</li>
+<li><p>Color detection in Sanborn maps to extract material types</p>
+<ul>
+<li><p>The Sanborn Maps Data Package includes over 400,000 detailed map images of United States cities and towns from the late 19<sup>th</sup> century through the mid-20<sup>th</sup> century. The images and their approximate locations are available for download at<a class="reference external" href="https://data.labs.loc.gov/sanborn/"> https://data.labs.loc.gov/sanborn/</a>, and the collection is browsable at<a class="reference external" href="https://www.loc.gov/collections/sanborn-maps/about-this-collection/"> https://www.loc.gov/collections/sanborn-maps/about-this-collection/</a>. Could image analysis of these images be used to investigate geographic and chronological trends in building materials in the U.S.? The maps color-code buildings according to their building materials. For example,<a class="reference external" href="https://www.loc.gov/resource/g4364lm.g4364lm_g00656192206/?sp=13"> this sheet of Los Angeles yellow buildings</a> were built with wood (frame). This<a class="reference external" href="https://www.loc.gov/resource/g3804nm.g3804nm_g06116189503/?sp=34"> sheet of mostly-red buildings from the Bronx</a> and<a class="reference external" href="https://www.loc.gov/resource/g4164sm.g4164sm_g048581907/?sp=2"> St. Louis</a> were built with brick. Stone and concrete buildings are typically blue, and adobe buildings are gray, and special hazard buildings are green. Try your hand at writing a script that calculates the average color of each sheet and classifies sheets by predominant color.</p>
+<ul>
+<li><p>For color analysis you could use a common Python image analysis library like PILLOW or cv2</p></li>
+<li><p>For cluster analysis (to group sheets by predominant color), you could use a Python library like scikit-learn</p></li>
+<li><p>Maybe it’s possible to update pieces of this code from NYPL Labs, which includes color detection for material types, among other things:<a class="reference external" href="https://github.com/nypl-spacetime/building-inspector"> https://github.com/nypl-spacetime/building-inspector</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Not-yet-developed bites:</p>
+<ul class="simple">
+<li><p>Looking at pre-prepped OCR, and detecting bad pages</p>
+<ul>
+<li><p>Detect unusable OCR</p></li>
+</ul>
+</li>
+<li><p>Prints and Photographs materials and object detection</p>
+<ul>
+<li><p>Recent LC Labs intern project on object detection:<a class="reference external" href="https://github.com/beefoo/lclabs-jfp24"> https://github.com/beefoo/lclabs-jfp24</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -393,7 +524,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./Chronicling America API"
+            path: "./Events"
         },
         predefinedOutput: true
     }
@@ -410,12 +541,44 @@ document.write(`
                 <footer class="prev-next-footer">
                   <!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../Data%20Packages/gen-coll-assessment.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">LoC Data Package Tutorial: General Collections Assessment</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../loc.gov%20IIIF%20API/IIIF.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">IIIF API Guide</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-humanities-preconference-august-5-2024">Digital Humanities Preconference, August 5, 2024</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
