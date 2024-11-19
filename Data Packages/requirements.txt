@@ -16,6 +16,9 @@ scipy
 # For printing data tables
 pandas
 
+# For data analysis
+scikit-learn
+
 # For reading and manipulating images
 Pillow
 
@@ -30,6 +33,9 @@ tqdm
 
 # For generating wordclouds
 wordcloud
+
+# For parsing XML and HTML
+beautifulsoup4
 
 # For reading, parsing PDFs
 pypdf
