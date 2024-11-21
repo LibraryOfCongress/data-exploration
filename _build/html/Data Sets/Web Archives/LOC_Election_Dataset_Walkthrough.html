@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Exploring the United States Election Datasets &#8212; Tutorials for Data Exploration</title>
   
@@ -15,60 +14,60 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/loc.css?v=f609767c" />
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/loc.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="../../_static/loc.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Data Sets/Web Archives/LOC_Election_Dataset_Walkthrough';</script>
+    <script src="../../_static/loc.js?v=09f1a01c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -76,32 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -109,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -117,16 +99,27 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -139,6 +132,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -147,10 +143,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Tutorials for Data Exploration</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -208,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/us-elections.html">LoC Data Package Tutorial: United States Elections, Web Archives Data Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/dot-gov-pdf.html">LoC Data Package Tutorial: 1000 Dot Gov PDF Dataset</a></li>
@@ -242,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -251,14 +256,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -333,26 +338,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -398,15 +397,15 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exploring-the-united-states-election-datasets">
-<h1>Exploring the United States Election Datasets<a class="headerlink" href="#exploring-the-united-states-election-datasets" title="Permalink to this heading">#</a></h1>
+<h1>Exploring the United States Election Datasets<a class="headerlink" href="#exploring-the-united-states-election-datasets" title="Link to this heading">#</a></h1>
 <p>This notebook demonstrates an intermediate approach to exploring and accessing the United States Election Datasets produced by the Library of Congress.</p>
 <p>As an intermediate approach, this notebook uses functions as reusable blocks of code. These functions could potentially be used outside of this notebook to assist in further exploration.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="imports">
-<h1>Imports<a class="headerlink" href="#imports" title="Permalink to this heading">#</a></h1>
+<h1>Imports<a class="headerlink" href="#imports" title="Link to this heading">#</a></h1>
 <p>Below are the Python packages used in this notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -422,7 +421,7 @@ document.write(`
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="defining-global-variables">
-<h1>Defining Global Variables<a class="headerlink" href="#defining-global-variables" title="Permalink to this heading">#</a></h1>
+<h1>Defining Global Variables<a class="headerlink" href="#defining-global-variables" title="Link to this heading">#</a></h1>
 <p>Here we’re defining two global variables that will be used in the functions to gather and scrape the content.
 The represent the base of the URL structure for two of the important web applications we will use: Cloudfront, which is the front end to where the dataset files are location and Wayback, where the actual web resources are accessed.</p>
 <div class="cell docutils container">
@@ -435,7 +434,7 @@ The represent the base of the URL structure for two of the important web applica
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="functions">
-<h1>Functions<a class="headerlink" href="#functions" title="Permalink to this heading">#</a></h1>
+<h1>Functions<a class="headerlink" href="#functions" title="Link to this heading">#</a></h1>
 <p>Here we will define the functions in the order that they are used in this notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -610,7 +609,7 @@ The represent the base of the URL structure for two of the important web applica
 </div>
 </div>
 <section id="gathering-the-list-of-cdx-files">
-<h2>Gathering the list of CDX Files<a class="headerlink" href="#gathering-the-list-of-cdx-files" title="Permalink to this heading">#</a></h2>
+<h2>Gathering the list of CDX Files<a class="headerlink" href="#gathering-the-list-of-cdx-files" title="Link to this heading">#</a></h2>
 <p>The first step is gathering the list of CDX files. To do that, simply call the <code class="docutils literal notranslate"><span class="pre">gather_files_from_manifest</span></code> function, providing the Election year as an argument.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -637,7 +636,7 @@ The represent the base of the URL structure for two of the important web applica
 </div>
 </section>
 <section id="cdx-file">
-<h2>CDX File<a class="headerlink" href="#cdx-file" title="Permalink to this heading">#</a></h2>
+<h2>CDX File<a class="headerlink" href="#cdx-file" title="Link to this heading">#</a></h2>
 <p>Next, we’ll demonstrate what a particular CDX File looks like</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -664,7 +663,7 @@ The represent the base of the URL structure for two of the important web applica
 </div>
 </section>
 <section id="cdx-as-a-dataframe">
-<h2>CDX as a DataFrame<a class="headerlink" href="#cdx-as-a-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>CDX as a DataFrame<a class="headerlink" href="#cdx-as-a-dataframe" title="Link to this heading">#</a></h2>
 <p>Now, here is the same CDX transformed into a DataFrame</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -873,7 +872,7 @@ The represent the base of the URL structure for two of the important web applica
 </div>
 </section>
 <section id="election-2000-dataframe">
-<h2>Election 2000 DataFrame<a class="headerlink" href="#election-2000-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>Election 2000 DataFrame<a class="headerlink" href="#election-2000-dataframe" title="Link to this heading">#</a></h2>
 <p>Now we’ll just create a DataFrame from the whole 2000 Election dataset. To do that, we’ll use the <code class="docutils literal notranslate"><span class="pre">create_dataframe_from_manifest</span></code> which loops over the files and calls <code class="docutils literal notranslate"><span class="pre">create_dataframe</span></code> programmatically instead of manually and individually as we did above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -884,7 +883,7 @@ The represent the base of the URL structure for two of the important web applica
 </div>
 </section>
 <section id="mimetypes">
-<h2>Mimetypes<a class="headerlink" href="#mimetypes" title="Permalink to this heading">#</a></h2>
+<h2>Mimetypes<a class="headerlink" href="#mimetypes" title="Link to this heading">#</a></h2>
 <p>For this exercise, we’re going to take a brief look at the mimetypes. First, we’ll select all the mimetypes in the Dataframe and get their sums by calling <code class="docutils literal notranslate"><span class="pre">value_counts</span></code> which is a method from Pandas.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -914,7 +913,7 @@ Name: mimetype, dtype: int64
 </div>
 </section>
 <section id="dropping-and-graphing">
-<h2>Dropping and Graphing<a class="headerlink" href="#dropping-and-graphing" title="Permalink to this heading">#</a></h2>
+<h2>Dropping and Graphing<a class="headerlink" href="#dropping-and-graphing" title="Link to this heading">#</a></h2>
 <p>You can see from the output above, that the majority of the mimetypes are not listed and show up as <code class="docutils literal notranslate"><span class="pre">-</span></code>. Further research into this could prove interesting. For now, however, we’re just going to drop them and graph the remainder.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -931,7 +930,7 @@ Name: mimetype, dtype: int64
 </div>
 </section>
 <section id="fetching-the-text">
-<h2>Fetching the Text<a class="headerlink" href="#fetching-the-text" title="Permalink to this heading">#</a></h2>
+<h2>Fetching the Text<a class="headerlink" href="#fetching-the-text" title="Link to this heading">#</a></h2>
 <p>Now that we know the majority of the remaining resources in this dataset have a text-based mimetype, we can gather all the text and do some basic analysis. First, we’ll fetch all the text from just the first 50 rows. If you have access to a larger machine, you may certainly increase the number or run it across the whole DataFrame.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -942,7 +941,7 @@ Name: mimetype, dtype: int64
 </div>
 </section>
 <section id="top-25-words">
-<h2>Top 25 Words<a class="headerlink" href="#top-25-words" title="Permalink to this heading">#</a></h2>
+<h2>Top 25 Words<a class="headerlink" href="#top-25-words" title="Link to this heading">#</a></h2>
 <p>Now that the text has been fetched, we’ll do a simple summation and sorting, displaying the top 25 words from the first 50 rows of the 2000 Election dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -983,7 +982,7 @@ dtype: int64
 </div>
 </section>
 <section id="next-steps">
-<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this heading">#</a></h2>
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">#</a></h2>
 <p>Please feel free to use this notebook and the functions found here to help in your exploration of the U.S. Election datasets.</p>
 </section>
 </section>
@@ -1015,8 +1014,8 @@ dtype: int64
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -1025,7 +1024,9 @@ dtype: int64
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -1070,9 +1071,10 @@ By Library of Congress staff
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -1119,8 +1121,8 @@ By Library of Congress staff
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>IIIF API Guide &#8212; Tutorials for Data Exploration</title>
   
@@ -15,62 +14,62 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/loc.css?v=f609767c" />
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/loc.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script src="../_static/loc.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'loc.gov IIIF API/IIIF';</script>
+    <script src="../_static/loc.js?v=09f1a01c"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="What are Sitemaps?" href="../loc.gov%20Sitemaps%20API/Sitemap.html" />
     <link rel="prev" title="Bite-size ideas for the “Doing DH @ LC” Create-a-thon" href="../Events/dh-ideas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,32 +77,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../search.html"
       method="get">
@@ -111,7 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -119,16 +101,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -141,6 +132,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
@@ -149,10 +143,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Tutorials for Data Exploration</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -210,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/us-elections.html">LoC Data Package Tutorial: United States Elections, Web Archives Data Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Data%20Packages/dot-gov-pdf.html">LoC Data Package Tutorial: 1000 Dot Gov PDF Dataset</a></li>
@@ -244,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -253,14 +256,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -335,26 +338,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -393,14 +390,14 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="iiif-api-guide">
-<h1>IIIF API Guide<a class="headerlink" href="#iiif-api-guide" title="Permalink to this heading">#</a></h1>
+<h1>IIIF API Guide<a class="headerlink" href="#iiif-api-guide" title="Link to this heading">#</a></h1>
 <p>IIIF is a powerful and flexible way to serve, explore, manipulate, and improve images.
 This guide outlines several ways you can use the Library of Congress IIIF API to manipulate images from Library of Congress collections.</p>
 <section id="what-is-iiif">
-<h2>What is IIIF?<a class="headerlink" href="#what-is-iiif" title="Permalink to this heading">#</a></h2>
+<h2>What is IIIF?<a class="headerlink" href="#what-is-iiif" title="Link to this heading">#</a></h2>
 <p>From their website:</p>
 <blockquote>
 <div><p>The International Image Interoperability Framework (IIIF) is a set of shared application programming interface (API) specifications for interoperable functionality in digital image repositories. The IIIF is comprised of and driven by a community of libraries, museums, archives, software companies, and other organizations working together to create, test, refine, implement and promote the IIIF specifications. Using JSON-LD, linked data, and standard W3C web protocols such as Web Annotation, IIIF makes it easy to parse and share digital image data, migrate across technology systems, and provide enhanced image access for scholars and researchers. In short, IIIF enables better, faster and cheaper image delivery. It lets you leverage interoperability and the fabric of the Web to access new possibilities and new users for your image-based resources, while reducing long term maintenance and technological lock in. IIIF gives users a rich set of baseline functionality for viewing, zooming, and assembling the best mix of resources and tools to view, compare, manipulate and work with images on the Web, an experience made portable–shareable, citable, and embeddable.</p>
@@ -408,7 +405,7 @@ This guide outlines several ways you can use the Library of Congress IIIF API to
 <p>Or in other terms, it is a standard way to get an image using a API.</p>
 </section>
 <section id="what-do-the-different-parts-of-the-url-mean">
-<h2>What do the different parts of the URL mean?<a class="headerlink" href="#what-do-the-different-parts-of-the-url-mean" title="Permalink to this heading">#</a></h2>
+<h2>What do the different parts of the URL mean?<a class="headerlink" href="#what-do-the-different-parts-of-the-url-mean" title="Link to this heading">#</a></h2>
 <p>The url that you request to get a image has several parts that determine what and how the image is returned. Here is a brief overview of the various parts. To learn more in-depth please see <a class="reference external" href="http://iiif.io/api/image/2.1/">http://iiif.io/api/image/2.1/</a></p>
 <p><code class="docutils literal notranslate"><span class="pre">{scheme}://{server}{/prefix}/{identifier}/{region}/{size}/{rotation}/{quality}.{format}</span></code></p>
 <ul class="simple">
@@ -432,7 +429,7 @@ This guide outlines several ways you can use the Library of Congress IIIF API to
 </div>
 </section>
 <section id="what-is-supported">
-<h2>What is supported?<a class="headerlink" href="#what-is-supported" title="Permalink to this heading">#</a></h2>
+<h2>What is supported?<a class="headerlink" href="#what-is-supported" title="Link to this heading">#</a></h2>
 <p>You can directly query the server to find out what is supported for a give image. What is returned is a json response with various details, like the different formats that you can have the image generated in, the quality of the image generated, and other various actions it can take on the image like rotation or mirroring.</p>
 <p>Here is an example of the request, which will give us the JSON response about a specific image in the Library’s collection:</p>
 <div class="cell docutils container">
@@ -471,7 +468,7 @@ This guide outlines several ways you can use the Library of Congress IIIF API to
 </div>
 </section>
 <section id="how-do-i-get-the-image">
-<h2>How do I get the image?<a class="headerlink" href="#how-do-i-get-the-image" title="Permalink to this heading">#</a></h2>
+<h2>How do I get the image?<a class="headerlink" href="#how-do-i-get-the-image" title="Link to this heading">#</a></h2>
 <p>Do you remember that above in this guide, we described the different parts of the URL?
 Here’s a memory boost:
 <code class="docutils literal notranslate"><span class="pre">{scheme}://{server}{/prefix}/{identifier}/{region}/{size}/{rotation}/{quality}.{format}</span></code>
@@ -488,7 +485,7 @@ Let’s ask to see the image by defining the size. You request the “full” re
 </div>
 </section>
 <section id="how-do-i-get-different-sizes">
-<h2>How do I get different sizes?<a class="headerlink" href="#how-do-i-get-different-sizes" title="Permalink to this heading">#</a></h2>
+<h2>How do I get different sizes?<a class="headerlink" href="#how-do-i-get-different-sizes" title="Link to this heading">#</a></h2>
 <p>Let’s say we want a smaller version of the image. We can make a request for different sizes by specifying the percent of the full image. Look for the change in the size portion of the URL and how we used “pct:5” in the example below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -502,7 +499,7 @@ Let’s ask to see the image by defining the size. You request the “full” re
 </div>
 </section>
 <section id="how-do-i-mirror-an-image">
-<h2>How do I Mirror an image?<a class="headerlink" href="#how-do-i-mirror-an-image" title="Permalink to this heading">#</a></h2>
+<h2>How do I Mirror an image?<a class="headerlink" href="#how-do-i-mirror-an-image" title="Link to this heading">#</a></h2>
 <p>Success! We made a request and received different sized images.
 Now let’s look at a simple way to use the request to manipulate the image. For fun, let’s flip the image. Flipping is known as “mirroring” an image.
 This time, we’re going to focus on the rotation part of the URL. Remember, it is:
@@ -520,7 +517,7 @@ To flip the image, you merely include the ! in front of the {rotation} part of t
 </div>
 </section>
 <section id="how-do-i-rotate-a-image">
-<h2>How do I rotate a image?<a class="headerlink" href="#how-do-i-rotate-a-image" title="Permalink to this heading">#</a></h2>
+<h2>How do I rotate a image?<a class="headerlink" href="#how-do-i-rotate-a-image" title="Link to this heading">#</a></h2>
 <p>What if we needed to rotate an image? Let’s see if we can turn the image we’ve received on its side. To rotate an image, you’ll specify the degrees to rotate in the {rotation} part of the URL.
 Do you see what we included in the URL when we got the full size image? We asked for “0” rotation - zero degrees and do not mirror the image. What do you think we’ll include in our request if we want to rotate it on it’s side (clockwise) 90 degrees? That’s right: “90”
 Here is an example where we rotate it 90 degrees:</p>
@@ -536,7 +533,7 @@ Here is an example where we rotate it 90 degrees:</p>
 </div>
 </section>
 <section id="how-do-i-select-a-region">
-<h2>How do I select a region?<a class="headerlink" href="#how-do-i-select-a-region" title="Permalink to this heading">#</a></h2>
+<h2>How do I select a region?<a class="headerlink" href="#how-do-i-select-a-region" title="Link to this heading">#</a></h2>
 <p>Let’s consider a researcher’s needs. Claudette is researching laborers in California in the early 1940s. Specifically she wants to explore the photographs in local and regional newspapers. She can make a call, another word for request, to get just the image in the page we’ve been manipulating.
 One way Claudette can select a region is by using a percent of the image with specific instructions about where to start the selection. She’ll include this information in the region portion of the URL. Recall it is:
 <code class="docutils literal notranslate"><span class="pre">{scheme}://{server}{/prefix}/{identifier}/{region}/{size}/{rotation}/{quality}.{format}</span></code></p>
@@ -553,7 +550,7 @@ One way Claudette can select a region is by using a percent of the image with sp
 </div>
 </section>
 <section id="gotchas">
-<h2>Gotchas<a class="headerlink" href="#gotchas" title="Permalink to this heading">#</a></h2>
+<h2>Gotchas<a class="headerlink" href="#gotchas" title="Link to this heading">#</a></h2>
 <p>There are some nuances to keep in mind as you’re working with IIIF images. Here are a few things to watch:</p>
 <ul class="simple">
 <li><p>Images define the x-axis differently then you might expect. For example, 0 in the y-axis is the top of the image, not the bottom. And increasing the y-axis moves the starting point <em>down</em> the image, not up like you would normally expect.</p></li>
@@ -589,8 +586,8 @@ One way Claudette can select a region is by using a percent of the image with sp
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="../Events/dh-ideas.html"
@@ -617,7 +614,9 @@ One way Claudette can select a region is by using a percent of the image with sp
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -655,9 +654,10 @@ By Library of Congress staff
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -704,8 +704,8 @@ By Library of Congress staff
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>
