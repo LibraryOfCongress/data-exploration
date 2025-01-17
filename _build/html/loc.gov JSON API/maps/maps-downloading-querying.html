@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Querying and downloading cartographic material from loc.gov &#8212; Tutorials for Data Exploration</title>
   
@@ -15,60 +14,60 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/loc.css?v=f609767c" />
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/loc.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="../../_static/loc.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'loc.gov JSON API/maps/maps-downloading-querying';</script>
+    <script src="../../_static/loc.js?v=09f1a01c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -76,32 +75,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -109,7 +92,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -117,16 +99,27 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -139,6 +132,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -147,10 +143,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Tutorials for Data Exploration</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -208,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/us-elections.html">LoC Data Package Tutorial: United States Elections, Web Archives Data Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/dot-gov-pdf.html">LoC Data Package Tutorial: 1000 Dot Gov PDF Dataset</a></li>
@@ -242,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -251,14 +256,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -333,26 +338,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -404,19 +403,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="querying-and-downloading-cartographic-material-from-loc-gov">
-<h1>Querying and downloading cartographic material from <a class="reference external" href="http://loc.gov">loc.gov</a><a class="headerlink" href="#querying-and-downloading-cartographic-material-from-loc-gov" title="Permalink to this heading">#</a></h1>
+<h1>Querying and downloading cartographic material from <a class="reference external" href="http://loc.gov">loc.gov</a><a class="headerlink" href="#querying-and-downloading-cartographic-material-from-loc-gov" title="Link to this heading">#</a></h1>
 <p class="lead">Table of Contents</p>
 <ul class="simple">
-<li><p><span class="xref myst">This notebook</span></p></li>
-<li><p><span class="xref myst">About the Library of Congress’s cartographic materials</span></p></li>
-<li><p><span class="xref myst">1. Required Prep: Import all of the Python modules we’ll need</span></p></li>
-<li><p><span class="xref myst">2. Practice: Get familiar with the API</span></p></li>
-<li><p><span class="xref myst">3. Practice: Understand how pagination works</span></p></li>
-<li><p><span class="xref myst">4. Download files: retrieve files associated with any given query</span></p></li>
-<li><p><span class="xref myst">5. Examples: Advanced Querying</span></p></li>
+<li><p><a class="reference internal" href="#This-notebook"><span class="xref myst">This notebook</span></a></p></li>
+<li><p><a class="reference internal" href="#About-the-Library-of-Congress's-cartographic-materials"><span class="xref myst">About the Library of Congress’s cartographic materials</span></a></p></li>
+<li><p><a class="reference internal" href="#1.-Required-Prep:-Import-all-of-the-Python-modules-we'll-need"><span class="xref myst">1. Required Prep: Import all of the Python modules we’ll need</span></a></p></li>
+<li><p><a class="reference internal" href="#2.-Practice:-Get-familiar-with-the-API"><span class="xref myst">2. Practice: Get familiar with the API</span></a></p></li>
+<li><p><a class="reference internal" href="#3.-Practice:-Understand-how-pagination-works"><span class="xref myst">3. Practice: Understand how pagination works</span></a></p></li>
+<li><p><a class="reference internal" href="#4.-Download-files:-retrieve-files-associated-with-any-given-query"><span class="xref myst">4. Download files: retrieve files associated with any given query</span></a></p></li>
+<li><p><a class="reference internal" href="#5.-Advanced-Querying"><span class="xref myst">5. Examples: Advanced Querying</span></a></p></li>
 </ul>
 <div class="alert alert-info">
 <p class="lead"> Skip ahead </p>
@@ -431,7 +430,7 @@ document.write(`
 <p>Other Jupyter notebooks and examples can be found at <a href="https://labs.loc.gov/lc-for-robots/#try">LC for Robots</a>. In particular, be sure to check out <a href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.ipynb">Accessing images for image analysis</a>, which this notebook builds on, and <a href="https://github.com/charlie-moffett/data-exploration/blob/master/loc.gov%20JSON%20API/Extracting%20location%20data%20for%20geovisualization.ipynb">Extracting location data from the loc.gov API for geovisualization</a>.</p>
 </div>
 <section id="this-notebook">
-<h2>This notebook<a class="headerlink" href="#this-notebook" title="Permalink to this heading">#</a></h2>
+<h2>This notebook<a class="headerlink" href="#this-notebook" title="Link to this heading">#</a></h2>
 <p>Library of Congress makes a portion of its collections available online via <a class="reference external" href="https://www.loc.gov">loc.gov</a>. There are millions of items in these online collections, including maps and other cartographic items. With the help of the <a class="reference external" href="http://loc.gov">loc.gov</a> API, these materials can be accessed in bulk for downloading, computational re-use, and analysis.</p>
 <p>This Jupyter notebook focuses on the cartographic materials on <a class="reference external" href="http://loc.gov">loc.gov</a>, specifically how to download image files in bulk. It is part one in a series of Jupyter notebooks exploring how to computationally access, retrieve, and analyze cartographic collections on <a class="reference external" href="http://loc.gov">loc.gov</a>.</p>
 <p>This noteobok demonstrates methods to:</p>
@@ -442,7 +441,7 @@ document.write(`
 </ul>
 </section>
 <section id="about-the-library-of-congress-s-cartographic-materials">
-<h2>About the Library of Congress’s cartographic materials<a class="headerlink" href="#about-the-library-of-congress-s-cartographic-materials" title="Permalink to this heading">#</a></h2>
+<h2>About the Library of Congress’s cartographic materials<a class="headerlink" href="#about-the-library-of-congress-s-cartographic-materials" title="Link to this heading">#</a></h2>
 <p>The Library of Congress has one of the largest and most comprehensive cartographic collections in the world, numbering over 5.2 million maps, atlases, geospatial datasets, globes, globe cores, three-dimensional relief models, and other cartographic formats. There is even a chocolate map. The collection includes in-depth historical and modern coverage of the United States, as well as broad global coverage. Official topographic, geologic, soil, mineral, and resource maps and nautical and aeronautical charts are available for most countries of the world.</p>
 <p>The material available online via <a class="reference external" href="http://loc.gov">loc.gov</a> is only a small portion of these collections, selected due to researcher demand, value, rarity, physical condition, ease of imaging, partnerships, and numerous other factors. When using the materials for computational analysis and statistical study, it is valuable to understand the context of their creation and factors that contribute to the scope and sampling of the online collection. For more information about the primary areas of coverage in the online map collection, please see the list of online collections containing maps at <a class="reference external" href="https://www.loc.gov/maps/collections/">https://www.loc.gov/maps/collections/</a>.</p>
 <table style="width:100%">
@@ -503,7 +502,7 @@ document.write(`
 </table> 
 </section>
 <section id="required-prep-import-all-of-the-python-modules-we-ll-need">
-<h2>1. Required Prep: Import all of the Python modules we’ll need<a class="headerlink" href="#required-prep-import-all-of-the-python-modules-we-ll-need" title="Permalink to this heading">#</a></h2>
+<h2>1. Required Prep: Import all of the Python modules we’ll need<a class="headerlink" href="#required-prep-import-all-of-the-python-modules-we-ll-need" title="Link to this heading">#</a></h2>
 <p>Python comes pre-packaged with a standard set of commands that can be run out-of-the-box (Python commands are also known as “modules” or “packages”). The basic set included with Python is commonly referred to as the <a class="reference external" href="https://docs.python.org/3/library/">Python Standard Library</a>. Most scripts need additional modules, and those modules must be installed on your computer and then imported into your script, usually at the very top of the script.</p>
 <p>If you are using Jupyter Notebook via Anaconda, good news! All of the modules used in this script come pre-installed with Anaconda (check out the full list at <a class="reference external" href="https://docs.anaconda.com/anaconda/packages/pkg-docs/">https://docs.anaconda.com/anaconda/packages/pkg-docs/</a>).</p>
 <p>However, if you get an error message when you run the cell below, you may need to go to a terminal window and install one or more of the modules. One of the easiest ways of installing modules is by using pip, as in this tutorial from W3C: <a class="reference external" href="https://www.w3schools.com/python/python_pip.asp">https://www.w3schools.com/python/python_pip.asp</a></p>
@@ -525,7 +524,7 @@ document.write(`
 </div>
 </section>
 <section id="practice-get-familiar-with-the-loc-gov-api">
-<h2>2. Practice: Get familiar with the <a class="reference external" href="http://loc.gov">loc.gov</a> API<a class="headerlink" href="#practice-get-familiar-with-the-loc-gov-api" title="Permalink to this heading">#</a></h2>
+<h2>2. Practice: Get familiar with the <a class="reference external" href="http://loc.gov">loc.gov</a> API<a class="headerlink" href="#practice-get-familiar-with-the-loc-gov-api" title="Link to this heading">#</a></h2>
 <p>You’ll want to create a query that the <a class="reference external" href="http://loc.gov">loc.gov</a> API can understand. There are a few ways to construct your query. The simplest is to go to <a class="reference external" href="http://www.loc.gov">www.loc.gov</a> and run a search. After the search runs, copy the URL from the address bar of your web browser.</p>
 <p>For example, if we were doing a search for Sanborn Fire Insurance maps of Arkansas from the 19th century, the URL we copy might look like this:</p>
 <ul class="simple">
@@ -642,12 +641,12 @@ document.write(`
 </div>
 </div>
 <section id="how-to-read-the-json-above">
-<h3>How to read the JSON above<a class="headerlink" href="#how-to-read-the-json-above" title="Permalink to this heading">#</a></h3>
+<h3>How to read the JSON above<a class="headerlink" href="#how-to-read-the-json-above" title="Link to this heading">#</a></h3>
 <p>If you look closely at the JSON result above, you can find all the same things that you would see on the <a class="reference external" href="http://loc.gov">loc.gov</a> webpages. Look for the ‘title’ field and ‘date’ fields. Together, these will tell you the city, county, state, and date of the Sanborn atlas. Look for the ‘url’ field to get the link to the item in <a class="reference external" href="http://loc.gov">loc.gov</a>. If you follow that link, you’ll see this same JSON record translated into HTML.</p>
 </section>
 </section>
 <section id="practice-understand-how-pagination-works">
-<h2>3. Practice: Understand how pagination works<a class="headerlink" href="#practice-understand-how-pagination-works" title="Permalink to this heading">#</a></h2>
+<h2>3. Practice: Understand how pagination works<a class="headerlink" href="#practice-understand-how-pagination-works" title="Link to this heading">#</a></h2>
 <p>Try clicking on this link:</p>
 <p><a class="reference external" href="https://www.loc.gov/collections/sanborn-maps/?dates=1800/1899&amp;amp;fa=location:arkansas">https://www.loc.gov/collections/sanborn-maps/?dates=1800/1899&amp;fa=location:arkansas</a></p>
 <p>Notice that you get several pages of results. The same is true when you use the API to get the results as JSON; the API gives you one page at a time. By default, it gives you the first page. You must ask for page 2, 3, etc.</p>
@@ -747,7 +746,7 @@ Total number of pages:
 </div>
 </section>
 <section id="download-files-retrieve-files-associated-with-any-given-query">
-<h2>4. Download files: retrieve files associated with any given query<a class="headerlink" href="#download-files-retrieve-files-associated-with-any-given-query" title="Permalink to this heading">#</a></h2>
+<h2>4. Download files: retrieve files associated with any given query<a class="headerlink" href="#download-files-retrieve-files-associated-with-any-given-query" title="Link to this heading">#</a></h2>
 <p class="lead">(1 of 2) First, we will create three functions.</p>
 <p>A “function” is a set of directions. When we create a function, it doesn’t do anything yet, it just defines what will happen when we run the function at a later time.</p>
 <p>Functions usually want you to supply some information (“arguments”). Then the function runs a series of steps on that information and gives back new information to you.</p>
@@ -2425,7 +2424,7 @@ Saving as: C:/Users/rtrent/jupyter-notebooks/sanborn-images/sanborn08950_002/089
   </tr>
 </table> </section>
 <section id="examples-advanced-querying">
-<h2>5. Examples: Advanced Querying<a class="headerlink" href="#examples-advanced-querying" title="Permalink to this heading">#</a></h2>
+<h2>5. Examples: Advanced Querying<a class="headerlink" href="#examples-advanced-querying" title="Link to this heading">#</a></h2>
 <div class="alert alert-info">
 <p class="lead">API Documentation</p>
 <p>Detailed documentation about the <a class="reference external" href="http://loc.gov">loc.gov</a> API and syntax used to construct queries can be found at <a href="https://libraryofcongress.github.io/data-exploration/">About the loc.gov JSON AP</a>. See especially the <a href="https://libraryofcongress.github.io/data-exploration/requests.html">Requests</a> page.</p>
@@ -2434,7 +2433,7 @@ Saving as: C:/Users/rtrent/jupyter-notebooks/sanborn-images/sanborn08950_002/089
 <p>Here are examples of other searches you can construct for Sanborn and other maps at <a class="reference external" href="http://loc.gov">loc.gov</a>. If you’d like to download files for any of these searches, simply replace the <code class="docutils literal notranslate"><span class="pre">searchURL</span></code> variable above, and re-run the two cells above.</p>
 </section>
 <section id="th-century-sanborn-maps-of-springfield-any-state">
-<h2>19th century Sanborn maps of Springfield (any state)<a class="headerlink" href="#th-century-sanborn-maps-of-springfield-any-state" title="Permalink to this heading">#</a></h2>
+<h2>19th century Sanborn maps of Springfield (any state)<a class="headerlink" href="#th-century-sanborn-maps-of-springfield-any-state" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>To insert as <code class="docutils literal notranslate"><span class="pre">searchURL</span></code> above: <a class="reference external" href="https://www.loc.gov/collections/sanborn-maps/?dates=1800/1899&amp;amp;fa=location:springfield">https://www.loc.gov/collections/sanborn-maps/?dates=1800/1899&amp;fa=location:springfield</a></p></li>
 <li><p>Query returned as HTML: <a class="reference external" href="https://www.loc.gov/collections/sanborn-maps/?dates=1800/1899&amp;amp;fa=location:springfield">https://www.loc.gov/collections/sanborn-maps/?dates=1800/1899&amp;fa=location:springfield</a></p></li>
@@ -2453,7 +2452,7 @@ Saving as: C:/Users/rtrent/jupyter-notebooks/sanborn-images/sanborn08950_002/089
 </ol>
 </section>
 <section id="sanborn-maps-of-springfield-illinois-any-date">
-<h2>Sanborn maps of Springfield, Illinois (any date)<a class="headerlink" href="#sanborn-maps-of-springfield-illinois-any-date" title="Permalink to this heading">#</a></h2>
+<h2>Sanborn maps of Springfield, Illinois (any date)<a class="headerlink" href="#sanborn-maps-of-springfield-illinois-any-date" title="Link to this heading">#</a></h2>
 <p>Cities (municipalitise), counties, and statess are all listed in the <code class="docutils literal notranslate"><span class="pre">location</span></code> field in the Sanborn collection. The metadata does not distinguish between the three types of locations. To search by two more more, simply add both to the <code class="docutils literal notranslate"><span class="pre">location</span></code> parameter.</p>
 <ol class="arabic">
 <li><p>To insert as <code class="docutils literal notranslate"><span class="pre">searchURL</span></code> above: <a class="reference external" href="https://www.loc.gov/collections/sanborn-maps/?fa=location:illinois%7Clocation:springfield">https://www.loc.gov/collections/sanborn-maps/?fa=location:illinois|location:springfield</a></p></li>
@@ -2472,7 +2471,7 @@ Saving as: C:/Users/rtrent/jupyter-notebooks/sanborn-images/sanborn08950_002/089
 </ol>
 </section>
 <section id="sanborn-maps-of-new-york-city-new-york">
-<h2>Sanborn maps of New York City, New York<a class="headerlink" href="#sanborn-maps-of-new-york-city-new-york" title="Permalink to this heading">#</a></h2>
+<h2>Sanborn maps of New York City, New York<a class="headerlink" href="#sanborn-maps-of-new-york-city-new-york" title="Link to this heading">#</a></h2>
 <p>Like many cities, the borders and composition of New York City are not static. For example, Brooklyn (now a borough of New York City and coterminous with Kings County,) was an independent city from the early 19th century until 1898. The Bronx was annexed into New York City in pieces. Other cities may also have similar histories of mergers, divisions, expanding and contracting borders, changing names and designations.</p>
 <p>Sanborn atlases are described according to the location at the time of their publication, as printed on the atlas.</p>
 <p>Atlases covering modern-day New York City can be found by their borough rather than by “New York City”. (The boroughs may have been independent cities or counties at the time of the atlas’s original publication).</p>
@@ -2488,14 +2487,14 @@ Saving as: C:/Users/rtrent/jupyter-notebooks/sanborn-images/sanborn08950_002/089
 <p>Alternatively, a curated list of all NYC, NY maps can also be found at <a class="reference external" href="https://www.loc.gov/rr/geogmap/sanborn/city.php?CITY=New%20York&amp;amp;stateID=39">https://www.loc.gov/rr/geogmap/sanborn/city.php?CITY=New York&amp;stateID=39</a>.</p>
 </section>
 <section id="sanborn-maps-in-the-physical-collections-but-not-necessarliy-online">
-<h2>Sanborn maps in the physical collections, but not necessarliy online<a class="headerlink" href="#sanborn-maps-in-the-physical-collections-but-not-necessarliy-online" title="Permalink to this heading">#</a></h2>
+<h2>Sanborn maps in the physical collections, but not necessarliy online<a class="headerlink" href="#sanborn-maps-in-the-physical-collections-but-not-necessarliy-online" title="Link to this heading">#</a></h2>
 <p>Generally, any map that has been cataloged–even if it does not have a copy available online–has a brief descriptive record retrievable via the <a class="reference external" href="http://loc.gov">loc.gov</a> API. Although individual Sanborns have not been cataloged, each atlas also has a record on <a class="reference external" href="http://loc.gov">loc.gov</a>, even if a copy of the atlas isn’t online. To access all records, not only those online, append <code class="docutils literal notranslate"><span class="pre">all=true</span></code> to your query. For example, to retrieve records for all of the libraries’ California Sanborn atlases, try:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.loc.gov/collections/sanborn-maps/?fa=location:california&amp;all=true
 </pre></div>
 </div>
 </section>
 <section id="maps-by-civil-war-cartographer-jedediah-hotchkiss">
-<h2>Maps by Civil War cartographer Jedediah Hotchkiss<a class="headerlink" href="#maps-by-civil-war-cartographer-jedediah-hotchkiss" title="Permalink to this heading">#</a></h2>
+<h2>Maps by Civil War cartographer Jedediah Hotchkiss<a class="headerlink" href="#maps-by-civil-war-cartographer-jedediah-hotchkiss" title="Link to this heading">#</a></h2>
 <ol class="arabic">
 <li><p>To insert as <code class="docutils literal notranslate"><span class="pre">searchURL</span></code> above: <a class="reference external" href="https://www.loc.gov/maps/?fa=contributor:hotchkiss,+jedediah">https://www.loc.gov/maps/?fa=contributor:hotchkiss,+jedediah</a></p></li>
 <li><p>Query returned as HTML: <a class="reference external" href="https://www.loc.gov/maps/?fa=contributor:hotchkiss,+jedediah">https://www.loc.gov/maps/?fa=contributor:hotchkiss,+jedediah</a></p></li>
@@ -2513,7 +2512,7 @@ Saving as: C:/Users/rtrent/jupyter-notebooks/sanborn-images/sanborn08950_002/089
 </ol>
 </section>
 <section id="panoramic-maps">
-<h2>Panoramic maps<a class="headerlink" href="#panoramic-maps" title="Permalink to this heading">#</a></h2>
+<h2>Panoramic maps<a class="headerlink" href="#panoramic-maps" title="Link to this heading">#</a></h2>
 <p>Panoramic maps have been organized into a collection, <a class="reference external" href="https://www.loc.gov/collections/panoramic-maps/about-this-collection/">Panoramic Maps</a>. Panoramic “maps” include drawings but not photographs.</p>
 <ol class="arabic">
 <li><p>To insert as <code class="docutils literal notranslate"><span class="pre">searchURL</span></code> above: <a class="reference external" href="https://www.loc.gov/collections/panoramic-maps/">https://www.loc.gov/collections/panoramic-maps/</a></p></li>
@@ -2531,7 +2530,7 @@ Saving as: C:/Users/rtrent/jupyter-notebooks/sanborn-images/sanborn08950_002/089
 </ol>
 </section>
 <section id="advanced-post-query-filtering">
-<h2>Advanced: Post-query filtering<a class="headerlink" href="#advanced-post-query-filtering" title="Permalink to this heading">#</a></h2>
+<h2>Advanced: Post-query filtering<a class="headerlink" href="#advanced-post-query-filtering" title="Link to this heading">#</a></h2>
 <p>The metadata in <a class="reference external" href="http://loc.gov">loc.gov</a> items has information that can’t be specifically queried by the API. For example, the Sanborn records contain page counts, recorded as number of resource files. The API doesn’t specifically query this field.</p>
 <p>If you wanted to filter by fields that the API can’t specifically query, you can run an API query for the broader population of records of interest, and then filter the results. Be careful, though, that the size of your initial query is manageable.</p>
 <p>Our <code class="docutils literal notranslate"><span class="pre">get_item_ids</span></code> function accepts an additional parameter to help with this filtering. It takes a true/false filtering conditional, which we can pass as a string using the variable <code class="docutils literal notranslate"><span class="pre">conditional</span></code>. Any conditional we pass the function, we’ll only get results for which that conditional is true.</p>
@@ -2599,14 +2598,14 @@ http://www.loc.gov/item/sanborn05639_009/
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="next">
-<h1>Next<a class="headerlink" href="#next" title="Permalink to this heading">#</a></h1>
+<h1>Next<a class="headerlink" href="#next" title="Link to this heading">#</a></h1>
 <p>In the next Jupyter notebook in this series, we’ll:</p>
 <ul class="simple">
 <li><p>retrieve metadata associated with your downloaded files</p></li>
 <li><p>retrieve metadata associated with the Sanborns collection</p></li>
 <li><p>analyze and visualize metadata</p></li>
 </ul>
-<p>Proceed to <a class="reference internal" href="maps-analyzing-metadata.html"><span class="doc std std-doc">Analyzing and visualizing cartographic metadata from loc.gov</span></a> →</p>
+<p>Proceed to <a class="reference internal" href="maps-analyzing-metadata.html"><span class="std std-doc">Analyzing and visualizing cartographic metadata from loc.gov</span></a> →</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2636,8 +2635,8 @@ http://www.loc.gov/item/sanborn05639_009/
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
 </div>
                 </footer>
@@ -2646,7 +2645,9 @@ http://www.loc.gov/item/sanborn05639_009/
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2697,9 +2698,10 @@ By Library of Congress staff
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2746,8 +2748,8 @@ By Library of Congress staff
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

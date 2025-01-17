@@ -27,6 +27,7 @@ parts:
   - caption: Data Package notebooks
     chapters:
       - file: Data Packages/sanborn.ipynb
+      - file: Data Packages/us-elections.ipynb
       - file: Data Packages/free-to-use.ipynb
       - file: Data Packages/jukebox.ipynb
       - file: Data Packages/dot-gov-pdf.ipynb

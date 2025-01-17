@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Exploring the GIPHY.com Metadata &#8212; Tutorials for Data Exploration</title>
   
@@ -15,62 +14,62 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/loc.css?v=f609767c" />
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/loc.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="../../_static/loc.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Data Sets/Web Archives/getting_started_with_giphy';</script>
+    <script src="../../_static/loc.js?v=09f1a01c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="LOC Goes Lofi" href="loc_goes_lofi.html" />
     <link rel="prev" title="Exploring the Memegenerator Metadata" href="getting_started_with_memegenerator.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,32 +77,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -111,7 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -119,16 +101,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -141,6 +132,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -149,10 +143,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Tutorials for Data Exploration</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -210,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/us-elections.html">LoC Data Package Tutorial: United States Elections, Web Archives Data Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/dot-gov-pdf.html">LoC Data Package Tutorial: 1000 Dot Gov PDF Dataset</a></li>
@@ -244,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -253,14 +256,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -335,26 +338,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -413,10 +410,10 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exploring-the-giphy-com-metadata">
-<h1>Exploring the <a class="reference external" href="http://GIPHY.com">GIPHY.com</a> Metadata<a class="headerlink" href="#exploring-the-giphy-com-metadata" title="Permalink to this heading">#</a></h1>
+<h1>Exploring the <a class="reference external" href="http://GIPHY.com">GIPHY.com</a> Metadata<a class="headerlink" href="#exploring-the-giphy-com-metadata" title="Link to this heading">#</a></h1>
 <p>This notebook demonstrates an intermediate approach to exploring the <a class="reference external" href="http://GIPHY.com">GIPHY.com</a> data set produced by the Library of Congress. <a class="reference external" href="http://GIPHY.com">GIPHY.com</a> is a site that has been archived by the Library of Congress in its Web Cultures archive. The data explored here is available from the LC Labs experiments page located here: <a class="reference external" href="https://labs.loc.gov/experiments/webarchive-datasets/">https://labs.loc.gov/experiments/webarchive-datasets/</a>.</p>
 <p>As an intermediate approach, this notebook uses functions as reuseable blocks of code. These functions could potentially be used outside of this notebook to help you explore the data further.</p>
 <p>If you’re looking for more of a beginner’s approach, check out the Meme Generator notebook, which explores the <a class="reference external" href="http://memegenerator.net">memegenerator.net</a> data set, also produced by the Library of Congress.</p>
@@ -428,16 +425,16 @@ document.write(`
 </ol>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="setting-up-the-environment">
-<h1>Setting up the Environment<a class="headerlink" href="#setting-up-the-environment" title="Permalink to this heading">#</a></h1>
+<h1>Setting up the Environment<a class="headerlink" href="#setting-up-the-environment" title="Link to this heading">#</a></h1>
 <section id="module-imports">
-<h2>Module Imports<a class="headerlink" href="#module-imports" title="Permalink to this heading">#</a></h2>
+<h2>Module Imports<a class="headerlink" href="#module-imports" title="Link to this heading">#</a></h2>
 <p>Below are all the <code class="docutils literal notranslate"><span class="pre">import</span></code> statements we’ll need in order perform some basic computations over the GIPHY data set. They are broken out into sections based on their use in this notebook. You will need to install the following Python modules:</p>
 <ul class="simple">
 <li><p>matplotlib</p></li>
 <li><p>tqdm</p></li>
 </ul>
 <section id="reading-writing-and-getting">
-<h3>Reading, Writing, and Getting<a class="headerlink" href="#reading-writing-and-getting" title="Permalink to this heading">#</a></h3>
+<h3>Reading, Writing, and Getting<a class="headerlink" href="#reading-writing-and-getting" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">import</span></code> statements below are for modules that we’ll use to get and read in the <code class="docutils literal notranslate"><span class="pre">giphy.csv</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -450,7 +447,7 @@ document.write(`
 </div>
 </section>
 <section id="processing">
-<h3>Processing<a class="headerlink" href="#processing" title="Permalink to this heading">#</a></h3>
+<h3>Processing<a class="headerlink" href="#processing" title="Link to this heading">#</a></h3>
 <p>The following <code class="docutils literal notranslate"><span class="pre">import</span></code> statements will help in the processing, sorting, and counting of the information from the data set.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -466,7 +463,7 @@ document.write(`
 </div>
 </section>
 <section id="visualizing-the-results">
-<h3>Visualizing the Results<a class="headerlink" href="#visualizing-the-results" title="Permalink to this heading">#</a></h3>
+<h3>Visualizing the Results<a class="headerlink" href="#visualizing-the-results" title="Link to this heading">#</a></h3>
 <p>The following <code class="docutils literal notranslate"><span class="pre">import</span></code> statements allow for us to visual the processes we’ll be running.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -483,10 +480,10 @@ document.write(`
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="defining-the-functions">
-<h1>Defining the Functions<a class="headerlink" href="#defining-the-functions" title="Permalink to this heading">#</a></h1>
+<h1>Defining the Functions<a class="headerlink" href="#defining-the-functions" title="Link to this heading">#</a></h1>
 <p>Below are four functions that we’ll use in our exploration of the GIPHY data set.</p>
 <section id="get-giphy-data-set">
-<h2>get_giphy_data_set<a class="headerlink" href="#get-giphy-data-set" title="Permalink to this heading">#</a></h2>
+<h2>get_giphy_data_set<a class="headerlink" href="#get-giphy-data-set" title="Link to this heading">#</a></h2>
 <p>This function checks to see if the giphy data set is present. The path it checks and the location to which it eventually downloads and unzips the data set can be modified, if desired. But by default, the function checks for a folder called <code class="docutils literal notranslate"><span class="pre">giphy-dataset</span></code> in the current working directory and for a file called <code class="docutils literal notranslate"><span class="pre">giphy.csv</span></code> within that folder.</p>
 <p>If the folder and file are present, nothing is done because the data set is already downloaded and extracted. If it’s not, then the function navigations to the data set’s downloadable URL, and saves the file as <code class="docutils literal notranslate"><span class="pre">giphy-dataset.zip</span></code> in the current working directory.</p>
 <p>Then, the function unzips the folder in the current working directory to create a folder called <code class="docutils literal notranslate"><span class="pre">giphy-dataset</span></code>, which contains the dataset file: <code class="docutils literal notranslate"><span class="pre">giphy.csv</span></code>.</p>
@@ -504,7 +501,7 @@ document.write(`
 </div>
 </section>
 <section id="load-giphy-data-set">
-<h2>load_giphy_data_set<a class="headerlink" href="#load-giphy-data-set" title="Permalink to this heading">#</a></h2>
+<h2>load_giphy_data_set<a class="headerlink" href="#load-giphy-data-set" title="Link to this heading">#</a></h2>
 <p>As the name implies, this function loads, or reads in, the data set as a list of lists–where each row in the data set is a list of each cell in that row. This list of lists is stored as a variable and return as the output of the function.</p>
 <p>This function utilizes prior knowledge of the data set, which may elude first-time users. For instance:
 The data set is read in under a <code class="docutils literal notranslate"><span class="pre">utf16</span></code> encoding.</p>
@@ -524,7 +521,7 @@ The data set is read in under a <code class="docutils literal notranslate"><span
 </div>
 </section>
 <section id="get-import-dates">
-<h2>get_import_dates<a class="headerlink" href="#get-import-dates" title="Permalink to this heading">#</a></h2>
+<h2>get_import_dates<a class="headerlink" href="#get-import-dates" title="Link to this heading">#</a></h2>
 <p>The following function will grab all the values from the <code class="docutils literal notranslate"><span class="pre">Import</span> <span class="pre">Date</span></code> column of the data set and turn the string <code class="docutils literal notranslate"><span class="pre">m/dd/yyyy</span></code> into a <a class="reference external" href="https://docs.python.org/3.7/library/datetime.html"><code class="docutils literal notranslate"><span class="pre">datetime</span></code> object</a> that can be grouped and sorted chronologically.</p>
 <p>The function takes the data set as a parameter and will return a dictionary of dates and the frequency of their occurrence.</p>
 <div class="cell docutils container">
@@ -561,7 +558,7 @@ The data set is read in under a <code class="docutils literal notranslate"><span
 </div>
 </section>
 <section id="create-bar-chart-from-distribution">
-<h2>create_bar_chart_from_distribution<a class="headerlink" href="#create-bar-chart-from-distribution" title="Permalink to this heading">#</a></h2>
+<h2>create_bar_chart_from_distribution<a class="headerlink" href="#create-bar-chart-from-distribution" title="Link to this heading">#</a></h2>
 <p>The following function creates a bar chart from a distribution object, that is, a list of tuples wherein the first item is a value and the second item in the tuple is the number of times that value occurred in the distribution.</p>
 <p>It takes an optional parameter of title for the chart.</p>
 <div class="cell docutils container">
@@ -594,10 +591,10 @@ The data set is read in under a <code class="docutils literal notranslate"><span
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="running-the-functions">
-<h1>Running the Functions<a class="headerlink" href="#running-the-functions" title="Permalink to this heading">#</a></h1>
+<h1>Running the Functions<a class="headerlink" href="#running-the-functions" title="Link to this heading">#</a></h1>
 <p>Now that we’ve defined the functions, we can run them.</p>
 <section id="get-the-data-set">
-<h2>1) Get the Data Set<a class="headerlink" href="#get-the-data-set" title="Permalink to this heading">#</a></h2>
+<h2>1) Get the Data Set<a class="headerlink" href="#get-the-data-set" title="Link to this heading">#</a></h2>
 <p>Call the <code class="docutils literal notranslate"><span class="pre">get_giphy_data_set</span></code> function that will download and extract the data set for us</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -608,7 +605,7 @@ The data set is read in under a <code class="docutils literal notranslate"><span
 </div>
 </section>
 <section id="load-the-data-set">
-<h2>2) Load the Data Set<a class="headerlink" href="#load-the-data-set" title="Permalink to this heading">#</a></h2>
+<h2>2) Load the Data Set<a class="headerlink" href="#load-the-data-set" title="Link to this heading">#</a></h2>
 <p>Now that the data set is downloded and extracted, call the <code class="docutils literal notranslate"><span class="pre">load_giphy_data_set</span></code> function that reads in and returns the GIPHY data set as a list of dictionary objects.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -619,7 +616,7 @@ The data set is read in under a <code class="docutils literal notranslate"><span
 </div>
 </section>
 <section id="preview-of-the-giphy-data-set-content">
-<h2>Preview of the <code class="docutils literal notranslate"><span class="pre">giphy_data_set</span></code> content<a class="headerlink" href="#preview-of-the-giphy-data-set-content" title="Permalink to this heading">#</a></h2>
+<h2>Preview of the <code class="docutils literal notranslate"><span class="pre">giphy_data_set</span></code> content<a class="headerlink" href="#preview-of-the-giphy-data-set-content" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">giphy_data_set</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
@@ -654,7 +651,7 @@ The data set is read in under a <code class="docutils literal notranslate"><span
 </div>
 </section>
 <section id="chart-the-import-dates">
-<h2>3) Chart the Import Dates<a class="headerlink" href="#chart-the-import-dates" title="Permalink to this heading">#</a></h2>
+<h2>3) Chart the Import Dates<a class="headerlink" href="#chart-the-import-dates" title="Link to this heading">#</a></h2>
 <p>We’ll chart the Import Dates collected, counted, sorted, and stored in the <code class="docutils literal notranslate"><span class="pre">import_dates</span></code> variable. We’ll pass that variable into the <code class="docutils literal notranslate"><span class="pre">create_bar_chart_from_distributions</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -669,7 +666,7 @@ The data set is read in under a <code class="docutils literal notranslate"><span
 </div>
 </section>
 <section id="smallest-largest">
-<h2>4) Smallest &amp; Largest<a class="headerlink" href="#smallest-largest" title="Permalink to this heading">#</a></h2>
+<h2>4) Smallest &amp; Largest<a class="headerlink" href="#smallest-largest" title="Link to this heading">#</a></h2>
 <p>Just for fun let’s see what the smallest GIF is, bytes wise. We can sort our <code class="docutils literal notranslate"><span class="pre">giphy_data_set</span></code> list using the <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">Size</span> <span class="pre">(In</span> <span class="pre">Bytes)</span></code> dictionary key:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -707,7 +704,7 @@ The data set is read in under a <code class="docutils literal notranslate"><span
 <p>Yeah, that’s a 115 MB GIF so we’re not displaying it here in the Notebook! But you can check it out <a class="reference external" href="http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3AvZg1V7GsuAM/giphy.gif">here</a></p>
 </section>
 <section id="search-the-titles">
-<h2>5) Search the Titles<a class="headerlink" href="#search-the-titles" title="Permalink to this heading">#</a></h2>
+<h2>5) Search the Titles<a class="headerlink" href="#search-the-titles" title="Link to this heading">#</a></h2>
 <p>We can also create a text box here in the notebook to let you search through the GIF titles and display them. Type a word into the text box and you should see some results pop up. If you aren’t running the notebook yourself you probably won’t see the input box, but the word ‘book’ was used.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -769,7 +766,7 @@ http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o6gb
 </div>
 </section>
 <section id="hydrate-the-dataset">
-<h2>6) Hydrate the Dataset<a class="headerlink" href="#hydrate-the-dataset" title="Permalink to this heading">#</a></h2>
+<h2>6) Hydrate the Dataset<a class="headerlink" href="#hydrate-the-dataset" title="Link to this heading">#</a></h2>
 <p>Finally we will download all the GIFs to your workstation for you to use. There are 10,972 of them, and we will pause a little bit between image downloads so as not to overload LC’s webarchive server, so it’ll take a while (probably about 6 hours).</p>
 <p>First lets make a directory to put the GIFs (<code class="docutils literal notranslate"><span class="pre">files/gifs</span></code>):</p>
 <div class="cell docutils container">
@@ -807,7 +804,7 @@ http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o6gb
 </div>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>We hope that this notebook has helped you understand and explore this dataset! As you continue to explore, we’d love to hear about anything interesting and cool that you make. You can contact us by leaving a comment on the Library of Congress’ The Signal blog (<a class="reference external" href="http://blogs.loc.gov/thesignal/">http://blogs.loc.gov/thesignal/</a>) or through our contact form at <a class="reference external" href="https://www.loc.gov/programs/web-archiving/about-this-program/contact-us/">https://www.loc.gov/programs/web-archiving/about-this-program/contact-us/</a>.</p>
 <p>You can read more about how Library of Congress staff analyzed this data set in this post on The Signal blog: <a class="reference external" href="http://blogs.loc.gov/thesignal/2018/10/data-mining-memes-in-the-digital-culture-web-archive/">http://blogs.loc.gov/thesignal/2018/10/data-mining-memes-in-the-digital-culture-web-archive/</a>. Have fun exploring these memes in more detail!</p>
 <p><strong>Contributors:</strong></p>
@@ -846,8 +843,8 @@ http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o6gb
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="getting_started_with_memegenerator.html"
@@ -874,7 +871,9 @@ http://webarchive.loc.gov/all/20150318155641/https://media.giphy.com/media/3o6gb
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -932,9 +931,10 @@ By Library of Congress staff
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -981,8 +981,8 @@ By Library of Congress staff
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>

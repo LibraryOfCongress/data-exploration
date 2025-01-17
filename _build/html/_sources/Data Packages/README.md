@@ -29,8 +29,8 @@ Each data package has a Jupyter notebook demonstrating how to access and use tha
 - [Digitized Books Data Package](https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Packages/digitized-books.ipynb)
 - [Directory Holdings Data Package](https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Packages/directories.ipynb)
 - [Telephone Directories Data Package](https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Packages/telephone.ipynb)
+- [Selected Dot Gov Media Types, Web Archives Data Package](https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Packages/dot-gov-pdf.ipynb)
 - [Stereograph Card Images Data Package](https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Packages/stereographs.ipynb)
 - [Austro-Hungarian Map Set Data Package](https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Packages/austro-hungarian-maps.ipynb)
 - [General Collection Assessment Data Package](https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Packages/gen-coll-assessment.ipynb)
-
-
+- [United States Elections, Web Archives Data Package](https://github.com/LibraryOfCongress/data-exploration/blob/master/Data%20Packages/us-elections.ipynb)

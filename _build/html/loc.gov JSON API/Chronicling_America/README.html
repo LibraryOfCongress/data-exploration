@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Using the loc.gov API with the Chronicling America Historic Newspapers Collection &#8212; Tutorials for Data Exploration</title>
   
@@ -15,62 +14,62 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
 
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/loc.css?v=f609767c" />
   
-  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
-
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/loc.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
-    <script src="../../_static/loc.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'loc.gov JSON API/Chronicling_America/README';</script>
+    <script src="../../_static/loc.js?v=09f1a01c"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Learning and Applying Basic API Tasks in Chronicling America" href="ChronAm_basic_API%20tasks.html" />
     <link rel="prev" title="Analyzing and visualizing cartographic metadata from loc.gov" href="../maps/maps-analyzing-metadata.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
   </head>
   
   
@@ -78,32 +77,16 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
-  
-  <input type="checkbox"
-          class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
-  
-  <div class="search-button__wrapper">
-    <div class="search-button__overlay"></div>
-    <div class="search-button__search-container">
+  <dialog id="pst-search-dialog">
+    
 <form class="bd-search d-flex align-items-center"
       action="../../search.html"
       method="get">
@@ -111,7 +94,6 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search"
          class="form-control"
          name="q"
-         id="search-input"
          placeholder="Search this book..."
          aria-label="Search this book..."
          autocomplete="off"
@@ -119,16 +101,25 @@ const thebe_selector_output = ".output, .cell_output"
          autocapitalize="off"
          spellcheck="false"/>
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
-</form></div>
-  </div>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
       
-      <div class="bd-sidebar-primary bd-sidebar">
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
         
 
   
@@ -141,6 +132,9 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../../intro.html">
@@ -149,10 +143,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     <p class="title logo__title">Tutorials for Data Exploration</p>
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -210,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/sanborn.html">LoC Data Package Tutorial: Sanborn Maps collection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/us-elections.html">LoC Data Package Tutorial: United States Elections, Web Archives Data Package</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/free-to-use.html">LoC Data Package Tutorial: Free to Use collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/jukebox.html">LoC Data Package Tutorial: National Jukebox collection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Data%20Packages/dot-gov-pdf.html">LoC Data Package Tutorial: 1000 Dot Gov PDF Dataset</a></li>
@@ -244,7 +247,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -253,14 +256,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -335,26 +338,20 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
-  </button>
-`);
-</script>
 
-<script>
-document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
-  </button>
-`);
-</script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -417,31 +414,31 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="using-the-loc-gov-api-with-the-chronicling-america-historic-newspapers-collection">
-<h1>Using the <a class="reference external" href="http://loc.gov">loc.gov</a> API with the Chronicling America Historic Newspapers Collection<a class="headerlink" href="#using-the-loc-gov-api-with-the-chronicling-america-historic-newspapers-collection" title="Permalink to this heading">#</a></h1>
+<h1>Using the <a class="reference external" href="http://loc.gov">loc.gov</a> API with the Chronicling America Historic Newspapers Collection<a class="headerlink" href="#using-the-loc-gov-api-with-the-chronicling-america-historic-newspapers-collection" title="Link to this heading">#</a></h1>
 <section id="about-this-repository">
-<h2>About this Repository<a class="headerlink" href="#about-this-repository" title="Permalink to this heading">#</a></h2>
-<p>This repository contains information about using the <a class="reference external" href="https://www.loc.gov/apis/">LoC.gov API</a> with the Chronicling America collection.  Additionally there are six (6) Jupyter notebooks designed specifically for using the <a class="reference external" href="http://loc.gov">loc.gov</a> API to access Chronicling America content. To jump directly to the Jupyter Notebooks, see <strong>Example Notebooks</strong> below. <span class="xref myst">Jump to Notebooks</span></p>
+<h2>About this Repository<a class="headerlink" href="#about-this-repository" title="Link to this heading">#</a></h2>
+<p>This repository contains information about using the <a class="reference external" href="https://www.loc.gov/apis/">LoC.gov API</a> with the Chronicling America collection.  Additionally there are six (6) Jupyter notebooks designed specifically for using the <a class="reference external" href="http://loc.gov">loc.gov</a> API to access Chronicling America content. To jump directly to the Jupyter Notebooks, see <strong>Example Notebooks</strong> below. <a class="reference internal" href="#/#example-notebooks-performing-basic-tasks-analysis-and-downloads"><span class="xref myst">Jump to Notebooks</span></a></p>
 <section id="credits">
-<h3>Credits<a class="headerlink" href="#credits" title="Permalink to this heading">#</a></h3>
+<h3>Credits<a class="headerlink" href="#credits" title="Link to this heading">#</a></h3>
 <p>The Jupyter notebooks in this repository were created by NDNP staff in the Serial and Government Publications Division at the Library of Congress. The content was inspired by, and at times closely follows, the notebooks created by <a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/861bbe6e0fb9992fe1c4fedf43e3f61bccd980bc/loc.gov%20JSON%20API/maps/README.md">LC Maps for Robots</a></p>
 <p>Contact <a class="reference external" href="mailto:ndnptech&#37;&#52;&#48;loc&#46;gov">ndnptech<span>&#64;</span>loc<span>&#46;</span>gov</a> for questions about these Chronicling America notebooks.</p>
 </section>
 <section id="rights-statement">
-<h3>Rights Statement<a class="headerlink" href="#rights-statement" title="Permalink to this heading">#</a></h3>
+<h3>Rights Statement<a class="headerlink" href="#rights-statement" title="Link to this heading">#</a></h3>
 <p>The content in this repository is free to use and reuse without restriction.</p>
 </section>
 </section>
 <hr class="docutils" />
 <section id="chronicling-america-digital-collection-of-historic-american-newspapers">
-<h2>Chronicling America: Digital Collection of Historic American Newspapers<a class="headerlink" href="#chronicling-america-digital-collection-of-historic-american-newspapers" title="Permalink to this heading">#</a></h2>
+<h2>Chronicling America: Digital Collection of Historic American Newspapers<a class="headerlink" href="#chronicling-america-digital-collection-of-historic-american-newspapers" title="Link to this heading">#</a></h2>
 <p><a class="reference external" href="https://www.loc.gov/collections/chronicling-america/about-this-collection/"><strong>Chronicling America</strong></a> is a searchable and freely accessible digital collection of historic newspaper pages. A product of the National Digital Newspaper Program (NDNP), it contains millions of newspaper pages from nearly every state and territory in the United States published through 1963.</p>
 <p>NDNP, a partnership between the National Endowment for the Humanities (NEH) and the Library of Congress, is a long-term effort to develop an Internet-based, searchable database of U.S. newspapers with descriptive information and select digitization of historic pages. Supported by NEH, this rich digital resource is developed and permanently maintained at the Library of Congress. An NEH award program will fund the contribution of content from, eventually, all U.S. states and territories.</p>
 <p>More information on program guidelines, participation, and technical information can be found on the <a class="reference external" href="https://guides.loc.gov/chronicling-america"><strong>Chronicling America LibGuide</strong></a>, <a class="reference external" href="https://www.loc.gov/collections/chronicling-america/about-this-collection/"><strong>Library of Congress: Chronicling America Collection</strong></a> and on the <a class="reference external" href="http://www.neh.gov/projects/ndnp.html"><strong>National Endowment for the Humanities website</strong></a>.</p>
 <section id="note-on-language-in-chronicling-america">
-<h3>Note on Language in Chronicling America<a class="headerlink" href="#note-on-language-in-chronicling-america" title="Permalink to this heading">#</a></h3>
+<h3>Note on Language in Chronicling America<a class="headerlink" href="#note-on-language-in-chronicling-america" title="Link to this heading">#</a></h3>
 <p>Developing the most useful keywords requires knowing what terms were used in the period you are searching, rather than what the common, contemporary terms might be. This can be particularly challenging when searching for news about race and ethnicity, since much of the language describing such communities has evolved and changed throughout the centuries.</p>
 <p>The <strong><a class="reference external" href="https://edsitement.neh.gov/media-resources/race-and-ethnicity-keyword-thesaurus-chronicling-america">Race and Ethnicity Keyword Thesaurus for Chronicling America</a></strong> features a guide to searching topics of race and ethnicity in Chronicling America, including a thesaurus of words used in the past that may help produce more results. Primary documents from the past contain sensitive content, and the suggested keywords are often offensive to several different communities of people.</p>
 <p>Created by partners in the <a class="reference external" href="https://www.loc.gov/ndnp/awards/">National Digital Newspaper Program</a>, this resource hopes to serve researchers at all levels through demonstrations and explanations of search terms related to race and ethnicity in Chronicling America.</p>
@@ -450,11 +447,11 @@ document.write(`
 </section>
 <hr class="docutils" />
 <section id="loc-gov-api">
-<h2><a class="reference external" href="http://LOC.GOV">LOC.GOV</a> API<a class="headerlink" href="#loc-gov-api" title="Permalink to this heading">#</a></h2>
+<h2><a class="reference external" href="http://LOC.GOV">LOC.GOV</a> API<a class="headerlink" href="#loc-gov-api" title="Link to this heading">#</a></h2>
 <p>The <a class="reference external" href="http://loc.gov">loc.gov</a> application programming interface (API) provides structured data about Library of Congress collections in JSON and YAML formats. Software programs routinely access the JSON/YAML API to keep the <a class="reference external" href="http://loc.gov">loc.gov</a> website updated as new digital content is added to the Library’s collections. For example, JSON data is used to build <a class="reference external" href="http://loc.gov">loc.gov</a> pages for items (<a class="reference external" href="http://loc.gov/item">loc.gov/item</a>), collections (<a class="reference external" href="http://loc.gov/collections/">loc.gov/collections/</a>), searches (<a class="reference external" href="http://loc.gov/search/">loc.gov/search/</a>), and more.</p>
 <p>However, in addition to being a resource for the computer applications powering the <a class="reference external" href="http://loc.gov">loc.gov</a> website, the API can be used by developers, digital librarians, and researchers to directly retrieve digital collections information formatted as JSON or YAML data.</p>
 <section id="access">
-<h3>Access<a class="headerlink" href="#access" title="Permalink to this heading">#</a></h3>
+<h3>Access<a class="headerlink" href="#access" title="Link to this heading">#</a></h3>
 <p>The <a class="reference external" href="http://loc.gov">loc.gov</a> API is accessible to the public with no API key or authentication required.
 Additional information can be found at: <a class="reference external" href="https://www.loc.gov/apis/">APIs for LoC.gov</a></p>
 </section>
@@ -462,9 +459,9 @@ Additional information can be found at: <a class="reference external" href="http
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="rate-limits-and-definitions">
-<h1>Rate Limits and Definitions<a class="headerlink" href="#rate-limits-and-definitions" title="Permalink to this heading">#</a></h1>
+<h1>Rate Limits and Definitions<a class="headerlink" href="#rate-limits-and-definitions" title="Link to this heading">#</a></h1>
 <section id="rate-limits">
-<h2>Rate Limits<a class="headerlink" href="#rate-limits" title="Permalink to this heading">#</a></h2>
+<h2>Rate Limits<a class="headerlink" href="#rate-limits" title="Link to this heading">#</a></h2>
 <p>When working with and downloading bulk data using the <a class="reference external" href="http://loc.gov">loc.gov</a> API, please be mindful of rate limits for Newspapers. Requests that exceed the rate which <a class="reference external" href="http://loc.gov">loc.gov</a> can successfully accommodate will be blocked to prevent a denial of service.</p>
 <blockquote>
 <div><p><strong>Newspapers Endpoints:</strong></p>
@@ -486,7 +483,7 @@ Additional information can be found at: <a class="reference external" href="http
 </section>
 <hr class="docutils" />
 <section id="definitions-api-query-paramenters-for-newspapers">
-<h2>Definitions: API Query Paramenters for Newspapers<a class="headerlink" href="#definitions-api-query-paramenters-for-newspapers" title="Permalink to this heading">#</a></h2>
+<h2>Definitions: API Query Paramenters for Newspapers<a class="headerlink" href="#definitions-api-query-paramenters-for-newspapers" title="Link to this heading">#</a></h2>
 <p>The easiest way to create a URL for your API query is to perform an <strong>Advanced Search</strong> at <a class="reference external" href="https://www.loc.gov/collections/chronicling-america/">Chronicling America</a>.</p>
 <blockquote>
 <div><p>If you performed an Advanced Search to create your API Query, we recommend including some of the additional query parameters.</p>
@@ -496,7 +493,7 @@ Additional information can be found at: <a class="reference external" href="http
 </pre></div>
 </div>
 <p><strong>Base URL</strong>: To perform an API query on Newspapers from Chronicling America, you need a URL which is divided with the following sections:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Library of Congress Website</p></th>
 <th class="head"><p>End Point</p></th>
@@ -532,13 +529,14 @@ Additional information can be found at: <a class="reference external" href="http
 </tr>
 </tbody>
 </table>
+</div>
 <p>Example API Query URL:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>https://www.loc.gov/collections/chronicling-america/?dl=page&amp;end_date=1924-12-31&amp;qs=cat&amp;start_date=1924-10-01&amp;location_state=california&amp;fo=json
 </pre></div>
 </div>
 <hr class="docutils" />
 <p>For <strong>Newspapers from the Chronicling America collection</strong>, the most useful <strong>Query Parameters</strong> used in the <a class="reference external" href="http://loc.gov">loc.gov</a> API are:</p>
-<table class="table">
+<div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Parameter</p></th>
 <th class="head"><p>Effect on the Query</p></th>
@@ -640,6 +638,7 @@ Additional information can be found at: <a class="reference external" href="http
 </tr>
 </tbody>
 </table>
+</div>
 <blockquote>
 <div><p>Note: If you’re looking to download full text from the newspaper pages in a given search result, note that the full text (from OCR) is captured for each page within the “full_text” JSON field.  For example: <a class="reference external" href="https://www.loc.gov/resource/sn83045462/1922-12-26/ed-1/?sp=22&amp;amp;q=clara+bow&amp;amp;fo=json">https://www.loc.gov/resource/sn83045462/1922-12-26/ed-1/?sp=22&amp;q=clara+bow&amp;fo=json</a></p>
 </div></blockquote>
@@ -647,7 +646,7 @@ Additional information can be found at: <a class="reference external" href="http
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="example-notebooks-performing-basic-tasks-analysis-and-downloads">
-<h1>Example Notebooks (Performing Basic Tasks, Analysis, and Downloads)<a class="headerlink" href="#example-notebooks-performing-basic-tasks-analysis-and-downloads" title="Permalink to this heading">#</a></h1>
+<h1>Example Notebooks (Performing Basic Tasks, Analysis, and Downloads)<a class="headerlink" href="#example-notebooks-performing-basic-tasks-analysis-and-downloads" title="Link to this heading">#</a></h1>
 <p>Below are various examples and tasks you can perform using the <a class="reference external" href="https://www.loc.gov/apis/">APIs for LoC.gov</a> with Chronicling America. They cover performing basic tasks, analysis, and downloads.</p>
 <ul class="simple">
 <li><p>Each notebook is linked and designed to be downloaded to your computer and opened with Jupyter Notebook or Google Colab (a jupyter notebook service).</p></li>
@@ -659,7 +658,7 @@ Additional information can be found at: <a class="reference external" href="http
 </div></blockquote>
 <hr class="docutils" />
 <section id="example-notebook-1-basic-api-tasks">
-<h2>Example Notebook 1: Basic API Tasks<a class="headerlink" href="#example-notebook-1-basic-api-tasks" title="Permalink to this heading">#</a></h2>
+<h2>Example Notebook 1: Basic API Tasks<a class="headerlink" href="#example-notebook-1-basic-api-tasks" title="Link to this heading">#</a></h2>
 <p>Learning and performing some of these Basic API tasks can ensure your results will contain all the data you need.</p>
 <p>Objectives:</p>
 <ol class="arabic simple">
@@ -672,7 +671,7 @@ Additional information can be found at: <a class="reference external" href="http
 </section>
 <hr class="docutils" />
 <section id="example-notebook-2-analyzing-specific-newspapers-for-content">
-<h2>Example Notebook 2: Analyzing Specific Newspapers for Content<a class="headerlink" href="#example-notebook-2-analyzing-specific-newspapers-for-content" title="Permalink to this heading">#</a></h2>
+<h2>Example Notebook 2: Analyzing Specific Newspapers for Content<a class="headerlink" href="#example-notebook-2-analyzing-specific-newspapers-for-content" title="Link to this heading">#</a></h2>
 <p><strong>Notebook Example:</strong></p>
 <blockquote>
 <div><p>The <em>Washington Times</em> newspaper printed a special children’s section called “Book of Magic.” This section contains children stories and coloring and puzzle activities.
@@ -688,7 +687,7 @@ Specifically, we will utilize the API tool to 1. Narrow our search to a specific
 </section>
 <hr class="docutils" />
 <section id="example-notebook-3-analyzing-word-frequency-on-newspaper-front-pages">
-<h2>Example Notebook 3: Analyzing Word Frequency on Newspaper Front Pages<a class="headerlink" href="#example-notebook-3-analyzing-word-frequency-on-newspaper-front-pages" title="Permalink to this heading">#</a></h2>
+<h2>Example Notebook 3: Analyzing Word Frequency on Newspaper Front Pages<a class="headerlink" href="#example-notebook-3-analyzing-word-frequency-on-newspaper-front-pages" title="Link to this heading">#</a></h2>
 <p><strong>Notebook Example:</strong></p>
 <blockquote>
 <div><p>On August 18, 1920, Tennessee became the 36th state to ratify the 19th amendment which provided the final ratification necessary to add the amendment to the U.S. Constition which gave women the right to vote. In this example, we will look at the word frequency for the term “Suffrage” on the front pages of the newspapers on August 26, 1920 (when U.S. government officially certified state’s ratification of the 19th amendment) and the day after (August 27, 1920).</p>
@@ -702,7 +701,7 @@ Specifically, we will utilize the API tool to 1. Narrow our search to a specific
 </section>
 <hr class="docutils" />
 <section id="example-notebook-4-analyzing-word-frequency-and-location">
-<h2>Example Notebook 4: Analyzing Word Frequency and Location<a class="headerlink" href="#example-notebook-4-analyzing-word-frequency-and-location" title="Permalink to this heading">#</a></h2>
+<h2>Example Notebook 4: Analyzing Word Frequency and Location<a class="headerlink" href="#example-notebook-4-analyzing-word-frequency-and-location" title="Link to this heading">#</a></h2>
 <p><strong>Notebook Example:</strong></p>
 <blockquote>
 <div><p>We wil utilize the API tool to look at the frequency of word usage found in Newspapers in relationship to time (when was the term published in newspapers) and location (where the term was most commonly used at on a newspaper’s state location) using the term “influenza.”</p>
@@ -717,7 +716,7 @@ Specifically, we will utilize the API tool to 1. Narrow our search to a specific
 </section>
 <hr class="docutils" />
 <section id="example-notebook-5-downloading-search-results">
-<h2>Example Notebook 5: Downloading Search Results<a class="headerlink" href="#example-notebook-5-downloading-search-results" title="Permalink to this heading">#</a></h2>
+<h2>Example Notebook 5: Downloading Search Results<a class="headerlink" href="#example-notebook-5-downloading-search-results" title="Link to this heading">#</a></h2>
 <p>Objectives:</p>
 <ol class="arabic simple">
 <li><p>Download Files from the Search Results</p></li>
@@ -731,7 +730,7 @@ Specifically, we will utilize the API tool to 1. Narrow our search to a specific
 </section>
 <hr class="docutils" />
 <section id="example-notebook-6-part-1-downloading-a-newspaper-title">
-<h2>Example Notebook 6: Part 1: Downloading a Newspaper Title<a class="headerlink" href="#example-notebook-6-part-1-downloading-a-newspaper-title" title="Permalink to this heading">#</a></h2>
+<h2>Example Notebook 6: Part 1: Downloading a Newspaper Title<a class="headerlink" href="#example-notebook-6-part-1-downloading-a-newspaper-title" title="Link to this heading">#</a></h2>
 <p>To download a specific newspaper title, you need to know the following information:</p>
 <ul class="simple">
 <li><p>the newspaper Title’s LCCN or the correct full name/spelling of the Newsaper.</p></li>
@@ -763,7 +762,7 @@ Query all newspaper issues found in Chronicling America for the Evening Star in 
 </section>
 <hr class="docutils" />
 <section id="example-notebook-6-part-2-download-an-ndnp-batch">
-<h2>Example Notebook 6: Part 2: Download an NDNP Batch<a class="headerlink" href="#example-notebook-6-part-2-download-an-ndnp-batch" title="Permalink to this heading">#</a></h2>
+<h2>Example Notebook 6: Part 2: Download an NDNP Batch<a class="headerlink" href="#example-notebook-6-part-2-download-an-ndnp-batch" title="Link to this heading">#</a></h2>
 <p>To download an NDNP Batch, you need to know the following information:</p>
 <ul class="simple">
 <li><p>The correct full name/spelling of the batch.</p></li>
@@ -786,7 +785,7 @@ To download all newspaper titles in a batch from Tennessee called <code class="d
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="additional-resources">
-<h1>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this heading">#</a></h1>
+<h1>Additional Resources<a class="headerlink" href="#additional-resources" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://www.loc.gov/collections/chronicling-america/about-this-collection/">Chronicling America</a></p>
 <p><a class="reference external" href="https://www.loc.gov/ndnp/data-visualizations/">Chronicling America Data Visualizations</a></p>
 <p><a class="reference external" href="https://guides.loc.gov/chronicling-america">Chronicling America: A Guide for Researchers</a></p>
@@ -826,8 +825,8 @@ To download all newspaper titles in a batch from Tennessee called <code class="d
               
               
               
-                <footer class="prev-next-footer">
-                  <!-- Previous / next buttons -->
+                <footer class="prev-next-footer d-print-none">
+                  
 <div class="prev-next-area">
     <a class="left-prev"
        href="../maps/maps-analyzing-metadata.html"
@@ -854,7 +853,9 @@ To download all newspaper titles in a batch from Tennessee called <code class="d
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -916,9 +917,10 @@ By Library of Congress staff
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -965,8 +967,8 @@ By Library of Congress staff
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../../_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
 
   <footer class="bd-footer">
   </footer>
