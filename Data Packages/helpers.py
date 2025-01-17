@@ -216,6 +216,7 @@ def make_request(
                 return invalid
 
         else:
+            output = response
             if verbose is True:
                 print(f"Successfull request: {url} {params}")
             # Proceed to RETURN SUCCESSFUL RESULT
