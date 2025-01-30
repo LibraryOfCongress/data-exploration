@@ -401,7 +401,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="loc-data-package-tutorial-united-states-elections-web-archives-data-package">
 <h1>LoC Data Package Tutorial: United States Elections, Web Archives Data Package<a class="headerlink" href="#loc-data-package-tutorial-united-states-elections-web-archives-data-package" title="Link to this heading">#</a></h1>
-<p>version 2.0</p>
+<p><strong>Version of this notebook</strong>: 2.1</p>
+<p><strong>Last run</strong>: 2025-01-17</p>
 <p>This notebook will demonstrate basic usage of using Python for interacting with <a class="reference external" href="https://data.labs.loc.gov/packages/">data packages from the Library of Congress</a> via the <a class="reference external" href="https://data.labs.loc.gov/us-elections/">United States Elections, Web Archives Data Package</a> which is derived from the Library’s <a class="reference external" href="https://www.loc.gov/collections/united-states-elections-web-archive/">United States Elections Web Archive</a>. We will:</p>
 <ol class="arabic simple">
 <li><p><a class="reference internal" href="#Output-data-package-summary"><span class="xref myst">Output data package sumary</span></a></p></li>
@@ -418,6 +419,7 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">ast</span>  <span class="c1"># For reading structured data from metadata.csv</span>
+<span class="kn">import</span> <span class="nn">io</span> <span class="c1"># For reading remote CSV files with the pandas module</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># For reading, manipulating, and displaying data</span>
 <span class="kn">import</span> <span class="nn">requests</span>  <span class="c1"># For retrieving online files</span>
 <span class="kn">import</span> <span class="nn">sys</span> <span class="c1"># For general system tasks</span>
@@ -487,11 +489,11 @@
 <p>Because the CDX index files are a mixed bag of additional content, the <code class="docutils literal notranslate"><span class="pre">metadata.csv</span></code> file can be used to target content just from political candidate website domains.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATA_URL</span><span class="si">}</span><span class="s1">metadata.json&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata_url</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATA_URL</span><span class="si">}</span><span class="s1">metadata.csv&#39;</span>
 <span class="n">is_blocked</span><span class="p">,</span> <span class="n">response</span> <span class="o">=</span> <span class="n">make_request</span><span class="p">(</span><span class="n">metadata_url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
 
-<span class="n">metadata_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">metadata_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Loaded metadata file with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">metadata_df</span><span class="p">)</span><span class="si">:</span><span class="s1">,</span><span class="si">}</span><span class="s1"> entries.&#39;</span><span class="p">)</span>
 </pre></div>
@@ -506,8 +508,7 @@
 <p>Next let’s convert to pandas DataFrame and print the available properties.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># metadata_df = pd.read_csv(r&quot;C:\Users\rtrent\git\lcwa-election-datasets\metadata\full_metadata_2000-2016.csv&quot;, dtype=str) # just for testing</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">metadata_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">()))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;, &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">metadata_df</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">to_list</span><span class="p">()))</span>
 </pre></div>
 </div>
 </div>
@@ -539,74 +540,15 @@
 <p>Let’s look at an example row to understand how to interpret the fields. We’ll write out a paragraph describing our example row. We’ll look at row #<code class="docutils literal notranslate"><span class="pre">3460</span></code> (which we happen to know represents the only candidate in <code class="docutils literal notranslate"><span class="pre">metadata.csv</span></code> to have campaigned in two races in the same year under different parties):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># First, let&#39;s make sure that our dataframe columns with lists are interpretted correctly. </span>
-<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_elections&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_elections&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
-<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_parties&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_parties&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
-<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_places&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_places&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
-<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_districts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_districts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
-<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;item_all_years&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;item_all_years&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
-<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_all_years&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_all_years&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
-<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_scopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_scopes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="mi">3460</span> <span class="c1"># You can change this row number</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row_num</span> <span class="o">=</span> <span class="mi">3460</span> <span class="c1"># You can change this row number</span>
 
-<span class="c1"># We&#39;ll grab all the info we need from our row. </span>
-<span class="n">item_title</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="s1">&#39;item_title&#39;</span><span class="p">]</span>
-<span class="n">website_url</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="s1">&#39;website_url&#39;</span><span class="p">]</span>
-<span class="n">collection</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="s1">&#39;collection&#39;</span><span class="p">]</span>
-<span class="n">candidate_name</span> <span class="o">=</span> <span class="n">item_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="n">year</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-<span class="n">campaign_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="s1">&#39;website_elections&#39;</span><span class="p">])</span>
-<span class="n">website_elections</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="s1">&#39;website_elections&#39;</span><span class="p">]</span>
-<span class="n">website_parties</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="s1">&#39;website_parties&#39;</span><span class="p">]</span>
-<span class="n">website_places</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="s1">&#39;website_places&#39;</span><span class="p">]</span>
-<span class="n">website_districts</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="s1">&#39;website_districts&#39;</span><span class="p">]</span>
-<span class="n">website_all_years</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="s1">&#39;website_all_years&#39;</span><span class="p">]</span>
-<span class="n">website_all_years</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-<span class="n">item_all_years</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="s1">&#39;item_all_years&#39;</span><span class="p">]</span>
-<span class="n">item_all_years</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
-<span class="n">item_id</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="s1">&#39;item_id&#39;</span><span class="p">]</span>
-<span class="n">mods_url</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row</span><span class="p">][</span><span class="s1">&#39;mods_url&#39;</span><span class="p">]</span>
-
-<span class="c1"># Now we&#39;ll plug those variables into our sentences.</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Record #</span><span class="si">{</span><span class="n">row</span><span class="si">}</span><span class="s1"> in the metadata.csv is: </span><span class="si">{</span><span class="n">website_url</span><span class="si">}</span><span class="s1">, from the collection &quot;</span><span class="si">{</span><span class="n">collection</span><span class="si">}</span><span class="s1">&quot;.&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;This row represents the website in </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">, used for campaign(s) of the candidate: </span><span class="si">{</span><span class="n">candidate_name</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span> 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;In </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">, this candidate used this website in </span><span class="si">{</span><span class="n">campaign_count</span><span class="si">}</span><span class="s1"> campaign(s):&#39;</span><span class="p">)</span>
-<span class="n">i</span><span class="o">=</span><span class="mi">0</span>
-<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">campaign_count</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">website_districts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">house_district</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">house_district</span> <span class="o">=</span> <span class="n">website_districts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">. </span><span class="si">{</span><span class="n">website_elections</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">website_parties</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">website_places</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">house_district</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">website_all_years</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>   
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;This website (</span><span class="si">{</span><span class="n">website_url</span><span class="si">}</span><span class="s1">) was also used for these other campaign year(s) for </span><span class="si">{</span><span class="n">candidate_name</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">website_all_years</span><span class="p">)</span><span class="o">-</span><span class="nb">set</span><span class="p">(</span><span class="n">year</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;In total, this and possibly other websites were collected for this candidate in the following year(s): </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">item_all_years</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The loc.gov item record for </span><span class="si">{</span><span class="n">candidate_name</span><span class="si">}</span><span class="s1"> campaign sites can be viewed at </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s1">, and its MODS record can be viewed at </span><span class="si">{</span><span class="n">mods_url</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
-
-<span class="c1"># The next line displays our dataframe as a table. Let&#39;s set it to show up to 300 characters in each cell</span>
-<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_colwidth</span> <span class="o">=</span> <span class="mi">300</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Here is how this row appears in `metadata.csv`:&#39;</span><span class="p">)</span>                       
-<span class="n">metadata_df</span><span class="p">[</span><span class="n">row</span><span class="p">:</span><span class="n">row</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Here is how row #</span><span class="si">{</span><span class="n">row_num</span><span class="si">}</span><span class="s1"> appears in `metadata.csv`:&#39;</span><span class="p">)</span>                       
+<span class="n">metadata_df</span><span class="p">[</span><span class="n">row_num</span><span class="p">:</span><span class="n">row_num</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Record #3460 in the metadata.csv is: http://www.usmjp.com/, from the collection &quot;United States Elections, 2012&quot;.
-This row represents the website in 2012, used for campaign(s) of the candidate: Cris Ericson.
-In 2012, this candidate used this website in 2 campaign(s):
-  0. United States. Congress. Senate | U.S. Marijuana Party | Vermont | 
-  1. Vermont. Governor | Independent candidates | Vermont | 
-In total, this and possibly other websites were collected for this candidate in the following year(s): [2018, 2002, 2004, 2006, 2008, 2010, 2012]
-The loc.gov item record for Cris Ericson campaign sites can be viewed at http://www.loc.gov/item/lcwaN0002501/, and its MODS record can be viewed at https://tile.loc.gov/storage-services/service/webcapture/project_1/mods/united-states-elections-web-archive/lcwaN0002501.xml.
-Here is how this row appears in `metadata.csv`:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Here is how row #3460 appears in `metadata.csv`:
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -653,31 +595,101 @@ Here is how this row appears in `metadata.csv`:
       <td>Official Campaign Web Site - Cris Ericson</td>
       <td>http://www.usmjp.com/</td>
       <td>3415</td>
-      <td>[http://crisericson.com, http://vermontnews.livejournal.com, http://www.myspace.com/usmjp2010, http://crisericson2010.blogspot.com]</td>
+      <td>['http://crisericson.com', 'http://vermontnews...</td>
       <td>United States Elections, 2012</td>
-      <td>[United States. Congress. Senate, Vermont. Governor]</td>
-      <td>[U.S. Marijuana Party, Independent candidates]</td>
-      <td>[Vermont, Vermont]</td>
+      <td>['United States. Congress. Senate', 'Vermont. ...</td>
+      <td>['U.S. Marijuana Party', 'Independent candidat...</td>
+      <td>['Vermont', 'Vermont']</td>
       <td>[None, None]</td>
-      <td>http://cdn.loc.gov/service/webcapture/project_1/thumbnails/lcwaS0003415.jpg</td>
+      <td>http://cdn.loc.gov/service/webcapture/project_...</td>
       <td>20121003</td>
       <td>20121019</td>
-      <td>[2002, 2004, 2004, 2006, 2008, 2010, 2012, 2012, 2018, 2018]</td>
+      <td>[2002, 2004, 2004, 2006, 2008, 2010, 2012, 201...</td>
       <td>[2012]</td>
-      <td>https://tile.loc.gov/storage-services/service/webcapture/project_1/mods/united-states-elections-web-archive/lcwaN0002501.xml</td>
-      <td>None</td>
+      <td>https://tile.loc.gov/storage-services/service/...</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>Now let’s see about all the Vermont gubernatorial candidates represented in this data package.</p>
+<p>First, let’s use the next cell to make sure that our dataframe columns with lists are interpretted correctly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We&#39;ll create a function to generate summary information about a given type of election</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_elections&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_elections&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
+<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_parties&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_parties&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
+<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_places&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_places&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
+<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_districts&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_districts&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
+<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;item_all_years&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;item_all_years&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
+<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_all_years&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_all_years&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
+<span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_scopes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_scopes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">ast</span><span class="o">.</span><span class="n">literal_eval</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the next cell, we’ll grab all the info we need, then plug that info into a statement that describes our CSV row of data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">row</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">row_num</span><span class="p">]</span>
+<span class="n">item_title</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;item_title&#39;</span><span class="p">]</span>
+<span class="n">website_url</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;website_url&#39;</span><span class="p">]</span>
+<span class="n">collection</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;collection&#39;</span><span class="p">]</span>
+<span class="n">candidate_name</span> <span class="o">=</span> <span class="n">item_title</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="n">year</span> <span class="o">=</span> <span class="n">collection</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<span class="n">campaign_count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;website_elections&#39;</span><span class="p">])</span>
+<span class="n">website_elections</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;website_elections&#39;</span><span class="p">]</span>
+<span class="n">website_parties</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;website_parties&#39;</span><span class="p">]</span>
+<span class="n">website_places</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;website_places&#39;</span><span class="p">]</span>
+<span class="n">website_districts</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;website_districts&#39;</span><span class="p">]</span>
+<span class="n">website_all_years</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;website_all_years&#39;</span><span class="p">]</span>
+<span class="n">website_all_years</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">item_all_years</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;item_all_years&#39;</span><span class="p">]</span>
+<span class="n">item_all_years</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="n">item_id</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;item_id&#39;</span><span class="p">]</span>
+<span class="n">mods_url</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;mods_url&#39;</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">election_summary</span><span class="p">(</span><span class="n">election_type</span><span class="p">):</span>
-    <span class="n">websites_by_year</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_elections&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">elections</span><span class="p">:</span> <span class="nb">any</span><span class="p">(</span><span class="n">election_type</span> <span class="ow">is</span> <span class="n">election</span> <span class="k">for</span> <span class="n">election</span> <span class="ow">in</span> <span class="n">elections</span> <span class="p">))]</span>
+<span class="c1"># Now we&#39;ll plug those variables into our sentences.</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Record #</span><span class="si">{</span><span class="n">row_num</span><span class="si">}</span><span class="s1"> in the metadata.csv is: </span><span class="si">{</span><span class="n">website_url</span><span class="si">}</span><span class="s1">, from the collection &quot;</span><span class="si">{</span><span class="n">collection</span><span class="si">}</span><span class="s1">&quot;.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;This row represents the website in </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">, used for campaign(s) of the candidate: </span><span class="si">{</span><span class="n">candidate_name</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span> 
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;In </span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s1">, this candidate used this website in </span><span class="si">{</span><span class="n">campaign_count</span><span class="si">}</span><span class="s1"> campaign(s):&#39;</span><span class="p">)</span>
+<span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">campaign_count</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">website_districts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">house_district</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>  
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">house_district</span> <span class="o">=</span> <span class="n">website_districts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;  </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s1">. </span><span class="si">{</span><span class="n">website_elections</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">website_parties</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">website_places</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1"> | </span><span class="si">{</span><span class="n">house_district</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">website_all_years</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">:</span>   
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;This website (</span><span class="si">{</span><span class="n">website_url</span><span class="si">}</span><span class="s1">) was also used for these other campaign year(s) for </span><span class="si">{</span><span class="n">candidate_name</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">website_all_years</span><span class="p">)</span><span class="o">-</span><span class="nb">set</span><span class="p">(</span><span class="n">year</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;In total, this and possibly other websites were collected for this candidate in the following year(s): </span><span class="si">{</span><span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">item_all_years</span><span class="p">))</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The loc.gov item record for </span><span class="si">{</span><span class="n">candidate_name</span><span class="si">}</span><span class="s1"> campaign sites can be viewed at </span><span class="si">{</span><span class="n">item_id</span><span class="si">}</span><span class="s1">, and its MODS record can be viewed at </span><span class="si">{</span><span class="n">mods_url</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
+
+<span class="c1"># The next line displays our dataframe as a table. Let&#39;s set it to show up to 300 characters in each cell</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">max_colwidth</span> <span class="o">=</span> <span class="mi">300</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Record #3460 in the metadata.csv is: http://www.usmjp.com/, from the collection &quot;United States Elections, 2012&quot;.
+This row represents the website in 2012, used for campaign(s) of the candidate: Cris Ericson.
+In 2012, this candidate used this website in 2 campaign(s):
+  0. United States. Congress. Senate | U.S. Marijuana Party | Vermont | 
+  1. Vermont. Governor | Independent candidates | Vermont | 
+In total, this and possibly other websites were collected for this candidate in the following year(s): [2018, 2002, 2004, 2006, 2008, 2010, 2012]
+The loc.gov item record for Cris Ericson campaign sites can be viewed at http://www.loc.gov/item/lcwaN0002501/, and its MODS record can be viewed at https://tile.loc.gov/storage-services/service/webcapture/project_1/mods/united-states-elections-web-archive/lcwaN0002501.xml.
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s create a function that allows us to get summary information about any election, like the election for Vermont Governor.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">election_summary</span><span class="p">(</span><span class="n">election_type</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Input an election title. Output is a summary of CSV rows from that election. </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">websites_by_year</span> <span class="o">=</span> <span class="n">metadata_df</span><span class="p">[</span><span class="n">metadata_df</span><span class="p">[</span><span class="s1">&#39;website_elections&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">elections</span><span class="p">:</span> <span class="nb">any</span><span class="p">([</span><span class="n">election</span> <span class="o">==</span> <span class="n">election_type</span> <span class="k">for</span> <span class="n">election</span> <span class="ow">in</span> <span class="n">elections</span><span class="p">]))]</span>
     <span class="n">candidates</span> <span class="o">=</span> <span class="n">websites_by_year</span><span class="p">[</span><span class="s1">&#39;item_title&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
     <span class="n">websites</span> <span class="o">=</span> <span class="n">websites_by_year</span><span class="p">[</span><span class="s1">&#39;website_url&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
     <span class="n">years</span> <span class="o">=</span> <span class="p">[</span><span class="n">collection</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">collection</span> <span class="ow">in</span> <span class="n">websites_by_year</span><span class="p">[</span><span class="s1">&#39;collection&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()]</span>
@@ -686,14 +698,20 @@ Here is how this row appears in `metadata.csv`:
     <span class="n">multi_year_websites</span> <span class="o">=</span> <span class="n">websites_by_year</span><span class="p">[</span><span class="n">websites_by_year</span><span class="p">[</span><span class="s1">&#39;website_all_years&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span><span class="o">&gt;</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;website_url&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Found in metadata.csv: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">websites</span><span class="p">)</span><span class="si">}</span><span class="s1"> unique campaign websites for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">candidates</span><span class="p">)</span><span class="si">}</span><span class="s1"> &quot;</span><span class="si">{</span><span class="n">election_type</span><span class="si">}</span><span class="s1">&quot; candidates, ranging from years </span><span class="si">{</span><span class="n">min_year</span><span class="si">}</span><span class="s1"> - </span><span class="si">{</span><span class="n">max_year</span><span class="si">}</span><span class="s1">.&#39;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">multi_year_websites</span><span class="p">)</span><span class="si">}</span><span class="s1"> of these websites were used multiple years.&#39;</span><span class="p">)</span>
-
-<span class="n">election_summary</span><span class="p">(</span><span class="s1">&#39;Vermont. Governor&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s try our function to get get as summary of Vermont gubernatorial candidates represented in this data package.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">election_summary</span><span class="p">(</span><span class="s1">&#39;Vermont. Governor&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found in metadata.csv: 0 unique campaign websites for 0 &quot;Vermont. Governor&quot; candidates, ranging from years n/a - n/a.
-0 of these websites were used multiple years.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found in metadata.csv: 31 unique campaign websites for 22 &quot;Vermont. Governor&quot; candidates, ranging from years 2002 - 2016.
+13 of these websites were used multiple years.
 </pre></div>
 </div>
 </div>
@@ -1968,13 +1986,13 @@ coloradodems.org
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Domains from the 2000 US Elections collection:
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;algore2000.com&#39;,
- &#39;harrybrowne2000.org&#39;,
- &#39;gopatgo2000.org&#39;,
- &#39;algore.com&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;gopatgo2000.org&#39;,
  &#39;keyes2000.org&#39;,
+ &#39;forum.hagelin.org&#39;,
  &#39;hagelin.org&#39;,
- &#39;forum.hagelin.org&#39;]
+ &#39;algore2000.com&#39;,
+ &#39;algore.com&#39;,
+ &#39;harrybrowne2000.org&#39;]
 </pre></div>
 </div>
 </div>
