@@ -39,3 +39,6 @@ beautifulsoup4
 
 # For reading, parsing PDFs
 pypdf
+
+# For reading AWS s3 buckets
+boto3
