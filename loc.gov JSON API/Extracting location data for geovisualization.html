@@ -185,11 +185,6 @@
 <li class="toctree-l1"><a class="reference internal" href="Dominant%20colors.html">Color clusters in images in Library of Congress collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Connecting the image file to the metadata</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Extracting location data from the loc.gov API for geovisualization</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="maps/maps-analyzing-metadata.html">Analyzing and visualizing cartographic metadata from loc.gov</a></li>
 
 
@@ -217,9 +212,6 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html">Exploring the Memegenerator Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Data%20Sets/Web%20Archives/getting_started_with_giphy.html">Exploring the GIPHY.com Metadata</a></li>
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../Data%20Sets/Web%20Archives/loc_goes_lofi.html">LOC Goes Lofi</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
@@ -393,14 +385,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Extracting location data from the loc.gov API for geovisualization</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-data">Demo Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#geovisualization">Geovisualization</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#in-conclusion">In conclusion..</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version">Version</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-on-the-data">Background on the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geovisualization">Geovisualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-conclusion">In conclusion..</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -413,18 +405,39 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="extracting-location-data-from-the-loc-gov-api-for-geovisualization">
 <h1>Extracting location data from the <a class="reference external" href="http://loc.gov">loc.gov</a> API for geovisualization<a class="headerlink" href="#extracting-location-data-from-the-loc-gov-api-for-geovisualization" title="Link to this heading">#</a></h1>
-<p>Digital mapping has become an increasingly accessible and valuable complement to traditional interpretive narratives. Working with spatially-referenced data offers exciting possibilities for placed-based scholarship, outreach, and teaching. It’s also a perfect avenue for interdisciplinary collaboration — between, say, humanities researchers new to GIS and spatial scientists who’ve been using it for decades.</p>
-<p>Embedded within digital collections available from the Library of Congress website are geographic data, including the locations of items and their local contexts. We can gather those data programmatically (using Python in this case) and plot them on a map, like so:</p>
+<p>This notebook will cover how to extract location data from the <a class="reference external" href="http://loc.gov">loc.gov</a> API using Python, and create a visualization as shown below. Embedded within digital collections available from the Library of Congress website are geographic data, including the locations of items and their local contexts. Digital mapping has become an increasingly accessible and valuable complement to traditional interpretive narratives. Working with spatially-referenced data offers exciting possibilities for placed-based scholarship, outreach, and teaching. It’s also a perfect avenue for interdisciplinary collaboration — between, say, humanities researchers new to GIS and spatial scientists who’ve been using it for decades. We will cover the following:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#Background-on-the-data"><span class="xref myst">Background on the data</span></a></p></li>
+<li><p><a class="reference internal" href="#Context"><span class="xref myst">Further context</span></a></p></li>
+<li><p><a class="reference internal" href="#Tutorial"><span class="xref myst">Tutorial</span></a></p></li>
+<li><p><a class="reference internal" href="#Geovisualization"><span class="xref myst">Resulting geovisualization</span></a></p></li>
+<li><p><a class="reference internal" href="#In-conclusion.."><span class="xref myst">Conclusion</span></a></p></li>
+</ol>
+<section id="version">
+<h2>Version<a class="headerlink" href="#version" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Version: 2</p>
+<p>Last Run: July 2, 2025 (Python 3.12)</p>
+<hr class="docutils" />
+<p>Author Information:</p>
+<p>Written by Charlie Moffet, LC Labs Innovation Intern 2018</p>
+<p>Edited by Sabrina Templeton, Junior Fellow 2025</p>
+</section>
+<hr class="docutils" />
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<p>In order to run this notebook, you will need to have a few Python packages installed, including the <code class="docutils literal notranslate"><span class="pre">folium</span></code> package which we use to create the final visualization and the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> package for data manipulation. If any of these packages are not installed in your environment, you can install them using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">[package-name]</span></code>.</p>
 <p><img alt="&quot;mapping HAER points&quot;" src="https://raw.githubusercontent.com/charlie-moffett/data-exploration/master/files/haer_tutorial_screenshot.JPG" /></p>
-<p>The story of these data would be incomplete, however, without a critical understanding of the history behind their collection and stewardship. In this tutorial, we demonstrate how <a class="reference external" href="http://loc.gov">loc.gov</a> JSON API users can find and store spatial information from Library content with an awareness toward data quality, provenance, and why this broadened scope is important for informing research projects at the Library.</p>
+</section>
+<section id="background-on-the-data">
+<h2>Background on the data<a class="headerlink" href="#background-on-the-data" title="Link to this heading">#</a></h2>
+<p>The story of the data we will use today would be incomplete without a critical understanding of the history behind their collection and stewardship. In this tutorial, we demonstrate how <a class="reference external" href="http://loc.gov">loc.gov</a> JSON API users can find and store spatial information from Library content with an awareness toward data quality, provenance, and why this broadened scope is important for informing research projects at the Library.</p>
 <p><strong>Rights and access</strong></p>
-<p>Rights and restrictions, including copyright, affect how you can use images, particularly if you want to publish, display, or otherwise distribute them. You can read more about copyright and other restrictions that apply to the publication/distribution of images from the Prints &amp; Photographs Division (P&amp;P) at this link: <a class="reference external" href="https://www.loc.gov/rr/print/195_copr.html">https://www.loc.gov/rr/print/195_copr.html</a></p>
+<p>Rights and restrictions, including copyright, affect how you can use images, particularly if you want to publish, display, or otherwise distribute them. You can read more about copyright and other restrictions that apply to the publication/distribution of images from the Prints &amp; Photographs Division (P&amp;P) at this link: <a class="reference external" href="https://guides.loc.gov/p-and-p-rights-and-restrictions/risk-assessment">https://guides.loc.gov/p-and-p-rights-and-restrictions/risk-assessment</a></p>
 <p>The records in the case study that follows were created for the U.S. Government and are considered to be in the public domain. It is understood that access to this material rests on the condition that should any of it be used in any form or by any means, the author of such material and the Historic American Engineering Record of the Heritage Conservation and Recreation Service at all times be given proper credit.</p>
 <p><strong>Data quality</strong></p>
 <p>Consistency and accuracy of geographic information stored with digital content on the Library of Congress website varies across and within collections. This tutorial was designed as a method of exploring existing spatial references for items. Finding and analyzing meaningful patterns from secondary data typically requires additional data corrections, contexts, and geocoding frameworks to ensure optimal coverage and accuracy. The same applies to spatial data analysis involving digital collections at the Library of Congress; in any case, time spent analyzing and interpeting data is mostly spent cleaning and grappling with the data. Rather than gloss over it, here we elect to revel in that critical stage of research to both demonstrate a particular subset of techniques, and to appreciate its nuances and implications.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="demo-data">
-<h1>Demo Data<a class="headerlink" href="#demo-data" title="Link to this heading">#</a></h1>
+<p><strong>Further background</strong></p>
 <p>As a graduate student of applied urban science, I was inspired at the outset of my internship with LC Labs to discover content about the built environment across US cities on the Library website. What I found was an expansive dataset of digitized photographs, drawings and reports recognized collectively as the HHH, which includes material from three programs:</p>
 <ul class="simple">
 <li><p>Historic American Buildings Survey (HABS)</p></li>
@@ -438,10 +451,10 @@ document.write(`
 <p>View of the uptown platform at 79th Street. Photo by David Sagarin for the Historical American Engineering Record, Library of Congress, Prints and Photographs Division, August 1978.</p>
 <p><img alt="Interborough subway, NYC" src="https://raw.githubusercontent.com/charlie-moffett/data-exploration/master/files/haer_subway_screenshot.jpg" /></p>
 <p>I decided to dig a bit deeper into the engineering record because it appeared to have the best coverage of the three for spatial references. The Historic American Engineering Record, or HAER, was established in partnership by the National Park Service (NPS), the American Society of Civil Engineers and the Library of Congress in 1969. There are more than 10,000 HAER surveys of historic sites and structures related to engineering and industry. The collection is an ongoing effort with established guidelines for documentation – HAER was created to preserve these structures through rule-based documentation, and those documents have in turn been preserved through time.</p>
-<p>Read more about HAER Guidelines here: <a class="reference external" href="https://www.nps.gov/hdp/standards/haerguidelines.htm">https://www.nps.gov/hdp/standards/haerguidelines.htm</a></p>
+<p>Read more about HAER Guidelines here: <a class="reference external" href="https://www.nps.gov/subjects/heritagedocumentation/guidelines.htm">https://www.nps.gov/subjects/heritagedocumentation/guidelines.htm</a></p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="context">
-<h1>Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h1>
+<section id="context">
+<h2>Context<a class="headerlink" href="#context" title="Link to this heading">#</a></h2>
 <p>As happens often with classifications, there are records that could rightly be placed under more than one program. There are many sites documented under the Historic American Building Surveys (HABS) that if recorded today would be assigned under HAER.  Bridges are one key example. Before HAER was established, engineering-related structures, manufacturing and industrial sites, processes, watercraft, bridges, vehicles, etc. were documented under HABS. What I’ve aimed to develop here, as a result of both my own investigation as well as conversations with Library staff, is a flexible and reproducible approach to looking at the implications for scholarship of changes to preservation over time.</p>
 <p>Geography was actually the motivating factor behind how these materials were originally organized by NPS and the Library of Congress. In the 1930s, HABS surveyors were organized into district offices that documented one or more states. The materials that they created usually (not always, which is a different problem) included state/county/city.  While the Park Service played a leading role in documenting geographic data, the Library of Congress also shaped the material in the process of archiving the surveys.</p>
 <p>The Library of Congress uses two systems to organize HABS/HAER/HALS documentation: The newer system uses the survey number as the call number. The older system assigned each survey a call number based on its location (state/county/city). Ex: <a class="reference external" href="http://loc.gov/pictures/item/al0003/">HABS AL-654</a> has the call number: <code class="docutils literal notranslate"><span class="pre">HABS</span> <span class="pre">ALA,1-PRAVI.V,1-</span></code></p>
@@ -455,8 +468,8 @@ document.write(`
 <p>The NPS guidelines for surveys didn’t initially include spatial data in the way that it exists today. Good site maps are the best data available for surveys from the 1930s. HABS (and HAER) guidelines were later updated to request Universal Transverse Mercator (UTM) coordinates, a global system of grid-based mapping references. All three programs now ask for decimal degree data (in order to comply with the NPS Cultural Resource Spatial Data Transfer Standards), though they still receive data in UTM (and in some cases no geographic reference at all).</p>
 <p>Data transmitted to the Library of Congress by contributor Justine Christianson, a HAER Historian with the National Park Service, is particularly rich for our purpose of visualizing the spatial distribution of collection items. Over the past few years, she has reviewed all of the HAER records to index them and assign decimal degree coorinates. Because she has often been involved in finalizing HAER documentation before it goes to the Library she is often listed as contributor in the record metadata. Justine has created spatial data (not to mention other data improvements) for many more HAER surveys than her name is attached to. The subset chosen for this tutorial, then, reflects a certain signature of her involvement in developing standards of documentation, verifying historical reports, and performing scholarly research on material in the collection - nearly 1,500 items with accurate latitude and longitude attributes polished and preserved.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="tutorial">
-<h1>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h1>
+<section id="tutorial">
+<h2>Tutorial<a class="headerlink" href="#tutorial" title="Link to this heading">#</a></h2>
 <p>The following guide will demonstrate how to plot a selection of items from the Historic American Engineering Record (HAER) on a map. With minor changes, the same process of spatial data extraction and visualization could be applied to other digital collections containing explicit geographic information at the Library of Congress.</p>
 <p><strong>Loading in packages</strong></p>
 <p>The recommended convention in Python’s own documentation is to import everything at the top, and on separate lines. For this tutorial, we’ll be importing three packages into the notebook:</p>
@@ -476,34 +489,37 @@ document.write(`
 </div>
 </div>
 <p><strong>Gathering item geography</strong></p>
-<p>Getting up to speed with use of the <a class="reference external" href="http://loc.gov">loc.gov</a> JSON API and Python to access the collection was a breeze, thanks to existing data exploration resources located on the LC for Robots page: <a class="reference external" href="https://labs.loc.gov/lc-for-robots/">https://labs.loc.gov/lc-for-robots/</a></p>
-<p>In specific, you can find tips on using the <a class="reference external" href="http://loc.gov">loc.gov</a> JSON API from the ‘Accessing images for analysis’ notebook created by Laura Wrubel. We’ll build on in the next steps. <a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.ipynb">https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov JSON API/Accessing images for analysis.ipynb</a></p>
+<p>Getting up to speed with use of the <a class="reference external" href="http://loc.gov">loc.gov</a> JSON API and Python to access the collection was a breeze, thanks to existing data exploration resources located on the <a class="reference external" href="https://labs.loc.gov/lc-for-robots/">LC for Robots page</a>.</p>
+<p>In specific, you can find tips on using the <a class="reference external" href="http://loc.gov">loc.gov</a> JSON API from the <a class="reference external" href="https://github.com/LibraryOfCongress/data-exploration/blob/master/loc.gov%20JSON%20API/Accessing%20images%20for%20analysis.ipynb">‘Accessing images for analysis’ notebook</a> created by Laura Wrubel. We’ll build on in the next steps.</p>
+<p>Many of the prints &amp; photographs in HAER are tagged with geographic coordinates, and we’ll look for them in the <code class="docutils literal notranslate"><span class="pre">latlong</span></code> field. There are also other fields that sometimes hold latitude and longitude coordinates in <a class="reference external" href="http://loc.gov">loc.gov</a>. Using the requests package we imported, we can easily ‘get’ data for an item as JSON and parse it for our <code class="docutils literal notranslate"><span class="pre">latlong</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Many of the prints &amp; photographs in HAER are tagged with geographic coordinates (&#39;latlong&#39;)</span>
-<span class="c1"># Using the requests package we imported, we can easily &#39;get&#39; data for an item as JSON and parse it for our latlong:</span>
-
-<span class="n">get_any_item</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.loc.gov/item/al0006/?fo=json&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">get_any_item</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://www.loc.gov/item/al0006/?fo=json&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;latlong: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">get_any_item</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s1">&#39;item&#39;</span><span class="p">][</span><span class="s1">&#39;latlong&#39;</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>latlong: 32.45977,-86.47767
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>latlong: [32.45977, -86.47767]
 </pre></div>
 </div>
 </div>
 </div>
+<p>To retrieve this sort of data point for a set of search results, we’ll first use Laura’s <code class="docutils literal notranslate"><span class="pre">get_image_urls</span></code> function. This will allow us to store the web address for each item in a list, working through the search page by page.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To retrieve this sort of data point for a set of search results, we&#39;ll first use Laura&#39;s get_image_urls function. </span>
-<span class="c1"># This will allow us to store the web address for each item in a list, working through the search page by page.</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">get_image_urls</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="p">[]):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">get_image_urls</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">items</span><span class="o">=</span><span class="p">[]):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Retrieves the image_ruls for items that have public URLs available. </span>
 <span class="sd">    Skips over items that are for the collection as a whole or web pages about the collection.</span>
 <span class="sd">    Handles pagination. </span>
+
+<span class="sd">    Args: </span>
+<span class="sd">        url (str): The URL to request a collection.</span>
+<span class="sd">        items (list, optional): The list that fetched item URLs will get added to.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: The item URLS from the collection.  </span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="c1"># request pages of 100 results at a time</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;fo&quot;</span><span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s2">&quot;at&quot;</span><span class="p">:</span> <span class="s2">&quot;results,pagination&quot;</span><span class="p">}</span>
@@ -518,7 +534,6 @@ document.write(`
             <span class="n">items</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;pagination&quot;</span><span class="p">][</span><span class="s2">&quot;next&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span> <span class="c1"># make sure we haven&#39;t hit the end of the pages</span>
         <span class="n">next_url</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;pagination&quot;</span><span class="p">][</span><span class="s2">&quot;next&quot;</span><span class="p">]</span>
-        <span class="c1">#print(&quot;getting next page: {0}&quot;.format(next_url))</span>
         <span class="n">get_image_urls</span><span class="p">(</span><span class="n">next_url</span><span class="p">,</span> <span class="n">items</span><span class="p">)</span>
         
     <span class="k">return</span> <span class="n">items</span>
@@ -535,7 +550,7 @@ document.write(`
 </div>
 </div>
 </div>
-<p>Now we can apply Laura’s get_image_urls function to our search results URL, formatted in JSON, to get a list of image URLs:</p>
+<p>Now we can apply Laura’s <code class="docutils literal notranslate"><span class="pre">get_image_urls</span></code> function to our search results URL, formatted in JSON, to get a list of image URLs:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># retrieve all image URLs from the search results and store in a variable called &#39;image_urls&#39;</span>
@@ -547,15 +562,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1533
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1755
 </pre></div>
 </div>
 </div>
 </div>
+<p>To save on time for now, let’s focus on a subsection of these data containing only 100 images:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to save on a little time, let&#39;s see what the last 100 look like</span>
-<span class="n">img100</span> <span class="o">=</span> <span class="n">image_urls</span><span class="p">[</span><span class="mi">200</span><span class="p">:</span><span class="mi">300</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">img100</span> <span class="o">=</span> <span class="n">image_urls</span><span class="p">[</span><span class="mi">200</span><span class="p">:</span><span class="mi">300</span><span class="p">]</span>
 
 <span class="nb">len</span><span class="p">(</span><span class="n">img100</span><span class="p">)</span>
 </pre></div>
@@ -567,11 +582,10 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Now, we are going to create a Python set to store our LatLongs, which will elimate any potential duplicate coordinates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># create an empty set to store our latlongs</span>
-<span class="c1"># storing in a set rather than a list eliminates any potential duplicates</span>
-<span class="n">spatial_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">spatial_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
 <span class="c1"># the parameters we set for our API calls taken the first function</span>
 <span class="n">p1</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;fo&quot;</span> <span class="p">:</span> <span class="s2">&quot;json&quot;</span><span class="p">}</span>
@@ -581,116 +595,112 @@ document.write(`
     
     <span class="c1"># make HTTP request to loc.gov API for each item</span>
     <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">p1</span><span class="p">)</span>
+
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
     
-    <span class="c1"># extract only from items with latlong attribute</span>
-    <span class="k">try</span><span class="p">:</span>
-        
-        <span class="c1"># expose in JSON format</span>
+    <span class="c1"># attempt to expose in JSON format</span>
+    <span class="k">try</span><span class="p">:</span>    
         <span class="n">data</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-        
-        <span class="c1"># parse for location</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;item&#39;</span><span class="p">][</span><span class="s1">&#39;latlong&#39;</span><span class="p">]</span>
-        
-        <span class="c1"># add it to our running set</span>
-        <span class="n">spatial_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
-        
-    <span class="c1"># skip anything with missing &#39;latlong&#39; data</span>
     <span class="k">except</span><span class="p">:</span>
-        
-        <span class="c1"># on to the next item until we&#39;re through</span>
-        <span class="k">pass</span>
+        <span class="k">continue</span>
     
+    <span class="k">if</span> <span class="s1">&#39;latlong&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;item&#39;</span><span class="p">]:</span>
+        <span class="c1"># add it to our running set and remove the brackets from the string</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;item&#39;</span><span class="p">][</span><span class="s1">&#39;latlong&#39;</span><span class="p">])[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">spatial_set</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+        
 <span class="c1"># show us the data!</span>
 <span class="n">spatial_set</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;20.9175,-156.3258333&#39;,
- &#39;30.598468,-103.892334&#39;,
- &#39;32.7253908733282,-114.616614456155&#39;,
- &#39;32.776453,-79.932086&#39;,
- &#39;32.946608,-85.984089&#39;,
- &#39;34.661847,-86.670258&#39;,
- &#39;34.7694444444,-92.2672222222&#39;,
- &#39;36.862928,-112.740538&#39;,
- &#39;37.7620889746898,-119.860731072203&#39;,
- &#39;37.80931,-122.42131&#39;,
- &#39;38.267897,-78.866949&#39;,
- &#39;38.290343,-85.821589&#39;,
- &#39;38.324232,-76.460605&#39;,
- &#39;38.578506,-77.17950472741472&#39;,
- &#39;38.578741,-77.17850169457892&#39;,
- &#39;38.578893,-77.17804715345169&#39;,
- &#39;38.590956,-77.17139696665106&#39;,
- &#39;38.684068,-77.124186&#39;,
- &#39;38.684596,-77.131794&#39;,
- &#39;38.9001118,-77.0163653&#39;,
- &#39;38.936015,-74.898445&#39;,
- &#39;39.477233,-77.7407&#39;,
- &#39;39.801913,-77.249739&#39;,
- &#39;40.13333,-76.05834&#39;,
- &#39;40.193095,-74.743825&#39;,
- &#39;40.391357,-79.85933180595799&#39;,
- &#39;40.4956,-77.47261&#39;,
- &#39;40.5766979029568,-74.4126481359476&#39;,
- &#39;40.7018369,-89.5636558&#39;,
- &#39;40.782493,-74.235895&#39;,
- &#39;41.292843,-72.92644479191337&#39;,
- &#39;41.379049,-72.097085&#39;,
- &#39;41.63922,-80.15737&#39;,
- &#39;41.650368,-93.73616221287342&#39;,
- &#39;41.885388,-87.800535&#39;,
- &#39;42.35921,-78.12151&#39;,
- &#39;42.371952,-71.059094&#39;,
- &#39;42.374807,-83.05761&#39;,
- &#39;42.380671,-83.057264&#39;,
- &#39;42.5760314,-111.7305061&#39;,
- &#39;42.90639,-78.90194&#39;,
- &#39;42.947758,-71.62145&#39;,
- &#39;43.0222765,-78.8742332&#39;,
- &#39;43.0600164,-76.1641668&#39;,
- &#39;43.08594,-70.76081&#39;,
- &#39;43.1754698,-78.6878486&#39;,
- &#39;43.1756188,-78.687883&#39;,
- &#39;43.2007619,-78.5681136&#39;,
- &#39;43.21559,-77.935409&#39;,
- &#39;43.22087,-70.85535&#39;,
- &#39;43.253566,-78.246907&#39;,
- &#39;43.2564305,-73.584969&#39;,
- &#39;43.2640534,-73.57658&#39;,
- &#39;43.548815,-73.402037&#39;,
- &#39;44.04996,-71.68708&#39;,
- &#39;44.559532,-68.799175&#39;,
- &#39;45.3180555556,-85.2583333333&#39;,
- &#39;46.687148,-89.229613&#39;,
- &#39;47.499066,-101.374345&#39;,
- &#39;47.501917,-101.429559&#39;,
- &#39;47.502163,-101.431656&#39;,
- &#39;58.0178,-152.7655&#39;,
- &#39;61.22948,-149.87333&#39;,
- &#39;62.419558,-150.1220661848771&#39;,
- &#39;63.973195,-145.72642144558296&#39;,
- &#39;65.30522,-143.15401&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;34.040473, -77.946159&#39;,
+ &#39;34.756929, -86.573961&#39;,
+ &#39;35.986289, -86.992067&#39;,
+ &#39;36.050189, -112.132891&#39;,
+ &#39;36.917735, -76.18972&#39;,
+ &#39;37.002572, -76.311215&#39;,
+ &#39;37.254299, -81.056026&#39;,
+ &#39;37.274, -118.9684&#39;,
+ &#39;38.077236, -122.097628&#39;,
+ &#39;38.309741, -81.556935&#39;,
+ &#39;38.576396, -77.18102496992418&#39;,
+ &#39;38.581501, -77.176381109013&#39;,
+ &#39;38.587641, -77.16987353941916&#39;,
+ &#39;38.590631, -77.17095090217258&#39;,
+ &#39;38.592191, -77.17084867237647&#39;,
+ &#39;38.712275, 77.036903&#39;,
+ &#39;38.876505, -77.074711&#39;,
+ &#39;38.889428, -77.035208&#39;,
+ &#39;38.895879, -77.032448&#39;,
+ &#39;39.324509, -77.731426&#39;,
+ &#39;39.591614, -74.443089&#39;,
+ &#39;39.896316, -75.188567&#39;,
+ &#39;40.00103, -81.83995&#39;,
+ &#39;40.148483, -75.217115&#39;,
+ &#39;40.266864, -74.80879&#39;,
+ &#39;40.557966, -73.896322&#39;,
+ &#39;40.606016, -77.42954706828877&#39;,
+ &#39;41.16614, -77.47009&#39;,
+ &#39;41.57111, -79.86056&#39;,
+ &#39;41.652819, -87.568536&#39;,
+ &#39;41.794044, -71.390187&#39;,
+ &#39;41.79448, -73.94006&#39;,
+ &#39;41.83071371128208, -79.06914931636078&#39;,
+ &#39;42.044861, -70.191689&#39;,
+ &#39;42.147954, -72.616135&#39;,
+ &#39;42.293139, -85.566476&#39;,
+ &#39;42.346835, -83.000731&#39;,
+ &#39;42.371952, -71.059094&#39;,
+ &#39;42.37832, -83.060511&#39;,
+ &#39;42.57548, -71.78838&#39;,
+ &#39;42.630725, -73.777451&#39;,
+ &#39;42.774556, -84.60156776875715&#39;,
+ &#39;42.794808, -73.687896&#39;,
+ &#39;43.039, -83.37576&#39;,
+ &#39;43.068384, -77.4684709&#39;,
+ &#39;43.0976498, -73.5797985&#39;,
+ &#39;43.1009151, -77.4406493&#39;,
+ &#39;43.106082075, -75.208158644&#39;,
+ &#39;43.1787437, -78.6830236&#39;,
+ &#39;43.194, -75.731&#39;,
+ &#39;43.2016563, -75.4501318&#39;,
+ &#39;43.2497057, -78.2153651&#39;,
+ &#39;43.2545425, -78.0663398&#39;,
+ &#39;44.238062, -76.089138&#39;,
+ &#39;44.363314, -68.200971&#39;,
+ &#39;44.809727, -124.061919&#39;,
+ &#39;46.144472, -123.861598&#39;,
+ &#39;47.25306, -122.44306&#39;,
+ &#39;47.534869, -116.16851926594657&#39;,
+ &#39;48.4956431377752, -113.984133311942&#39;,
+ &#39;57.0467998, -135.3535795&#39;,
+ &#39;61.246098, -149.814128&#39;,
+ &#39;63.973195, -145.72642144558296&#39;,
+ &#39;64.956687, -147.61646&#39;,
+ &#39;65.28397, -143.21113&#39;}
 </pre></div>
 </div>
 </div>
 </div>
+<p>Run the next cell to see how many unique data points we were able to gather!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># how many unique data points were we able to gather?</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">spatial_set</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">spatial_set</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>66
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>65
 </pre></div>
 </div>
 </div>
 </div>
 <p><em>Pausing for reflection</em></p>
-<p>So out of the sample of 100 HAER item URLs that we looped through to pull out spatial references, we ended up with a set of 75 latitude and longitude pairs. Not bad! This is certainly not perfect as far as data coverage is concerned, but given what we learned earlier about the lineage of preservation with this collection and dynamics of stewardship, I feel as though we have enough information for a meaningful demonstration and reasonable confidence in the quality of that data to proceed with the dive.</p>
+<p>So out of the sample of 100 HAER item URLs that we looped through to pull out spatial references, we ended up with a set of somewhere around 70 latitude and longitude pairs. Not bad! This is certainly not perfect as far as data coverage is concerned, but given what we learned earlier about the lineage of preservation with this collection and dynamics of stewardship, I feel as though we have enough information for a meaningful demonstration and reasonable confidence in the quality of that data to proceed with the dive.</p>
 <p>Something to notice however is how these data are currently formatted. Each latitude and longitude pair is glued together as a single string. This isn’t how Folium will want to read in coordinates, so as a next step we’ll need to rework them a bit before we get to mapping.</p>
 <p><strong>Data manipulation</strong></p>
 <p>We’ve mined out the locations of a digital subset from the HAER collection. Now we’ll restructure it with the popular <code class="docutils literal notranslate"><span class="pre">pandas</span></code> package.</p>
@@ -708,7 +718,7 @@ document.write(`
 <span class="c1"># rename columns with latitude and longitude</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="s1">&#39;longitude&#39;</span><span class="p">})</span>
 
-<span class="c1"># what&#39;s the dataframe look like?</span>
+<span class="c1"># show the resulting dataframe</span>
 <span class="n">df</span>
 </pre></div>
 </div>
@@ -739,153 +749,28 @@ document.write(`
   <tbody>
     <tr>
       <th>0</th>
-      <td>43.2564305</td>
-      <td>-73.584969</td>
+      <td>42.147954</td>
+      <td>-72.616135</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>44.559532</td>
-      <td>-68.799175</td>
+      <td>42.044861</td>
+      <td>-70.191689</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>43.22087</td>
-      <td>-70.85535</td>
+      <td>41.57111</td>
+      <td>-79.86056</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>39.477233</td>
-      <td>-77.7407</td>
+      <td>64.956687</td>
+      <td>-147.61646</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>38.936015</td>
-      <td>-74.898445</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>41.63922</td>
-      <td>-80.15737</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>65.30522</td>
-      <td>-143.15401</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>20.9175</td>
-      <td>-156.3258333</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>41.379049</td>
-      <td>-72.097085</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>47.499066</td>
-      <td>-101.374345</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>30.598468</td>
-      <td>-103.892334</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>38.684596</td>
-      <td>-77.131794</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>43.08594</td>
-      <td>-70.76081</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>38.267897</td>
-      <td>-78.866949</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>42.380671</td>
-      <td>-83.057264</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>41.292843</td>
-      <td>-72.92644479191337</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>47.501917</td>
-      <td>-101.429559</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>36.862928</td>
-      <td>-112.740538</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>37.80931</td>
-      <td>-122.42131</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>40.13333</td>
-      <td>-76.05834</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>42.371952</td>
-      <td>-71.059094</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>32.7253908733282</td>
-      <td>-114.616614456155</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>34.661847</td>
-      <td>-86.670258</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>62.419558</td>
-      <td>-150.1220661848771</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>40.5766979029568</td>
-      <td>-74.4126481359476</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>40.391357</td>
-      <td>-79.85933180595799</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>38.590956</td>
-      <td>-77.17139696665106</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>42.5760314</td>
-      <td>-111.7305061</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>43.548815</td>
-      <td>-73.402037</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>43.2640534</td>
-      <td>-73.57658</td>
+      <td>41.16614</td>
+      <td>-77.47009</td>
     </tr>
     <tr>
       <th>...</th>
@@ -893,158 +778,33 @@ document.write(`
       <td>...</td>
     </tr>
     <tr>
-      <th>36</th>
-      <td>43.2007619</td>
-      <td>-78.5681136</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>38.290343</td>
-      <td>-85.821589</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>38.9001118</td>
-      <td>-77.0163653</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>61.22948</td>
-      <td>-149.87333</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>58.0178</td>
-      <td>-152.7655</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>42.374807</td>
-      <td>-83.05761</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>37.7620889746898</td>
-      <td>-119.860731072203</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>45.3180555556</td>
-      <td>-85.2583333333</td>
-    </tr>
-    <tr>
-      <th>44</th>
-      <td>41.650368</td>
-      <td>-93.73616221287342</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>63.973195</td>
-      <td>-145.72642144558296</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>47.502163</td>
-      <td>-101.431656</td>
-    </tr>
-    <tr>
-      <th>47</th>
-      <td>46.687148</td>
-      <td>-89.229613</td>
-    </tr>
-    <tr>
-      <th>48</th>
-      <td>40.782493</td>
-      <td>-74.235895</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>40.193095</td>
-      <td>-74.743825</td>
-    </tr>
-    <tr>
-      <th>50</th>
-      <td>32.946608</td>
-      <td>-85.984089</td>
-    </tr>
-    <tr>
-      <th>51</th>
-      <td>38.578506</td>
-      <td>-77.17950472741472</td>
-    </tr>
-    <tr>
-      <th>52</th>
-      <td>42.35921</td>
-      <td>-78.12151</td>
-    </tr>
-    <tr>
-      <th>53</th>
-      <td>43.0600164</td>
-      <td>-76.1641668</td>
-    </tr>
-    <tr>
-      <th>54</th>
-      <td>41.885388</td>
-      <td>-87.800535</td>
-    </tr>
-    <tr>
-      <th>55</th>
-      <td>44.04996</td>
-      <td>-71.68708</td>
-    </tr>
-    <tr>
-      <th>56</th>
-      <td>42.90639</td>
-      <td>-78.90194</td>
-    </tr>
-    <tr>
-      <th>57</th>
-      <td>43.21559</td>
-      <td>-77.935409</td>
-    </tr>
-    <tr>
-      <th>58</th>
-      <td>40.4956</td>
-      <td>-77.47261</td>
-    </tr>
-    <tr>
-      <th>59</th>
-      <td>39.801913</td>
-      <td>-77.249739</td>
-    </tr>
-    <tr>
       <th>60</th>
-      <td>38.684068</td>
-      <td>-77.124186</td>
+      <td>39.591614</td>
+      <td>-74.443089</td>
     </tr>
     <tr>
       <th>61</th>
-      <td>43.253566</td>
-      <td>-78.246907</td>
+      <td>61.246098</td>
+      <td>-149.814128</td>
     </tr>
     <tr>
       <th>62</th>
-      <td>38.578893</td>
-      <td>-77.17804715345169</td>
+      <td>43.194</td>
+      <td>-75.731</td>
     </tr>
     <tr>
       <th>63</th>
-      <td>32.776453</td>
-      <td>-79.932086</td>
+      <td>34.040473</td>
+      <td>-77.946159</td>
     </tr>
     <tr>
       <th>64</th>
-      <td>34.7694444444</td>
-      <td>-92.2672222222</td>
-    </tr>
-    <tr>
-      <th>65</th>
-      <td>43.1756188</td>
-      <td>-78.687883</td>
+      <td>38.587641</td>
+      <td>-77.16987353941916</td>
     </tr>
   </tbody>
 </table>
-<p>66 rows × 2 columns</p>
+<p>65 rows × 2 columns</p>
 </div></div></div>
 </div>
 <p><em>Pausing for reflection</em></p>
@@ -1067,8 +827,8 @@ document.write(`
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="geovisualization">
-<h1>Geovisualization<a class="headerlink" href="#geovisualization" title="Link to this heading">#</a></h1>
+<section id="geovisualization">
+<h2>Geovisualization<a class="headerlink" href="#geovisualization" title="Link to this heading">#</a></h2>
 <p>As was called out at the start of the tutorial, the open-source tool <code class="docutils literal notranslate"><span class="pre">folium</span></code> builds on our earlier data wrangling with <code class="docutils literal notranslate"><span class="pre">pandas</span></code> and the mapping strengths of the Leaflet.js library to create an interactive experience.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1088,24 +848,557 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Now, we can call the map into display with the following:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calls the map into display</span>
-<span class="n">map_haer</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">map_haer</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><iframe src="data:text/html;charset=utf-8;base64,PCFET0NUWVBFIGh0bWw+CjxoZWFkPiAgICAKICAgIDxtZXRhIGh0dHAtZXF1aXY9ImNvbnRlbnQtdHlwZSIgY29udGVudD0idGV4dC9odG1sOyBjaGFyc2V0PVVURi04IiAvPgogICAgCiAgICAgICAgPHNjcmlwdD4KICAgICAgICAgICAgTF9OT19UT1VDSCA9IGZhbHNlOwogICAgICAgICAgICBMX0RJU0FCTEVfM0QgPSBmYWxzZTsKICAgICAgICA8L3NjcmlwdD4KICAgIAogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjQuMC9kaXN0L2xlYWZsZXQuanMiPjwvc2NyaXB0PgogICAgPHNjcmlwdCBzcmM9Imh0dHBzOi8vY29kZS5qcXVlcnkuY29tL2pxdWVyeS0xLjEyLjQubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9qcy9ib290c3RyYXAubWluLmpzIj48L3NjcmlwdD4KICAgIDxzY3JpcHQgc3JjPSJodHRwczovL2NkbmpzLmNsb3VkZmxhcmUuY29tL2FqYXgvbGlicy9MZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy8yLjAuMi9sZWFmbGV0LmF3ZXNvbWUtbWFya2Vycy5qcyI+PC9zY3JpcHQ+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuLmpzZGVsaXZyLm5ldC9ucG0vbGVhZmxldEAxLjQuMC9kaXN0L2xlYWZsZXQuY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vbWF4Y2RuLmJvb3RzdHJhcGNkbi5jb20vYm9vdHN0cmFwLzMuMi4wL2Nzcy9ib290c3RyYXAubWluLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL21heGNkbi5ib290c3RyYXBjZG4uY29tL2Jvb3RzdHJhcC8zLjIuMC9jc3MvYm9vdHN0cmFwLXRoZW1lLm1pbi5jc3MiLz4KICAgIDxsaW5rIHJlbD0ic3R5bGVzaGVldCIgaHJlZj0iaHR0cHM6Ly9tYXhjZG4uYm9vdHN0cmFwY2RuLmNvbS9mb250LWF3ZXNvbWUvNC42LjMvY3NzL2ZvbnQtYXdlc29tZS5taW4uY3NzIi8+CiAgICA8bGluayByZWw9InN0eWxlc2hlZXQiIGhyZWY9Imh0dHBzOi8vY2RuanMuY2xvdWRmbGFyZS5jb20vYWpheC9saWJzL0xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLzIuMC4yL2xlYWZsZXQuYXdlc29tZS1tYXJrZXJzLmNzcyIvPgogICAgPGxpbmsgcmVsPSJzdHlsZXNoZWV0IiBocmVmPSJodHRwczovL3Jhd2Nkbi5naXRoYWNrLmNvbS9weXRob24tdmlzdWFsaXphdGlvbi9mb2xpdW0vbWFzdGVyL2ZvbGl1bS90ZW1wbGF0ZXMvbGVhZmxldC5hd2Vzb21lLnJvdGF0ZS5jc3MiLz4KICAgIDxzdHlsZT5odG1sLCBib2R5IHt3aWR0aDogMTAwJTtoZWlnaHQ6IDEwMCU7bWFyZ2luOiAwO3BhZGRpbmc6IDA7fTwvc3R5bGU+CiAgICA8c3R5bGU+I21hcCB7cG9zaXRpb246YWJzb2x1dGU7dG9wOjA7Ym90dG9tOjA7cmlnaHQ6MDtsZWZ0OjA7fTwvc3R5bGU+CiAgICAKICAgICAgICAgICAgPG1ldGEgbmFtZT0idmlld3BvcnQiIGNvbnRlbnQ9IndpZHRoPWRldmljZS13aWR0aCwKICAgICAgICAgICAgICAgIGluaXRpYWwtc2NhbGU9MS4wLCBtYXhpbXVtLXNjYWxlPTEuMCwgdXNlci1zY2FsYWJsZT1ubyIgLz4KICAgICAgICAgICAgPHN0eWxlPgogICAgICAgICAgICAgICAgI21hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNiB7CiAgICAgICAgICAgICAgICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICAgICAgICAgICAgICAgIHdpZHRoOiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgaGVpZ2h0OiAxMDAuMCU7CiAgICAgICAgICAgICAgICAgICAgbGVmdDogMC4wJTsKICAgICAgICAgICAgICAgICAgICB0b3A6IDAuMCU7CiAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgIDwvc3R5bGU+CiAgICAgICAgCjwvaGVhZD4KPGJvZHk+ICAgIAogICAgCiAgICAgICAgICAgIDxkaXYgY2xhc3M9ImZvbGl1bS1tYXAiIGlkPSJtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYiID48L2Rpdj4KICAgICAgICAKPC9ib2R5Pgo8c2NyaXB0PiAgICAKICAgIAogICAgICAgICAgICB2YXIgbWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2ID0gTC5tYXAoCiAgICAgICAgICAgICAgICAibWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2IiwKICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICBjZW50ZXI6IFszNS40ODE5MTgsIC05Ny41MDg0NjldLAogICAgICAgICAgICAgICAgICAgIGNyczogTC5DUlMuRVBTRzM4NTcsCiAgICAgICAgICAgICAgICAgICAgem9vbTogMywKICAgICAgICAgICAgICAgICAgICB6b29tQ29udHJvbDogdHJ1ZSwKICAgICAgICAgICAgICAgICAgICBwcmVmZXJDYW52YXM6IGZhbHNlLAogICAgICAgICAgICAgICAgfQogICAgICAgICAgICApOwoKICAgICAgICAgICAgCgogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciB0aWxlX2xheWVyX2MxMGFkZGZhM2VlYjRhMzA5YzNhY2RiMGQzZDljZGFlID0gTC50aWxlTGF5ZXIoCiAgICAgICAgICAgICAgICAiaHR0cHM6Ly97c30udGlsZS5vcGVuc3RyZWV0bWFwLm9yZy97en0ve3h9L3t5fS5wbmciLAogICAgICAgICAgICAgICAgeyJhdHRyaWJ1dGlvbiI6ICJEYXRhIGJ5IFx1MDAyNmNvcHk7IFx1MDAzY2EgaHJlZj1cImh0dHA6Ly9vcGVuc3RyZWV0bWFwLm9yZ1wiXHUwMDNlT3BlblN0cmVldE1hcFx1MDAzYy9hXHUwMDNlLCB1bmRlciBcdTAwM2NhIGhyZWY9XCJodHRwOi8vd3d3Lm9wZW5zdHJlZXRtYXAub3JnL2NvcHlyaWdodFwiXHUwMDNlT0RiTFx1MDAzYy9hXHUwMDNlLiIsICJkZXRlY3RSZXRpbmEiOiBmYWxzZSwgIm1heE5hdGl2ZVpvb20iOiAxOCwgIm1heFpvb20iOiAxOCwgIm1pblpvb20iOiAwLCAibm9XcmFwIjogZmFsc2UsICJvcGFjaXR5IjogMSwgInN1YmRvbWFpbnMiOiAiYWJjIiwgInRtcyI6IGZhbHNlfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfMDY5NGYzZDEyNTk4NDczODgyY2Y3ZWE1Yzg0MTRmMzAgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0My42NDE0NzE2LCAtNzAuMjQwODgxMV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl82Nzc2Y2I0OWU5MGY0ZDJmODY5NmQyYzI4Zjg1MzI2NiA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzQ3LjUwNzA1NSwgLTEwMS40MzIyNTY5OTk5OTk5OV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl8yOGZlYjFkMjlkOTg0ZmJkYmEyY2NlOTNjZTRiOGIwOSA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzQ3LjYwMzgzMjEsIC0xMjIuMzMwMDYyNF0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl8xYmI0YjliM2Y4Zjg0NDllYTU0MTQ5NDdhN2Y3YjU2NSA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzM3LjgwNjQ1NSwgLTEyMi4yNzMyMDJdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfMmIzZDhhZjM5NDE4NGY0ZDllODQ2ZTg4NDE4NWExZGQgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi42MzA3MjUsIC03My43Nzc0NTFdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfY2Y0MThkMzkyZjEwNGIxMWE3MDEwN2NiNTFlOWE3MTIgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFszOC41Nzg4OTMsIC03Ny4xNzgwNDcxNTM0NTE2OV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl9jZjBkNGUwYWU4ODc0MDU3OTI0NjgxMjYyYTA5NDU0MCA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzQzLjE1MjUsIC03OS4wNDE2N10sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl84Y2Y0YjkyN2FjMTQ0NjBhOWVkZjkwNzA1ZjkxODhlNSA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjk0NjU4NDEsIC03NC4yMDk1OTY0MDAwMDAwMV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl81NjkzNmMzN2UyYWQ0YWQ0YmVjZmNjMjc5YmZhYzU2MyA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzM5LjUxMTk4NDAwMDAwMDAwNSwgLTc3LjgzMDY4NzhdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfMTM1NDgzNmI5YjI5NGQ1M2E5YWE0MWQ1NjE2ZjcwNWEgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0MS41MjYzODg4ODg5LCAtNzAuNjczMDU1NTU1Nl0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl8wNDZmMTYwNmNlNjA0NmUyOWNiZGIxMDc5MGIxN2UyMyA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzM5LjY0MzA4MiwgLTc4Ljg4OTMyOF0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl9jMmRmZjEyZDBhNjY0OWE4OWZjYjljNzcwZWFlZDUxMCA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzM4LjU4NTMyODAwMDAwMDAwNCwgLTc3LjE2ODMwMDAxODIzOTgzXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyX2QyMWMyNGQyOGYxOTQzMzQ4NTFhMTMyNjYyNGYxYzI5ID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbMzMuODYwMDExLCAtMTE4LjE4NTYyNTJdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfOGQ3YTc3OTI2YWE4NGVlNThiNzgyNDcxMGUxNjJkMDggPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFszNy4yNzQsIC0xMTguOTY4NF0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl80MjEzYTk5NmM3OTk0NWJlYmRlYzNhYmY0NmFjOTUzZSA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzQzLjEwMDkxNTEsIC03Ny40NDA2NDkzXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyX2ZjZmExMDhiMWVhMDQ2MmU5N2EwOTk1MDBiMGFjMzNmID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbNDMuNDM3MTE5LCAtODUuNjYzNjM5XSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyXzg2YjQyY2RmYThjOTQzZTU4MjMzNTg0NzdmMzgxMTIyID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbMzguNTkwNjk1MDAwMDAwMDA0LCAtNzcuMTc4MTYyNzMzNzE3NDRdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfNDkwZDJkZjg4OGM5NDFjYjk2OWIzMDQ2NzFhZjY5NDMgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFszOS41MDU4OSwgLTgwLjE2ODEzXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyXzMwNzQxZTY1NDJiNzQ1NmRiYzU2YTNhNGQ0MWMwZmU2ID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbMzcuNzYyMDg4OTc0Njg5Nzk2LCAtMTE5Ljg2MDczMTA3MjIwMzAxXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyX2ZhOTFkZjUwNzdmOTQwMWFhODhlM2RjMmI5ZjkxN2QzID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbNDEuMjkyODA5OTk5OTk5OTk2LCAtOTQuMTQ5NzZdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfNjJmMjgwYjIwMjkwNDAyYzgwOWY1ODU2NmYyZGVkODYgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFsyMC4wMzAxODU5OTk5OTk5OTcsIC0xNTUuODE4Nzg0MDAwMDAwMDJdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfOTJhNGZiNzA5OTcyNGFhNjk3ZTUyZjg5ZWVjMWQyZGYgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFszOC42ODQ1OTYsIC03Ny4xMzE3OTRdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfZGI3Y2NiNmY4MjNmNDE5YTlhNjExZDViMGQzZDY1MmIgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFsyMC45MTc1LCAtMTU2LjMyNTgzMzNdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfZmQ4OWEwNDE3ODA1NDk4MDlkY2ZiMzdkODE2ZDRkYzIgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFszOS45ODk1MywgLTc4LjI1NTYyNF0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl9mODQ2MDA0ZmVhYjg0ZmYxOGJlMjVhNWJjOGIzZmU3OSA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzM5Ljg1NTE2MiwgLTg3LjMzNjAwMjAwMDAwMDAxXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyX2NjYjVjMjhjNWJkNDQ4NGY4YzlmMTAzNmViNzkzOWZhID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbMzcuODA3NzI4MDAwMDAwMDA0LCAtMTIyLjQyMDc5MTk5OTk5OTk5XSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyXzNhZGUzOTJjYmI4OTQ3M2NhNTRjYTg1OWIxZWY5NWY4ID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbNDMuMDk3NjQ5OCwgLTczLjU3OTc5ODVdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfMGQyNjY2YTc3MjI1NDVhZDk0NjBiNzI4ZjUzYjVjYmYgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFszMi43MjUzOTA4NzMzMjgyLCAtMTE0LjYxNjYxNDQ1NjE1NDk5XSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyXzIxOWY2NGRjNjRlNjQ0ODc5Zjg5OTRmZjlhZmNkMTBlID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbNDUuNDM4NSwgLTkwLjYxNzVdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfZGJmMTlmYmJiMGM0NDU2NWJjMDUxYTU1OGY5ODI2MzAgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFszOC4wNzcyMzYsIC0xMjIuMDk3NjI4XSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyX2NiNDQzYWYzM2JkYTRkMjdiZjg5NGUwZjUxMmQwNDRkID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbNDQuMTQzMzUsIC03MS4xODYzNl0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl9hMTczYTQ2ODY4NTQ0Nzc5ODU4MTI5ZDk4OTczZjFkYyA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzQ3LjYyNzE5LCAtMTIyLjMzNTU4MDAwMDAwMDAxXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyX2ZlNzJlOGIyOTMyZDQ4ZWM5ZjA1ODZjOWVkMzNiYTJkID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbNDMuODk4NTU0LCAtNzUuMzkyNDEyXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyXzgyMGYwODVmMGNlNDRiMWI4NzhkYmIzMzk3YWEyY2YyID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbNDEuMzI1OTI0NCwgLTg4LjcwODIxNDddLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfZTMwNzY1MGNlN2JhNDc4YThhYmVlNTQ3ODAyMDRmNTAgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi43ODIzMjcsIC03My43MDU3NV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl9mMzJkY2RhOTg2NzY0M2Y4YWMyZDlmZjYwNGRhOGE2NyA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzQzLjE1NjAwNjcwMDAwMDAwNiwgLTc2LjMzMjQ4OTddLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfYjc1MTZhYTViODI4NDBjM2JjODg0MDZhYjFjODM4NzggPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0My4xOTU1NzUxLCAtNzcuODUzNzM2ODAwMDAwMDFdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfMGNmODU4ZTMxZTc2NDk0ZDk5N2RlNjg0MTE4YjZiYzQgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0My4wMjIxMTksIC03OC44NzM1MzJdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfM2ViNDAzYzE1MjBiNDhiYzg3Mzk2MjE4MTgwMTdiZGEgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0MS4zOTcwMDIsIC03My45NjY3NTVdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfZmY0NThlMmQ0YWE0NGU0MWJjYWNkMmVkZDcxYzUxOWYgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0My4wMTI5NjMyLCAtNzQuNzgwODQxNTAwMDAwMDFdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfNmE4M2QzMzkzN2YyNGZlNmJiNDcyY2JmNmEzMjk1NWQgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFszOS45MTg0MjcsIC03NS4xMzY2NTVdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfZmJlMWQ3ZTczYjEwNDQyYzg5ZjBjMmQ1ODhkZjNiMTkgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi4wNTg5OCwgLTc1LjQyOTc2XSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyXzY1NWZhYmUwM2IyZTQ1ZjI5N2VkODNiZjY5ZDUyMGUwID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbMzguNTkxODAyLCAtNzcuMTcxNDY4Mzc0Mzg1OTddLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfOGFhNTZlMGI4NjlmNGU2ZmIxZTcyNzFjNDA3ZDM4MDMgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFszOC41ODk4MTksIC03Ny4xNjQyMTAyODA5NDIyN10sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl80M2RjNGNlNTk2NDI0M2JmODU2YTZlZDQ1YTZiZDdhZSA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzM4LjkzMTM0NSwgLTc0LjkxOTMxMV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl85YjM5NjliYTE5ZDg0ZjYwYWNhOTdmM2U4MWZjYTRiNCA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzQwLjM5MTM1NywgLTc5Ljg1OTMzMTgwNTk1Nzk4XSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyX2Y3MDAzODVlNTcyZTRhMTliYjUxZWUyOGY1Y2Q3Mzk0ID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbNDIuMzc2MTg5MDAwMDAwMDA0LCAtODMuMDU4ODk0OTk5OTk5OTldLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfZTc2YmNlMzg2YTNiNGZlOThlYzhhMjhhZWQ4ZWUyMTYgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0My4wNjU1NjQ5LCAtNzcuMjIxNjkwMl0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl81YWQ0MDg5YTYzODM0YWZhODFjNzk1MmQwODM0NDVlZSA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzMwLjAyNDcwMiwgLTk0LjA0NDU4OV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl84MzE5YTcxMzJiM2Y0MzM2YmQ2Yjg2M2NlN2EwMjY5ZSA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzM3LjkwOTAyMjMwNDI2NzcsIC0xMTkuMjU2ODIwNzgyNjIzMDFdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfOTMwYmNhMmNlYTBjNDI1NWEzMmEyMzg0NjRkMzg2YjEgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs2NC45NTYwMzcsIC0xNDcuNjE2NDYwMDAwMDAwMDJdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfYzgzMWM1NWQ3MzYzNDg3ZTk3NzE2ODA0YjZlN2E4ODEgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi4zNzE5NTIsIC03MS4wNTkwOTM5OTk5OTk5OV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl85OGI1N2Q1MDY2YzE0NDI1YmI2ZDY0MjU5MTVmNDY4NCA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzM0LjAzMDU3NywgLTExNi44NTc1Mzc5OTk5OTk5OV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl8xMzMxYzRmN2QwZGI0ZDc1ODc1MzI4NTNiYjk0ZDNiNyA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzQzLjE2NTgwNzQsIC03OC42OTk5NDI0MDAwMDAwMV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl9jN2E5NTYyZTMxNzg0MjU4YWE1MGE0MGI1MjgyYjA3MCA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzM4LjU4NjM5NiwgLTc3LjE2OTk2MjMzMTYzNzMyXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyXzkxZTJjMmRhM2JiNDQ3YzZiYzJmOTFhNDI3M2UyOTU2ID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbMzcuMDA2OTE4LCAtNzYuMzEyNjM0XSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyX2ZhNGFjNThiNzYyZDRhOWI5M2E0ODFkNzhjYzVjOWNkID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbNDcuMjUzMDYsIC0xMjIuNDQzMDZdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfMTBjMjdmY2QzZTYxNDQwMjhiMTBjNzE1NzllYjA4MzUgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi44MjU1MzQwMDAwMDAwMDUsIC03OC44NTgxNjg5OTk5OTk5OV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl8xZWNlODYzMTBlNWY0NDVmOTFjOWQyYWU4NDlmNTA4YyA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzM4LjU3MzEzNDksIC04Mi44MzAxNjc3XSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyX2UxNmY4ZTM5OGNiOTQyZTRiODlmYzIzYWU3MzAyOTI3ID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbNDAuMjM4NDc5OTk5OTk5OTk2LCAtNzQuODMxMTldLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfMGNlZjljNDAxZDFmNDc0NzkyMDNhZmNjMWNhZjFmNmEgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi44NzA2OCwgLTg0Ljg5ODhdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfZDE2YmNhZDVhZGU2NGM1NThlYmUyNDFmYzgyODI1MzcgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFszOC4yOTEyMDEsIC03Ni44MTQxNzhdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfZDI1OWM4MDQ5MzQ3NDdiMTk0NmY5NzI5ZjkwNTZhOGQgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0Mi4zNzg0NjUwMDAwMDAwMDYsIC04My4wNjA2NzNdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfNTUzZmQzYjlkNDQ1NGZmMjhhZjZiM2RlODQ4ZjYyMzggPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0MC4xMzMzMywgLTc2LjM5MTY2OTk5OTk5OTk5XSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyXzU3NTQ3OTg0NGM4MTQ0Yjk5ZjQ1MzI2YThjYzNiMTQwID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbNDcuMzMzNTI3MTgxMzU4LCAtMTIyLjU4MzQwNzkzNTU3ODAxXSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyXzA1NTMwNmYzMDYzOTRlNjFiOGY3OTM0ZDhhMWQ4MjZiID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbMzguNTg3NjQxLCAtNzcuMTY5ODczNTM5NDE5MTZdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfYjViYmFmMTZjN2YyNGZhMWI1OWQ3MjJjODNjMzk0MmQgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0MS40ODAxMDQsIC03Mi41MDA2ODI4MzU0OF0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl8zZDEzZmQ4NmE3ZTU0OTI4OWY5NWRjNGU2YTIxY2M5YiA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjQ2NDMxNzIsIC03Ni41MTU2NTY2XSwKICAgICAgICAgICAgICAgIHsiYnViYmxpbmdNb3VzZUV2ZW50cyI6IHRydWUsICJjb2xvciI6ICIjMDA4MGJiIiwgImRhc2hBcnJheSI6IG51bGwsICJkYXNoT2Zmc2V0IjogbnVsbCwgImZpbGwiOiB0cnVlLCAiZmlsbENvbG9yIjogIiMwMDgwYmIiLCAiZmlsbE9wYWNpdHkiOiAwLjIsICJmaWxsUnVsZSI6ICJldmVub2RkIiwgImxpbmVDYXAiOiAicm91bmQiLCAibGluZUpvaW4iOiAicm91bmQiLCAib3BhY2l0eSI6IDEuMCwgInJhZGl1cyI6IDEsICJzdHJva2UiOiB0cnVlLCAid2VpZ2h0IjogM30KICAgICAgICAgICAgKS5hZGRUbyhtYXBfOTIzZGQ4NTFlNmY3NGQzZjkyMmZmNDAzODhhNDU1MjYpOwogICAgICAgIAogICAgCiAgICAgICAgICAgIHZhciBjaXJjbGVfbWFya2VyXzJlZGY0YTRkMTZhMDQxYTA4MWVmM2FiMzgzNTU2NGY4ID0gTC5jaXJjbGVNYXJrZXIoCiAgICAgICAgICAgICAgICBbNDMuMDkyNTg1NCwgLTc3LjUxNDk1MTddLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfMTU5ODgxZjRiMGM0NDFkOGJjOTY1ODVmOTRiZGFkYWUgPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFs0NC41NTk1MzIsIC02OC43OTkxNzVdLAogICAgICAgICAgICAgICAgeyJidWJibGluZ01vdXNlRXZlbnRzIjogdHJ1ZSwgImNvbG9yIjogIiMwMDgwYmIiLCAiZGFzaEFycmF5IjogbnVsbCwgImRhc2hPZmZzZXQiOiBudWxsLCAiZmlsbCI6IHRydWUsICJmaWxsQ29sb3IiOiAiIzAwODBiYiIsICJmaWxsT3BhY2l0eSI6IDAuMiwgImZpbGxSdWxlIjogImV2ZW5vZGQiLCAibGluZUNhcCI6ICJyb3VuZCIsICJsaW5lSm9pbiI6ICJyb3VuZCIsICJvcGFjaXR5IjogMS4wLCAicmFkaXVzIjogMSwgInN0cm9rZSI6IHRydWUsICJ3ZWlnaHQiOiAzfQogICAgICAgICAgICApLmFkZFRvKG1hcF85MjNkZDg1MWU2Zjc0ZDNmOTIyZmY0MDM4OGE0NTUyNik7CiAgICAgICAgCiAgICAKICAgICAgICAgICAgdmFyIGNpcmNsZV9tYXJrZXJfZWRlNWE3ZWU1ODQyNDgwOWJjNWFlYzQ3MjZlNDA5OTggPSBMLmNpcmNsZU1hcmtlcigKICAgICAgICAgICAgICAgIFszOC41OTIwNzgsIC03Ny4xNzc0NTgyNzA1MjM1N10sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKICAgIAogICAgICAgICAgICB2YXIgY2lyY2xlX21hcmtlcl9lZjQ4ZGM4ODg1OGI0MzZkYWI2YTBjZDdiZjU5MTBjOSA9IEwuY2lyY2xlTWFya2VyKAogICAgICAgICAgICAgICAgWzQyLjMxNDgsIC03Ny42NTE1MV0sCiAgICAgICAgICAgICAgICB7ImJ1YmJsaW5nTW91c2VFdmVudHMiOiB0cnVlLCAiY29sb3IiOiAiIzAwODBiYiIsICJkYXNoQXJyYXkiOiBudWxsLCAiZGFzaE9mZnNldCI6IG51bGwsICJmaWxsIjogdHJ1ZSwgImZpbGxDb2xvciI6ICIjMDA4MGJiIiwgImZpbGxPcGFjaXR5IjogMC4yLCAiZmlsbFJ1bGUiOiAiZXZlbm9kZCIsICJsaW5lQ2FwIjogInJvdW5kIiwgImxpbmVKb2luIjogInJvdW5kIiwgIm9wYWNpdHkiOiAxLjAsICJyYWRpdXMiOiAxLCAic3Ryb2tlIjogdHJ1ZSwgIndlaWdodCI6IDN9CiAgICAgICAgICAgICkuYWRkVG8obWFwXzkyM2RkODUxZTZmNzRkM2Y5MjJmZjQwMzg4YTQ1NTI2KTsKICAgICAgICAKPC9zY3JpcHQ+" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
+<div class="output text_html"><div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -> Trust Notebook</span><iframe srcdoc="&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    
+    &lt;meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; /&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://code.jquery.com/jquery-3.7.1.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/&gt;
+    
+            &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; /&gt;
+            &lt;style&gt;
+                #map_b61dde6c63ea36abbd82e35f658b3599 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            &lt;/style&gt;
+
+            &lt;style&gt;html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            &lt;/style&gt;
+
+            &lt;style&gt;#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            &lt;/style&gt;
+
+            &lt;script&gt;
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            &lt;/script&gt;
+
+        
+&lt;/head&gt;
+&lt;body&gt;
+    
+    
+            &lt;div class=&quot;folium-map&quot; id=&quot;map_b61dde6c63ea36abbd82e35f658b3599&quot; &gt;&lt;/div&gt;
+        
+&lt;/body&gt;
+&lt;script&gt;
+    
+    
+            var map_b61dde6c63ea36abbd82e35f658b3599 = L.map(
+                &quot;map_b61dde6c63ea36abbd82e35f658b3599&quot;,
+                {
+                    center: [35.481918, -97.508469],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  &quot;zoom&quot;: 3,
+  &quot;zoomControl&quot;: true,
+  &quot;preferCanvas&quot;: false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f34240d52a23e57e82114bf0b00f3fcb = L.tileLayer(
+                &quot;https://tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {
+  &quot;minZoom&quot;: 0,
+  &quot;maxZoom&quot;: 19,
+  &quot;maxNativeZoom&quot;: 19,
+  &quot;noWrap&quot;: false,
+  &quot;attribution&quot;: &quot;\u0026copy; \u003ca href=\&quot;https://www.openstreetmap.org/copyright\&quot;\u003eOpenStreetMap\u003c/a\u003e contributors&quot;,
+  &quot;subdomains&quot;: &quot;abc&quot;,
+  &quot;detectRetina&quot;: false,
+  &quot;tms&quot;: false,
+  &quot;opacity&quot;: 1,
+}
+
+            );
+        
+    
+            tile_layer_f34240d52a23e57e82114bf0b00f3fcb.addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_c0a36cb6c164186b2adb323dc0ac9a50 = L.circleMarker(
+                [43.6414716, -70.2408811],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_f898f4a72e2fdae79e9fe7d2a30e223a = L.circleMarker(
+                [47.507055, -101.432257],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_55570aa2efab21c94c69382b5e740618 = L.circleMarker(
+                [47.6038321, -122.3300624],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_a53fecaf2373497f6542229f53396a67 = L.circleMarker(
+                [37.806455, -122.273202],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_80a39ebb024b585d3f62b39ce39fd713 = L.circleMarker(
+                [42.630725, -73.777451],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_cbfdcf917b5656548a2d9d135f1fcd82 = L.circleMarker(
+                [38.578893, -77.17804715345169],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_a30d48e4a8b15d524c9c0c430d942924 = L.circleMarker(
+                [43.1525, -79.04167],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_ca4da3d95c37f65aa2c89e1f90b4e91c = L.circleMarker(
+                [42.9465841, -74.2095964],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_b1bd4af9277c1de17b32b922554bbf19 = L.circleMarker(
+                [39.511984, -77.8306878],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_01ab9af1be1f1d565903d7bb20bdeaad = L.circleMarker(
+                [41.5263888889, -70.6730555556],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_3a817ed1ffa9cba2089c6287a9fce1c6 = L.circleMarker(
+                [39.643082, -78.889328],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_d25694c4759cc6c09ef143aef6d6f5a8 = L.circleMarker(
+                [38.585328, -77.16830001823983],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_c8599c2470f7c1a5ca8cb3c13b6a8ea4 = L.circleMarker(
+                [33.860011, -118.1856252],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_cff685bc88c511de7ba7018e190f5498 = L.circleMarker(
+                [37.274, -118.9684],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_622d308d0f38009947529d71473c5c69 = L.circleMarker(
+                [43.1009151, -77.4406493],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_add4d136bbbb81ca7e5ae2881eb8ee6d = L.circleMarker(
+                [43.437119, -85.663639],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_c30773427e4836bc9b57f81ed629f568 = L.circleMarker(
+                [38.590695, -77.17816273371744],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_b0cc2398cc786aa0279784bd63c4e990 = L.circleMarker(
+                [39.50589, -80.16813],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_eb87f086ab6c8514f0343f61e972ca28 = L.circleMarker(
+                [37.7620889746898, -119.860731072203],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_4663bbc6c76f6e6fb0ddd85f74019c22 = L.circleMarker(
+                [41.29281, -94.14976],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_d7786ac8d576272a32140787d1ee121e = L.circleMarker(
+                [20.030186, -155.818784],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_720993f4923a5aeb4a81f5ba53512942 = L.circleMarker(
+                [38.684596, -77.131794],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_9bbab21c3eaed62281d53f9630adce77 = L.circleMarker(
+                [20.9175, -156.3258333],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_38df311d5ce94cfe140de92824f7fd2e = L.circleMarker(
+                [39.98953, -78.255624],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_f6ac02834af3791d88b8289bba4d9ae6 = L.circleMarker(
+                [39.855162, -87.336002],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_efbd9d12a9f197333032a8ef66ce3cde = L.circleMarker(
+                [37.807728, -122.420792],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_96994079bb180aea191281073485a035 = L.circleMarker(
+                [43.0976498, -73.5797985],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_b4306732027b7535656b0db408da5f32 = L.circleMarker(
+                [32.7253908733282, -114.616614456155],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_94b608de0d45d56ab6e67cbab91e0076 = L.circleMarker(
+                [45.4385, -90.6175],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_6e26f03a689d3bea13462c7d93e3e497 = L.circleMarker(
+                [38.077236, -122.097628],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_6ddbfd5faeeb60d538875d7c7b2e3501 = L.circleMarker(
+                [44.14335, -71.18636],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_8047d9daaac2f284149657c17ff48d76 = L.circleMarker(
+                [47.62719, -122.33558],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_d8d9ced85141c21e3db069a78231b676 = L.circleMarker(
+                [43.898554, -75.392412],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_d1f18450eacf8fbb88b5976c752dfe50 = L.circleMarker(
+                [41.3259244, -88.7082147],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_a8016ad4c2369fd6a163b41151a125a5 = L.circleMarker(
+                [42.782327, -73.70575],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_5bdb75d3ab5bd77d59762d426207a6db = L.circleMarker(
+                [43.1560067, -76.3324897],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_3ee6869ef993057bd9b005d340a0ee05 = L.circleMarker(
+                [43.1955751, -77.8537368],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_a38190749983d50b72ecaec027527823 = L.circleMarker(
+                [43.022119, -78.873532],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_937acb041f3e08a533e705da751a7452 = L.circleMarker(
+                [41.397002, -73.966755],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_5509b928a8e27b8723111dee709e6e2e = L.circleMarker(
+                [43.0129632, -74.7808415],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_34cdcd8e6f81b36a7d0c4013205e2e4e = L.circleMarker(
+                [39.918427, -75.136655],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_d5068f64f69f69dc3e93130d11f96f5c = L.circleMarker(
+                [42.05898, -75.42976],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_5c0ab7ec04575e489992f0ff175aec4b = L.circleMarker(
+                [38.591802, -77.17146837438597],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_a953724f9ccd7eec3264b20c3d8487b9 = L.circleMarker(
+                [38.589819, -77.16421028094226],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_b07cf66911c267ef58c9487b25323dbb = L.circleMarker(
+                [38.931345, -74.919311],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_a2a617c11bb10d1e71b27bbab53ac025 = L.circleMarker(
+                [40.391357, -79.85933180595799],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_27e2f988c0e5718e4ca84b1dc9c20c43 = L.circleMarker(
+                [42.376189, -83.058895],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_b4b1cd5c8f53c1e9b44d8ffaa7c9c771 = L.circleMarker(
+                [43.0655649, -77.2216902],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_3de6f5c6909da76ab518e25d439ee7af = L.circleMarker(
+                [30.024702, -94.044589],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_c7f37d7b47561825f3f3c3ddd38022db = L.circleMarker(
+                [37.9090223042677, -119.256820782623],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_a44de57bb08ebfe5a35d209bb9362906 = L.circleMarker(
+                [64.956037, -147.61646],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_c7a652e711dfcbd032fd0abd78bbe6fc = L.circleMarker(
+                [42.371952, -71.059094],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_edfbae6e6515808c862a0f050a72bb98 = L.circleMarker(
+                [34.030577, -116.857538],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_80dcfa4752345f5d855a2511f42511bd = L.circleMarker(
+                [43.1658074, -78.6999424],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_4c92e50f79c9eca854268705a975f9f2 = L.circleMarker(
+                [38.586396, -77.16996233163732],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_1ffeaff7277387e62643fc4d1f325473 = L.circleMarker(
+                [37.006918, -76.312634],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_36b85804f4bfe0fb9862a581653e47e8 = L.circleMarker(
+                [47.25306, -122.44306],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_1d43b64d94ecd4f89d2bdbcd98fdf56d = L.circleMarker(
+                [42.825534, -78.858169],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_790439200f6cc387e9ac2fce8982fc30 = L.circleMarker(
+                [38.5731349, -82.8301677],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_b8de06ce5911e412d7d30cbed2b43afe = L.circleMarker(
+                [40.23848, -74.83119],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_ee551758ffc40cd60202f4a9a8270bd5 = L.circleMarker(
+                [42.87068, -84.8988],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_6cbac6473098f5a330ac33aa4e50bf3a = L.circleMarker(
+                [38.291201, -76.814178],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_71806e139bbeedaee79fb1b940a3a9ac = L.circleMarker(
+                [42.378465, -83.060673],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_f90d35c55c8b97bec4ce0949fe8bcb1e = L.circleMarker(
+                [40.13333, -76.39167],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_c106e93f494b431b61e60587992c8d14 = L.circleMarker(
+                [47.333527181358, -122.583407935578],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_ca8bffa949f15cb384f6b08f6f31f575 = L.circleMarker(
+                [38.587641, -77.16987353941916],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_619a9397d838b60c6103337d17c42d45 = L.circleMarker(
+                [41.480104, -72.50068283548],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_2e35ed677e3edd91162f7c27f2384a51 = L.circleMarker(
+                [42.4643172, -76.5156566],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_2dc97e9349a79de064acf33c50041049 = L.circleMarker(
+                [43.0925854, -77.5149517],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_ff76f20ccab851494d86c45f5ebafaeb = L.circleMarker(
+                [44.559532, -68.799175],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_a72f00656a31181518aa980eb95e4786 = L.circleMarker(
+                [38.592078, -77.17745827052356],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+    
+            var circle_marker_04e3d9e20729c7b361121e4e4f3ecf95 = L.circleMarker(
+                [42.3148, -77.65151],
+                {&quot;bubblingMouseEvents&quot;: true, &quot;color&quot;: &quot;#0080bb&quot;, &quot;dashArray&quot;: null, &quot;dashOffset&quot;: null, &quot;fill&quot;: true, &quot;fillColor&quot;: &quot;#0080bb&quot;, &quot;fillOpacity&quot;: 0.2, &quot;fillRule&quot;: &quot;evenodd&quot;, &quot;lineCap&quot;: &quot;round&quot;, &quot;lineJoin&quot;: &quot;round&quot;, &quot;opacity&quot;: 1.0, &quot;radius&quot;: 1, &quot;stroke&quot;: true, &quot;weight&quot;: 3}
+            ).addTo(map_b61dde6c63ea36abbd82e35f658b3599);
+        
+&lt;/script&gt;
+&lt;/html&gt;" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe></div></div></div></div>
 </div>
 <p>Learn more about tailoring your own interactive map experience using the Folium documentation:   <a class="reference external" href="http://folium.readthedocs.io/en/latest/">http://folium.readthedocs.io/en/latest/</a></p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="in-conclusion">
-<h1>In conclusion..<a class="headerlink" href="#in-conclusion" title="Link to this heading">#</a></h1>
+<section id="in-conclusion">
+<h2>In conclusion..<a class="headerlink" href="#in-conclusion" title="Link to this heading">#</a></h2>
 <p>As tools for digital scholarship improve, proliferate, and take hold, we will continue to see interesting questions emerge that make use of new and existing spatial data. GIS has proven its capability to expand humanities research, however many humanists have yet to incorporate this “spatial turn” in their research. Answering questions about why and how researchers can actually use such data requires a critical understanding of these tools and their outputs.</p>
 <p>This tutorial was developed to help beginners get things done when integrating their disciplinary information into a geospatial format. Using digital collections from the Library of Congress API, we touched on foundational data skills such as how to collect and organize historic GIS data, how to deal with data in different formats, how to clean up data, and how to visualize disciplinary data with an interactive digital map. What ties this all together though is the ability to evaluate the quality of external data with respect to the motivation, context, and change over time of its stewardship. This type of awareness, while familiar for those engaged in more traditional research, is a critical piece of any project looking to leverage ever growing and diversifying digital resources.</p>
 <p><strong>Credits</strong></p>
 <p>I’d like to thank Mary McPartland from NPS and Kit Arrington from the Library of Congress for their guidance on the HABS/HAER/HALS collections and the nuanced history (and future!) of its evolution. I’d also like to acknowledge Laura Wrubel, whose LC Labs resources were instrumental in setting up my own projects, and Meghan Ferriter, my coach and mentor throughout the LC Labs internship.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1172,14 +1465,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Extracting location data from the loc.gov API for geovisualization</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#demo-data">Demo Data</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#geovisualization">Geovisualization</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#in-conclusion">In conclusion..</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version">Version</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#background-on-the-data">Background on the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tutorial">Tutorial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geovisualization">Geovisualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-conclusion">In conclusion..</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
