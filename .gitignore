@@ -19,3 +19,5 @@ _build/.doctrees/*
 _build/jupyter_execute/*
 
 *.pyc
+.venv
+_build/.venv

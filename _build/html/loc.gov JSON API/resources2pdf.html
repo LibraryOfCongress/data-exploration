@@ -185,11 +185,6 @@
 <li class="toctree-l1"><a class="reference internal" href="Dominant%20colors.html">Color clusters in images in Library of Congress collections</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Downloading_Monographs_as_Images_in_Rosenwald_Collection/Downloading%20Monographs%20as%20Images%20in%20Rosenwald%20Collection.html">Connecting the image file to the metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Extracting%20location%20data%20for%20geovisualization.html">Extracting location data from the loc.gov API for geovisualization</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="maps/maps-analyzing-metadata.html">Analyzing and visualizing cartographic metadata from loc.gov</a></li>
 
 
@@ -217,9 +212,6 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../Data%20Sets/Web%20Archives/getting_started_with_memegenerator.html">Exploring the Memegenerator Metadata</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Data%20Sets/Web%20Archives/getting_started_with_giphy.html">Exploring the GIPHY.com Metadata</a></li>
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../Data%20Sets/Web%20Archives/loc_goes_lofi.html">LOC Goes Lofi</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Package notebooks</span></p>
@@ -393,8 +385,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-api-responses-review">Understanding API Responses Review:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version">Version</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-api-responses-review">Understanding API Responses Review:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-imports">I. Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-create-a-request-url">II. Create a request URL</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-request-data">III. Request Data</a></li>
@@ -414,6 +407,29 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="downloading-an-item-with-multiple-pages-to-pdf">
 <h1>Downloading an item with multiple pages to PDF<a class="headerlink" href="#downloading-an-item-with-multiple-pages-to-pdf" title="Link to this heading">#</a></h1>
 <p>The <a class="reference external" href="http://loc.gov">loc.gov</a> API provides structured data about Library of Congress collections in JSON and YAML formats. This notebook shows how you can take use the API to access image resources, belonging to an LoC Item, and aggregate them into a single PDF file.</p>
+<p>This notebook covers the following steps:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#Understanding-API-Responses-Review:"><span class="xref myst">Understanding API responses</span></a></p></li>
+<li><p><a class="reference internal" href="#I.-Imports"><span class="xref myst">Imports</span></a></p></li>
+<li><p><a class="reference internal" href="#II.-Create-a-request-URL"><span class="xref myst">Creating a request URL</span></a></p></li>
+<li><p><a class="reference internal" href="#III.-Request-Data"><span class="xref myst">Requesting data</span></a></p></li>
+<li><p><a class="reference internal" href="#IV.-Resource-Data-and-Extracting-Resource-URLS"><span class="xref myst">Extracting resource URLs</span></a></p></li>
+<li><p><a class="reference internal" href="#V.-Downloading-images-into-a-PDF-file"><span class="xref myst">Downloading images into a PDF file</span></a></p></li>
+</ol>
+<section id="version">
+<h2>Version<a class="headerlink" href="#version" title="Link to this heading">#</a></h2>
+<hr class="docutils" />
+<p>Version: 1</p>
+<p>Last Run: July 24, 2025 (Python 3.12)</p>
+<hr class="docutils" />
+<p>Author Information:</p>
+<p>Created by Aisaiah Pellecer, Junior Fellow 2024 and the Library of Congress LC Labs</p>
+</section>
+<hr class="docutils" />
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
+<p>There are no prequisites in order to run this notebook, besides the installation of libraries listed in the imports section. Note that running this notebook will download files onto your machine.</p>
+</section>
 <section id="understanding-api-responses-review">
 <h2>Understanding API Responses Review:<a class="headerlink" href="#understanding-api-responses-review" title="Link to this heading">#</a></h2>
 <p><strong>JSON Response Objects</strong>
@@ -423,10 +439,6 @@ Each of the endpoint types has a distinct response format, but they can be broad
 <li><p>responses to queries for a <strong>single item</strong>, or Item and Resource Responses</p></li>
 </ul>
 <p>Furthermore, this notebook will focus on the <strong>JSON Response Object</strong> for a <strong>single item</strong> and formatting its corresponding Resources (files that make-up an item, e.g. pictures of book) into a .pdf file.</p>
-</section>
-<section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
-<p>There are no prequisites in order to run this notebook, besides the installation of libraries listed in the imports section.</p>
 </section>
 <section id="i-imports">
 <h2>I. Imports<a class="headerlink" href="#i-imports" title="Link to this heading">#</a></h2>
@@ -664,8 +676,9 @@ https://tile.loc.gov/image-services/iiif/service:mss:mss25064:mss25064-141:0027/
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-api-responses-review">Understanding API Responses Review:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#version">Version</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-api-responses-review">Understanding API Responses Review:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-imports">I. Imports</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ii-create-a-request-url">II. Create a request URL</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iii-request-data">III. Request Data</a></li>
