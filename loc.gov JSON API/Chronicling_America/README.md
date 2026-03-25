@@ -6,7 +6,7 @@ This repository contains information about using the [LoC.gov API](https://www.l
 
 ### Credits
 
-The Jupyter notebooks in this repository were created by NDNP staff in the Serial and Government Publications Division at the Library of Congress. The content was inspired by, and at times closely follows, the notebooks created by [LC Maps for Robots](https://github.com/LibraryOfCongress/data-exploration/blob/861bbe6e0fb9992fe1c4fedf43e3f61bccd980bc/loc.gov%2520JSON%2520API/maps/README.md)
+The Jupyter notebooks in this repository were created by NDNP staff in the Serial and Government Publications Division at the Library of Congress. The content was inspired by, and at times closely follows, the notebooks created by [LC Maps for Robots](https://github.com/LibraryOfCongress/data-exploration/tree/master/loc.gov%20JSON%20API/maps)
 
 Contact ndnptech@loc.gov for questions about these Chronicling America notebooks.
 
@@ -52,7 +52,7 @@ When working with and downloading bulk data using the loc.gov API, please be min
 Additional details on rate limits can be found at: [https://www.loc.gov/apis/json-and-yaml/working-within-limits/](https://www.loc.gov/apis/json-and-yaml/working-within-limits/)
 
 
-> Search queries with more than 100,000 results are too big for the loc.gov API. Please use facets to limit the size of your results and search query. Recommended search facets can be found in the \*Definitions: API Query Parameters for Newspapers\* section. They include:
+> Search queries with more than 100,000 results are too big for the loc.gov API. Please use facets to limit the size of your results and search query. Recommended search facets can be found in the *Definitions: API Query Parameters for Newspapers* section. They include:
 
 * Start Date/End Date: Narrow your search results to specific time periods or break up your search queries by decades.
 * LCCN: Narrow your search to a specific newspaper title.
@@ -71,7 +71,7 @@ The easiest way to create a URL for your API query is to perform an **Advanced S
 
 The structure of an API Query URL looks like this:
 
-    https://www.loc.gov/collections/chronicling-america/?{queryparameters}\&{queryparameters}\&fo=json
+    https://www.loc.gov/collections/chronicling-america/?{queryparameters}&{queryparameters}&fo=json
 
 
 **Base URL**: To perform an API query on Newspapers from Chronicling America, you need a URL which is divided with the following sections:
@@ -81,13 +81,13 @@ The structure of an API Query URL looks like this:
 |Library of Congress Website|End Point|Question Mark|Query Parameters|Format|
 |-|-|-|-|-|
 |URL for Library of Congress|Indicates the Digital Collection to be searched|Starts Query|Indicate what is being searched|Indicates Display Format|
-||||Combined by ampersand `\&` symbol.|Options: json, yaml|
+||||Combined by ampersand `&` symbol.|Options: json, yaml|
 ||||||
-|https://www.loc.gov|/collections/chronicling-america/|?|{queryparameters}\&{queryparameters}|\&fo=json|
+|https://www.loc.gov|/collections/chronicling-america/|?|{queryparameters}&{queryparameters}|&fo=json|
 
 Example API Query URL:
 
-    https://www.loc.gov/collections/chronicling-america/?dl=page\&end\_date=1924-12-31\&qs=cat\&start\_date=1924-10-01\&location\_state=california\&fo=json
+    https://www.loc.gov/collections/chronicling-america/?dl=page&end_date=1924-12-31&qs=cat&start_date=1924-10-01&location_state=california&fo=json
 
 
 ---
@@ -96,31 +96,31 @@ For **Newspapers from the Chronicling America collection**, the most useful **Qu
 
 |Parameter|Effect on the Query|Note|
 |-|-|-|
-|`dl=\_\_\_`|Display Level. Indicates whether display results will be newspaper title, issue, or page level.|Examples:|
+|`dl=___`|Display Level. Indicates whether display results will be newspaper title, issue, or page level.|Examples:|
 |||`all` (Default, same effect as omitting this parameter)|
 |||`issue`|
 |||`page`|
-|`qs=\_\_\_\_`|Indicates what words the query will search.|Use Plus "+" symbol between words|
-|`ops=\_\_\_`|Indicates the type of search operation.|Examples:|
+|`qs=____`|Indicates what words the query will search.|Use Plus "+" symbol between words|
+|`ops=___`|Indicates the type of search operation.|Examples:|
 |||`PHRASE` ("This exact phrase"),|
 |||`AND` ("All of these words"),|
 |||`OR` ("Any of these words"),|
-|||`\~5` ("These words within 5 words of each other"),|
-|||`\~10` ("These words within 10 words of each other")|
-|`end\_date=YYYY-MM-DD`|Indicates the end "date" field.||
-|`start\_date=YYYY-MM-DD`|Indicates the start "date" field value.||
-|`location\_state=\_\_\_`|Narrows result of the newspaper title to its state location.||
-|`location\_city=\_\_\_\_`|The publication "location" state should equal "\_\_\_".||
-|`location\_county=\_\_\_\_`|The publication "location" state should equal "\_\_\_".||
-|`fa=batch:\_\_\_\_\_`|Indicates the batch name.||
-|`fa=number\_lccn:\_\_\_`|Indicates the newspaper title's LCCN.||
-|`\&partof\_title=`|Indicates the newspaper title.|Use Plus `+` symbol between words. Title are case sensitive and need correct spelling/diacritics.|
-|`fa=language:\_\_\_\_`|Indicates the language of the newspaper publication.||
-|`subject\_ethnicity=\_\_\_\_`|Indicates the newspaper ethnicity *if available*.|Use Exclamation Mark "!" symbol between multiple ethnicities|
+|||`~5` ("These words within 5 words of each other"),|
+|||`~10` ("These words within 10 words of each other")|
+|`end_date=YYYY-MM-DD`|Indicates the end "date" field.||
+|`start_date=YYYY-MM-DD`|Indicates the start "date" field value.||
+|`location_state=___`|Narrows result of the newspaper title to its state location.||
+|`location_city=____`|The publication "location" state should equal "___".||
+|`location_county=____`|The publication "location" state should equal "___".||
+|`fa=batch:_____`|Indicates the batch name.||
+|`fa=number_lccn:___`|Indicates the newspaper title's LCCN.||
+|`&partof_title=`|Indicates the newspaper title.|Use Plus `+` symbol between words. Title are case sensitive and need correct spelling/diacritics.|
+|`fa=language:____`|Indicates the language of the newspaper publication.||
+|`subject_ethnicity=____`|Indicates the newspaper ethnicity *if available*.|Use Exclamation Mark "!" symbol between multiple ethnicities|
 |`searchType=Advanced`|Indicates the search query was the result of an advanced search.||
-|`front\_pages\_only=true`|Limits the number of results to just the front page of the newspaper.|Recommended for searching major news stories.|
+|`front_pages_only=true`|Limits the number of results to just the front page of the newspaper.|Recommended for searching major news stories.|
 
-> Note: If you want to download full text from the newspaper pages in a given search result, note that the full text (from OCR) is captured for each page within the "full\_text" JSON field.  For example: https://www.loc.gov/resource/sn83045462/1922-12-26/ed-1/?sp=22\&q=clara+bow\&fo=json 
+> Note: If you want to download full text from the newspaper pages in a given search result, note that the full text (from OCR) is captured for each page within the "full_text" JSON field.  For example: https://www.loc.gov/resource/sn83045462/1922-12-26/ed-1/?sp=22&q=clara+bow&fo=json 
 
 ---
 
@@ -155,7 +155,7 @@ Feel free to follow along or download this notebook and put in your own search q
 
 **Notebook Example:**
 
-> The \*Washington Times\* newspaper printed a special children's section called "Book of Magic." This section contains children stories and coloring and puzzle activities.
+> The *Washington Times* newspaper printed a special children's section called "Book of Magic." This section contains children stories and coloring and puzzle activities.
 Specifically, we will utilize the API tool to 1. Narrow our search to a specific newspaper title and its content using a phrase. 2. Limit the search result so we only get the top 16 results.
 
 Objectives:
@@ -235,19 +235,19 @@ Feel free to follow along or download this notebook and put in your own search q
 Example:
 Query all issues of the Evening Star by the Title Name:
 
-    https://www.loc.gov/collections/chronicling-america/?partof\_title=evening+star\&fo=json
+    https://www.loc.gov/collections/chronicling-america/?partof_title=evening+star&fo=json
 
 
 Example:
 Query all issues of the Evening Star by the LCCN:
 
-    https://www.loc.gov/collections/chronicling-america/?fa=number\_lccn:sn83045462\&fo=json
+    https://www.loc.gov/collections/chronicling-america/?fa=number_lccn:sn83045462&fo=json
 
 
 Example:
 Query all newspaper issues found in Chronicling America for the Evening Star in 1920:
 
-    https://www.loc.gov/collections/chronicling-america/?fa=number\_lccn:sn83045462\&start\_date=1920-01-01\&end\_date=1920-12-31\&fo=json
+    https://www.loc.gov/collections/chronicling-america/?fa=number_lccn:sn83045462&start_date=1920-01-01&end_date=1920-12-31&fo=json
 
 
 
@@ -273,9 +273,9 @@ Feel free to follow along or download this notebook and put in your own search q
 > Note: This process is longer to perform due to the size of the batch. Because of potential outages, rate limits and the large size of the API request, we recommend splitting the query by using facets such as start/end date (see example below).
 
 Example:
-To download all newspaper titles in a batch from Tennessee called `tu\_brownie\_ver01` found in Chronicling America from 1880-1890:
+To download all newspaper titles in a batch from Tennessee called `tu_brownie_ver01` found in Chronicling America from 1880-1890:
 
-    https://www.loc.gov/collections/chronicling-america/?fa=batch:tu\_brownie\_ver01\&start\_date=1880-01-01\&end\_date=1890-12-31\&fo=json
+    https://www.loc.gov/collections/chronicling-america/?fa=batch:tu_brownie_ver01&start_date=1880-01-01&end_date=1890-12-31&fo=json
 
 
 
@@ -307,8 +307,4 @@ To download all newspaper titles in a batch from Tennessee called `tu\_brownie\_
 [APIs for LoC.gov](https://www.loc.gov/apis/)
 
 
-
-[Ask a Librarian in Serial and Government Publications Division](https://ask.loc.gov/newspapers-periodicals/)
-
-[APIs for LoC.gov](https://www.loc.gov/apis/)
 
