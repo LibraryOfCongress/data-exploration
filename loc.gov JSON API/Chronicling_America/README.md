@@ -268,7 +268,7 @@ Objectives:
 
 
 Feel free to follow along or download this notebook and put in your own search queries. See:
-[ChronAm-download\_newspaper\_title\_batch.ipynb](https://libraryofcongress.github.io/data-exploration/loc.gov%2520JSON%2520API/Chronicling_America/ChronAm-download_newspaper_title_batch.ipynb)
+[ChronAm-download\_newspaper\_title\_batch.ipynb](https://libraryofcongress.github.io/data-exploration/loc.gov%20JSON%20API/Chronicling_America/ChronAm-download_newspaper_title_batch.html)
 
 > Note: This process is longer to perform due to the size of the batch. Because of potential outages, rate limits and the large size of the API request, we recommend splitting the query by using facets such as start/end date (see example below).
 
