@@ -17,15 +17,15 @@ And you will need read and write access to [the Github repository](https://githu
     cd data-exploration
     ```
 
-2. Install Jupyter Book
+2. Install Jupyter Book - Version 1 is required, Version 2 has breaking changes; 1.0.4 is the last stable V1
 
     ```
-    pip install jupyter-book
+    pip install "jupyter-book==1.0.4"
     ```
 
 3. Create or update your Jupyter Notebooks locally using your favorite notebook editor.
 
-4. Once you made your changes, now you can build the Jupyter Notebook HTML
+4. Once you made your changes, now you can build the Jupyter Notebook HTML locally to see what it looks like
 
     ```
     jupyter-book build .
@@ -41,18 +41,6 @@ And you will need read and write access to [the Github repository](https://githu
 
 5. Once built, you should be able to paste the file path (e.g. `file://path/to/data-exploration/_build/html/index.html`) displayed in the output into your browser bar to preview it.  Make any changes necessary and re-run steps 3 and 4.
 
-6. Once you are ready to publish, you will need to add an empty file called `.nojekyll` to the folder `./_build/html/`. This will tell Github not to interpret this as a Jekyll site.
+6. Once you are ready to publish, simply push or merge your changes into the `master` branch. This will trigger a re-build on Github Pages.
 
-    Then commit and push your changes to the main branch
-
-    ```
-    git push origin master
-    ```
-
-    And then push the generated HTML subfolder to the gh-site branch
-
-    ```
-    git subtree push --prefix _build/html origin gh-site
-    ```
-
-    This should trigger an automatic re-build of the changed Github Pages webpages.  You should be able to see the status of those builds in the ["Actions"](https://github.com/LibraryOfCongress/data-exploration/actions) section of the repository. And once deployed, view the final result on [Github Pages](https://LibraryOfCongress.github.io/data-exploration/).
+    You should be able to see the status of this build in the ["Actions"](https://github.com/LibraryOfCongress/data-exploration/actions) section of the repository. And once deployed, view the final result on [Github Pages](https://LibraryOfCongress.github.io/data-exploration/).
