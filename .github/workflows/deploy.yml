@@ -30,22 +30,22 @@ jobs:
       # if you have config:
       # execute:
       #   execute_notebooks: cache
-      - name: cache executed notebooks
-        uses: actions/cache@v4
-        with:
-          path: _build/.jupyter_cache
-          key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
+      # - name: cache executed notebooks
+      #   uses: actions/cache@v4
+      #   with:
+      #     path: _build/.jupyter_cache
+      #     key: jupyter-book-cache-${{ hashFiles('requirements.txt') }}
 
       # Build the book
       - name: Build the book
         run: |
-          jupyter-book build --all ./
+          jupyter-book build .
 
       # https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow
 
       # Upload the book's HTML as an artifact
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: _build/html
 
