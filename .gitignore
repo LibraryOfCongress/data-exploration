@@ -15,8 +15,7 @@ loc.gov JSON API/Downloading_Monographs_as_Images_in_Rosenwald_Collection/.ipynb
 **/*.ipynb_checkpoints/
 .ipynb_checkpoints
 */.ipynb_checkpoints/*
-_build/.doctrees/*
-_build/jupyter_execute/*
+_build/*
 
 *.pyc
 .venv
