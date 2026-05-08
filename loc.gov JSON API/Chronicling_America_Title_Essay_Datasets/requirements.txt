@@ -69,7 +69,7 @@ prompt-toolkit==3.0.20
 ptyprocess==0.7.0
 pycparser==2.20
 pydantic==1.9.2
-Pygments==2.10.0
+Pygments==2.15.0
 PyLD==2.0.3
 pyparsing==2.4.7
 pyrsistent==0.18.0
